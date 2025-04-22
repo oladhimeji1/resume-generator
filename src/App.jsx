@@ -1,16 +1,17 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import LovedInterveiwers from "./components/LovedInterviewers";
-import Template1 from "./templates/Template1";
+import Features from "./components/Features";
 
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
-      <Template1 />
+       <Navbar /> 
+     
       <main className="mt-24">
-        {/* <Hero />
-        <LovedInterveiwers /> */}
+        <Hero />
+        <LovedInterveiwers />
+        <Features />
       </main>
     </>
   );

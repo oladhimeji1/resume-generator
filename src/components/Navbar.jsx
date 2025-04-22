@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <nav className="bg-white h-20 shadow-md p-6 flex items-center justify-between fixed top-0 left-0 right-0 w-full">
       <a className="text-3xl font-[poppins] font-bold text-emerald-900 ">
-        ProFile
+        Resume Wizard
       </a>
 
       <button
@@ -17,7 +17,7 @@ export default function Navbar() {
         &#9776;
       </button>
 
-      <div className="hidden md:flex space-x-6">
+      <div className="hidden md:flex space-x-10">
         <a href="#" className="hover:text-emerald-900">
           Home
         </a>
