@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import LovedInterveiwers from "./components/LovedInterviewers";
 import Features from "./components/Features";
 import CoreSteps from "./components/CoreSteps";
+import CvReview from "./components/CvReview";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <LovedInterveiwers />
         <Features />
         <CoreSteps />
+        <CvReview />
       </main>
     </>
   );
