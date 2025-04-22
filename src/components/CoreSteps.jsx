@@ -1,0 +1,49 @@
+import BagIcon from "../assets/images/svg/bag.svg";
+import CameraIcon from "../assets/images/svg/camera.svg";
+import TimerIcon from "../assets/images/svg/timer.svg";
+
+export default function CoreSteps() {
+  return (
+    <section className="mx-auto max-w-7xl flex flex-col justify-center p-6">
+      <div className="flex justify-between items-center flex-col max-w-7xl gap-5 mx-auto mb-8">
+        <h2 className="text-2xl sm:text-4xl text-center font-bold">
+          Create a Resume that get results
+        </h2>
+        <a
+          className="block py-4 px-12 bg-emerald-600 text-white font-bold rounded-full"
+          href="#"
+        >
+          Choose a template
+        </a>
+      </div>
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col gap-3">
+          <img src={BagIcon} alt="bag icon" width="48" />
+          <h3 className="font-bold text-xl">Recruiter-Approved Resume</h3>
+          <p className="font-light">
+            We work with recruiters to design resume templates that format
+            automatically.
+          </p>
+        </div>
+        <div className="flex flex-col gap-3">
+          <img src={CameraIcon} alt="bag icon" width="48" />
+          <h3 className="font-bold text-xl">Land an Interview</h3>
+          <p className="font-light">
+            We suggest the skills you should add. It helped over a million
+            people get interviews.
+          </p>
+        </div>
+        <div className="flex flex-col gap-3 md:col-start-1 md:col-end-3 md:text-center md:px-12 md:items-center md:justify-center lg:text-left lg:px-0 lg:col-start-4 lg:justify-start l lg:items-start">
+          <img src={TimerIcon} alt="bag icon" width="48" />
+          <h3 className="font-bold text-xl">
+            Finish Your Resume in 15 Minutes
+          </h3>
+          <p className="font-light">
+            Resume Now helps you tackle your work experience by reminding you
+            what you did at your job.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}

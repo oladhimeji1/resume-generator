@@ -29,7 +29,7 @@ export default function Features() {
       </div>
       <a
         href="#"
-        className="flex items-center gap-2 block mx-auto text-xl text-emerald-600 underline"
+        className="flex items-center gap-2  mx-auto text-xl text-emerald-600 underline"
       >
         Browse More Templates <FaArrowRight className="" />
       </a>

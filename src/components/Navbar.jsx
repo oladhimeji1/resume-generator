@@ -1,6 +1,6 @@
 import { useState } from "react";
 export default function Navbar() {
-  const [navBarOpen, setNavBarOpen] = useState(false);
+  const [navBarOpen, setNavBarOpen] = useState(true);
   const toggleNavbar = () => {
     setNavBarOpen(!navBarOpen);
   };
