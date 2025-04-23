@@ -5,7 +5,7 @@ export default function CvReview() {
       <div className="flex flex-col gap-12 text-center  sm:text-left lg:flex-row">
         <div className="lg:flex-1/2">
           <div>
-            <h2 className="text-4xl  font-bold text-[#002D6B] mb-10 lg:text-5xl">
+            <h2 className="text-4xl  font-bold text-[#002D6B] leading-normal mb-10 lg:text-5xl">
               Help get your CV noticed with a CV review!
             </h2>
             <div className="flex flex-col gap-8 ">
@@ -36,7 +36,7 @@ export default function CvReview() {
               </div>
 
               <a
-                className=" py-4 text-center px-12 bg-emerald-600 text-white font-bold rounded-full"
+                className=" py-4 text-center transition px-12 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-800 "
                 href="#"
               >
                 Get CV Review

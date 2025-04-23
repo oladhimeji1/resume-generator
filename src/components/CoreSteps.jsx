@@ -25,15 +25,8 @@ export default function CoreSteps() {
             automatically.
           </p>
         </div>
+
         <div className="flex flex-col gap-3">
-          <img src={CameraIcon} alt="bag icon" width="48" />
-          <h3 className="font-bold text-xl">Land an Interview</h3>
-          <p className="font-light">
-            We suggest the skills you should add. It helped over a million
-            people get interviews.
-          </p>
-        </div>
-        <div className="flex flex-col gap-3 md:col-start-1 md:col-end-3 md:text-center md:px-12 md:items-center md:justify-center lg:text-left lg:px-0 lg:col-start-4 lg:justify-start l lg:items-start">
           <img src={TimerIcon} alt="bag icon" width="48" />
           <h3 className="font-bold text-xl">
             Finish Your Resume in 15 Minutes
@@ -41,6 +34,15 @@ export default function CoreSteps() {
           <p className="font-light">
             Resume Now helps you tackle your work experience by reminding you
             what you did at your job.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <img src={CameraIcon} alt="bag icon" width="48" />
+          <h3 className="font-bold text-xl">Land an Interview</h3>
+          <p className="font-light">
+            We suggest the skills you should add. It helped over a million
+            people get interviews.
           </p>
         </div>
       </div>

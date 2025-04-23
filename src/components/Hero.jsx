@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import HeroImg from "../assets/images/hero-img.webp";
 
 export default function Hero() {
@@ -17,16 +18,16 @@ export default function Hero() {
           employers with a resume that highlights your strengths.
         </p>
 
-        <a
-          href="#"
+        <Link
+          to="/build-resume"
           className="bg-emerald-900 px-8 py-4 text-white text-xl rounded-full text-center transition hover:bg-[#5E4AC3]"
         >
           Build Your Resume 📃
-        </a>
+        </Link>
       </div>
 
       <div>
-        <img src={HeroImg} alt="" className="sm:w-lg" />
+        <img src={HeroImg} alt="A simple resume template design with a simple face" loading='eager' className="sm:w-lg" />
       </div>
     </section>
   );
