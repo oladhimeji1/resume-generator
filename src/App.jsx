@@ -1,23 +1,13 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import LovedInterveiwers from "./components/LovedInterviewers";
-import Features from "./components/Features";
-import CoreSteps from "./components/CoreSteps";
-import CvReview from "./components/CvReview";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 function App() {
   return (
-    <>
-      <Navbar />
-
-      <main className="mt-24">
-        <Hero />
-        <LovedInterveiwers />
-        <Features />
-        <CoreSteps />
-        <CvReview />
-      </main>
-    </>
+    <Router>
+      <Routes>
+        <Route element={<HomePage />} path="/" />
+        <Route element={<h1>404 Page Not Found</h1>} path="*" />
+      </Routes>
+    </Router>
   );
 }
 
