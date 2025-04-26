@@ -62,7 +62,7 @@ export default function ResumeTemplates() {
 
   useEffect(() => {
     if (selectedTemplate) {
-      toast("Template Selected");
+      toast.success("Template Selected");
     }
   }, [selectedTemplate]);
   return (

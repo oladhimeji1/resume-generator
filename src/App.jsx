@@ -8,7 +8,7 @@ import ResumeBuild from "./pages/ResumeBuild";
 import ResumeTemplates from "./pages/ResumeTemplates";
 function App() {
   useEffect(() => {
-    toast("Welcome to Resume Wizard");
+    toast.success("Welcome to Resume Wizard");
   }, []);
   return (
     <>
