@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
   const [navBarOpen, setNavBarOpen] = useState(true);
   const toggleNavbar = () => {
@@ -6,9 +8,12 @@ export default function Navbar() {
   };
   return (
     <nav className="bg-white h-20 shadow-md p-6 flex items-center justify-between fixed top-0 left-0 right-0 w-full">
-      <a className="text-3xl font-[poppins] font-bold text-emerald-900 ">
+      <Link
+        to="/"
+        className="text-3xl font-[poppins] font-bold text-emerald-900 "
+      >
         Resume Wizard
-      </a>
+      </Link>
 
       <button
         onClick={toggleNavbar}
@@ -18,18 +23,21 @@ export default function Navbar() {
       </button>
 
       <div className="hidden md:flex space-x-10">
-        <a href="#" className="hover:text-emerald-900">
+        <Link to="/" className="hover:text-emerald-900">
           Home
-        </a>
-        <a href="#" className="hover:text-emerald-900">
+        </Link>
+        <Link
+          to="/build-resume/resume-templates"
+          className="hover:text-emerald-900"
+        >
           Template
-        </a>
-        <a href="#" className="hover:text-emerald-900">
+        </Link>
+        <Link to="/pricing" className="hover:text-emerald-900">
           Pricing
-        </a>
-        <a href="#" className="hover:text-emerald-900">
+        </Link>
+        <Link to="/contact" className="hover:text-emerald-900">
           Contact
-        </a>
+        </Link>
       </div>
 
       <div
@@ -38,10 +46,18 @@ export default function Navbar() {
           navBarOpen ? "-translate-y-96" : "-translate-y-0"
         } absolute bg-white   top-20 transition left-0 right-0 min-h-50 shadow-lg p-6 flex flex-col items-center justify-center space-y-4 md:hidden`}
       >
-        <a href="#">Home</a>
-        <a href="#">Templates</a>
-        <a href="#">Pricing</a>
-        <a href="#">Contact</a>
+        <Link to="/" className="hover:text-emerald-900">
+          Home
+        </Link>
+        <Link to="/ResumeTemplates" className="hover:text-emerald-900">
+          Template
+        </Link>
+        <Link to="/pricing" className="hover:text-emerald-900">
+          Pricing
+        </Link>
+        <Link to="/contact" className="hover:text-emerald-900">
+          Contact
+        </Link>
       </div>
     </nav>
   );
