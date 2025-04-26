@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import PageNotFound from "./pages/PageNotFound";
 import ResumeBuild from "./pages/ResumeBuild";
 import ResumeTemplates from "./pages/ResumeTemplates";
+import ResumeBuilder from "./components/ResumeBuilder";
 function App() {
   useEffect(() => {
     toast.success("Welcome to Resume Wizard");
@@ -19,6 +20,10 @@ function App() {
           <Route
             element={<ResumeTemplates />}
             path="/build-resume/resume-templates"
+          />
+          <Route
+            element={<ResumeBuilder />}
+            path="/build-resume/resume-builder"
           />
           <Route element={<PageNotFound />} path="*" />
         </Routes>

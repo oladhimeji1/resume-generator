@@ -103,7 +103,7 @@ export default function ResumeTemplates() {
           </button>
           {selectedTemplate && (
             <Link
-              to="/resume-generator"
+              to="/build-resume/resume-builder"
               className="pointer"
               state={{ template: selectedTemplate }}
             >
