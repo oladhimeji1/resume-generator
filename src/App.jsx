@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
+
+// import app routes (pages)
 import HomePage from "./pages/HomePage";
 import PageNotFound from "./pages/PageNotFound";
 import ResumeBuild from "./pages/ResumeBuild";
@@ -28,6 +30,7 @@ function App() {
           <Route element={<PageNotFound />} path="*" />
         </Routes>
       </Router>
+
       <ToastContainer />
     </>
   );

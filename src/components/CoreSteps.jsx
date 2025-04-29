@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import BagIcon from "../assets/images/svg/bag.svg";
 import CameraIcon from "../assets/images/svg/camera.svg";
 import TimerIcon from "../assets/images/svg/timer.svg";
@@ -9,12 +11,12 @@ export default function CoreSteps() {
         <h2 className="text-2xl sm:text-4xl text-center font-bold">
           Create a Resume that get results
         </h2>
-        <a
-          className="block py-4 px-12 bg-emerald-600 text-white font-bold rounded-full"
-          href="#"
+        <Link
+          className="block transition py-4 px-12 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-800"
+          to="/build-resume/resume-templates"
         >
           Choose a template
-        </a>
+        </Link>
       </div>
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
         <div className="flex flex-col gap-3">

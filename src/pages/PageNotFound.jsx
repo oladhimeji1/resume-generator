@@ -5,7 +5,7 @@ export default function PageNotFound() {
   return (
     <section className="min-h-screen">
       <div className="container text-center max-w-6xl mx-auto flex items-center justify-center flex-col gap-4 min-h-screen">
-        <img src={notFound} className='w-70' alt="404 Illustration" />
+        <img src={notFound} loading='eager' className='w-70' alt="404 Illustration" />
         <h1 className="text-3xl text-emerald-700 font-extrabold md:text-5xl ">
           Oops! Page Not Found
         </h1>
