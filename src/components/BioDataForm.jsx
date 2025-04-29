@@ -1,4 +1,4 @@
-export default function BioDataForm(s) {
+export default function BioDataForm() {
   return (
     <>
       <div className="flex flex-col gap-5">

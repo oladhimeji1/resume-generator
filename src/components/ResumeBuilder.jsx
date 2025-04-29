@@ -12,22 +12,48 @@ import Sidebar from "./Sidebar";
 
 export default function ResumeBuilder() {
   // form element state
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [jobEmployer, setJobEmployer] = useState("");
-  const [jobLocation, setJobLocation] = useState("");
-  const [isRemote, setIsRemote] = useState(false);
-  const [jobStartDate, setJobStartDate] = useState("");
-  const [jobEndDate, setJobEndDate] = useState("");
+  const [contactInfo, setContactInfo] = useState([
+    {
+      name: "",
+      surname: "",
+      city: "",
+      country: "",
+      phone: "",
+      email: "",
+      summary: "s",
+    },
+  ]);
+
+  const [experience, setExperience] = useState([]);
+  const [education, setEducation] = useState([]);
+  const [skill, setSkill] = useState([]);
 
   const location = useLocation();
   const [resumeGenerated, setResumeGenerated] = useState(false);
   const templateId = location.state.template.id;
+
+  function handleContactInfoChange(newInfo) {
+    setContactInfo(newInfo);
+  }
+
+  function handleSummaryChange(newSummary) {
+    setSummary(newSummary);
+  }
+
+  function handleAddExperience(newExperience) {
+    setExperience([...experience, newExperience]);
+  }
+
+  function handleUpdateExperience(index, updatedExperience) {
+    const newExperience = [...experience];
+    newExperience[index] = updatedExperience;
+    setExperience(newExperience);
+  }
+
+  function handleDeleteExperience(index) {
+    const newExperience = experience.filter((_, i) => i !== index);
+    setExperience(newExperience);
+  }
 
   function handleResumeSubmit() {
     setResumeGenerated(true);
@@ -48,7 +74,10 @@ export default function ResumeBuilder() {
           </div>
 
           <form action={handleResumeSubmit} className="">
-            <BioDataForm />
+            <BioDataForm
+              onContactInfoChange={handleContactInfoChange}
+              contactInfo={contactInfo}
+            />
             <WorkForm />
             <EducationForm />
           </form>
