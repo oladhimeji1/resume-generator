@@ -1,10 +1,10 @@
-function Template1() {
+function Template1(props) {
   return (
     <div id="temp1" className="max-w-6xl mx-auto min-h-50 p-1 bg-white">
       <div id="wrapper" className="flex space-x-6">
         <div className="flex-1/3">
           <section id="header">
-            <h2 className="text-4xl font-serif font-bold">Godstime Pious</h2>
+            <h2 className="text-4xl font-serif font-bold">{props.name}</h2>
             <p className="text-emerald-700">Experienced Project Manager</p>
 
             <div className="flex items-center space-x-4 text-xs">

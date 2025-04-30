@@ -3,57 +3,47 @@ import Template from "../components/Template";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-// template image
-import cvBold from "../assets/images/templates-img/cv-bold.webp";
-import cvDistinct from "../assets/images/templates-img/cv-distinct.webp";
-import cvExpressive from "../assets/images/templates-img/cv-expressive.webp";
-import cv1 from "../assets/images/templates-img/cv1.webp";
-import cv4 from "../assets/images/templates-img/cv4.webp";
-import cv5 from "../assets/images/templates-img/cv5.webp";
-import cv7 from "../assets/images/templates-img/cv7.webp";
-import cv14 from "../assets/images/templates-img/cv14.webp";
-import cv20 from "../assets/images/templates-img/cv20.webp";
+import Template1 from "../templates/Template1";
 
+export const templates = [
+  {
+    id: 1,
+    image: "/public/templates-img/cv-bold.webp",
+  },
+  {
+    id: 2,
+    image: "/public/templates-img/cv-expressive.webp",
+  },
+  {
+    id: 3,
+    image: "/public/templates-img/cv-distinct.webp",
+  },
+  {
+    id: 4,
+    image: "/public/templates-img/cv1.webp",
+  },
+  {
+    id: 5,
+    image: "/public/templates-img/cv4.webp",
+  },
+  {
+    id: 6,
+    image: "/public/templates-img/cv5.webp",
+  },
+  {
+    id: 7,
+    image: "/public/templates-img/cv7.webp",
+  },
+  {
+    id: 8,
+    image: "/public/templates-img/cv14.webp",
+  },
+  {
+    id: 9,
+    image: "/public/templates-img/cv20.webp",
+  },
+];
 export default function ResumeTemplates() {
-  const templates = [
-    {
-      id: 1,
-      image: cvBold,
-    },
-    {
-      id: 2,
-      image: cvDistinct,
-    },
-    {
-      id: 3,
-      image: cvExpressive,
-    },
-    {
-      id: 4,
-      image: cv1,
-    },
-    {
-      id: 5,
-      image: cv4,
-    },
-    {
-      id: 6,
-      image: cv5,
-    },
-    {
-      id: 7,
-      image: cv7,
-    },
-    {
-      id: 8,
-      image: cv14,
-    },
-    {
-      id: 9,
-      image: cv20,
-    },
-  ];
-
   const [selectedTemplate, setSelectedTemplate] = useState(null);
 
   const handleTemplateSelect = (template) => {
