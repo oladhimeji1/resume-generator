@@ -49,10 +49,7 @@ export default function Navbar() {
         <Link to="/" className="hover:text-emerald-900">
           Home
         </Link>
-        <Link
-          to="/build-resume/resume-templates"
-          className="hover:text-emerald-900"
-        >
+        <Link to="/ResumeTemplates" className="hover:text-emerald-900">
           Template
         </Link>
         <Link to="/pricing" className="hover:text-emerald-900">

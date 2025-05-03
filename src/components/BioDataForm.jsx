@@ -1,4 +1,4 @@
-export default function BioDataForm({ handleInputChange, resumeData }) {
+export default function BioDataForm() {
   return (
     <>
       <div className="flex flex-col gap-5">
@@ -28,10 +28,6 @@ export default function BioDataForm({ handleInputChange, resumeData }) {
             name="name"
             placeholder="e.g Godstime"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
-            onChange={(e) => {
-              handleInputChange("name", e.target.value);
-            }}
-            value={resumeData.name}
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -44,10 +40,6 @@ export default function BioDataForm({ handleInputChange, resumeData }) {
             name="surname"
             placeholder="e.g Olademeji"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
-            onChange={(e) => {
-              handleInputChange("surname", e.target.value);
-            }}
-            value={resumeData.surname}
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -60,10 +52,6 @@ export default function BioDataForm({ handleInputChange, resumeData }) {
             name="city"
             placeholder="e.g Kano"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
-            onChange={(e) => {
-              handleInputChange("city", e.target.value);
-            }}
-            value={resumeData.city}
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -76,10 +64,6 @@ export default function BioDataForm({ handleInputChange, resumeData }) {
             name="country"
             placeholder="e.g Nigeria"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
-            onChange={(e) => {
-              handleInputChange("country", e.target.value);
-            }}
-            value={resumeData.country}
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -92,10 +76,6 @@ export default function BioDataForm({ handleInputChange, resumeData }) {
             name="phone"
             placeholder="e.g 1234567890"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
-            onChange={(e) => {
-              handleInputChange("phone", e.target.value);
-            }}
-            value={resumeData.phone}
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -108,26 +88,8 @@ export default function BioDataForm({ handleInputChange, resumeData }) {
             name="email"
             placeholder="e.g godstimeolademeji@email.com"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
-            onChange={(e) => {
-              handleInputChange("email", e.target.value);
-            }}
-            value={resumeData.email}
           />
         </div>
-      </div>
-      <div className="flex flex-col gap-2 mb-4">
-        <label htmlFor="summary" className="font-bold">
-          SUMMARY
-        </label>
-        <textarea
-          className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
-          name="summary"
-          id="summary"
-          onChange={(e) => {
-            handleInputChange("summary", e.target.value);
-          }}
-          value={resumeData.summary}
-        ></textarea>
       </div>
     </>
   );

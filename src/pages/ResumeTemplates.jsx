@@ -2,8 +2,47 @@ import { Link } from "react-router-dom";
 import Template from "../components/Template";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import templates from "../data.js";
 
+import Template1 from "../templates/Template1";
+
+export const templates = [
+  {
+    id: 1,
+    image: "/public/templates-img/cv-bold.webp",
+  },
+  {
+    id: 2,
+    image: "/public/templates-img/cv-expressive.webp",
+  },
+  {
+    id: 3,
+    image: "/public/templates-img/cv-distinct.webp",
+  },
+  {
+    id: 4,
+    image: "/public/templates-img/cv1.webp",
+  },
+  {
+    id: 5,
+    image: "/public/templates-img/cv4.webp",
+  },
+  {
+    id: 6,
+    image: "/public/templates-img/cv5.webp",
+  },
+  {
+    id: 7,
+    image: "/public/templates-img/cv7.webp",
+  },
+  {
+    id: 8,
+    image: "/public/templates-img/cv14.webp",
+  },
+  {
+    id: 9,
+    image: "/public/templates-img/cv20.webp",
+  },
+];
 export default function ResumeTemplates() {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
 
@@ -54,8 +93,9 @@ export default function ResumeTemplates() {
           </button>
           {selectedTemplate && (
             <Link
-              to={`/build-resume/resume-builder/${selectedTemplate.id}`}
+              to="/build-resume/resume-builder"
               className="pointer"
+              state={{ template: selectedTemplate }}
             >
               <button className="text-white bg-fuchsia-600 py-2 px-4 rounded-full transition pointer hover:bg-fuchsia-900">
                 Use this template
