@@ -25,7 +25,7 @@ function App() {
           />
           <Route
             element={<ResumeBuilder />}
-            path="/build-resume/resume-builder"
+            path="/build-resume/resume-builder/:templateId"
           />
           <Route element={<PageNotFound />} path="*" />
         </Routes>
