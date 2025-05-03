@@ -1,63 +1,83 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { useLocation, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
-import { PDFDownloadLink, Document, Page, Text } from "@react-pdf/renderer";
-import Template1 from "../templates/Template1";
 
 import BioDataForm from "./BioDataForm";
 import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
 import Sidebar from "./Sidebar";
+import TemplatePreview from "./TemplatePreview";
+import templates from "../data.js";
 
 export default function ResumeBuilder() {
+  const { templateId } = useParams();
+  const [TemplateComponent, setTemplateComponent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   // form element state
-  const [contactInfo, setContactInfo] = useState([
-    {
-      name: "",
-      surname: "",
-      city: "",
-      country: "",
-      phone: "",
-      email: "",
-      summary: "s",
-    },
-  ]);
+  const [resumeData, setResumeData] = useState({
+    name: "Godstime",
+    surname: "",
+    city: "",
+    country: "",
+    email: "",
+    phone: "",
+    summary: "",
 
-  const [experience, setExperience] = useState([]);
-  const [education, setEducation] = useState([]);
-  const [skill, setSkill] = useState([]);
+    workExperience: [
+      {
+        jobTitle: "",
+        company: "",
+        startDate: "",
+        endDate: "",
+        location: "",
+        isRemote: false,
+      },
+    ],
+    education: [
+      { institution: "", location: "", degree: "", startDate: "", endDate: "" },
+    ],
+    skills: [""],
+    referee: [{ name: "", phone: "", location: "" }],
+  });
+  const handleInputChange = (field, value) => {
+    setResumeData((prevResume) => ({ ...prevResume, [field]: value }));
+  };
+  useEffect(() => {
+    const loadTemplate = async () => {
+      setLoading(true);
+      setError(null);
+      setTemplateComponent(null);
 
-  const location = useLocation();
-  const [resumeGenerated, setResumeGenerated] = useState(false);
-  const templateId = location.state.template.id;
+      try {
+        const selectedTemplate = templates.find((template) => {
+          return template.id == templateId;
+        });
 
-  function handleContactInfoChange(newInfo) {
-    setContactInfo(newInfo);
-  }
+        if (!selectedTemplate) {
+          setError("Template not Found");
+          setLoading(false);
+          return;
+        }
 
-  function handleSummaryChange(newSummary) {
-    setSummary(newSummary);
-  }
+        const module = await import(selectedTemplate.path);
+        setTemplateComponent(() => module.default);
+        setLoading(false);
+      } catch (e) {
+        setError("Error Loading Template");
+        console.error(e);
+        setLoading(false);
+      }
+    };
 
-  function handleAddExperience(newExperience) {
-    setExperience([...experience, newExperience]);
-  }
+    loadTemplate();
+  }, [templateId]);
 
-  function handleUpdateExperience(index, updatedExperience) {
-    const newExperience = [...experience];
-    newExperience[index] = updatedExperience;
-    setExperience(newExperience);
-  }
+  if (loading) return <div> Loading Template </div>;
+  if (error) return <div> Error </div>;
+  if (!TemplateComponent) return <div> No template selected </div>;
 
-  function handleDeleteExperience(index) {
-    const newExperience = experience.filter((_, i) => i !== index);
-    setExperience(newExperience);
-  }
-
-  function handleResumeSubmit() {
-    setResumeGenerated(true);
-  }
   return (
     <>
       <section className="min-h-screen p-2 sm:p-0 flex flex-col md:flex-row gap-2 ">
@@ -72,28 +92,17 @@ export default function ResumeBuilder() {
               Go Back
             </Link>
           </div>
-
-          <form action={handleResumeSubmit} className="">
+          <form className="mb-12">
             <BioDataForm
-              onContactInfoChange={handleContactInfoChange}
-              contactInfo={contactInfo}
+              handleInputChange={handleInputChange}
+              resumeData={resumeData}
             />
-            <WorkForm />
-            <EducationForm />
+            <WorkForm resumeData={resumeData} setResumeData={setResumeData} />
+            <EducationForm
+              resumeData={resumeData}
+              setResumeData={setResumeData}
+            />
           </form>
-
-          {resumeGenerated && (
-            <PDFDownloadLink
-              filename="resume.pdf"
-              document={
-                <Document>
-                  <Page>
-                    <Text>Hello World</Text>
-                  </Page>
-                </Document>
-              }
-            ></PDFDownloadLink>
-          )}
         </div>
       </section>
     </>
