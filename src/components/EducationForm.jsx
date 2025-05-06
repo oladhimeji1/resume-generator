@@ -40,10 +40,10 @@ export default function EducationForm({ resumeData, setResumeData }) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1  md:grid-cols-2 gap-4">
+      <div>
         {resumeData.education.map((education, index) => {
           return (
-            <>
+            <div key={index} className="grid grid-cols-1  md:grid-cols-2 gap-4">
               <div className="flex flex-col gap-2 mb-4">
                 <label htmlFor="institution" className="font-bold">
                   INSTITUTION
@@ -127,7 +127,7 @@ export default function EducationForm({ resumeData, setResumeData }) {
                   }
                 />
               </div>
-            </>
+            </div>
           );
         })}
       </div>

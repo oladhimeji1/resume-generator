@@ -52,10 +52,13 @@ export default function WorkForm({ resumeData, setResumeData }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1  md:grid-cols-2 gap-4">
+        <div>
           {resumeData.workExperience.map((experience, index) => {
             return (
-              <>
+              <div
+                key={index}
+                className="grid grid-cols-1  md:grid-cols-2 gap-4"
+              >
                 <div className="flex flex-col gap-2 mb-4">
                   <label htmlFor="jobtitle" className="font-bold">
                     TITLE *
@@ -119,13 +122,20 @@ export default function WorkForm({ resumeData, setResumeData }) {
                   <div className="flex gap-4 items-center ">
                     <input
                       type="checkbox"
-                      id="remote"
+                      id={`remote${index}`}
                       className="p-40 accent-indigo-900 inline-block"
                       checked={experience.isRemote}
+                      onChange={() =>
+                        handleWorkExperienceChange(
+                          index,
+                          "isRemote",
+                          !experience.isRemote
+                        )
+                      }
                     />
 
                     <label
-                      htmlFor="remote"
+                      htmlFor={`remote${index}`}
                       className="text-xl text-indigo-900 font-bold"
                     >
                       Remote
@@ -173,7 +183,7 @@ export default function WorkForm({ resumeData, setResumeData }) {
                     }
                   />
                 </div>
-              </>
+              </div>
             );
           })}
         </div>
