@@ -1,29 +1,7 @@
-export default function EducationForm({ resumeData, setResumeData }) {
-  const handleEducationChange = (index, field, value) => {
-    setResumeData((prevResumeData) => {
-      const education = [...prevResumeData.education];
-      education[index][field] = value;
-      return { ...prevResumeData, education };
-    });
-  };
-
-  const addEducation = () => {
-    setResumeData((prevResumeData) => ({
-      ...prevResumeData,
-      education: [
-        ...prevResumeData.education,
-        {
-          jobTitle: "",
-          company: "",
-          dates: "",
-          location: "",
-        },
-      ],
-    }));
-  };
+export default function EducationForm() {
   return (
     <>
-      <div className="flex flex-col gap-5">
+      <div className="sflex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-bold mb-4 ">
             Tell us about your education
@@ -39,7 +17,6 @@ export default function EducationForm({ resumeData, setResumeData }) {
           * Indicate a required field
         </p>
       </div>
-
       <div>
         {resumeData.education.map((education, index) => {
           return (
@@ -93,8 +70,33 @@ export default function EducationForm({ resumeData, setResumeData }) {
                 />
               </div>
 
-              <div></div>
 
+        <div></div>
+
+        <div className="flex flex-col gap-2 mb-4">
+          <label htmlFor="school_start_date" className="font-bold">
+            START DATE *
+          </label>
+          <input
+            type="date"
+            id="school_start_date"
+            name="school_start_date"
+            placeholder="e.g GtechCorporation"
+            className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+          />
+        </div>
+        <div className="flex flex-col gap-2 mb-4">
+          <label htmlFor="school_end_date" className="font-bold">
+            END DATE *
+          </label>
+          <input
+            type="date"
+            id="school_end_date"
+            name="school_end_date"
+            placeholder="e.g GtechCorporation"
+            className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+          />
+        </div>
               <div className="flex flex-col gap-2 mb-4">
                 <label htmlFor="school_start_date" className="font-bold">
                   START DATE *
@@ -131,13 +133,6 @@ export default function EducationForm({ resumeData, setResumeData }) {
           );
         })}
       </div>
-      <button
-        type="button"
-        onClick={addEducation}
-        className="py-2 px-6 cursor-pointer font-bold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
-      >
-        Add
-      </button>
     </>
   );
 }
