@@ -164,6 +164,28 @@ function Template1({ resumeData }) {
           })}
         </View>
         {/* Skills */}
+
+        <View
+          style={{
+            marginBottom: 20,
+          }}
+          className="block"
+        >
+          <Text
+            style={styles.sectionTitle}
+            className="font-bold text-blue-800 uppercase block"
+          >
+            Skills
+          </Text>
+
+          {resumeData.skills.map((skill, index) => {
+            return (
+              <View key={index} style={{ marginBottom: 10 }} className="block">
+                <Text>{skill.name}</Text>
+              </View>
+            );
+          })}
+        </View>
       </Page>
     </Document>
   );
