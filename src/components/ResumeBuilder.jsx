@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
-// import { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import { useParams, Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
-import { PDFDownloadLink, Document, Page, Text } from "@react-pdf/renderer";
-import Template1 from "../templates/Template1";
 
 import BioDataForm from "./BioDataForm";
 import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
 import Sidebar from "./Sidebar";
-
 import SkillForm from "./SkillForm";
+import ResumePreview from "./ResumePreview";
 
 import templates from "../data.js";
 
 export default function ResumeBuilder() {
+  const { templateId } = useParams();
+  const [TemplateComponent, setTemplateComponent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [isPreviewed, setIsPreviewed] = useState(false);
   // form element state
   const [resumeData, setResumeData] = useState({
     name: "Godstime",
@@ -27,6 +30,30 @@ export default function ResumeBuilder() {
       " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias quae, exercitationem eveniet delectus cupiditate maiores aliquid culpa dolorem. Perspiciatis a corrupti molestiae magnam obcaecati eius velit unde nam architecto. Error commodi impedit adipisci praesentium optio voluptates sequi quam itaque expedita iste. Inventore asperiores beatae quasi dolore minima, quia autem!",
 
     workExperience: [
+      {
+        jobTitle: "Software Engineer",
+        company: "ABC Limited",
+        startDate: "22-04-2005",
+        endDate: "20-11-2023",
+        location: "Northern Ireland",
+        isRemote: false,
+      },
+      {
+        jobTitle: "Software Engineer",
+        company: "ABC Limited",
+        startDate: "22-04-2005",
+        endDate: "20-11-2023",
+        location: "Northern Ireland",
+        isRemote: false,
+      },
+      {
+        jobTitle: "Software Engineer",
+        company: "ABC Limited",
+        startDate: "22-04-2005",
+        endDate: "20-11-2023",
+        location: "Northern Ireland",
+        isRemote: false,
+      },
       {
         jobTitle: "Software Engineer",
         company: "ABC Limited",
@@ -55,36 +82,34 @@ export default function ResumeBuilder() {
       setError(null);
       setTemplateComponent(null);
 
-  const location = useLocation();
-  const [resumeGenerated, setResumeGenerated] = useState(false);
-  const templateId = location.state.template.id;
+      try {
+        const selectedTemplate = templates.find((template) => {
+          return template.id == templateId;
+        });
 
-  function handleContactInfoChange(newInfo) {
-    setContactInfo(newInfo);
-  }
+        if (!selectedTemplate) {
+          setError("Template not Found");
+          setLoading(false);
+          return;
+        }
 
-  function handleSummaryChange(newSummary) {
-    setSummary(newSummary);
-  }
+        const module = await import(selectedTemplate.path);
+        setTemplateComponent(() => module.default);
+        setLoading(false);
+      } catch (e) {
+        setError("Error Loading Template");
+        console.error(e);
+        setLoading(false);
+      }
+    };
 
-  function handleAddExperience(newExperience) {
-    setExperience([...experience, newExperience]);
-  }
+    loadTemplate();
+  }, [templateId]);
 
-  function handleUpdateExperience(index, updatedExperience) {
-    const newExperience = [...experience];
-    newExperience[index] = updatedExperience;
-    setExperience(newExperience);
-  }
+  if (loading) return <div> Loading Template </div>;
+  if (error) return <div> Error </div>;
+  if (!TemplateComponent) return <div> No template selected </div>;
 
-  function handleDeleteExperience(index) {
-    const newExperience = experience.filter((_, i) => i !== index);
-    setExperience(newExperience);
-  }
-
-  function handleResumeSubmit() {
-    setResumeGenerated(true);
-  }
   return (
     <>
       <section className="min-h-screen p-2 sm:p-0 flex flex-col md:flex-row gap-2 ">
@@ -99,16 +124,19 @@ export default function ResumeBuilder() {
               Go Back
             </Link>
           </div>
-
           <form className="mb-4">
             <BioDataForm
-              onContactInfoChange={handleContactInfoChange}
-              contactInfo={contactInfo}
+              handleInputChange={handleInputChange}
+              resumeData={resumeData}
             />
-
+            <WorkForm resumeData={resumeData} setResumeData={setResumeData} />
+            <EducationForm
+              resumeData={resumeData}
+              setResumeData={setResumeData}
+            />
             <SkillForm resumeData={resumeData} setResumeData={setResumeData} />
-            {TemplateComponent && <TemplateComponent resumeData={resumeData} />}
-            {TemplateComponent && (
+
+            {/* {TemplateComponent && (
               <PDFDownloadLink
                 document={<TemplateComponent resumeData={resumeData} />}
                 filename="myResume.pdf"
@@ -121,15 +149,31 @@ export default function ResumeBuilder() {
                   );
                 }}
               </PDFDownloadLink>
-            )}
+            )} */}
           </form>
+          <button
+            className="text-white bg-fuchsia-600 py-2 px-4 rounded-full mr-8 transition pointer hover:bg-fuchsia-900 fixed bottom-6 right-6"
+            onClick={() => {
+              setIsPreviewed(!isPreviewed);
+            }}
+          >
+            Preview Template
+          </button>
           <Link
-            className="inline-block my-8 text-right py-2 px-6 bg-blue-900 text-white rounded-full font-bold"
+            className="inline-block my-8 text-right py-2  px-6 bg-blue-900 text-white rounded-full font-bold"
             to={`/build-resume/resume-builder/preview/${templateId}`}
           >
             Finalize
           </Link>
         </div>
+
+        {isPreviewed && (
+          <ResumePreview
+            TemplateComponent={TemplateComponent}
+            resumeData={resumeData}
+            setIsPreviewed={setIsPreviewed}
+          />
+        )}
       </section>
     </>
   );

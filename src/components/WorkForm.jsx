@@ -1,4 +1,38 @@
-export default function WorkForm() {
+export default function WorkForm({ resumeData, setResumeData }) {
+  const handleWorkExperienceChange = (index, field, value) => {
+    setResumeData((prevResumeData) => {
+      const workExperience = [...prevResumeData.workExperience];
+      workExperience[index][field] = value;
+      return { ...prevResumeData, workExperience };
+    });
+  };
+
+  const addWorkExperience = () => {
+    setResumeData((prevResumeData) => ({
+      ...prevResumeData,
+      workExperience: [
+        ...prevResumeData.workExperience,
+        {
+          jobTitle: "",
+          company: "",
+          dates: "",
+          location: "",
+        },
+      ],
+    }));
+  };
+
+  /*
+  const removeWorkExperience = (index) => {
+    setResumeData((prevResumeData) => ({
+      ...prevResumeData,
+      workExperience: prevResumeData.workExperience.filter(
+        (_, i) => i !== index
+      ),
+    }));
+  };
+
+  */
   return (
     <section className="mb-12 p-2 sm:p-0 flex flex-col md:flex-row gap-2">
       <div className="flex-1 relative">
@@ -152,8 +186,15 @@ export default function WorkForm() {
               </div>
             );
           })}
-
         </div>
+
+        <button
+          type="button"
+          onClick={addWorkExperience}
+          className="py-2 px-6 cursor-pointer font-bold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
+        >
+          Add{" "}
+        </button>
       </div>
     </section>
   );
