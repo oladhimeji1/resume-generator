@@ -2,20 +2,19 @@ import { useState, useEffect } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { useParams, Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { PDFDownloadLink, Document, Page, Text } from "@react-pdf/renderer";
+import Template1 from "../templates/Template1";
 
 import BioDataForm from "./BioDataForm";
 import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
 import Sidebar from "./Sidebar";
+
 import SkillForm from "./SkillForm";
 
 import templates from "../data.js";
 
 export default function ResumeBuilder() {
-  const { templateId } = useParams();
-  const [TemplateComponent, setTemplateComponent] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   // form element state
   const [resumeData, setResumeData] = useState({
     name: "Godstime",
@@ -56,34 +55,36 @@ export default function ResumeBuilder() {
       setError(null);
       setTemplateComponent(null);
 
-      try {
-        const selectedTemplate = templates.find((template) => {
-          return template.id == templateId;
-        });
+  const location = useLocation();
+  const [resumeGenerated, setResumeGenerated] = useState(false);
+  const templateId = location.state.template.id;
 
-        if (!selectedTemplate) {
-          setError("Template not Found");
-          setLoading(false);
-          return;
-        }
+  function handleContactInfoChange(newInfo) {
+    setContactInfo(newInfo);
+  }
 
-        const module = await import(selectedTemplate.path);
-        setTemplateComponent(() => module.default);
-        setLoading(false);
-      } catch (e) {
-        setError("Error Loading Template");
-        console.error(e);
-        setLoading(false);
-      }
-    };
+  function handleSummaryChange(newSummary) {
+    setSummary(newSummary);
+  }
 
-    loadTemplate();
-  }, [templateId]);
+  function handleAddExperience(newExperience) {
+    setExperience([...experience, newExperience]);
+  }
 
-  if (loading) return <div> Loading Template </div>;
-  if (error) return <div> Error </div>;
-  if (!TemplateComponent) return <div> No template selected </div>;
+  function handleUpdateExperience(index, updatedExperience) {
+    const newExperience = [...experience];
+    newExperience[index] = updatedExperience;
+    setExperience(newExperience);
+  }
 
+  function handleDeleteExperience(index) {
+    const newExperience = experience.filter((_, i) => i !== index);
+    setExperience(newExperience);
+  }
+
+  function handleResumeSubmit() {
+    setResumeGenerated(true);
+  }
   return (
     <>
       <section className="min-h-screen p-2 sm:p-0 flex flex-col md:flex-row gap-2 ">
@@ -98,16 +99,13 @@ export default function ResumeBuilder() {
               Go Back
             </Link>
           </div>
+
           <form className="mb-4">
             <BioDataForm
-              handleInputChange={handleInputChange}
-              resumeData={resumeData}
+              onContactInfoChange={handleContactInfoChange}
+              contactInfo={contactInfo}
             />
-            <WorkForm resumeData={resumeData} setResumeData={setResumeData} />
-            <EducationForm
-              resumeData={resumeData}
-              setResumeData={setResumeData}
-            />
+
             <SkillForm resumeData={resumeData} setResumeData={setResumeData} />
             {TemplateComponent && <TemplateComponent resumeData={resumeData} />}
             {TemplateComponent && (
