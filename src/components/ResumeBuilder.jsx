@@ -8,6 +8,7 @@ import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
 import Sidebar from "./Sidebar";
 import SkillForm from "./SkillForm";
+import ResumePreview from "./ResumePreview";
 
 import templates from "../data.js";
 
@@ -16,6 +17,7 @@ export default function ResumeBuilder() {
   const [TemplateComponent, setTemplateComponent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [isPreviewed, setIsPreviewed] = useState(false);
   // form element state
   const [resumeData, setResumeData] = useState({
     name: "Godstime",
@@ -28,6 +30,30 @@ export default function ResumeBuilder() {
       " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias quae, exercitationem eveniet delectus cupiditate maiores aliquid culpa dolorem. Perspiciatis a corrupti molestiae magnam obcaecati eius velit unde nam architecto. Error commodi impedit adipisci praesentium optio voluptates sequi quam itaque expedita iste. Inventore asperiores beatae quasi dolore minima, quia autem!",
 
     workExperience: [
+      {
+        jobTitle: "Software Engineer",
+        company: "ABC Limited",
+        startDate: "22-04-2005",
+        endDate: "20-11-2023",
+        location: "Northern Ireland",
+        isRemote: false,
+      },
+      {
+        jobTitle: "Software Engineer",
+        company: "ABC Limited",
+        startDate: "22-04-2005",
+        endDate: "20-11-2023",
+        location: "Northern Ireland",
+        isRemote: false,
+      },
+      {
+        jobTitle: "Software Engineer",
+        company: "ABC Limited",
+        startDate: "22-04-2005",
+        endDate: "20-11-2023",
+        location: "Northern Ireland",
+        isRemote: false,
+      },
       {
         jobTitle: "Software Engineer",
         company: "ABC Limited",
@@ -109,8 +135,8 @@ export default function ResumeBuilder() {
               setResumeData={setResumeData}
             />
             <SkillForm resumeData={resumeData} setResumeData={setResumeData} />
-            {TemplateComponent && <TemplateComponent resumeData={resumeData} />}
-            {TemplateComponent && (
+
+            {/* {TemplateComponent && (
               <PDFDownloadLink
                 document={<TemplateComponent resumeData={resumeData} />}
                 filename="myResume.pdf"
@@ -123,15 +149,31 @@ export default function ResumeBuilder() {
                   );
                 }}
               </PDFDownloadLink>
-            )}
+            )} */}
           </form>
+          <button
+            className="text-white bg-fuchsia-600 py-2 px-4 rounded-full mr-8 transition pointer hover:bg-fuchsia-900 fixed bottom-6 right-6"
+            onClick={() => {
+              setIsPreviewed(!isPreviewed);
+            }}
+          >
+            Preview Template
+          </button>
           <Link
-            className="inline-block my-8 text-right py-2 px-6 bg-blue-900 text-white rounded-full font-bold"
+            className="inline-block my-8 text-right py-2  px-6 bg-blue-900 text-white rounded-full font-bold"
             to={`/build-resume/resume-builder/preview/${templateId}`}
           >
             Finalize
           </Link>
         </div>
+
+        {isPreviewed && (
+          <ResumePreview
+            TemplateComponent={TemplateComponent}
+            resumeData={resumeData}
+            setIsPreviewed={setIsPreviewed}
+          />
+        )}
       </section>
     </>
   );
