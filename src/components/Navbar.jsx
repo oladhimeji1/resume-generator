@@ -8,20 +8,26 @@ export default function Navbar() {
   };
   return (
     <nav className="bg-white h-20 shadow-md p-6 flex items-center justify-between fixed top-5 left-0 right-0 w-[90%] mx-auto rounded-full z-[99]">
-      <div className="hidden md:flex space-x-10 font-bold">
+      <div className="hidden md:flex space-x-10">
         {/* <Link to="/" className="hover:text-emerald-900">
           Home
         </Link> */}
         <Link
           to="/build-resume/resume-templates"
-          className="hover:text-emerald-900"
+          className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition"
         >
           Template
         </Link>
-        <Link to="/pricing" className="hover:text-emerald-900">
+        <Link
+          to="/pricing"
+          className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition"
+        >
           Pricing
         </Link>
-        <Link to="/contact" className="hover:text-emerald-900">
+        <Link
+          to="/contact"
+          className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition"
+        >
           Contact
         </Link>
       </div>
@@ -34,7 +40,10 @@ export default function Navbar() {
       </Link>
 
       <div className="hidden md:flex justify-center items-center space-x-10">
-        <Link to="#" className="hover:text-emerald-900">
+        <Link
+          to="#"
+          className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition"
+        >
           Login
         </Link>
         <Link
