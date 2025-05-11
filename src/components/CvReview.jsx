@@ -49,7 +49,7 @@ export default function CvReview() {
                 </div>
 
                 <a
-                  className=" py-4 text-center transition px-12 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-800 "
+                  className=" py-4 text-center transition px-12 bg-emerald-600 text-white font-bold cursor-pointer rounded-full hover:bg-emerald-800 "
                   onClick={handleAlert}
                 >
                   Get CV Review
