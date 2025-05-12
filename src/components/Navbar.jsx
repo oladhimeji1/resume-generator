@@ -36,12 +36,12 @@ export default function Navbar() {
         to="/"
         className="text-3xl font-[poppins] font-bold text-emerald-900 "
       >
-        Logo
+        <img src="/logo_1.png" alt="logo" width="200px" />
       </Link>
 
       <div className="hidden md:flex justify-center items-center space-x-10">
         <Link
-          to="#"
+          to="/login"
           className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition"
         >
           Login
