@@ -31,7 +31,7 @@ export default function Login() {
             <Link to="/">
               <img src="/logo_1.png" width="200px" alt="logo" />
             </Link>
-            <h3 className="text-xl font-bold">Create an account with us</h3>
+            <h3 className="text-xl font-bold text-center">Create an account with us</h3>
           </div>
 
           <div className="form-group">

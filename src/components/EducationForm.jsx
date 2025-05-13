@@ -1,4 +1,9 @@
-export default function EducationForm({ resumeData, setResumeData }) {
+export default function EducationForm({
+  resumeData,
+  setResumeData,
+  handleNextStep,
+  handlePrevStep,
+}) {
   const handleEducationChange = (index, field, value) => {
     setResumeData((prevResumeData) => {
       const education = [...prevResumeData.education];
@@ -138,6 +143,27 @@ export default function EducationForm({ resumeData, setResumeData }) {
       >
         Add
       </button>
+
+      <div className="mt-8 flex items-center gap-8">
+        <button
+          type="button"
+          className="text-blue-600 border-blue-600 border-3  bg-white py-3 px-12 cursor-pointer rounded-full mr-8 transition pointer"
+          onClick={() => {
+            handlePrevStep();
+          }}
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          className="text-white  bg-blue-600 py-3 cursor-pointer px-12 rounded-full mr-8 transition pointer hover:bg-blue-900"
+          onClick={() => {
+            handleNextStep();
+          }}
+        >
+          Next
+        </button>
+      </div>
     </>
   );
 }

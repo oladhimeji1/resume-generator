@@ -47,7 +47,7 @@ export default function Navbar() {
           Login
         </Link>
         <Link
-          to="#"
+          to="/signup"
           className="p-20 bg-emerald-900 text-white rounded-full px-4 py-2 flex align-items-center justify-content-center cursor-pointer hover:bg-green-800 transition duration-300"
         >
           Sign Up
