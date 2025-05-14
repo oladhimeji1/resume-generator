@@ -1,7 +1,11 @@
-export default function BioDataForm() {
+export default function BioDataForm({
+  handleInputChange,
+  resumeData,
+  handleNextStep,
+}) {
   return (
     <>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 ">
         <div>
           <h1 className="text-2xl font-bold mb-4 ">
             What's the best way for employers to contact you
@@ -16,8 +20,7 @@ export default function BioDataForm() {
           * Indicate a required field
         </p>
       </div>
-
-      <div className="grid grid-cols-1 mb-12  md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 mb-12  md:grid-cols-2 gap-4 ">
         <div className="flex flex-col gap-2 mb-4">
           <label htmlFor="name" className="font-bold">
             NAME
@@ -28,6 +31,10 @@ export default function BioDataForm() {
             name="name"
             placeholder="e.g Godstime"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+            onChange={(e) => {
+              handleInputChange("name", e.target.value);
+            }}
+            value={resumeData.name}
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -40,6 +47,10 @@ export default function BioDataForm() {
             name="surname"
             placeholder="e.g Olademeji"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+            onChange={(e) => {
+              handleInputChange("surname", e.target.value);
+            }}
+            value={resumeData.surname}
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -52,6 +63,10 @@ export default function BioDataForm() {
             name="city"
             placeholder="e.g Kano"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+            onChange={(e) => {
+              handleInputChange("city", e.target.value);
+            }}
+            value={resumeData.city}
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -64,6 +79,10 @@ export default function BioDataForm() {
             name="country"
             placeholder="e.g Nigeria"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+            onChange={(e) => {
+              handleInputChange("country", e.target.value);
+            }}
+            value={resumeData.country}
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -76,6 +95,10 @@ export default function BioDataForm() {
             name="phone"
             placeholder="e.g 1234567890"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+            onChange={(e) => {
+              handleInputChange("phone", e.target.value);
+            }}
+            value={resumeData.phone}
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -88,9 +111,36 @@ export default function BioDataForm() {
             name="email"
             placeholder="e.g godstimeolademeji@email.com"
             className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+            onChange={(e) => {
+              handleInputChange("email", e.target.value);
+            }}
+            value={resumeData.email}
           />
         </div>
       </div>
+      <div className="flex flex-col gap-2 mb-4 relative">
+        <label htmlFor="summary" className="font-bold">
+          SUMMARY
+        </label>
+        <textarea
+          className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+          name="summary"
+          id="summary"
+          onChange={(e) => {
+            handleInputChange("summary", e.target.value);
+          }}
+          value={resumeData.summary}
+        ></textarea>
+      </div>
+      <button
+        type="button"
+        className="text-white  bg-blue-600 py-3 cursor-pointer px-12 rounded-full mr-8 transition pointer hover:bg-blue-900"
+        onClick={() => {
+          handleNextStep();
+        }}
+      >
+        Next
+      </button>
     </>
   );
 }

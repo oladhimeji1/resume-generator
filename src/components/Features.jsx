@@ -1,38 +1,41 @@
-import {
-  FaCheck,
-  FaBookOpen,
-  FaEyeDropper,
-  FaArrowRight,
-} from "react-icons/fa";
-export default function Features() {
+import { FaFileAlt, FaColumns, FaPalette } from "react-icons/fa";
+
+const Features = () => {
+  const features = [
+    {
+      icon: <FaFileAlt className="text-blue-600 text-3xl" />,
+      title: "User-Friendly Resumes",
+      description:
+        "Professionally designed resumes that are easy to read and tailored for modern recruitment systems.",
+    },
+    {
+      icon: <FaColumns className="text-green-600 text-3xl" />,
+      title: "Flexible Layouts",
+      description:
+        "Choose from two-column, single-column, or multi-page resume formats for the perfect structure.",
+    },
+    {
+      icon: <FaPalette className="text-purple-600 text-3xl" />,
+      title: "Customizable Design",
+      description:
+        "Easily change fonts, colors, and backgrounds to match your personal brand or industry style.",
+    },
+  ];
+
   return (
-    <section className="max-w-7xl mx-auto p-4 mt-12 bg-white min-h-70 flex items-center justify-center gap-4 flex-col mb-12 rounded-lg">
-      <div className="grid grid-cols-1 items-center gap-8 sm:grid-cols-2 md:grid-cols-3 min-h-full">
-        <div className="flex flex-col items-center text-center justify-center gap-2 mb-4 sm:md-0">
-          <FaCheck className="bg-emerald-900 text-white w-6 h-6 rounded-full " />
-          <p className="text-xl text-zinc-800 font-bold">
-            User-Friendly professional designed resumes
-          </p>
+    <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
+      {features.map((feature, index) => (
+        <div
+          key={index}
+          className="bg-white shadow-md rounded-2xl p-6 flex flex-col items-start gap-4 hover:shadow-lg transition"
+        >
+          <div className="bg-gray-100 p-3 rounded-full">{feature.icon}</div>
+          <h3 className="text-xl font-semibold">{feature.title}</h3>
+          <p className="text-gray-600 text-sm">{feature.description}</p>
         </div>
-        <div className="flex flex-col items-center text-center justify-center gap-2 mb-4 sm:md-0">
-          <FaBookOpen className=" text-emerald-900 w-6 h-6 " />
-          <p className="text-xl text-zinc-800 font-bold">
-            Two-column, single-column, and multi-page layouts
-          </p>
-        </div>
-        <div className="flex flex-col items-center text-center justify-center gap-2 mb-4 sm:md-0">
-          <FaEyeDropper className="text-emerald-900 w-6 h-6 " />
-          <p className="text-xl text-zinc-800 font-bold">
-            Change the font, color and background combinations
-          </p>
-        </div>
-      </div>
-      <a
-        href="#"
-        className="flex items-center gap-2  mx-auto text-xl text-emerald-600 underline"
-      >
-        Browse More Templates <FaArrowRight className="" />
-      </a>
-    </section>
+      ))}
+    </div>
   );
-}
+};
+
+export default Features;

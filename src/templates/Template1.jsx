@@ -11,180 +11,182 @@ function Template1({ resumeData }) {
   const styles = StyleSheet.create({
     page: {
       padding: 40,
-
       display: "block",
       backgroundColor: "white",
       textAlign: "justify",
+      color: "#333",
+      margin: 0,
+      lineHeight: 1.3,
+      fontSize: 12,
     },
-    header: {
-      marginBottom: 10,
-      fontSize: 38,
-      color: "#193cb8",
-      textAlign: "center",
-    },
-    subheader: {
-      color: "#666",
-      textAlign: "center",
-    },
+
     section: {
-      marginBottom: 20,
+      marginBottom: 25,
+      display: "block",
     },
     sectionTitle: {
-      marginBottom: 10,
+      marginBottom: 1,
       fontSize: 14,
+      fontWeight: "bold",
       color: "#193cb8",
-    },
-    bulletPoint: {
-      fontSize: 14,
-      marginBottom: 5,
+      borderBottom: "3px dashed black",
+      display: "block",
+      padding: 4,
     },
   });
   return (
     <Document className="">
       <Page size="A4" style={styles.page}>
         {/* Header Section */}
-        <View style={styles.section} className="block text-center">
+        <View style={styles.section}>
           <Text
-            style={styles.header}
-            className="block text-blue-800  text-4xl font-bold"
+            style={{
+              textAlign: "left",
+              color: "#193cb8",
+              fontSize: 26,
+              display: "block",
+              fontWeight: "bold",
+              marginBottom: 10,
+            }}
           >
             {resumeData.name} {resumeData.surname}
           </Text>
-          <Text style={{ textAlign: "center" }}>Software Engineer</Text>
-        </View>
 
-        {/* Contact Information */}
-        <View
-          style={{
-            marginBottom: 20,
-            textAlign: "center",
-          }}
-          className="block text-center"
-        >
-          <Text style={{ fontSize: 14 }} className="block">
-            <b>Email:</b> {resumeData.email} | <b>Phone:</b> {resumeData.phone}
-          </Text>
-          <Text style={{ fontSize: 14 }} className="block">
-            <b>City:</b> {resumeData.city} | <b>Country:</b>
-            {""} {resumeData.country}
-          </Text>
-        </View>
-
-        {/* Summary */}
-        <View style={styles.section} className="block">
           <Text
-            style={styles.sectionTitle}
-            className="block font-bold text-blue-800 uppercase"
+            style={{
+              marginTop: "5px",
+              display: "block",
+            }}
           >
-            Summary
+            <Text style={{ fontWeight: "bold", color: "#193cb8" }}>
+              Location:
+            </Text>{" "}
+            Port Harcourt, Nigeria
           </Text>
-          <Text style={{ fontSize: 14 }}>{resumeData.summary}</Text>
+          <Text
+            style={{
+              marginTop: "5px",
+              display: "block",
+            }}
+          >
+            <Text style={{ fontWeight: "bold", color: "#193cb8" }}>Phone:</Text>{" "}
+            09130327299
+          </Text>
+          <Text
+            style={{
+              marginTop: "5px",
+              display: "block",
+            }}
+          >
+            <Text style={{ fontWeight: "bold", color: "#193cb8" }}>Email:</Text>{" "}
+            piousgodstime3@gmail.com
+          </Text>
         </View>
 
-        {/* Work Experience */}
-        <View
-          style={{
-            marginBottom: 20,
-          }}
-          className="block"
-        >
-          <Text
-            style={styles.sectionTitle}
-            className="font-bold text-blue-800 uppercase block"
-          >
-            Work Experience
+        {/* Summary Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>PROFESSIONAL SUMMARY</Text>
+          <Text style={{ marginTop: 10, marginBottom: 10, display: "block" }}>
+            A highly resourceful, flexible, innovative project manager,
+            possessing considerable experience of managing projects from
+            beginning to end, defining the purpose line timeline, scope and
+            executing the analysis before providing detail recommendations.
+            Having an impressive track records of delivering major operational
+            improvement and of orhchresting people, schedules and resources for
+            optimum productivity, efficiency and quality. Keen to find a
+            challenging position within an ambitious company where i will be
+            able to continue to increase my managment skills.
           </Text>
+        </View>
 
-          {resumeData.workExperience.map((experience, index) => {
-            return (
-              <View key={index} style={{ marginBottom: 10 }} className="block">
-                <Text
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 14,
-                  }}
-                  className="font-bold block"
-                >
-                  {experience.jobTitle} {experience.jobTitle ? "at " : ""}{" "}
-                  {experience.company} {experience.company ? "," : ""}{" "}
-                  {experience.location}
-                </Text>
-                <Text
-                  style={{
-                    color: "#52525c",
+        {/* Employment Section */}
 
-                    fontSize: 14,
+        <View style={styles.section}>
+          <View
+            style={{
+              display: "block",
+              marginBottom: 5,
+            }}
+          >
+            <Text style={styles.sectionTitle}>EMPLOYMENT HISTORY</Text>
+
+            <View
+              style={{
+                marginTop: 10,
+                marginBottom: 15,
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <View>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                    marginBottom: 8,
                   }}
-                  className="block text-zinc-600 text-sm mt-2"
                 >
-                  {experience.startDate} {experience.startDate ? "to" : ""}{" "}
-                  {experience.endDate} {experience.isRemote ? "(Remote)" : ""}
-                </Text>
+                  <Text>I.T Technician, International Mobilities </Text>
+                  <Text style={{ color: "#193cb8" }}>
+                    Oct. 2015 - May. 2016{" "}
+                  </Text>
+                </View>
+
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "2px",
+                  }}
+                >
+                  <Text>Operate and maintain information system </Text>
+                  <Text>Facilitating system utilization </Text>
+                </View>
               </View>
-            );
-          })}
-        </View>
-
-        {/* Education */}
-
-        <View style={styles.section} className="block">
-          <Text
-            style={styles.sectionTitle}
-            className="font-bold text-blue-800 uppercase block"
-          >
-            Education
-          </Text>
-          {resumeData.education.map((education, index) => {
-            return (
-              <View key={index} style={{ marginBottom: 10 }} className="block">
-                <Text
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 14,
-                  }}
-                  className="font-bold block"
-                >
-                  {education.degree} {education.degree ? "," : ""}{" "}
-                  {education.institution}
-                  {education.institution ? "," : ""} {education.location}
-                </Text>
-                <Text
-                  style={{
-                    color: "#52525c",
-
-                    fontSize: 14,
-                  }}
-                  className="block text-zinc-600 text-sm mt-2"
-                >
-                  {education.startDate} {education.startDate ? "to" : ""}{" "}
-                  {education.endDate}
-                </Text>
+              <View>
+                <Text>Birmingham, England </Text>
               </View>
-            );
-          })}
-        </View>
-        {/* Skills */}
+            </View>
+            <View
+              style={{
+                marginTop: 10,
+                marginBottom: 15,
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <View>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                    marginBottom: 8,
+                  }}
+                >
+                  <Text>I.T Technician, International Mobilities </Text>
+                  <Text style={{ color: "#193cb8" }}>
+                    Oct. 2015 - May. 2016{" "}
+                  </Text>
+                </View>
 
-        <View
-          style={{
-            marginBottom: 20,
-          }}
-          className="block"
-        >
-          <Text
-            style={styles.sectionTitle}
-            className="font-bold text-blue-800 uppercase block"
-          >
-            Skills
-          </Text>
-
-          {resumeData.skills.map((skill, index) => {
-            return (
-              <View key={index} style={{ marginBottom: 10 }} className="block">
-                <Text>{skill.name}</Text>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "2px",
+                  }}
+                >
+                  <Text>Operate and maintain information system </Text>
+                  <Text>Facilitating system utilization </Text>
+                </View>
               </View>
-            );
-          })}
+              <View>
+                <Text>Birmingham, England </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </Page>
     </Document>
