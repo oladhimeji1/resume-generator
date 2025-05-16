@@ -1,4 +1,7 @@
-function SkillForm({ setResumeData, resumeData }) {
+import { useState } from "react";
+import ResumeDownload from "./ResumeDownload";
+function SkillForm({ setResumeData, resumeData, handlePrevStep, TemplateComponent }) {
+  const [isDownloadTemplateShown, setIsDownloadTemplateShown] = useState(true);
   const handleSkillChange = (index, field, value) => {
     setResumeData((prevResumeData) => {
       const skill = [...prevResumeData.skills];
@@ -59,8 +62,31 @@ function SkillForm({ setResumeData, resumeData }) {
           >
             Add skill{" "}
           </button>
+
+          <div className="mt-8 flex items-center gap-8">
+            <button
+              type="button"
+              className="text-blue-600 border-blue-600 border-3  bg-white py-3 px-12 cursor-pointer rounded-full mr-8 transition pointer"
+              onClick={() => {
+                handlePrevStep();
+              }}
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              className="text-white  bg-blue-600 py-3 cursor-pointer px-12 rounded-full mr-8 transition pointer hover:bg-blue-900"
+              onClick={() => {
+                setIsDownloadTemplateShown(true);
+              }}
+            >
+              Finalize
+            </button>
+          </div>
         </div>
       </div>
+
+    {isDownloadTemplateShown && <ResumeDownload TemplateComponent={TemplateComponent} setIsDownloadTemplateShown={setIsDownloadTemplateShown} resumeData={resumeData}/>}
     </>
   );
 }

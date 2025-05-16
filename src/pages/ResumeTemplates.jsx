@@ -6,7 +6,7 @@ import templates from "../data.js";
 
 export default function ResumeTemplates() {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
-
+  
   const handleTemplateSelect = (template) => {
     setSelectedTemplate(template);
   };
@@ -42,6 +42,7 @@ export default function ResumeTemplates() {
               handleTemplateSelect={handleTemplateSelect}
               id={template.id}
               template={template}
+             
             />
           );
         })}
