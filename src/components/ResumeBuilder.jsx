@@ -128,7 +128,7 @@ export default function ResumeBuilder() {
               to="/build-resume/resume-templates"
               className="underline text-blue-500 font-bold"
             >
-              Go Back
+              Change Template
             </Link>
           </div>
           <form className="mb-4">
@@ -167,6 +167,7 @@ export default function ResumeBuilder() {
                 setResumeData={setResumeData}
                 handleNextStep={handleNextStep}
                 handlePrevStep={handlePrevStep}
+                  TemplateComponent={TemplateComponent}
                 step={step}
               />
             )}

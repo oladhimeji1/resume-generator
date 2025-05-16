@@ -4,8 +4,9 @@ import LovedInterveiwers from "../components/LovedInterviewers";
 import Features from "../components/Features";
 import CoreSteps from "../components/CoreSteps";
 import CvReview from "../components/CvReview";
-
-
+import JobReviewer from "../components/JobReviewer";
+import Testimonials from "../components/Testimonials";
+import Footer from "../components/Footer";
 export default function HomePage() {
   return (
     <>
@@ -17,7 +18,13 @@ export default function HomePage() {
         <Features />
         <CoreSteps />
         <CvReview />
+        <JobReviewer />
+        <Testimonials />
       </main>
+
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
