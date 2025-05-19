@@ -35,6 +35,7 @@ export default function BioDataForm({
               handleInputChange("name", e.target.value);
             }}
             value={resumeData.name}
+            autoComplete="true"
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -51,6 +52,7 @@ export default function BioDataForm({
               handleInputChange("surname", e.target.value);
             }}
             value={resumeData.surname}
+            autoComplete="true"
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -83,6 +85,7 @@ export default function BioDataForm({
               handleInputChange("country", e.target.value);
             }}
             value={resumeData.country}
+            autoComplete="true"
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -99,6 +102,7 @@ export default function BioDataForm({
               handleInputChange("phone", e.target.value);
             }}
             value={resumeData.phone}
+            autoComplete="true"
           />
         </div>
         <div className="flex flex-col gap-2 mb-4">
@@ -115,6 +119,7 @@ export default function BioDataForm({
               handleInputChange("email", e.target.value);
             }}
             value={resumeData.email}
+            autoComplete="true"
           />
         </div>
       </div>
@@ -130,6 +135,7 @@ export default function BioDataForm({
             handleInputChange("summary", e.target.value);
           }}
           value={resumeData.summary}
+          autoComplete="true"
         ></textarea>
       </div>
       <button

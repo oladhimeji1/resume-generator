@@ -68,8 +68,6 @@ export default function CvReview() {
           </div>
         </div>
       </section>
-
-      <ToastContainer />
     </>
   );
 }

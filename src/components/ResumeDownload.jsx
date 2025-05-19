@@ -17,12 +17,12 @@ export default function ResumeDownload({
         <div className="flex flex-col gap-8">
           <div>
             <img
-              src={'/resume-build-illustration.svg'}
+              src={"/resume-build-illustration.svg"}
               alt=""
               className="w-full h-auto max-w-full"
             />
           </div>
-          <div className="flex items-center gap-4  justify-between">
+          <div className="flex text-center md:text-left flex-col md:flex-row items-center gap-4  justify-between">
             <div className="flex flex-col gap-4">
               <h2 className="font-bold text-xl md:text-2xl">Great work!</h2>
               <p className="text-sm font-medium md:text-lg text-zinc-600">
@@ -34,7 +34,7 @@ export default function ResumeDownload({
               {TemplateComponent && (
                 <PDFDownloadLink
                   document={<TemplateComponent resumeData={resumeData} />}
-                  fileName="myResume.pdf"
+                  fileName={`${resumeData.name} ${resumeData.surname} Resume`}
                   className="cursor-pointer"
                 >
                   <button

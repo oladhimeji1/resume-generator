@@ -85,6 +85,18 @@ export default function ResumeBuilder() {
   };
   useEffect(() => {
     const loadTemplate = async () => {
+      const templateImportMap = {
+        1: () => import("../templates/Template1"),
+        2: () => import("../templates/Template2"),
+        3: () => import("../templates/Template1"),
+        4: () => import("../templates/Template1"),
+        5: () => import("../templates/Template1"),
+        6: () => import("../templates/Template1"),
+        7: () => import("../templates/Template1"),
+        8: () => import("../templates/Template1"),
+        9: () => import("../templates/Template1"),
+      };
+
       setLoading(true);
       setError(null);
       setTemplateComponent(null);
@@ -100,7 +112,13 @@ export default function ResumeBuilder() {
           return;
         }
 
-        const module = await import(selectedTemplate.path);
+        const importFunc = templateImportMap[selectedTemplate.id];
+        if (!importFunc) {
+          setError("Template import not found");
+          setLoading(false);
+          return;
+        }
+        const module = await importFunc();
         setTemplateComponent(() => module.default);
         setLoading(false);
       } catch (e) {
@@ -167,25 +185,10 @@ export default function ResumeBuilder() {
                 setResumeData={setResumeData}
                 handleNextStep={handleNextStep}
                 handlePrevStep={handlePrevStep}
-                  TemplateComponent={TemplateComponent}
+                TemplateComponent={TemplateComponent}
                 step={step}
               />
             )}
-
-            {/* {TemplateComponent && (
-              <PDFDownloadLink
-                document={<TemplateComponent resumeData={resumeData} />}
-                filename="myResume.pdf"
-              >
-                {({ loading }) => {
-                  return loading ? (
-                    <button type="button">Loading Document...</button>
-                  ) : (
-                    <button type="button">Download Document...</button>
-                  );
-                }}
-              </PDFDownloadLink>
-            )} */}
           </form>
           <button
             className="hidden sm:block text-white bg-fuchsia-600 py-2 px-4 rounded-full mr-8 transition pointer hover:bg-fuchsia-900 fixed bottom-6 right-6"
@@ -195,8 +198,6 @@ export default function ResumeBuilder() {
           >
             Preview Template
           </button>
-
-          {/* {TemplateComponent && <TemplateComponent resumeData={resumeData} />} */}
         </div>
 
         {isPreviewed && (

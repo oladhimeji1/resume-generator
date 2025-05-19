@@ -4,20 +4,17 @@ const templates = [
     image: "/templates-img/cv-bold.webp",
 
     path: "/src/templates/Template1",
-
   },
   {
     id: 2,
     image: "/templates-img/cv-expressive.webp",
 
-    path: "/src/templates/Template1",
-
+    path: "/src/templates/Template2",
   },
   {
     id: 3,
     image: "/templates-img/cv-distinct.webp",
     path: "/src/templates/Template1",
-
   },
   {
     id: 4,
