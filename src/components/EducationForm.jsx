@@ -50,13 +50,13 @@ export default function EducationForm({
           return (
             <div key={index} className="grid grid-cols-1  md:grid-cols-2 gap-4">
               <div className="flex flex-col gap-2 mb-4">
-                <label htmlFor="institution" className="font-bold">
+                <label htmlFor={`institution_${index}`} className="font-bold">
                   INSTITUTION
                 </label>
                 <input
                   type="text"
-                  id="institution"
-                  name="institution"
+                  id={`institution_${index}`}
+                  name={`institution_${index}`}
                   placeholder="e.g University of Port Harcourt"
                   className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                   value={education.institution}
@@ -66,13 +66,16 @@ export default function EducationForm({
                 />
               </div>
               <div className="flex flex-col gap-2 mb-4">
-                <label htmlFor="schoolLocation" className="font-bold">
+                <label
+                  htmlFor={`schoolLocation_${index}`}
+                  className="font-bold"
+                >
                   SCHOOL LOCATION
                 </label>
                 <input
                   type="text"
-                  id="schoolLocation"
-                  name="schoolLocation"
+                  id={`schoolLocation_${index}`}
+                  name={`schoolLocation_${index}`}
                   placeholder="e.g Kano, Nigeria"
                   className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                   value={education.location}
@@ -82,13 +85,13 @@ export default function EducationForm({
                 />
               </div>
               <div className="flex flex-col gap-2 mb-4">
-                <label htmlFor="degree" className="font-bold">
+                <label htmlFor={`degree_${index}`} className="font-bold">
                   DEGREE
                 </label>
                 <input
                   type="text"
-                  id="degree"
-                  name="degree"
+                  id={`degree_${index}`}
+                  name={`degree_${index}`}
                   placeholder="e.g HND"
                   className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                   value={education.degree}
@@ -101,13 +104,16 @@ export default function EducationForm({
               <div></div>
 
               <div className="flex flex-col gap-2 mb-4">
-                <label htmlFor="school_start_date" className="font-bold">
+                <label
+                  htmlFor={`school_start_date${index}`}
+                  className="font-bold"
+                >
                   START DATE *
                 </label>
                 <input
                   type="date"
-                  id="school_start_date"
-                  name="school_start_date"
+                  id={`school_start_date${index}`}
+                  name={`school_start_date${index}`}
                   placeholder="e.g GtechCorporation"
                   className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                   value={education.startDate}
@@ -117,13 +123,16 @@ export default function EducationForm({
                 />
               </div>
               <div className="flex flex-col gap-2 mb-4">
-                <label htmlFor="school_end_date" className="font-bold">
+                <label
+                  htmlFor={`school_end_date${index}`}
+                  className="font-bold"
+                >
                   END DATE *
                 </label>
                 <input
                   type="date"
-                  id="school_end_date"
-                  name="school_end_date"
+                  id={`school_end_date${index}`}
+                  name={`school_end_date${index}`}
                   placeholder="e.g GtechCorporation"
                   className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                   value={education.endDate}

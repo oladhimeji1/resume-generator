@@ -65,53 +65,53 @@ export default function WorkForm({
                 className="grid grid-cols-1  md:grid-cols-2 gap-4"
               >
                 <div className="flex flex-col gap-2 mb-4">
-                  <label htmlFor="jobtitle" className="font-bold">
+                  <label htmlFor={`jobTitle_${index}`} className="font-bold">
                     TITLE *
                   </label>
                   <input
                     type="text"
-                    id="jobtitle"
-                    name="jobtitle"
+                    id={`jobTitle_${index}`}
+                    name={`jobTitle_${index}`}
                     placeholder="e.g Sales Manager"
                     className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                     value={experience.jobTitle}
                     onChange={(e) =>
                       handleWorkExperienceChange(
                         index,
-                        "jobTitle",
+                        `jobTitle`,
                         e.target.value
                       )
                     }
                   />
                 </div>
                 <div className="flex flex-col gap-2 mb-4">
-                  <label htmlFor="employer" className="font-bold">
+                  <label htmlFor={`employer_${index}`} className="font-bold">
                     EMPLOYER *
                   </label>
                   <input
                     type="text"
-                    id="employer"
-                    name="employer"
-                    placeholder="e.g GtechCorporation"
+                    id={`employer_${index}`}
+                    name={`employer_${index}`}
+                    placeholder="e.g KondiPress LLC"
                     className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                     value={experience.company}
                     onChange={(e) =>
                       handleWorkExperienceChange(
                         index,
-                        "company",
+                        `company`,
                         e.target.value
                       )
                     }
                   />
                 </div>
                 <div className="flex flex-col gap-2 mb-4">
-                  <label htmlFor="location" className="font-bold">
+                  <label htmlFor={`location_${index}`} className="font-bold">
                     LOCATION *
                   </label>
                   <input
                     type="text"
-                    id="location"
-                    name="location"
+                    id={`location_${index}`}
+                    name={`location_${index}`}
                     placeholder="e.g Kano, Nigeria"
                     className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                     value={experience.location}
@@ -149,13 +149,13 @@ export default function WorkForm({
                 </div>
                 <div></div>
                 <div className="flex flex-col gap-2 mb-4">
-                  <label htmlFor="startdate" className="font-bold">
+                  <label htmlFor={`startdate_${index}`} className="font-bold">
                     START DATE *
                   </label>
                   <input
                     type="date"
-                    id="startdate"
-                    name="startdate"
+                    id={`startdate_${index}`}
+                    name={`startdate_${index}`}
                     placeholder="e.g GtechCorporation"
                     className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                     value={experience.startDate}
@@ -169,13 +169,13 @@ export default function WorkForm({
                   />
                 </div>
                 <div className="flex flex-col gap-2 mb-4">
-                  <label htmlFor="enddate" className="font-bold">
+                  <label htmlFor={`enddate_${index}`} className="font-bold">
                     END DATE *
                   </label>
                   <input
                     type="date"
-                    id="enddate"
-                    name="enddate"
+                    id={`enddate_${index}`}
+                    name={`enddate_${index}`}
                     placeholder="e.g GtechCorporation"
                     className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                     value={experience.endDate}
