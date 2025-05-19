@@ -167,25 +167,10 @@ export default function ResumeBuilder() {
                 setResumeData={setResumeData}
                 handleNextStep={handleNextStep}
                 handlePrevStep={handlePrevStep}
-                  TemplateComponent={TemplateComponent}
+                TemplateComponent={TemplateComponent}
                 step={step}
               />
             )}
-
-            {/* {TemplateComponent && (
-              <PDFDownloadLink
-                document={<TemplateComponent resumeData={resumeData} />}
-                filename="myResume.pdf"
-              >
-                {({ loading }) => {
-                  return loading ? (
-                    <button type="button">Loading Document...</button>
-                  ) : (
-                    <button type="button">Download Document...</button>
-                  );
-                }}
-              </PDFDownloadLink>
-            )} */}
           </form>
           <button
             className="hidden sm:block text-white bg-fuchsia-600 py-2 px-4 rounded-full mr-8 transition pointer hover:bg-fuchsia-900 fixed bottom-6 right-6"
@@ -196,7 +181,6 @@ export default function ResumeBuilder() {
             Preview Template
           </button>
 
-          {/* {TemplateComponent && <TemplateComponent resumeData={resumeData} />} */}
         </div>
 
         {isPreviewed && (

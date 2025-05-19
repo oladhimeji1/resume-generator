@@ -61,7 +61,7 @@ function Template1({ resumeData }) {
             <Text style={{ fontWeight: "bold", color: "#193cb8" }}>
               Location:
             </Text>{" "}
-            Port Harcourt, Nigeria
+            {resumeData.city}, {resumeData.country}
           </Text>
           <Text
             style={{
@@ -70,7 +70,7 @@ function Template1({ resumeData }) {
             }}
           >
             <Text style={{ fontWeight: "bold", color: "#193cb8" }}>Phone:</Text>{" "}
-            09130327299
+            {resumeData.phone}
           </Text>
           <Text
             style={{
@@ -79,7 +79,7 @@ function Template1({ resumeData }) {
             }}
           >
             <Text style={{ fontWeight: "bold", color: "#193cb8" }}>Email:</Text>{" "}
-            piousgodstime3@gmail.com
+            {resumeData.email}
           </Text>
         </View>
 
@@ -87,15 +87,7 @@ function Template1({ resumeData }) {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>PROFESSIONAL SUMMARY</Text>
           <Text style={{ marginTop: 10, marginBottom: 10, display: "block" }}>
-            A highly resourceful, flexible, innovative project manager,
-            possessing considerable experience of managing projects from
-            beginning to end, defining the purpose line timeline, scope and
-            executing the analysis before providing detail recommendations.
-            Having an impressive track records of delivering major operational
-            improvement and of orhchresting people, schedules and resources for
-            optimum productivity, efficiency and quality. Keen to find a
-            challenging position within an ambitious company where i will be
-            able to continue to increase my managment skills.
+            {resumeData.summary}
           </Text>
         </View>
 
@@ -110,81 +102,129 @@ function Template1({ resumeData }) {
           >
             <Text style={styles.sectionTitle}>EMPLOYMENT HISTORY</Text>
 
+            {resumeData.workExperience.map((work, index) => {
+              return (
+                <View
+                key={index}
+                  style={{
+                    marginTop: 10,
+                    marginBottom: 15,
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <View>
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "10px",
+                        marginBottom: 8,
+                      }}
+                    >
+                      <Text>
+                        {work.jobTitle} at <Text>{work.company}</Text>
+                      </Text>
+                      <Text style={{ color: "#193cb8" }}>
+                        Oct. 2015 - May. 2016{" "}
+                      </Text>
+                    </View>
+
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "2px",
+                      }}
+                    >
+                      <Text>Operate and maintain information system </Text>
+                      <Text>Facilitating system utilization </Text>
+                    </View>
+                  </View>
+                  <View>
+                    <Text>{work.location} </Text>
+                  </View>
+                </View>
+              );
+            })}
+          </View>
+        </View>
+
+        {/* {Education Data} */}
+        <View style={styles.section}>
+          <View
+            style={{
+              display: "block",
+              marginBottom: 5,
+            }}
+          >
+            <Text style={styles.sectionTitle}>EDUCATION</Text>
+
+            {resumeData.education.map((education, index) => {
+              return (
+                <View
+                key={index}
+                  style={{
+                    marginTop: 10,
+                    marginBottom: 15,
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <View>
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "10px",
+                        marginBottom: 8,
+                      }}
+                    >
+                      <Text>{education.institution} </Text>
+                      <Text style={{ color: "#193cb8" }}>
+                        May. 2027 - Current
+                      </Text>
+                    </View>
+
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "2px",
+                      }}
+                    >
+                      <Text>{education.degree}</Text>
+                    </View>
+                  </View>
+                  <View>
+                    <Text>{education.location} </Text>
+                  </View>
+                </View>
+              );
+            })}
+          </View>
+        </View>
+
+        <View style={styles.section}>
+          <View
+            style={{
+              display: "block",
+              marginBottom: 5,
+            }}
+          >
+            <Text style={styles.sectionTitle}>SKILLS</Text>
+
             <View
               style={{
-                marginTop: 10,
-                marginBottom: 15,
                 display: "flex",
-                justifyContent: "space-between",
+                flexDirection: "column",
+                gap: 8,
+                marginTop: 14,
               }}
             >
-              <View>
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "10px",
-                    marginBottom: 8,
-                  }}
-                >
-                  <Text>I.T Technician, International Mobilities </Text>
-                  <Text style={{ color: "#193cb8" }}>
-                    Oct. 2015 - May. 2016{" "}
-                  </Text>
-                </View>
-
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "2px",
-                  }}
-                >
-                  <Text>Operate and maintain information system </Text>
-                  <Text>Facilitating system utilization </Text>
-                </View>
-              </View>
-              <View>
-                <Text>Birmingham, England </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                marginTop: 10,
-                marginBottom: 15,
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <View>
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "10px",
-                    marginBottom: 8,
-                  }}
-                >
-                  <Text>I.T Technician, International Mobilities </Text>
-                  <Text style={{ color: "#193cb8" }}>
-                    Oct. 2015 - May. 2016{" "}
-                  </Text>
-                </View>
-
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "2px",
-                  }}
-                >
-                  <Text>Operate and maintain information system </Text>
-                  <Text>Facilitating system utilization </Text>
-                </View>
-              </View>
-              <View>
-                <Text>Birmingham, England </Text>
-              </View>
+              {resumeData.skills.map((skill, index) => (
+                <Text key={index}>{skill.name}</Text>
+              ))}
             </View>
           </View>
         </View>
