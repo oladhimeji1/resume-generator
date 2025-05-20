@@ -14,22 +14,22 @@ const templates = [
   {
     id: 3,
     image: "/templates-img/cv-distinct.webp",
-    path: "/src/templates/Template1",
+    path: "/src/templates/Template3",
   },
   {
     id: 4,
     image: "/templates-img/cv1.webp",
-    path: "/src/templates/Template1",
+    path: "/src/templates/Template4",
   },
   {
     id: 5,
     image: "/templates-img/cv4.webp",
-    path: "/src/templates/Template1",
+    path: "/src/templates/Template5",
   },
   {
     id: 6,
     image: "/templates-img/cv5.webp",
-    path: "/src/templates/Template1",
+    path: "/src/templates/Template6",
   },
   {
     id: 7,
