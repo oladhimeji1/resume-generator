@@ -157,7 +157,7 @@ export default function WorkForm({
                     id={`startdate_${index}`}
                     name={`startdate_${index}`}
                     placeholder="e.g GtechCorporation"
-                    className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+                    className="border border-slate-400 bg-white py-2 px-4 focus:outline-none block w-full"
                     value={experience.startDate}
                     onChange={(e) =>
                       handleWorkExperienceChange(
@@ -177,7 +177,7 @@ export default function WorkForm({
                     id={`enddate_${index}`}
                     name={`enddate_${index}`}
                     placeholder="e.g GtechCorporation"
-                    className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+                    className="border border-slate-400 bg-white py-2 px-4 focus:outline-none w-full block"
                     value={experience.endDate}
                     onChange={(e) =>
                       handleWorkExperienceChange(

@@ -115,7 +115,7 @@ export default function EducationForm({
                   id={`school_start_date${index}`}
                   name={`school_start_date${index}`}
                   placeholder="e.g GtechCorporation"
-                  className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+                  className="border border-slate-400 bg-white py-2 px-4 focus:outline-none block w-full"
                   value={education.startDate}
                   onChange={(e) =>
                     handleEducationChange(index, "startDate", e.target.value)
@@ -134,7 +134,7 @@ export default function EducationForm({
                   id={`school_end_date${index}`}
                   name={`school_end_date${index}`}
                   placeholder="e.g GtechCorporation"
-                  className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+                  className="border border-slate-400 bg-white py-2 px-4 focus:outline-none block w-full "
                   value={education.endDate}
                   onChange={(e) =>
                     handleEducationChange(index, "endDate", e.target.value)
