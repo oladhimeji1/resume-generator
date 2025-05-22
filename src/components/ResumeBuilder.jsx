@@ -44,30 +44,10 @@ export default function ResumeBuilder() {
         endDate: "20-11-2023",
         location: "Northern Ireland",
         isRemote: false,
-      },
-      {
-        jobTitle: "Software Engineer",
-        company: "ABC Limited",
-        startDate: "22-04-2005",
-        endDate: "20-11-2023",
-        location: "Northern Ireland",
-        isRemote: false,
-      },
-      {
-        jobTitle: "Software Engineer",
-        company: "ABC Limited",
-        startDate: "22-04-2005",
-        endDate: "20-11-2023",
-        location: "Northern Ireland",
-        isRemote: false,
-      },
-      {
-        jobTitle: "Software Engineer",
-        company: "ABC Limited",
-        startDate: "22-04-2005",
-        endDate: "20-11-2023",
-        location: "Northern Ireland",
-        isRemote: false,
+        duties: [
+          "Mentored a team of 5 junior developers, enhancing code quality and delivery speed.",
+          "Architected a  microservices-based application, improving scalability for 20,000+ users.",
+        ],
       },
     ],
     education: [
@@ -91,10 +71,10 @@ export default function ResumeBuilder() {
         3: () => import("../templates/Template3"),
         4: () => import("../templates/Template4"),
         5: () => import("../templates/Template5"),
-        6: () => import("../templates/Template6"),
-        7: () => import("../templates/Template1"),
-        8: () => import("../templates/Template1"),
-        9: () => import("../templates/Template1"),
+        6: () => import("../templates/Template6.jsx"),
+        7: () => import("../templates/Template7"),
+        8: () => import("../templates/Template8"),
+        9: () => import("../templates/Template9"),
       };
 
       setLoading(true);

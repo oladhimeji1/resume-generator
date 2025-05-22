@@ -1,193 +1,164 @@
 import React from "react";
-import {
-  Document,
-  Page,
-  Text,
-  View,
-  StyleSheet,
-  Link,
-} from "@react-pdf/renderer";
+import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 
-// Define styles for the CV
+// Define styles
 const styles = StyleSheet.create({
   page: {
-    padding: 35,
-    fontFamily: "Times",
+    padding: 30,
+    fontFamily: "Helvetica",
     fontSize: 11,
-    lineHeight: 1.6,
-    color: "#2d2d2d",
-    backgroundColor: "#fff",
+    backgroundColor: "#FFFFFF",
+  },
+  container: { flexDirection: "column", minHeight: "100%" },
+  headerSection: {
+    padding: 15,
+    marginBottom: 20,
+    borderBottom: "2px solid #666666", // Gray underline
   },
   header: {
-    marginBottom: 25,
-    borderBottom: "0.5pt solid #4a4a4a",
-    paddingBottom: 8,
-  },
-  name: {
     fontSize: 26,
     fontWeight: "bold",
-    color: "#2d2d2d",
+    color: "#000000",
+    fontFamily: "Helvetica-Bold",
     textAlign: "center",
-  },
-  title: {
-    fontSize: 13,
-    color: "#4a4a4a",
-    textAlign: "center",
-    marginTop: 5,
   },
   contact: {
     fontSize: 10,
-    color: "#4a4a4a",
+    color: "#000000",
     textAlign: "center",
-    marginTop: 3,
+    marginTop: 5,
   },
-  section: {
-    marginBottom: 15,
-  },
-  sectionTitle: {
-    fontSize: 13,
+  section: { marginBottom: 15 },
+  subHeader: {
+    fontSize: 14,
     fontWeight: "bold",
-    color: "#2d2d2d",
-    marginBottom: 6,
-    borderBottom: "0.5pt solid #e0e0e0",
-    paddingBottom: 2,
+    marginBottom: 8,
+    color: "#000000",
+    borderBottom: "1px solid #666666",
   },
-  text: {
-    fontSize: 11,
-    marginBottom: 4,
-  },
-  jobTitle: {
-    fontSize: 12,
-    fontWeight: "bold",
-    color: "#2d2d2d",
-  },
-  company: {
-    fontSize: 11,
-    color: "#4a4a4a",
-  },
-  date: {
-    fontSize: 10,
-    color: "#6a6a6a",
-  },
-  listItem: {
-    flexDirection: "row",
-    marginBottom: 4,
-  },
-  bullet: {
-    width: 10,
-    fontSize: 11,
-  },
+  text: { fontSize: 10, marginBottom: 5, lineHeight: 1.5, color: "#000000" },
+  bullet: { flexDirection: "row", marginBottom: 5 },
+  bulletPoint: { width: 10, textAlign: "center", color: "#000000" },
+  skillsList: { flexDirection: "row", flexWrap: "wrap", gap: 10 },
+  skillItem: { fontSize: 9, color: "#000000", padding: 5 },
+  divider: { borderBottom: "1px solid #666666", marginVertical: 10 },
 });
 
-// CV Component
-const Template6 = () => (
+// Sample data
+const data = {
+  name: "James Thompson",
+  contact: {
+    email: "james.thompson@email.com",
+    phone: "(789) 456-1234",
+    address: "456 Clarity St, City, ST 67890",
+    linkedin: "linkedin.com/in/jamesthompson",
+  },
+  skills: [
+    "Legal Research",
+    "Contract Drafting",
+    "Compliance",
+    "Negotiation",
+    "Public Speaking",
+    "Case Management",
+  ],
+  experience: [
+    {
+      title: "Associate Attorney",
+      company: "Thompson & Partners",
+      dates: "Jul 2020 - Present",
+      achievements: [
+        "Drafted 100+ legal documents, achieving 95% client approval rate.",
+        "Represented clients in 20+ cases, securing favorable outcomes in 85% of cases.",
+      ],
+    },
+    {
+      title: "Legal Assistant",
+      company: "City Law Firm",
+      dates: "Aug 2017 - Jun 2020",
+      achievements: [
+        "Conducted research for 50+ cases, improving case preparation efficiency by 20%.",
+        "Assisted in contract reviews, reducing errors by 15%.",
+      ],
+    },
+  ],
+  education: [
+    {
+      degree: "J.D. Law",
+      school: "Prestige Law School",
+      dates: "2014 - 2017",
+    },
+    {
+      degree: "B.A. Political Science",
+      school: "State University",
+      dates: "2010 - 2014",
+    },
+  ],
+};
+
+// Document component
+const MonochromeClarityResume = () => (
   <Document>
     <Page size="A4" style={styles.page}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.name}>Alex Carter</Text>
-        <Text style={styles.title}>Data Scientist</Text>
-        <Text style={styles.contact}>Email: alex.carter@example.com</Text>
-        <Text style={styles.contact}>Phone: (555) 123-4567</Text>
-        <Link style={styles.contact} src="https://linkedin.com/in/alexcarter">
-          LinkedIn
-        </Link>
-        <Text style={styles.contact}>Location: Chicago, IL</Text>
-      </View>
-
-      {/* Summary */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Professional Summary</Text>
-        <Text style={styles.text}>
-          Data Scientist with 7 years of experience in leveraging machine
-          learning and statistical analysis to drive business insights.
-          Proficient in Python, R, and big data technologies, with a proven
-          track record of delivering predictive models that enhance
-          decision-making. Committed to advancing data-driven strategies.
-        </Text>
-      </View>
-
-      {/* Experience */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Professional Experience</Text>
-        <View style={styles.section}>
-          <Text style={styles.jobTitle}>Senior Data Scientist</Text>
-          <Text style={styles.company}>DataCore Analytics, Chicago, IL</Text>
-          <Text style={styles.date}>April 2020 – Present</Text>
-          <View style={styles.listItem}>
-            <Text style={styles.bullet}>•</Text>
-            <Text style={styles.text}>
-              Developed machine learning models for customer segmentation,
-              increasing marketing ROI by 30%.
-            </Text>
-          </View>
-          <View style={styles.listItem}>
-            <Text style={styles.bullet}>•</Text>
-            <Text style={styles.text}>
-              Led data pipeline optimization using Apache Spark, reducing
-              processing time by 50%.
-            </Text>
-          </View>
-        </View>
-        <View style={styles.section}>
-          <Text style={styles.jobTitle}>Data Scientist</Text>
-          <Text style={styles.company}>Insight Systems, Boston, MA</Text>
-          <Text style={styles.date}>June 2017 – March 2020</Text>
-          <View style={styles.listItem}>
-            <Text style={styles.bullet}>•</Text>
-            <Text style={styles.text}>
-              Built predictive models for churn analysis, improving retention
-              rates by 15%.
-            </Text>
-          </View>
-          <View style={styles.listItem}>
-            <Text style={styles.bullet}>•</Text>
-            <Text style={styles.text}>
-              Collaborated with cross-functional teams to integrate data
-              solutions into business workflows.
-            </Text>
-          </View>
-        </View>
-      </View>
-
-      {/* Education */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Education</Text>
-        <Text style={styles.jobTitle}>Master of Science in Data Science</Text>
-        <Text style={styles.company}>University of Chicago, Chicago, IL</Text>
-        <Text style={styles.date}>Graduated: May 2017</Text>
-      </View>
-
-      {/* Skills */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Technical Skills</Text>
-        <View style={styles.listItem}>
-          <Text style={styles.bullet}>•</Text>
-          <Text style={styles.text}>
-            Python (Pandas, Scikit-learn, TensorFlow)
+      <View style={styles.container}>
+        {/* Header Section */}
+        <View style={styles.headerSection}>
+          <Text style={styles.header}>{data.name}</Text>
+          <Text style={styles.contact}>
+            {data.contact.email} | {data.contact.phone}
+          </Text>
+          <Text style={styles.contact}>
+            {data.contact.address} | {data.contact.linkedin}
           </Text>
         </View>
-        <View style={styles.listItem}>
-          <Text style={styles.bullet}>•</Text>
-          <Text style={styles.text}>R, SQL</Text>
+        {/* Skills Section */}
+        <View style={styles.section}>
+          <Text style={styles.subHeader}>Skills</Text>
+          <View style={styles.skillsList}>
+            {data.skills.map((skill, index) => (
+              <Text key={index} style={styles.skillItem}>
+                ■ {skill}
+              </Text>
+            ))}
+          </View>
         </View>
-        <View style={styles.listItem}>
-          <Text style={styles.bullet}>•</Text>
-          <Text style={styles.text}>Big Data (Hadoop, Spark)</Text>
+        {/* Experience Section */}
+        <View style={styles.section}>
+          <Text style={styles.subHeader}>Professional Experience</Text>
+          {data.experience.map((job, index) => (
+            <View key={index} style={styles.section}>
+              <Text style={styles.text}>
+                {job.title} - {job.company}
+              </Text>
+              <Text style={styles.text}>{job.dates}</Text>
+              {job.achievements.map((achievement, i) => (
+                <View key={i} style={styles.bullet}>
+                  <Text style={styles.bulletPoint}>■</Text>
+                  <Text style={styles.text}>{achievement}</Text>
+                </View>
+              ))}
+              {index < data.experience.length - 1 && (
+                <View style={styles.divider} />
+              )}
+            </View>
+          ))}
         </View>
-        <View style={styles.listItem}>
-          <Text style={styles.bullet}>•</Text>
-          <Text style={styles.text}>
-            Data Visualization (Tableau, Matplotlib)
-          </Text>
-        </View>
-        <View style={styles.listItem}>
-          <Text style={styles.bullet}>•</Text>
-          <Text style={styles.text}>Cloud Platforms (AWS, GCP)</Text>
+        {/* Education Section */}
+        <View style={styles.section}>
+          <Text style={styles.subHeader}>Education</Text>
+          {data.education.map((edu, index) => (
+            <View key={index} style={styles.section}>
+              <Text style={styles.text}>{edu.degree}</Text>
+              <Text style={styles.text}>{edu.school}</Text>
+              <Text style={styles.text}>{edu.dates}</Text>
+              {index < data.education.length - 1 && (
+                <View style={styles.divider} />
+              )}
+            </View>
+          ))}
         </View>
       </View>
     </Page>
   </Document>
 );
 
-export default Template6;
+export default MonochromeClarityResume;

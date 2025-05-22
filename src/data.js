@@ -34,17 +34,17 @@ const templates = [
   {
     id: 7,
     image: "/templates-img/cv7.webp",
-    path: "/src/templates/Template1",
+    path: "/src/templates/Template7",
   },
   {
     id: 8,
     image: "/templates-img/cv14.webp",
-    path: "/src/templates/Template1",
+    path: "/src/templates/Template8",
   },
   {
     id: 9,
     image: "/templates-img/cv20.webp",
-    path: "/src/templates/Template1",
+    path: "/src/templates/Template9",
   },
 ];
 export default templates;
