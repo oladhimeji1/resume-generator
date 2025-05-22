@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from "@react-pdf/renderer";
 
-function Template2() {
+function Template2({ resumeData }) {
   const styles = StyleSheet.create({
     page: {
       padding: 30,
@@ -82,80 +82,75 @@ function Template2() {
     },
   });
 
-  return(
+  return (
     <Document>
-        <Page size="A4" style={styles.page}>
-          <View style={styles.header}>
-            <Text style={styles.name}>Jane Smith</Text>
-            <Text style={styles.title}>Full-Stack Developer</Text>
-          </View>
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Contact</Text>
-            <Text style={styles.text}>Email: jane.smith@example.com</Text>
-            <Text style={styles.text}>Phone: (987) 654-3210</Text>
-            <Text style={styles.text}>LinkedIn: linkedin.com/in/janesmith</Text>
-            <Text style={styles.text}>Location: San Francisco, CA</Text>
-          </View>
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Summary</Text>
-            <Text style={styles.text}>
-              Experienced Full-Stack Developer with over 6 years of experience in designing and
-              implementing robust web applications. Skilled in JavaScript, Python, and cloud
-              technologies, with a passion for creating efficient and user-friendly solutions.
-            </Text>
-          </View>
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Work Experience</Text>
-            <View style={styles.section}>
-              <Text style={styles.jobTitle}>Lead Developer</Text>
-              <Text style={styles.company}>Nexlify Technologies</Text>
-              <Text style={styles.date}>Mar 2021 - Present</Text>
-              <Text style={styles.listItem}>
-                <Text style={styles.bullet}>•</Text> Architected a microservices-based application,
-                improving scalability for 20,000+ users.
+      <Page size="A4" style={styles.page}>
+        <View style={styles.header}>
+          <Text style={styles.name}>
+            {resumeData.name} {resumeData.surname}
+          </Text>
+        </View>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Contact</Text>
+          <Text style={styles.text}>Email: {resumeData.email}</Text>
+          <Text style={styles.text}>Phone: {resumeData.phone}</Text>
+
+          <Text style={styles.text}>
+            Location: {resumeData.city} {resumeData.country}
+          </Text>
+        </View>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Summary</Text>
+          <Text style={styles.text}>{resumeData.summary}</Text>
+        </View>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Work Experience</Text>
+          {resumeData.workExperience.map((experience, index) => (
+            <View key={index} style={styles.section}>
+              <Text style={styles.jobTitle}>{experience.jobTitle}</Text>
+              <Text style={styles.company}>{experience.company}</Text>
+              <Text style={styles.date}>
+                {experience.startDate} - {experience.endDate}
               </Text>
               <Text style={styles.listItem}>
-                <Text style={styles.bullet}>•</Text> Mentored a team of 5 junior developers, enhancing
-                code quality and delivery speed.
-              </Text>
-            </View>
-            <View style={styles.section}>
-              <Text style={styles.jobTitle}>Software Developer</Text>
-              <Text style={styles.company}>BrightWave Solutions</Text>
-              <Text style={styles.date}>Jul 2018 - Feb 2021</Text>
-              <Text style={styles.listItem}>
-                <Text style={styles.bullet}>•</Text> Built a React-based e-commerce platform,
-                increasing sales conversions by 25%.
+                <Text style={styles.bullet}>•</Text> Architected a
+                microservices-based application, improving scalability for
+                20,000+ users.
               </Text>
               <Text style={styles.listItem}>
-                <Text style={styles.bullet}>•</Text> Integrated CI/CD pipelines, reducing deployment
-                time by 40%.
+                <Text style={styles.bullet}>•</Text> Mentored a team of 5 junior
+                developers, enhancing code quality and delivery speed.
               </Text>
             </View>
-          </View>
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Education</Text>
-            <Text style={styles.jobTitle}>M.S. in Computer Science</Text>
-            <Text style={styles.company}>Tech University</Text>
-            <Text style={styles.date}>Sep 2016 - May 2018</Text>
-            <Text style={styles.jobTitle}>B.S. in Software Engineering</Text>
-            <Text style={styles.company}>Tech University</Text>
-            <Text style={styles.date}>Sep 2012 - May 2016</Text>
-          </View>
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Skills</Text>
-            <View style={styles.skillsContainer}>
-              <Text style={styles.skill}>React</Text>
-              <Text style={styles.skill}>Python</Text>
-              <Text style={styles.skill}>AWS</Text>
-              <Text style={styles.skill}>GraphQL</Text>
-              <Text style={styles.skill}>Docker</Text>
-              <Text style={styles.skill}>PostgreSQL</Text>
+          ))}
+        </View>
+
+        {resumeData.education.map((education, index) => {
+          return (
+            <View key={index} style={styles.section}>
+              <Text style={styles.sectionTitle}>Education</Text>
+              <Text style={styles.jobTitle}>{education.degree}</Text>
+              <Text style={styles.company}>{education.institution}</Text>
+              <Text style={styles.date}>
+                {education.startDate} - {education.endDate}
+              </Text>
             </View>
+          );
+        })}
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Skills</Text>
+          <View style={styles.skillsContainer}>
+            {resumeData.skills.map((skill, index) => (
+              <Text key={index} style={styles.skill}>
+                {skill.name}
+              </Text>
+            ))}
           </View>
-        </Page>
-      </Document>
-  )
+        </View>
+      </Page>
+    </Document>
+  );
 }
 
 export default Template2;

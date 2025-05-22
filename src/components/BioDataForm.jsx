@@ -128,6 +128,7 @@ export default function BioDataForm({
           SUMMARY
         </label>
         <textarea
+          rows="10"
           className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
           name="summary"
           id="summary"

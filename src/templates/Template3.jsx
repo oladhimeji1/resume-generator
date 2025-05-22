@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   header: {
-    textAlign: "center",
     marginBottom: 20,
     borderBottom: "1pt solid #007bff",
     paddingBottom: 10,
@@ -28,18 +27,20 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     color: "#007bff",
+    textAlign: "center",
+    marginBottom: 14,
+    display: "block",
   },
   title: {
     fontSize: 14,
     color: "#555",
+    textAlign: "center",
   },
   contact: {
     fontSize: 10,
     color: "#555",
     marginTop: 5,
-    flexDirection: "row",
-    justifyContent: "center",
-    gap: 15,
+    textAlign: "center",
   },
   section: {
     marginBottom: 15,
@@ -55,21 +56,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     marginBottom: 5,
   },
-  flexRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  column: {
-    width: "48%",
-  },
-  listItem: {
-    flexDirection: "row",
-    marginBottom: 5,
-  },
-  bullet: {
-    width: 10,
-    fontSize: 11,
-  },
   jobTitle: {
     fontSize: 12,
     fontWeight: "bold",
@@ -82,125 +68,99 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#777",
   },
+  listItem: {
+    flexDirection: "row",
+    marginBottom: 5,
+  },
+  bullet: {
+    width: 10,
+    fontSize: 11,
+  },
 });
 
 // CV Component
-const Template3 = () => (
+const Template3 = ({ resumeData }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.name}>John Doe</Text>
-        <Text style={styles.title}>Software Engineer</Text>
-        <View style={styles.contact}>
-          <Text>Email: john.doe@example.com</Text>
-          <Text>Phone: (123) 456-7890</Text>
-          <Link src="https://linkedin.com/in/johndoe">LinkedIn</Link>
-          <Text>Location: New York, NY</Text>
-        </View>
+        <Text style={styles.name}>
+          {resumeData.name} {resumeData.surname}
+        </Text>
+        <Text style={styles.title}></Text>
+        <Text style={styles.contact}>Email: {resumeData.email}</Text>
+        <Text style={styles.contact}>Phone: {resumeData.phone}</Text>
+
+        <Text style={styles.contact}>
+          Location: {resumeData.city}, {resumeData.country}
+        </Text>
       </View>
 
       {/* Summary */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Professional Summary</Text>
-        <Text style={styles.text}>
-          Dedicated and detail-oriented Software Engineer with over 5 years of
-          experience in developing robust web applications using modern
-          JavaScript frameworks like React. Skilled in delivering scalable
-          solutions, collaborating with cross-functional teams, and optimizing
-          performance. Passionate about leveraging technology to solve
-          real-world problems.
-        </Text>
+        <Text style={styles.text}>{resumeData.summary}</Text>
       </View>
 
       {/* Experience */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Work Experience</Text>
-        <View style={styles.section}>
-          <Text style={styles.jobTitle}>Senior Software Engineer</Text>
-          <Text style={styles.company}>Tech Corp, New York, NY</Text>
-          <Text style={styles.date}>January 2022 – Present</Text>
-          <View style={styles.listItem}>
-            <Text style={styles.bullet}>•</Text>
-            <Text style={styles.text}>
-              Led a team of 5 developers to build a scalable e-commerce
-              platform, increasing sales by 20%.
+        {resumeData.workExperience.map((exp, i) => (
+          <View key={i} style={styles.section}>
+            <Text style={styles.jobTitle}>{exp.jobTitle}</Text>
+            <Text style={styles.company}>
+              {exp.company}, {exp.location}
             </Text>
-          </View>
-          <View style={styles.listItem}>
-            <Text style={styles.bullet}>•</Text>
-            <Text style={styles.text}>
-              Implemented CI/CD pipelines, reducing deployment time by 30%.
+            <Text style={styles.date}>
+              {exp.startDate} - {exp.endDate}
             </Text>
+            <View style={styles.listItem}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.text}>
+                Spearheaded development of a SaaS platform, improving user
+                retention by 25%.
+              </Text>
+            </View>
+            <View style={styles.listItem}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.text}>
+                Optimized backend APIs with Python and FastAPI, reducing latency
+                by 40%.
+              </Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.section}>
-          <Text style={styles.jobTitle}>Software Engineer</Text>
-          <Text style={styles.company}>Innovate Solutions, Boston, MA</Text>
-          <Text style={styles.date}>June 2019 – December 2021</Text>
-          <View style={styles.listItem}>
-            <Text style={styles.bullet}>•</Text>
-            <Text style={styles.text}>
-              Developed RESTful APIs using Node.js, improving system integration
-              efficiency.
-            </Text>
-          </View>
-          <View style={styles.listItem}>
-            <Text style={styles.bullet}>•</Text>
-            <Text style={styles.text}>
-              Collaborated with UX designers to enhance user interfaces,
-              improving user satisfaction by 15%.
-            </Text>
-          </View>
-        </View>
+        ))}
       </View>
 
       {/* Education */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Education</Text>
-        <Text style={styles.jobTitle}>
-          Bachelor of Science in Computer Science
-        </Text>
-        <Text style={styles.company}>University of Example, Boston, MA</Text>
-        <Text style={styles.date}>Graduated: May 2019</Text>
+
+        {resumeData.education.map((edu, i) => (
+          <View key={i}>
+            <Text style={styles.jobTitle}>{edu.degree}</Text>
+            <Text style={styles.company}>
+              {edu.institution}, {edu.location}
+            </Text>
+            <Text style={styles.date}>
+              {edu.startDate} - {edu.endDate}
+            </Text>
+          </View>
+        ))}
       </View>
 
       {/* Skills */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Skills</Text>
-        <View style={styles.flexRow}>
-          <View style={styles.column}>
-            <View style={styles.listItem}>
-              <Text style={styles.bullet}>•</Text>
-              <Text style={styles.text}>JavaScript (React, Node.js)</Text>
-            </View>
-            <View style={styles.listItem}>
-              <Text style={styles.bullet}>•</Text>
-              <Text style={styles.text}>TypeScript</Text>
-            </View>
-            <View style={styles.listItem}>
-              <Text style={styles.bullet}>•</Text>
-              <Text style={styles.text}>HTML & CSS</Text>
-            </View>
+        {resumeData.skills.map((skill, index) => (
+          <View key={index} style={styles.listItem}>
+            <Text style={styles.bullet}>•</Text>
+            <Text style={styles.text}>{skill.name}</Text>
           </View>
-          <View style={styles.column}>
-            <View style={styles.listItem}>
-              <Text style={styles.bullet}>•</Text>
-              <Text style={styles.text}>Git & CI/CD</Text>
-            </View>
-            <View style={styles.listItem}>
-              <Text style={styles.bullet}>•</Text>
-              <Text style={styles.text}>AWS & Docker</Text>
-            </View>
-            <View style={styles.listItem}>
-              <Text style={styles.bullet}>•</Text>
-              <Text style={styles.text}>Agile Methodologies</Text>
-            </View>
-          </View>
-        </View>
+        ))}
       </View>
     </Page>
   </Document>
 );
 
-export default Template3;
+export default Template3
