@@ -7,7 +7,7 @@ export default function ResumeDownload({
 }) {
   return (
     <div className="h-full w-full z-500 bg-[#7B7B79] fixed inset-0 left-0 right-0 flex items-center justify-center">
-      <div className="max-w-[700px] bg-white relative  min-h-[450px] p-4  rounded-3xl shadow-lg">
+      <div className="max-w-[700px] bg-white relative w-[90%]  min-h-[450px] p-4  rounded-3xl shadow-lg">
         <FaTimes
           className="text-xl z-1000 text-emerald-700 cursor-pointer absolute top-5 right-10  md:text-3xl"
           onClick={() => {
