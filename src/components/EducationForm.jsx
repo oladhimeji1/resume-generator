@@ -92,7 +92,7 @@ export default function EducationForm({
                   type="text"
                   id={`degree_${index}`}
                   name={`degree_${index}`}
-                  placeholder="e.g HND"
+                  placeholder="e.g HND in Software Engineering"
                   className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
                   value={education.degree}
                   onChange={(e) =>
@@ -153,10 +153,10 @@ export default function EducationForm({
         Add
       </button>
 
-      <div className="mt-8 flex items-center gap-8">
+      <div className="mt-8 flex items-center justify-between gap-3 w-full">
         <button
           type="button"
-          className="text-blue-600 border-blue-600 border-3  bg-white py-3 px-12 cursor-pointer rounded-full mr-8 transition pointer"
+          className="text-emerald-600 border-emerald-600 border-3  bg-white py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
           onClick={() => {
             handlePrevStep();
           }}
@@ -165,7 +165,7 @@ export default function EducationForm({
         </button>
         <button
           type="button"
-          className="text-white  bg-blue-600 py-3 cursor-pointer px-12 rounded-full mr-8 transition pointer hover:bg-blue-900"
+          className="text-white  bg-emerald-600 py-3 cursor-pointer px-12 rounded-full  transition pointer hover:bg-emerald-900"
           onClick={() => {
             handleNextStep();
           }}

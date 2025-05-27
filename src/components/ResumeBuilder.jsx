@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { PDFDownloadLink } from "@react-pdf/renderer";
 import { useParams, Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -17,7 +16,7 @@ export default function ResumeBuilder() {
   const [TemplateComponent, setTemplateComponent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [isPreviewed, setIsPreviewed] = useState(false);
+  // const [isPreviewed, setIsPreviewed] = useState(false);
   // form element state
   const [step, setStep] = useState(1);
   const handleNextStep = () => {
@@ -40,13 +39,12 @@ export default function ResumeBuilder() {
       {
         jobTitle: "Software Engineer",
         company: "ABC Limited",
-        startDate: "22-04-2005",
-        endDate: "20-11-2023",
+        startDate: "2002-04-02",
+        endDate: "2023-11-20",
         location: "Northern Ireland",
         isRemote: false,
         duties: [
-          "Mentored a team of 5 junior developers, enhancing code quality and delivery speed.",
-          "Architected a  microservices-based application, improving scalability for 20,000+ users.",
+          {name: ''}
         ],
       },
     ],
@@ -71,7 +69,7 @@ export default function ResumeBuilder() {
         3: () => import("../templates/Template3"),
         4: () => import("../templates/Template4"),
         5: () => import("../templates/Template5"),
-        6: () => import("../templates/Template6.jsx"),
+        6: () => import("../templates/Template6"),
         7: () => import("../templates/Template7"),
         8: () => import("../templates/Template8"),
         9: () => import("../templates/Template9"),
@@ -170,23 +168,23 @@ export default function ResumeBuilder() {
               />
             )}
           </form>
-          <button
+          {/* <button
             className="hidden sm:block text-white bg-fuchsia-600 py-2 px-4 rounded-full mr-8 transition pointer hover:bg-fuchsia-900 fixed bottom-6 right-6"
             onClick={() => {
               setIsPreviewed(!isPreviewed);
             }}
           >
             Preview Template
-          </button>
+          </button> */}
         </div>
 
-        {isPreviewed && (
+        {/* {isPreviewed && (
           <ResumePreview
             TemplateComponent={TemplateComponent}
             resumeData={resumeData}
             setIsPreviewed={setIsPreviewed}
           />
-        )}
+        )} */}
       </section>
     </>
   );
