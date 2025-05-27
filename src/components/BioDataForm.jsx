@@ -141,7 +141,7 @@ export default function BioDataForm({
       </div>
       <button
         type="button"
-        className="text-white  bg-blue-600 py-3 cursor-pointer px-12 rounded-full mr-8 transition pointer hover:bg-blue-900"
+        className="text-white  bg-emerald-600 py-3 cursor-pointer px-12 rounded-full  transition pointer hover:bg-emerald-900"
         onClick={() => {
           handleNextStep();
         }}

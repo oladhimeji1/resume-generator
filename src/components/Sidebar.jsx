@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
-    <div className="sidebar fixed left-0 top-0 bottom-0  w-full hidden  bg-indigo-900 min-h-screen p-4 md:w-1/5 md:block">
+    <div className="sidebar fixed left-0 top-0 bottom-0  w-full hidden  bg-emerald-900 min-h-screen p-4 md:w-1/5 md:block">
       <div className="flex flex-col justify-between min-h-full">
         <div className="mb-12">
           <Link to="/" className="font-bold text-white text-xl">

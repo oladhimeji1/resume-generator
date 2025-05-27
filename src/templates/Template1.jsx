@@ -105,7 +105,7 @@ function Template1({ resumeData }) {
             {resumeData.workExperience.map((work, index) => {
               return (
                 <View
-                key={index}
+                  key={index}
                   style={{
                     marginTop: 10,
                     marginBottom: 15,
@@ -126,8 +126,10 @@ function Template1({ resumeData }) {
                         {work.jobTitle} at <Text>{work.company}</Text>
                       </Text>
                       <Text style={{ color: "#193cb8" }}>
-                        Oct. 2015 - May. 2016{" "}
+                        {work.startDate} - {work.endDate}
                       </Text>
+
+                      {work.isRemote && <Text> (Remote) </Text>}
                     </View>
 
                     <View
@@ -163,7 +165,7 @@ function Template1({ resumeData }) {
             {resumeData.education.map((education, index) => {
               return (
                 <View
-                key={index}
+                  key={index}
                   style={{
                     marginTop: 10,
                     marginBottom: 15,
@@ -182,7 +184,7 @@ function Template1({ resumeData }) {
                     >
                       <Text>{education.institution} </Text>
                       <Text style={{ color: "#193cb8" }}>
-                        May. 2027 - Current
+                        {education.startDate} - {education.endDate}
                       </Text>
                     </View>
 

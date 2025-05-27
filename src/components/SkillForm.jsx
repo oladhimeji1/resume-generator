@@ -1,7 +1,12 @@
 import { useState } from "react";
 import ResumeDownload from "./ResumeDownload";
-function SkillForm({ setResumeData, resumeData, handlePrevStep, TemplateComponent }) {
-  const [isDownloadTemplateShown, setIsDownloadTemplateShown] = useState(true);
+function SkillForm({
+  setResumeData,
+  resumeData,
+  handlePrevStep,
+  TemplateComponent,
+}) {
+  const [isDownloadTemplateShown, setIsDownloadTemplateShown] = useState(false);
   const handleSkillChange = (index, field, value) => {
     setResumeData((prevResumeData) => {
       const skill = [...prevResumeData.skills];
@@ -34,24 +39,22 @@ function SkillForm({ setResumeData, resumeData, handlePrevStep, TemplateComponen
           <div className="flex flex-col gap-2 mb-4 mt-8">
             {resumeData.skills.map((skill, index) => {
               return (
-                <>
-                  <div key={index} className="flex flex-col gap-2 mb-4">
-                    <label htmlFor={`skill${index}`} className="font-bold">
-                      SKILL {index + 1}
-                    </label>
-                    <input
-                      type="text"
-                      id={`skill${index}`}
-                      name={`skill${index}`}
-                      placeholder="e.g Proficient with Programming Languages"
-                      className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
-                      value={skill.name}
-                      onChange={(e) => {
-                        handleSkillChange(index, "name", e.target.value);
-                      }}
-                    />
-                  </div>
-                </>
+                <div key={index} className="flex flex-col gap-2 mb-4">
+                  <label htmlFor={`skill${index}`} className="font-bold">
+                    SKILL {index + 1}
+                  </label>
+                  <input
+                    type="text"
+                    id={`skill${index}`}
+                    name={`skill${index}`}
+                    placeholder="e.g Proficient with Programming Languages"
+                    className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+                    value={skill.name}
+                    onChange={(e) => {
+                      handleSkillChange(index, "name", e.target.value);
+                    }}
+                  />
+                </div>
               );
             })}
           </div>
@@ -63,10 +66,10 @@ function SkillForm({ setResumeData, resumeData, handlePrevStep, TemplateComponen
             Add skill{" "}
           </button>
 
-          <div className="mt-8 flex items-center gap-8">
+          <div className="mt-8 flex items-center justify-between gap-3 w-full">
             <button
               type="button"
-              className="text-blue-600 border-blue-600 border-3  bg-white py-3 px-12 cursor-pointer rounded-full mr-8 transition pointer"
+              className="text-emerald-600 border-emerald-600 border-3  bg-white py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
               onClick={() => {
                 handlePrevStep();
               }}
@@ -75,7 +78,7 @@ function SkillForm({ setResumeData, resumeData, handlePrevStep, TemplateComponen
             </button>
             <button
               type="button"
-              className="text-white  bg-blue-600 py-3 cursor-pointer px-12 rounded-full mr-8 transition pointer hover:bg-blue-900"
+              className="text-white  bg-emerald-600 py-3 cursor-pointer px-12 rounded-full  transition pointer hover:bg-emerald-900"
               onClick={() => {
                 setIsDownloadTemplateShown(true);
               }}
@@ -86,7 +89,13 @@ function SkillForm({ setResumeData, resumeData, handlePrevStep, TemplateComponen
         </div>
       </div>
 
-    {isDownloadTemplateShown && <ResumeDownload TemplateComponent={TemplateComponent} setIsDownloadTemplateShown={setIsDownloadTemplateShown} resumeData={resumeData}/>}
+      {isDownloadTemplateShown && (
+        <ResumeDownload
+          TemplateComponent={TemplateComponent}
+          setIsDownloadTemplateShown={setIsDownloadTemplateShown}
+          resumeData={resumeData}
+        />
+      )}
     </>
   );
 }
