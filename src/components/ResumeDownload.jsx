@@ -41,7 +41,7 @@ export default function ResumeDownload({
                     type="button"
                     className="py-4 px-12 bg-emerald-700 cursor-pointer rounded-full text-white font-bold text-xl "
                   >
-                    Download{" "}
+                    Download
                   </button>
                 </PDFDownloadLink>
               )}
