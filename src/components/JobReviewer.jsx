@@ -1,3 +1,9 @@
+import amazon from "../../public/companies/dark-logo-amazon.svg";
+import apple from "../../public/companies/dark-logo-apple.svg";
+import gsk from "../../public/companies/dark-logo-gsk.svg";
+import pwc from "../../public/companies/dark-logo-pwc.svg";
+import saintburys from "../../public/companies/dark-logo-saintburys.svg";
+
 const JobReviewer = () => {
   return (
     <div className="bg-white min-h-80 py-12 px-8 md:px-12">
@@ -44,14 +50,11 @@ const JobReviewer = () => {
           </div>
 
           <div className="flex flex-wrap gap-6 items-center justify-between">
-            <img src="/companies/dark-logo-amazon.svg" alt="Amazon logo." />
-            <img src="/companies/dark-logo-apple.svg" alt="Apple logo." />
-            <img src="/companies/dark-logo-gsk.svg" alt="Gsk logo." />
-            <img src="/companies/dark-logo-pwc.svg" alt="pwc logo." />
-            <img
-              src="/companies/dark-logo-saintburys.svg"
-              alt="Saintburys logo"
-            />
+            <img src={amazon} alt="Amazon logo." />
+            <img src={apple} alt="Apple logo." />
+            <img src={gsk} alt="Gsk logo." />
+            <img src={pwc} alt="pwc logo." />
+            <img src={saintburys} alt="Saintburys logo" />
           </div>
         </div>
       </div>

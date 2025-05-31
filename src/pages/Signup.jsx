@@ -31,7 +31,9 @@ export default function Login() {
             <Link to="/">
               <img src="/logo_1.png" width="200px" alt="logo" />
             </Link>
-            <h3 className="text-xl font-bold text-center">Create an account with us</h3>
+            <h3 className="text-xl font-bold text-center">
+              Create an account with us
+            </h3>
           </div>
 
           <div className="form-group">
@@ -88,7 +90,7 @@ export default function Login() {
               />
             </div>
 
-            <button className="mb-2 py-3 px-6 rounded-full block w-full text-center bg-[#1842da] text-white text-xl font-bold cursor-pointer">
+            <button className="mb-2 mt-5 py-3 px-6 rounded-sm block w-full text-center bg-emerald-900 text-white text-xl font-bold cursor-pointer">
               Create account
             </button>
             <p className="text-zinc-600 text-sm text-center mb-2">
@@ -96,7 +98,7 @@ export default function Login() {
               <Link className="underline text-blue-800 font-bold">
                 Terms of use
               </Link>{" "}
-              <br /> and{" "}
+              and{" "}
               <Link className="underline text-blue-800 font-bold">
                 Privacy Policy{" "}
               </Link>
