@@ -7,7 +7,7 @@ export default function Navbar() {
     setNavBarOpen(!navBarOpen);
   };
   return (
-    <nav className="bg-white h-20 shadow-md p-6 flex items-center justify-between fixed top-5 left-0 right-0 w-[90%] mx-auto rounded-full z-[99]">
+    <nav className="bg-white h-20 shadow-md p-6 mb-16 flex items-center justify-between fixed top-5 left-0 right-0 w-[90%] mx-auto rounded-full z-[99]">
       <div className="hidden md:flex space-x-10">
         {/* <Link to="/" className="hover:text-emerald-900">
           Home
@@ -80,6 +80,21 @@ export default function Navbar() {
         <Link to="/contact" className="hover:text-emerald-900">
           Contact
         </Link>
+
+        <div className="flex items-center justify-between space-x-12 sm:hidden">
+          <Link
+            to="/login"
+            className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition"
+          >
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className="p-20 bg-emerald-900 text-white rounded-full px-4 py-2 flex align-items-center justify-content-center cursor-pointer hover:bg-green-800 transition duration-300"
+          >
+            Sign Up
+          </Link>
+        </div>
       </div>
     </nav>
   );

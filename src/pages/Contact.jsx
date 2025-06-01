@@ -31,8 +31,8 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2  gap-12">
             <div className="flex flex-col gap-4 md:flex-row  justify-between p-4 flex-1 shadow-lg min-h-60">
               <div className="flex flex-col gap-4">
-                <p className="text-xl font-medium">Garki, Abuja</p>
-                <p className="text-xl font-medium">+2349130327299</p>
+                <p className="text-xl font-medium">Kubwa, Abuja</p>
+                <p className="text-xl font-medium">+2347087380348</p>
               </div>
 
               <div className="">
