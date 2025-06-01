@@ -27,24 +27,24 @@ export default function LovedInterveiwers() {
           <div>
             <img
               src={AmazonLogo}
-              className="w-1/2 sm:w-1/3"
+              className="w-3/4 sm:w-1/3"
               alt="Amazon logo"
             />
           </div>
           <div>
-            <img src={TeslaLogo} className="w-1/2 sm:w-1/3" alt="Tesla logo" />
+            <img src={TeslaLogo} className="w-3/4 sm:w-1/3" alt="Tesla logo" />
           </div>
           <div>
             <img
               src={SpotifyLogo}
-              className="w-1/2 sm:w-1/3"
+              className="w-3/4 sm:w-1/3"
               alt="Spotify logo"
             />
           </div>
           <div>
             <img
               src={GoogleLogo}
-              className="w-1/2 sm:w-1/3"
+              className="w-3/4 sm:w-1/3"
               alt="Google logo"
             />
           </div>
