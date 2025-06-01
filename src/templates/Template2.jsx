@@ -1,11 +1,4 @@
-import {
-  Document,
-  Page,
-  View,
-  Text,
-  Font,
-  StyleSheet,
-} from "@react-pdf/renderer";
+import { Document, Page, View, Text, StyleSheet } from "@react-pdf/renderer";
 
 function Template2({ resumeData }) {
   const styles = StyleSheet.create({
@@ -19,7 +12,7 @@ function Template2({ resumeData }) {
     header: {
       backgroundColor: "#f8f8f8",
       padding: 20,
-      marginBottom: 20,
+      marginBottom: 10,
       borderBottom: "2px solid #007bff",
       textAlign: "center",
     },
@@ -34,7 +27,7 @@ function Template2({ resumeData }) {
       color: "#555",
     },
     section: {
-      marginBottom: 20,
+      marginBottom: 10,
     },
     sectionTitle: {
       fontSize: 16,
@@ -44,7 +37,7 @@ function Template2({ resumeData }) {
     },
     text: {
       marginBottom: 5,
-      lineHeight: 1.5,
+      lineHeight: 1.15,
     },
     listItem: {
       marginBottom: 5,
@@ -112,15 +105,12 @@ function Template2({ resumeData }) {
               <Text style={styles.date}>
                 {experience.startDate} - {experience.endDate}
               </Text>
-              <Text style={styles.listItem}>
-                <Text style={styles.bullet}>•</Text> Architected a
-                microservices-based application, improving scalability for
-                20,000+ users.
-              </Text>
-              <Text style={styles.listItem}>
-                <Text style={styles.bullet}>•</Text> Mentored a team of 5 junior
-                developers, enhancing code quality and delivery speed.
-              </Text>
+
+              {experience.duties.map((duty, index) => (
+                <Text key={index} style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text> {duty.name}
+                </Text>
+              ))}
             </View>
           ))}
         </View>

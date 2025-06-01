@@ -115,20 +115,15 @@ const Template4 = ({ resumeData }) => (
             <Text style={styles.date}>
               {exp.startDate} – {exp.endDate}
             </Text>
-            <View style={styles.listItem}>
-              <Text style={styles.bullet}>•</Text>
-              <Text style={styles.text}>
-                Led redesign of a mobile app interface, improving user
-                engagement by 35%.
-              </Text>
-            </View>
-            <View style={styles.listItem}>
-              <Text style={styles.bullet}>•</Text>
-              <Text style={styles.text}>
-                Conducted user testing sessions, resulting in a 20% increase in
-                usability scores.
-              </Text>
-            </View>
+
+            {exp.duties.map((duty, index) => {
+              return (
+                <View key={index} style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.text}>{duty.name}</Text>
+                </View>
+              );
+            })}
           </View>
         ))}
       </View>
