@@ -1,4 +1,3 @@
-import React from "react";
 import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 
 // Define styles
@@ -11,17 +10,17 @@ const styles = StyleSheet.create({
   },
   container: { flexDirection: "row", minHeight: "100%" },
   leftColumn: {
-    width: "30%",
+    width: "40%",
     backgroundColor: "#333333",
     padding: 20,
     color: "#FFFFFF",
-    borderRight: "2px solid #FFD700", // Gold accent
+    borderRight: "2px solid #FFD700",
   },
-  rightColumn: { width: "70%", padding: 20 },
+  rightColumn: { width: "60%", padding: 20 },
   header: {
-    fontSize: 28,
+    fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 12,
+    marginBottom: 10,
     fontFamily: "Helvetica-Bold",
     color: "#FFD700",
   },
@@ -33,7 +32,8 @@ const styles = StyleSheet.create({
     borderBottom: "1px solid #FFD700",
   },
   text: { fontSize: 10, marginBottom: 5, lineHeight: 1.5, color: "#333333" },
-  section: { marginBottom: 15 },
+  textLight: { fontSize: 10, marginBottom: 5, lineHeight: 1.5, color: "#eee" },
+  section: { marginBottom: 12 },
   bullet: { flexDirection: "row", marginBottom: 5 },
   bulletPoint: { width: 10, textAlign: "center", color: "#FFFFFF" },
   skillGrid: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
@@ -47,86 +47,39 @@ const styles = StyleSheet.create({
   divider: { borderBottom: "1px solid #E0E0E0", marginVertical: 10 },
 });
 
-// Sample data
-const data = {
-  name: "Liam Carter",
-  contact: {
-    email: "liam.carter@email.com",
-    phone: "(789) 123-4567",
-    address: "654 Urban Ave, City, ST 78901",
-    linkedin: "linkedin.com/in/liamcarter",
-  },
-  skills: [
-    "Marketing Strategy",
-    "SEO",
-    "React",
-    "Python",
-    "Content Creation",
-    "Data Analysis",
-  ],
-  hobbies: ["Photography", "Cycling", "Blogging"],
-  experience: [
-    {
-      title: "Marketing Lead",
-      company: "Pulse Media",
-      dates: "Jun 2022 - Present",
-      achievements: [
-        "Developed a digital campaign that boosted brand engagement by 40%.",
-        "Led SEO initiatives, increasing organic traffic by 25%.",
-      ],
-    },
-    {
-      title: "Marketing Coordinator",
-      company: "CityVibe Agency",
-      dates: "Sep 2019 - May 2022",
-      achievements: [
-        "Managed social media accounts, growing followers by 15K.",
-        "Coordinated events, improving client satisfaction by 20%.",
-      ],
-    },
-  ],
-  education: [
-    {
-      degree: "B.A. Marketing",
-      school: "Metro University",
-      dates: "2015 - 2019",
-    },
-  ],
-};
-
 // Document component
-const Template8 = () => (
+const Template8 = ({ resumeData }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.container}>
         {/* Left Column (Sidebar) */}
         <View style={styles.leftColumn}>
-          <Text style={styles.header}>{data.name}</Text>
+          <Text style={styles.header}>
+            {resumeData.name} {resumeData.surname}
+          </Text>
           <View style={styles.section}>
             <Text style={styles.subHeader}>Contact</Text>
-            <Text style={styles.text}>{data.contact.email}</Text>
-            <Text style={styles.text}>{data.contact.phone}</Text>
-            <Text style={styles.text}>{data.contact.address}</Text>
-            <Text style={styles.text}>{data.contact.linkedin}</Text>
+            <Text style={styles.textLight}>{resumeData.email}</Text>
+            <Text style={styles.textLight}>{resumeData.phone}</Text>
+            <Text style={styles.textLight}>
+              {resumeData.city} {resumeData.country}
+            </Text>
           </View>
+
+          <View style={styles.section}>
+            <Text style={styles.subHeader}>Professional Summary</Text>
+            <Text style={styles.textLight}>{resumeData.summary}</Text>
+          </View>
+
           <View style={styles.section}>
             <Text style={styles.subHeader}>Skills</Text>
             <View style={styles.skillGrid}>
-              {data.skills.map((skill, index) => (
+              {resumeData.skills.map((skill, index) => (
                 <Text key={index} style={styles.skillItem}>
-                  {skill}
+                  {skill.name}
                 </Text>
               ))}
             </View>
-          </View>
-          <View style={styles.section}>
-            <Text style={styles.subHeader}>Hobbies</Text>
-            {data.hobbies.map((hobby, index) => (
-              <View key={index} style={styles.bullet}>
-                <Text style={styles.bulletPoint}>•</Text>
-                <Text style={styles.text}>{hobby}</Text>
-              </View>
-            ))}
           </View>
         </View>
         {/* Right Column */}
@@ -135,21 +88,23 @@ const Template8 = () => (
             <Text style={{ ...styles.subHeader, color: "#333333" }}>
               Professional Experience
             </Text>
-            {data.experience.map((job, index) => (
+            {resumeData.workExperience.map((job, index) => (
               <View key={index} style={styles.section}>
                 <Text style={styles.text}>
-                  {job.title} - {job.company}
+                  {job.jobTitle} - {job.company}
                 </Text>
-                <Text style={styles.text}>{job.dates}</Text>
-                {job.achievements.map((achievement, i) => (
+                <Text style={styles.text}>
+                  {job.startDate} - {job.endDate}
+                </Text>
+                {job.duties.map((duty, i) => (
                   <View key={i} style={styles.bullet}>
                     <Text style={{ ...styles.bulletPoint, color: "#333333" }}>
                       •
                     </Text>
-                    <Text style={styles.text}>{achievement}</Text>
+                    <Text style={styles.text}>{duty.name}</Text>
                   </View>
                 ))}
-                {index < data.experience.length - 1 && (
+                {index < resumeData.workExperience.length - 1 && (
                   <View style={styles.divider} />
                 )}
               </View>
@@ -159,11 +114,13 @@ const Template8 = () => (
             <Text style={{ ...styles.subHeader, color: "#333333" }}>
               Education
             </Text>
-            {data.education.map((edu, index) => (
+            {resumeData.education.map((edu, index) => (
               <View key={index} style={styles.section}>
                 <Text style={styles.text}>{edu.degree}</Text>
-                <Text style={styles.text}>{edu.school}</Text>
-                <Text style={styles.text}>{edu.dates}</Text>
+                <Text style={styles.text}>{edu.institution}</Text>
+                <Text style={styles.text}>
+                  {edu.startDate}- {edu.endDate}
+                </Text>
               </View>
             ))}
           </View>

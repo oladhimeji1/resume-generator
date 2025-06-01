@@ -38,6 +38,9 @@ export default function ResumeDownload({
                   className="cursor-pointer"
                 >
                   <button
+                    onClick={() => {
+                      localStorage.setItem("step", JSON.stringify(1));
+                    }}
                     type="button"
                     className="py-4 px-12 bg-emerald-700 cursor-pointer rounded-full text-white font-bold text-xl "
                   >
