@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 
 // import app routes (pages)
@@ -13,9 +13,6 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Contact from "./pages/Contact";
 function App() {
-  useEffect(() => {
-    toast.success("Welcome to Resume Wizard");
-  }, []);
   return (
     <>
       <Router>
