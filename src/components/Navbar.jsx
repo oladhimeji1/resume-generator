@@ -18,12 +18,12 @@ export default function Navbar() {
         >
           Template
         </Link>
-        <Link
+        {/* <Link
           to="/pricing"
           className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition"
         >
           Pricing
-        </Link>
+        </Link> */}
         <Link
           to="/contact"
           className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition"
@@ -67,9 +67,9 @@ export default function Navbar() {
           navBarOpen ? "-translate-y-96" : "-translate-y-0"
         } absolute bg-white   top-20 transition left-0 right-0 min-h-50 shadow-lg p-6 flex flex-col items-center justify-center space-y-4 md:hidden`}
       >
-        <Link to="/" className="hover:text-emerald-900">
+        {/* <Link to="/" className="hover:text-emerald-900">
           Home
-        </Link>
+        </Link> */}
         <Link
           to="/build-resume/resume-templates"
           className="hover:text-emerald-900"

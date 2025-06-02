@@ -1,6 +1,13 @@
+import { motion } from "framer-motion";
 const JobReviewer = () => {
   return (
-    <div className="bg-white min-h-80 py-12 px-8 md:px-12">
+    <motion.div
+      className="bg-white min-h-80 py-12 px-8 md:px-12"
+      initial={{ y: -100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1.5, ease: "easeOut" }}
+      viewport={{ once: false, amount: 0.5 }}
+    >
       <div className="max-w-7xl mx-auto w-[90%] grid grid-cols-1 items-center gap-12 md:grid-cols-2">
         <div className="flex flex-col gap-4">
           <h2 className="text-3xl font-bold md:text-4xl">
@@ -55,7 +62,7 @@ const JobReviewer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
