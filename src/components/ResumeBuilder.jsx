@@ -18,7 +18,14 @@ export default function ResumeBuilder() {
   const [error, setError] = useState(false);
   // const [isPreviewed, setIsPreviewed] = useState(false);
   // form element state
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(
+    JSON.parse(localStorage.getItem("step")) || 1
+  );
+
+  useEffect(() => {
+    localStorage.setItem("step", JSON.stringify(step));
+  }, [step]);
+
   const handleNextStep = () => {
     setStep(step + 1);
   };
@@ -26,34 +33,112 @@ export default function ResumeBuilder() {
   const handlePrevStep = () => {
     setStep(step - 1);
   };
+  // const [resumeData, setResumeData] = useState({
+  //   name: "Godstime",
+  //   surname: "Pious",
+  //   city: "Port Harcourt",
+  //   country: "Nigeria",
+  //   email: "piousgodstime3@yahoo.com",
+  //   phone: "09130327299",
+  //   summary: ` A highly resourceful, flexible, innovative project manager, possessing considerable experience of managing projects from beginning to end, defining the purpose line timeline, scope and executing the analysis before providing detail recommendations. Having an impressive track records of delivering major operational improvement and of orhchresting people, schedules and resources for optimum productivity, efficiency and quality. Keen to find a challenging position within an ambitious company where i will be able to continue to increase my managment skills.`,
+
+  //   workExperience: [
+  //     {
+  //       jobTitle: "Software Engineer",
+  //       company: "ABC Limited",
+  //       startDate: "2002-04-02",
+  //       endDate: "2023-11-20",
+  //       location: "Northern Ireland",
+  //       isRemote: false,
+  //       duties: [
+  //         {
+  //           name: "Assist in Code Debugging and improve website accessiblity by 20%",
+  //         },
+  //         {
+  //           name: "Create mockup for clients and integrated Backend functionality",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       jobTitle: "Software Engineer",
+  //       company: "ABC Limited",
+  //       startDate: "2002-04-02",
+  //       endDate: "2023-11-20",
+  //       location: "Northern Ireland",
+  //       isRemote: false,
+  //       duties: [
+  //         {
+  //           name: "Assist in Code Debugging and improve website accessiblity by 20%",
+  //         },
+  //         {
+  //           name: "Create mockup for clients and integrated Backend functionality",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  //   education: [
+  //     {
+  //       institution: "Havard University",
+  //       location: "Texas, USA",
+  //       degree: "MD in Software Engineering",
+  //       startDate: "2005-04-11",
+  //       endDate: "2009-04-15",
+  //     },
+  //     {
+  //       institution: "Havard University",
+  //       location: "Texas, USA",
+  //       degree: "MD in Software Engineering",
+  //       startDate: "2005-04-11",
+  //       endDate: "2009-04-15",
+  //     },
+  //   ],
+  //   skills: [
+  //     {
+  //       name: "JS Library: React, VueJS, Astro, JQueryt",
+  //     },
+  //     { name: "Graphics: Photoshop, Figma, CoralDraw" },
+  //     {
+  //       name: "Proficient in React and Backend Development",
+  //     },
+  //   ],
+  //   referee: [{ name: "", phone: "", location: "" }],
+  // });
   const [resumeData, setResumeData] = useState({
-    name: "Godstime",
-    surname: "Pious",
-    city: "Port Harcourt",
-    country: "Nigeria",
-    email: "piousgodstime3@yahoo.com",
-    phone: "09130327299",
-    summary: ` A highly resourceful, flexible, innovative project manager, possessing considerable experience of managing projects from beginning to end, defining the purpose line timeline, scope and executing the analysis before providing detail recommendations. Having an impressive track records of delivering major operational improvement and of orhchresting people, schedules and resources for optimum productivity, efficiency and quality. Keen to find a challenging position within an ambitious company where i will be able to continue to increase my managment skills.`,
+    name: "",
+    surname: "",
+    city: "",
+    country: "",
+    email: "",
+    phone: "",
+    summary: ``,
 
     workExperience: [
       {
-        jobTitle: "Software Engineer",
-        company: "ABC Limited",
-        startDate: "2002-04-02",
-        endDate: "2023-11-20",
-        location: "Northern Ireland",
+        jobTitle: "",
+        company: "",
+        startDate: "",
+        endDate: "",
+        location: "",
         isRemote: false,
         duties: [
-          {name: ''}
+          {
+            name: "",
+          },
         ],
       },
     ],
     education: [
-      { institution: "", location: "", degree: "", startDate: "", endDate: "" },
+      {
+        institution: "",
+        location: "",
+        degree: "",
+        startDate: "",
+        endDate: "",
+      },
     ],
     skills: [
       {
-        name: "Proficient in React and Backend Development",
+        name: "",
       },
     ],
     referee: [{ name: "", phone: "", location: "" }],

@@ -1,4 +1,3 @@
-import React from "react";
 import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 
 // Define styles
@@ -6,13 +5,13 @@ const styles = StyleSheet.create({
   page: {
     padding: 30,
     fontFamily: "Helvetica",
-    fontSize: 11,
+    fontSize: 12,
     backgroundColor: "#FFFFFF",
   },
   container: { flexDirection: "column", minHeight: "100%" },
   headerSection: {
     padding: 15,
-    marginBottom: 20,
+    marginBottom: 15,
     borderBottom: "2px solid #666666", // Gray underline
   },
   header: {
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 5,
   },
-  section: { marginBottom: 15 },
+  section: { marginBottom: 12 },
   subHeader: {
     fontSize: 14,
     fontWeight: "bold",
@@ -44,79 +43,30 @@ const styles = StyleSheet.create({
   divider: { borderBottom: "1px solid #666666", marginVertical: 10 },
 });
 
-// Sample data
-const data = {
-  name: "James Thompson",
-  contact: {
-    email: "james.thompson@email.com",
-    phone: "(789) 456-1234",
-    address: "456 Clarity St, City, ST 67890",
-    linkedin: "linkedin.com/in/jamesthompson",
-  },
-  skills: [
-    "Legal Research",
-    "Contract Drafting",
-    "Compliance",
-    "Negotiation",
-    "Public Speaking",
-    "Case Management",
-  ],
-  experience: [
-    {
-      title: "Associate Attorney",
-      company: "Thompson & Partners",
-      dates: "Jul 2020 - Present",
-      achievements: [
-        "Drafted 100+ legal documents, achieving 95% client approval rate.",
-        "Represented clients in 20+ cases, securing favorable outcomes in 85% of cases.",
-      ],
-    },
-    {
-      title: "Legal Assistant",
-      company: "City Law Firm",
-      dates: "Aug 2017 - Jun 2020",
-      achievements: [
-        "Conducted research for 50+ cases, improving case preparation efficiency by 20%.",
-        "Assisted in contract reviews, reducing errors by 15%.",
-      ],
-    },
-  ],
-  education: [
-    {
-      degree: "J.D. Law",
-      school: "Prestige Law School",
-      dates: "2014 - 2017",
-    },
-    {
-      degree: "B.A. Political Science",
-      school: "State University",
-      dates: "2010 - 2014",
-    },
-  ],
-};
-
 // Document component
-const MonochromeClarityResume = () => (
+const Template6 = ({ resumeData }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.container}>
         {/* Header Section */}
         <View style={styles.headerSection}>
-          <Text style={styles.header}>{data.name}</Text>
-          <Text style={styles.contact}>
-            {data.contact.email} | {data.contact.phone}
+          <Text style={styles.header}>
+            {resumeData.name} {resumeData.surname}
           </Text>
           <Text style={styles.contact}>
-            {data.contact.address} | {data.contact.linkedin}
+            {resumeData.email} | {resumeData.phone}
+          </Text>
+          <Text style={styles.contact}>
+            {resumeData.city} {resumeData.country}
           </Text>
         </View>
         {/* Skills Section */}
         <View style={styles.section}>
           <Text style={styles.subHeader}>Skills</Text>
           <View style={styles.skillsList}>
-            {data.skills.map((skill, index) => (
+            {resumeData.skills.map((skill, index) => (
               <Text key={index} style={styles.skillItem}>
-                ■ {skill}
+                ■ {skill.name}
               </Text>
             ))}
           </View>
@@ -124,19 +74,21 @@ const MonochromeClarityResume = () => (
         {/* Experience Section */}
         <View style={styles.section}>
           <Text style={styles.subHeader}>Professional Experience</Text>
-          {data.experience.map((job, index) => (
+          {resumeData.workExperience.map((job, index) => (
             <View key={index} style={styles.section}>
               <Text style={styles.text}>
-                {job.title} - {job.company}
+                {job.jobTitle} - {job.company}
               </Text>
-              <Text style={styles.text}>{job.dates}</Text>
-              {job.achievements.map((achievement, i) => (
+              <Text style={styles.text}>
+                {job.startDate} - {job.endDate}
+              </Text>
+              {job.duties.map((duty, i) => (
                 <View key={i} style={styles.bullet}>
                   <Text style={styles.bulletPoint}>■</Text>
-                  <Text style={styles.text}>{achievement}</Text>
+                  <Text style={styles.text}>{duty.name}</Text>
                 </View>
               ))}
-              {index < data.experience.length - 1 && (
+              {index < resumeData.workExperience.length - 1 && (
                 <View style={styles.divider} />
               )}
             </View>
@@ -145,12 +97,14 @@ const MonochromeClarityResume = () => (
         {/* Education Section */}
         <View style={styles.section}>
           <Text style={styles.subHeader}>Education</Text>
-          {data.education.map((edu, index) => (
+          {resumeData.education.map((edu, index) => (
             <View key={index} style={styles.section}>
               <Text style={styles.text}>{edu.degree}</Text>
-              <Text style={styles.text}>{edu.school}</Text>
-              <Text style={styles.text}>{edu.dates}</Text>
-              {index < data.education.length - 1 && (
+              <Text style={styles.text}>{edu.institution}</Text>
+              <Text style={styles.text}>
+                {edu.startDate} - {edu.endDate}
+              </Text>
+              {index < resumeData.education.length - 1 && (
                 <View style={styles.divider} />
               )}
             </View>
@@ -161,4 +115,4 @@ const MonochromeClarityResume = () => (
   </Document>
 );
 
-export default MonochromeClarityResume;
+export default Template6;

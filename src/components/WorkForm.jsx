@@ -8,6 +8,7 @@ export default function WorkForm({
   handleNextStep,
 }) {
   const [activeWorkDutiesIndex, setActiveWorkDutiesIndex] = useState(null);
+
   const handleWorkExperienceChange = (index, field, value) => {
     setResumeData((prevResumeData) => {
       const workExperience = [...prevResumeData.workExperience];
@@ -310,7 +311,7 @@ function WorkDuties({
         })}
         <button
           type="button"
-          className="text-white  bg-semerald-600 py-3 cursor-pointer px-12 rounded-full  transition pointer hover:bg-emerald-900"
+          className="text-white  bg-emerald-600 py-3 cursor-pointer px-12 rounded-full  transition pointer hover:bg-emerald-900"
           onClick={() => {
             handleAddWorkDuties();
           }}

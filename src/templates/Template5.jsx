@@ -103,7 +103,7 @@ const Template5 = ({ resumeData }) => (
       {/* Sidebar */}
       <View style={styles.sidebar}>
         <Text style={styles.name}>
-          {resumeData.name} {resumeData.surname}
+          {resumeData.name} <br /> {resumeData.surname}
         </Text>
         <Text style={styles.title}></Text>
 
@@ -148,13 +148,11 @@ const Template5 = ({ resumeData }) => (
               <Text style={styles.experienceCompany}>
                 {exp.company} | {exp.startDate} - {exp.endDate}
               </Text>
-              <Text style={styles.experienceDescription}>
-                - Led a team of 5 developers to build a scalable e-commerce
-                platform using React and Node.js. - Improved application
-                performance by 30% through code optimization and caching
-                strategies. - Collaborated with cross-functional teams to
-                deliver features on tight deadlines.
-              </Text>
+              {exp.duties.map((duty, i) => (
+                <Text key={i} style={styles.experienceDescription}>
+                  {duty.name}
+                </Text>
+              ))}
             </View>
           ))}
         </View>

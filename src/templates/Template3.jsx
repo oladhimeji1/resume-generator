@@ -114,20 +114,15 @@ const Template3 = ({ resumeData }) => (
             <Text style={styles.date}>
               {exp.startDate} - {exp.endDate}
             </Text>
-            <View style={styles.listItem}>
-              <Text style={styles.bullet}>•</Text>
-              <Text style={styles.text}>
-                Spearheaded development of a SaaS platform, improving user
-                retention by 25%.
-              </Text>
-            </View>
-            <View style={styles.listItem}>
-              <Text style={styles.bullet}>•</Text>
-              <Text style={styles.text}>
-                Optimized backend APIs with Python and FastAPI, reducing latency
-                by 40%.
-              </Text>
-            </View>
+
+            {exp.duties.map((duty, index) => {
+              return (
+                <View key={index} style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.text}>{duty.name}</Text>
+                </View>
+              );
+            })}
           </View>
         ))}
       </View>
@@ -163,4 +158,4 @@ const Template3 = ({ resumeData }) => (
   </Document>
 );
 
-export default Template3
+export default Template3;

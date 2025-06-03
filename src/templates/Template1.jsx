@@ -1,11 +1,4 @@
-import {
-  Document,
-  Page,
-  View,
-  Text,
-  Font,
-  StyleSheet,
-} from "@react-pdf/renderer";
+import { Document, Page, View, Text, StyleSheet } from "@react-pdf/renderer";
 
 function Template1({ resumeData }) {
   const styles = StyleSheet.create({
@@ -21,7 +14,7 @@ function Template1({ resumeData }) {
     },
 
     section: {
-      marginBottom: 25,
+      marginBottom: 10,
       display: "block",
     },
     sectionTitle: {
@@ -108,7 +101,7 @@ function Template1({ resumeData }) {
                   key={index}
                   style={{
                     marginTop: 10,
-                    marginBottom: 15,
+                    marginBottom: 8,
                     display: "flex",
                     justifyContent: "space-between",
                   }}
@@ -139,8 +132,9 @@ function Template1({ resumeData }) {
                         gap: "2px",
                       }}
                     >
-                      <Text>Operate and maintain information system </Text>
-                      <Text>Facilitating system utilization </Text>
+                      {work.duties.map((duty, index) => (
+                        <Text key={index}> {duty.name} </Text>
+                      ))}
                     </View>
                   </View>
                   <View>
@@ -168,7 +162,7 @@ function Template1({ resumeData }) {
                   key={index}
                   style={{
                     marginTop: 10,
-                    marginBottom: 15,
+                    marginBottom: 8,
                     display: "flex",
                     justifyContent: "space-between",
                   }}
