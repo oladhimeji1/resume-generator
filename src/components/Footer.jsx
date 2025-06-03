@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import Container from "./container";
 
 const Footer = () => {
   return (
-    <div className="min-h-50 p-8 bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto w-[95%]">
+    <div className="min-h-50 py-8 bg-gray-900 text-white">
+      <Container>
+      <div className="max-w-full mx-auto w-full">
         <div className="grid grid-cols-2 justify-between gap-8 items-start">
           <div className="flex flex-col gap-10">
             <img src="/logo_1.png" alt="" width={250} />
@@ -29,6 +31,7 @@ const Footer = () => {
           &copy; {new Date().getFullYear()}, ResumeWizard. All right reserved.
         </p>
       </div>
+      </Container>
     </div>
   );
 };

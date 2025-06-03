@@ -3,11 +3,13 @@ import apple from "../../public/companies/dark-logo-apple.svg";
 import gsk from "../../public/companies/dark-logo-gsk.svg";
 import pwc from "../../public/companies/dark-logo-pwc.svg";
 import saintburys from "../../public/companies/dark-logo-saintburys.svg";
+import Container from "./container";
 
 const JobReviewer = () => {
   return (
     <div className="bg-white min-h-80 py-12 px-8 md:px-12">
-      <div className="max-w-7xl mx-auto w-[90%] grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+    <Container>
+      <div className="max-w-full mx-auto w-full grid grid-cols-1 items-center gap-12 md:grid-cols-2">
         <div className="flex flex-col gap-4">
           <h2 className="text-3xl font-bold md:text-4xl">
             Trusted by recruiters and job-seekers around the world.
@@ -21,7 +23,8 @@ const JobReviewer = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 md:grid-cols-4 mb-12">
+        {/* <div className="grid grid-cols-3 gap-4 md:grid-cols-4 mb-12"> */}
+        <div className="flex justify-center items-center gap-4 flex-wrap mb-12">
           <img src="/reviewers/grid1.png" alt="" />
           <img src="/reviewers/grid2.png" alt="" />
           <img src="/reviewers/grid3.png" alt="" />
@@ -40,11 +43,11 @@ const JobReviewer = () => {
       <div className="max-w-7xl mx-auto w-[90%]">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col items-center gap-4">
-            <h3 className="text-2xl font-bold text-emerald-900">
-              Our customers were hired by*:
+            <h3 className="text-lg font-bold text-emerald-900">
+              Our customers were hired by
             </h3>
 
-            <p className="text-xl text-zinc-700">
+            <p className="text-sm text-zinc-700">
               *ResumeWizard is not affiliated to those companies
             </p>
           </div>
@@ -58,6 +61,7 @@ const JobReviewer = () => {
           </div>
         </div>
       </div>
+    </Container>
     </div>
   );
 };

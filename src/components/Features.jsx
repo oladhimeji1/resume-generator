@@ -1,4 +1,5 @@
 import { FaFileAlt, FaColumns, FaPalette } from "react-icons/fa";
+import Container from "./container";
 
 const Features = () => {
   const features = [
@@ -23,7 +24,8 @@ const Features = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
+    <Container>
+    <div className="max-full mx-auto py-12 grid md:grid-cols-3 gap-8">
       {features.map((feature, index) => (
         <div
           key={index}
@@ -35,6 +37,7 @@ const Features = () => {
         </div>
       ))}
     </div>
+    </Container>
   );
 };
 
