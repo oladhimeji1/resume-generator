@@ -62,12 +62,12 @@ export default function Navbar() {
           </div>
         </div>
 
-        <Link
+        {/* <Link
           to="/pricing"
           className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition"
         >
           Pricing
-        </Link>
+        </Link> */}
       </div>
 
       {/* Logo */}
