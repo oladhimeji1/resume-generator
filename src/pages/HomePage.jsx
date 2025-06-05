@@ -8,6 +8,7 @@ import JobReviewer from "../components/JobReviewer";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
 import FAQ from "./Faq";
+import PricingPage from "../components/Pricing";
 export default function HomePage() {
   return (
     <>
@@ -21,6 +22,7 @@ export default function HomePage() {
         <CvReview />
         <JobReviewer />
         <Testimonials />
+        <PricingPage />
         <FAQ />
       </main>
 

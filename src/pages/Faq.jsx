@@ -50,7 +50,7 @@ export default function FAQ() {
           >
             <button
               onClick={() => toggle(index)}
-              className="text-left w-full text-xl font-semibold hover:text-blue-700 transition-colors"
+              className="text-left w-full text-xl font-semibold hover:text-emerald-700 transition-colors cursor-pointer"
             >
               {faq.question}
             </button>
