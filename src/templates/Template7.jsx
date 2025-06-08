@@ -83,6 +83,13 @@ const Template7 = ({ resumeData }) => (
         {/* Right Column */}
         <View style={styles.rightColumn}>
           <View style={styles.section}>
+            <Text style={styles.subHeader}>Professional Summary</Text>
+
+            <Text style={styles.text}>{resumeData.summary}</Text>
+            <View style={styles.divider} />
+          </View>
+
+          <View style={styles.section}>
             <Text style={styles.subHeader}>Professional Experience</Text>
             {resumeData.workExperience.map((job, index) => (
               <View key={index} style={styles.section}>

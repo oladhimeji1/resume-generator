@@ -60,6 +60,12 @@ const Template6 = ({ resumeData }) => (
             {resumeData.city} {resumeData.country}
           </Text>
         </View>
+
+        <View style={styles.section}>
+            <Text style={styles.text}>
+                {resumeData.summary}
+              </Text>
+        </View>
         {/* Skills Section */}
         <View style={styles.section}>
           <Text style={styles.subHeader}>Skills</Text>
