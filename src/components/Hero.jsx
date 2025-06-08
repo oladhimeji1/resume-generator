@@ -3,6 +3,7 @@ import HeroImg from "../assets/images/hero-img.webp";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import Container from "./container";
 
 export default function Hero() {
   var settings = {
@@ -14,12 +15,12 @@ export default function Hero() {
     autoplay: true,
   };
   return (
-    <>
+    <Container>
       <Slider {...settings}>
         <div>
           <section
             id="hero"
-            className="flex flex-col-reverse mt-12 space-y-12 items-center justify-between min-h-screen mx-auto w-[90%] lg:flex-row"
+            className="flex flex-col-reverse space-y-12 items-center justify-between min-h-screen mx-auto w-full lg:flex-row"
           >
             <div className="flex flex-col space-y-8 items-center justify-center lg:items-start lg:w-1/2 ">
               <h1 className="text-3xl font-bold text-center mb-8 lg:text-left sm:text-5xl leading-normal text-zinc-800">
@@ -54,7 +55,7 @@ export default function Hero() {
         <div>
           <section
             id="hero"
-            className="flex flex-col-reverse mt-12 space-y-12 items-center justify-between min-h-screen mx-auto w-[90%] lg:flex-row"
+            className="flex flex-col-reverse space-y-12 items-center justify-between min-h-screen mx-auto w-full lg:flex-row"
           >
             <div>
               <img
@@ -113,6 +114,6 @@ export default function Hero() {
         <img src={HeroImg} alt="A simple resume template design with a simple face" loading='eager' className="sm:w-lg" />
       </div>
     </section> */}
-    </>
+    </Container>
   );
 }

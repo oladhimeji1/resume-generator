@@ -3,10 +3,12 @@ import { motion } from "framer-motion";
 import BagIcon from "../assets/images/svg/bag.svg";
 import CameraIcon from "../assets/images/svg/camera.svg";
 import TimerIcon from "../assets/images/svg/timer.svg";
+import Container from "./container";
 
 export default function CoreSteps() {
   return (
-    <section className="mx-auto max-w-7xl flex flex-col justify-center p-6">
+    <Container>
+    <section className="mx-auto max-w-full flex flex-col justify-center py-6">
       <div className="flex justify-between items-center flex-col max-w-7xl gap-5 mx-auto mb-18">
         <h2 className="text-2xl sm:text-4xl text-center font-bold">
           Create a Resume that get results
@@ -67,5 +69,6 @@ export default function CoreSteps() {
         </motion.div>
       </div>
     </section>
+    </Container>
   );
 }
