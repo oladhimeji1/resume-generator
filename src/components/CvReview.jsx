@@ -1,6 +1,7 @@
 import CVReviewImg from "../assets/images/svg/cv-review.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Container from "./container";
 
 export default function CvReview() {
   const handleAlert = () => {
@@ -13,8 +14,8 @@ export default function CvReview() {
     });
   };
   return (
-    <>
-      <section className="max-w-6xl mx-auto mt-24 w-[90%] p-6 mb-12 rounded-lg">
+    <Container>
+      <section className="max-w-full mx-auto mt-24 w-full py-6 mb-12 rounded-lg">
         <div className="flex flex-col gap-12 text-center  sm:text-left lg:flex-row">
           <div className="lg:flex-1/2">
             <div>
@@ -68,6 +69,6 @@ export default function CvReview() {
           </div>
         </div>
       </section>
-    </>
+    </Container>
   );
 }

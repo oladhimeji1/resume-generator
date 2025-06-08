@@ -1,4 +1,5 @@
 import { FaFileAlt, FaColumns, FaPalette } from "react-icons/fa";
+import Container from "./container";
 
 import { motion } from "framer-motion";
 const Features = () => {
@@ -24,7 +25,8 @@ const Features = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
+    <Container>
+    <div className="max-full mx-auto py-12 grid md:grid-cols-3 gap-8">
       {features.map((feature, index) => (
         <motion.div
           initial={{ x: -100, opacity: 0 }}
@@ -40,6 +42,7 @@ const Features = () => {
         </motion.div>
       ))}
     </div>
+    </Container>
   );
 };
 

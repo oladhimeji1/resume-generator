@@ -3,6 +3,7 @@ import GoogleLogo from "../assets/images/google.webp";
 import SpotifyLogo from "../assets/images/spotify.webp";
 import TeslaLogo from "../assets/images/tesla.webp";
 import Slider from "react-slick";
+import Container from "./container";
 
 export default function LovedInterveiwers() {
   const settings = {
@@ -14,11 +15,12 @@ export default function LovedInterveiwers() {
     speed: 2000,
     autoplaySpeed: 2000,
     cssEase: "linear",
-    arrow: false,
+    arrows: false,
     rtl: true,
   };
   return (
-    <section className="max-w-7xl mx-auto p-6">
+    <Container>
+    <section className="w-full mx-auto py-6">
       {/* <h2 className="text-center mb-12 font-bol text-emerald-900 -tracking-tight">
         Loved by Interviewers at
       </h2> */}
@@ -51,5 +53,6 @@ export default function LovedInterveiwers() {
         </Slider>
       </div>
     </section>
+    </Container>
   );
 }
