@@ -7,43 +7,43 @@ const templates = [
   },
   {
     id: 2,
-    image: "/templates-img/cv-expressive.webp",
+    image: "/templates-img/Resume2.png",
 
     path: "/src/templates/Template2",
   },
   {
     id: 3,
-    image: "/templates-img/cv-distinct.webp",
+    image: "/templates-img/Resume3.png",
     path: "/src/templates/Template3",
   },
   {
     id: 4,
-    image: "/templates-img/cv1.webp",
-    path: "/src/templates/Template4",
+    image: "/templates-img/Resume4.png",
+    path: "/src/templates/Resume4",
   },
   {
     id: 5,
-    image: "/templates-img/cv4.webp",
-    path: "/src/templates/Template5",
+    image: "/templates-img/Resume5.png",
+    path: "/src/templates/Resume5",
   },
   {
     id: 6,
-    image: "/templates-img/cv5.webp",
+    image: "/templates-img/Resume6.png",
     path: "/src/templates/Template6",
   },
   {
     id: 7,
-    image: "/templates-img/cv7.webp",
+    image: "/templates-img/Resume7.png",
     path: "/src/templates/Template7",
   },
   {
     id: 8,
-    image: "/templates-img/cv14.webp",
+    image: "/templates-img/Resume8.png",
     path: "/src/templates/Template8",
   },
   {
     id: 9,
-    image: "/templates-img/cv20.webp",
+    image: "/templates-img/Resume9.png",
     path: "/src/templates/Template9",
   },
 ];

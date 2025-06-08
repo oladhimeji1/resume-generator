@@ -115,10 +115,13 @@ export default function Navbar() {
           navBarOpen ? "-translate-y-96" : "-translate-y-0"
         } absolute bg-white top-20 transition-transform duration-300 left-0 right-0 min-h-50 shadow-lg p-6 flex flex-col items-center justify-center space-y-4 md:hidden`}
       >
-        <Link to="/" className="hover:text-emerald-900">
+        {/* <Link to="/" className="hover:text-emerald-900">
           Home
-        </Link>
-        <Link to="/ResumeTemplates" className="hover:text-emerald-900">
+        </Link> */}
+        <Link
+          to="/build-resume/resume-templates"
+          className="hover:text-emerald-900"
+        >
           Template
         </Link>
 

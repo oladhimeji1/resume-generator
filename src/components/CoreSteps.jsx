@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion";
 import BagIcon from "../assets/images/svg/bag.svg";
 import CameraIcon from "../assets/images/svg/camera.svg";
 import TimerIcon from "../assets/images/svg/timer.svg";
@@ -21,16 +21,28 @@ export default function CoreSteps() {
         </Link>
       </div>
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-        <div className="flex flex-col gap-3">
+        <motion.div
+          className="flex flex-col gap-3"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.5 }}
+        >
           <img src={BagIcon} alt="bag icon" width="48" />
           <h3 className="font-bold text-xl">Recruiter-Approved Resume</h3>
           <p className="font-light">
             We work with recruiters to design resume templates that format
             automatically.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col gap-3">
+        <motion.div
+          className="flex flex-col gap-3"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.5 }}
+        >
           <img src={TimerIcon} alt="bag icon" width="48" />
           <h3 className="font-bold text-xl">
             Finish Your Resume in 15 Minutes
@@ -39,16 +51,22 @@ export default function CoreSteps() {
             Resume Now helps you tackle your work experience by reminding you
             what you did at your job.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col gap-3">
+        <motion.div
+          className="flex flex-col gap-3"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.5 }}
+        >
           <img src={CameraIcon} alt="bag icon" width="48" />
           <h3 className="font-bold text-xl">Land an Interview</h3>
           <p className="font-light">
             We suggest the skills you should add. It helped over a million
             people get interviews.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
     </Container>
