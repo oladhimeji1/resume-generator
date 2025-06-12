@@ -20,10 +20,12 @@ export default function HomePage() {
         <Features />
         <CoreSteps />
         <CvReview />
+        
         <JobReviewer />
         <Testimonials />
         <PricingPage />
         <FAQ />
+        {/* <Ads /> */}
       </main>
 
       <footer>
