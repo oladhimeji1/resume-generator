@@ -93,14 +93,14 @@ export default function WorkForm({
                   )}
                   <div className="flex flex-col gap-2 mb-4">
                     <label htmlFor={`jobTitle_${index}`} className="font-bold">
-                      TITLE *
+                      Title *
                     </label>
                     <input
                       type="text"
                       id={`jobTitle_${index}`}
                       name={`jobTitle_${index}`}
                       placeholder="e.g Sales Manager"
-                      className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+                      className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
                       value={experience.jobTitle}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -113,14 +113,14 @@ export default function WorkForm({
                   </div>
                   <div className="flex flex-col gap-2 mb-4">
                     <label htmlFor={`employer_${index}`} className="font-bold">
-                      EMPLOYER *
+                      Employer *
                     </label>
                     <input
                       type="text"
                       id={`employer_${index}`}
                       name={`employer_${index}`}
                       placeholder="e.g KondiPress LLC"
-                      className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+                      className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
                       value={experience.company}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -133,14 +133,14 @@ export default function WorkForm({
                   </div>
                   <div className="flex flex-col gap-2 mb-4">
                     <label htmlFor={`location_${index}`} className="font-bold">
-                      LOCATION *
+                      Location *
                     </label>
                     <input
                       type="text"
                       id={`location_${index}`}
                       name={`location_${index}`}
                       placeholder="e.g Kano, Nigeria"
-                      className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
+                      className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
                       value={experience.location}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -177,14 +177,14 @@ export default function WorkForm({
                   <div></div>
                   <div className="flex flex-col gap-2 mb-4">
                     <label htmlFor={`startdate_${index}`} className="font-bold">
-                      START DATE *
+                      Start Date *
                     </label>
                     <input
                       type="date"
                       id={`startdate_${index}`}
                       name={`startdate_${index}`}
                       placeholder="e.g GtechCorporation"
-                      className="border border-slate-400 bg-white py-2 px-4 focus:outline-none block w-full"
+                      className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none block w-full"
                       value={experience.startDate}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -197,14 +197,14 @@ export default function WorkForm({
                   </div>
                   <div className="flex flex-col gap-2 mb-4">
                     <label htmlFor={`enddate_${index}`} className="font-bold">
-                      END DATE *
+                      End Date *
                     </label>
                     <input
                       type="date"
                       id={`enddate_${index}`}
                       name={`enddate_${index}`}
                       placeholder="e.g GtechCorporation"
-                      className="border border-slate-400 bg-white py-2 px-4 focus:outline-none w-full block"
+                      className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none w-full block"
                       value={experience.endDate}
                       onChange={(e) =>
                         handleWorkExperienceChange(

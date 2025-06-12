@@ -3,6 +3,8 @@ import Template from "../components/Template";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import templates from "../data.js";
+import Container from "../components/container.jsx";
+import Navbar from "../components/Navbar.jsx";
 
 export default function ResumeTemplates() {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
@@ -17,12 +19,14 @@ export default function ResumeTemplates() {
     }
   }, [selectedTemplate]);
   return (
-    <section className="min-h-screen p-2 relative">
-      <div className="mb-12">
-        <Link to="/" className="font-bold text-cyan-950 text-xl">
+    <Container>
+    <section className="min-h-screen pt-2 relative">
+      <div className="h-34">
+        {/* <Link to="/" className="font-bold text-cyan-950 text-xl">
           Resume Wizard
-        </Link>
+        </Link> */}
       </div>
+      <Navbar />
 
       <div className="flex flex-col gap-2 items-center text-center ">
         <h2 className="text-3xl font-bold text-cyan-900">
@@ -33,7 +37,7 @@ export default function ResumeTemplates() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 justify-center gap-3 md:grid-cols-2 lg:grid-cols-3 mt-10 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 justify-center gap-3 md:grid-cols-2 lg:grid-cols-3 mt-10 max-w-full mx-auto">
         {templates.map((template) => {
           return (
             <Template
@@ -58,7 +62,7 @@ export default function ResumeTemplates() {
               to={`/build-resume/resume-builder/${selectedTemplate.id}`}
               className="pointer"
             >
-              <button className="text-white bg-fuchsia-600 py-2 px-4 rounded-full transition pointer hover:bg-fuchsia-900">
+              <button className="text-white bg-fuchsia-600 py-2 px-4 rounded-full transition pointer hover:bg-fuchsia-900 cursor-pointer">
                 Use this template
               </button>
             </Link>
@@ -66,5 +70,6 @@ export default function ResumeTemplates() {
         </div>
       </div>
     </section>
+    </Container>
   );
 }

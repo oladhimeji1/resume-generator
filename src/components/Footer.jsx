@@ -73,7 +73,7 @@ const Footer = () => {
 
       {/* Bottom Text */}
       <div className="text-center text-xs mt-10 border-t border-gray-700 pt-6">
-        &copy; {new Date().getFullYear()} Skipmatrix. All rights reserved.
+        &copy; {new Date().getFullYear()} Intelligentcv247. All rights reserved.
       </div>
     </footer>
   );

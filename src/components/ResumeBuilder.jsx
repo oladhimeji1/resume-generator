@@ -204,12 +204,13 @@ export default function ResumeBuilder() {
         <Sidebar />
         <div className="flex-1 relative px-4 lg:ml-70  md:ml-50">
           <div className="flex gap-4 items-center mb-8 p-4">
-            <FaArrowLeft className="text-blue-500" />
             <Link
               to="/build-resume/resume-templates"
-              className="underline text-blue-500 font-bold"
+              className="text-blue-500 font-bold flex justify-center items-center gap-2 hover:text-pink-300"
             >
-              Change Template
+            <FaArrowLeft className="text-blue-500 hover:text-pink-300" />
+            <span>Change Template</span>
+              
             </Link>
           </div>
           <form className="mb-4">
