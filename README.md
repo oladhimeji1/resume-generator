@@ -1,12 +1,86 @@
-# React + Vite
+# ✨ Resume Wizard ✨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Create stunning resumes in minutes! 🚀 Our intuitive React-based resume builder helps you craft professional CVs that get you noticed. Choose from a variety of templates and customize your resume to perfection. 🌟
 
-Currently, two official plugins are available:
+## 💻 Usage
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Building Your Resume
 
-## Expanding the ESLint configuration
+1.  Navigate to the `/build-resume` path.
+2.  Select a template that fits your style.
+3.  Fill out the forms with your information.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<details>
+<summary><b>Detailed Instructions</b></summary>
+
+- **Bio Data Form**: Enter your personal details like name, contact information, and a brief summary.
+  <img src="https://via.placeholder.com/400x200" alt="Bio Data Form" width="400"/>
+- **Work Experience Form**: Add your previous job experiences, including job title, company, dates, and responsibilities.
+  <img src="https://via.placeholder.com/400x200" alt="Work Experience Form" width="400"/>
+- **Education Form**: Input your educational background, including institution, degree, and dates of attendance.
+  <img src="https://via.placeholder.com/400x200" alt="Education Form" width="400"/>
+- **Skills Form**: List your key skills that highlight your expertise.
+  <img src="https://via.placeholder.com/400x200" alt="Skills Form" width="400"/>
+
+</details>
+
+### Example Code Snippet
+
+Here's how to import and use the `BioDataForm` component:
+
+```jsx
+import BioDataForm from "./components/BioDataForm";
+
+function ResumeBuilder() {
+  return (
+    <div>
+      <BioDataForm />
+    </div>
+  );
+}
+```
+
+## ⚙️ Features
+
+- 🎨 **Template Selection**: Choose from a variety of professionally designed resume templates.
+- 📝 **Easy Form Filling**: Simple and intuitive forms to input your personal and professional information.
+- 💾 **Downloadable PDFs**: Generate and download your resume in PDF format for easy sharing.
+- ✨ **Real-time Preview**: See a live preview of your resume as you fill out the forms.
+
+## 🛠️ Technologies Used
+
+| Technology          | Link                                                                                   |
+| :------------------ | :------------------------------------------------------------------------------------- |
+| React               | [https://react.dev/](https://react.dev/)                                               |
+| React Router        | [https://reactrouter.com/en/main](https://reactrouter.com/en/main)                     |
+| Tailwind CSS        | [https://tailwindcss.com/](https://tailwindcss.com/)                                   |
+| React Hook Form     | [https://react-hook-form.com/](https://react-hook-form.com/)                           |
+| Yup                 | [https://github.com/jquense/yup](https://github.com/jquense/yup)                       |
+| @react-pdf/renderer | [https://react-pdf.org/](https://react-pdf.org/)                                       |
+| Framer Motion       | [https://www.framer.com/motion/](https://www.framer.com/motion/)                       |
+| React Toastify      | [https://github.com/fkhadra/react-toastify](https://github.com/fkhadra/react-toastify) |
+| Slick Carousel      | [https://kenwheeler.github.io/slick/](https://kenwheeler.github.io/slick/)             |
+| Vercel              | [https://vercel.com/](https://vercel.com/)                                             |
+
+## 🤝 Contributing
+
+We welcome contributions to the Resume Wizard project! 🎉
+
+- Fork the repository.
+- Create a new branch for your feature or bug fix.
+- Submit a pull request with a clear description of your changes.
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## 🧑‍💻 Author Info
+
+- **Godstime Olademeji** - [GitHub](https://github.com/yourGitHubUsername) | [Twitter](https://twitter.com/yourTwitterHandle) | [LinkedIn](https://linkedin.com/in/yourLinkedInProfile)
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![React](https://img.shields.io/badge/React-19.0.0-blue)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-4.0-brightgreen)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.0-blue)](https://tailwindcss.com/)
+
+[![Readme was generated by Dokugen](https://img.shields.io/badge/Readme%20was%20generated%20by-Dokugen-brightgreen)](https://www.npmjs.com/package/dokugen)

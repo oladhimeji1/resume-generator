@@ -145,7 +145,6 @@ function Template1({ resumeData }) {
             })}
           </View>
         </View>
-
         {/* {Education Data} */}
         <View style={styles.section}>
           <View

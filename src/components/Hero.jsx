@@ -68,14 +68,12 @@ export default function Hero() {
 
             <div className="flex flex-col space-y-8 items-center justify-center lg:items-start lg:w-1/2 ">
               <h1 className="text-3xl font-bold text-center mb-8 lg:text-left sm:text-5xl leading-normal text-zinc-800">
-                Make your professional resume{" "}
+                Make a Professional Resume that get your noticed{" "}
                 <span className="text-emerald-900">in minutes</span>
               </h1>
               <p className="text-center text-bold  lg:text-left text-lg text-zinc-600">
-                Build a professional resume that opens doors to new
-                opportunities. Graft a resumse with us that stands out from the
-                crowd, get noticed by employers with a resume that highlights
-                your strengths.
+                Get noticed by top employers with a Resume that tells your
+                unique story and showcases your works and achievements.
               </p>
 
               <Link

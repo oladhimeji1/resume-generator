@@ -1,6 +1,7 @@
 import { FaFileAlt, FaColumns, FaPalette } from "react-icons/fa";
 import Container from "./container";
 
+import { motion } from "framer-motion";
 const Features = () => {
   const features = [
     {
@@ -27,14 +28,18 @@ const Features = () => {
     <Container>
     <div className="max-full mx-auto py-12 grid md:grid-cols-3 gap-8">
       {features.map((feature, index) => (
-        <div
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.5 }}
           key={index}
           className="bg-white shadow-md rounded-2xl p-6 flex flex-col items-start gap-4 hover:shadow-lg transition"
         >
           <div className="bg-gray-100 p-3 rounded-full">{feature.icon}</div>
           <h3 className="text-xl font-semibold">{feature.title}</h3>
           <p className="text-gray-600 text-sm">{feature.description}</p>
-        </div>
+        </motion.div>
       ))}
     </div>
     </Container>
