@@ -26,6 +26,10 @@ export default function ResumeBuilder() {
     localStorage.setItem("step", JSON.stringify(step));
   }, [step]);
 
+  const handleStep = (step) => {
+    setStep(step || 1);
+  }
+
   const handleNextStep = () => {
     setStep(step + 1);
   };
@@ -34,72 +38,57 @@ export default function ResumeBuilder() {
     setStep(step - 1);
   };
   const [resumeData, setResumeData] = useState({
-    name: "Godstime",
-    surname: "Pious",
-    city: "Port Harcourt",
-    country: "Nigeria",
-    email: "piousgodstime3@yahoo.com",
-    phone: "09130327299",
-    summary: ` A highly resourceful, flexible, innovative project manager, possessing considerable experience of managing projects from beginning to end, defining the purpose line timeline, scope and executing the analysis before providing detail recommendations. Having an impressive track records of delivering major operational improvement and of orhchresting people, schedules and resources for optimum productivity, efficiency and quality. Keen to find a challenging position within an ambitious company where i will be able to continue to increase my managment skills.`,
+    name: "",
+    surname: "",
+    city: "",
+    country: "",
+    email: "",
+    phone: "",
+    summary: ``,
 
     workExperience: [
       {
-        jobTitle: "Software Engineer",
-        company: "ABC Limited",
-        startDate: "2002-04-02",
-        endDate: "2023-11-20",
-        location: "Northern Ireland",
+        jobTitle: "",
+        company: "",
+        startDate: "",
+        endDate: "",
+        location: "",
         isRemote: false,
         duties: [
           {
-            name: "Assist in Code Debugging and improve website accessiblity by 20%",
+            name: "",
           },
           {
-            name: "Create mockup for clients and integrated Backend functionality",
+            name: "",
           },
         ],
       },
-      {
-        jobTitle: "Software Engineer",
-        company: "ABC Limited",
-        startDate: "2002-04-02",
-        endDate: "2023-11-20",
-        location: "Northern Ireland",
-        isRemote: false,
-        duties: [
-          {
-            name: "Assist in Code Debugging and improve website accessiblity by 20%",
-          },
-          {
-            name: "Create mockup for clients and integrated Backend functionality",
-          },
-        ],
-      },
+      
     ],
     education: [
       {
-        institution: "Havard University",
-        location: "Texas, USA",
-        degree: "MD in Software Engineering",
-        startDate: "2005-04-11",
-        endDate: "2009-04-15",
+        institution: "",
+        location: "",
+        degree: "",
+        startDate: "",
+        endDate: "",
       },
-      {
-        institution: "Havard University",
-        location: "Texas, USA",
-        degree: "MD in Software Engineering",
-        startDate: "2005-04-11",
-        endDate: "2009-04-15",
-      },
+      // {
+      //   institution: "",
+      //   location: "",
+      //   degree: "",
+      //   startDate: "",
+      //   endDate: "",
+      // },
     ],
     skills: [
       {
-        name: "JS Library: React, VueJS, Astro, JQueryt",
+        name: "",
       },
-      { name: "Graphics: Photoshop, Figma, CoralDraw" },
-      {
-        name: "Proficient in React and Backend Development",
-      },
+      // { name: "" },
+      // {
+      //   name: "",
+      // },
     ],
     referee: [{ name: "", phone: "", location: "" }],
   });
@@ -201,8 +190,8 @@ export default function ResumeBuilder() {
 
   return (
     <>
-      <section className="min-h-screen p-2 sm:p-0 flex flex-col md:flex-row gap-2 ">
-        <Sidebar />
+      <section className="min-h-screen p-2 sm:p-0 flex flex-col md:flex-row gap-2 bg-[#F4F5FB]">
+        <Sidebar handleStep={handleStep} step={step} />
         <div className="flex-1 relative px-4 lg:ml-70  md:ml-50">
           <div className="flex gap-4 items-center mb-8 p-4">
             <Link

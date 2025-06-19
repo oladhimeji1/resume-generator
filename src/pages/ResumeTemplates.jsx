@@ -8,14 +8,16 @@ import Navbar from "../components/Navbar.jsx";
 
 export default function ResumeTemplates() {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [templateId, setTemplateId] = useState(null);
   
-  const handleTemplateSelect = (template) => {
+  const handleTemplateSelect = (template, id) => {
     setSelectedTemplate(template);
+    setTemplateId(id);
   };
 
   useEffect(() => {
     if (selectedTemplate) {
-      toast.success("Template Selected");
+      toast.success(`Template ${templateId} Selected`);
     }
   }, [selectedTemplate]);
   return (
@@ -33,7 +35,7 @@ export default function ResumeTemplates() {
           Choose from our resume templates
         </h2>
         <p className="text-zinc-700">
-          Be sure to make a right choice, there is no going back
+          You can always change the template later in the resume builder.
         </p>
       </div>
 
@@ -55,7 +57,7 @@ export default function ResumeTemplates() {
       <div className="shadow-2xl shadow-zinc-700 fixed bottom-0 left-0 right-0 h-18 px-12 bg-white">
         <div className="flex gap-4 items-center h-full justify-end">
           <button className="text-cyan-950 font-bold underline ">
-            Choose later
+            Generate with our AI
           </button>
           {selectedTemplate && (
             <Link
@@ -63,7 +65,7 @@ export default function ResumeTemplates() {
               className="pointer"
             >
               <button className="text-white bg-fuchsia-600 py-2 px-4 rounded-full transition pointer hover:bg-fuchsia-900 cursor-pointer">
-                Use this template
+                Use template {templateId}
               </button>
             </Link>
           )}
