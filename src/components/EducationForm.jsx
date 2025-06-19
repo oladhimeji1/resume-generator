@@ -1,3 +1,5 @@
+import { FaArrowLeft, FaArrowRight, FaPlus } from "react-icons/fa";
+
 export default function EducationForm({
   resumeData,
   setResumeData,
@@ -34,13 +36,13 @@ export default function EducationForm({
             Tell us about your education
           </h1>
 
-          <p className="text-xl text-zinc-700">
+          <p className="text-md text-zinc-700">
             Enter your graduation experience so far, even if you are current
             student or did not graduate
           </p>
         </div>
 
-        <p className="text-indigo-900 font-extrabold mb-8 text-sm">
+        <p className="text-red-500 font-medium mb-8 text-sm">
           * Indicate a required field
         </p>
       </div>
@@ -48,9 +50,12 @@ export default function EducationForm({
       <div>
         {resumeData.education.map((education, index) => {
           return (
-            <div key={index} className="grid grid-cols-1  md:grid-cols-2 gap-4">
+            <div key={index} className="grid grid-cols-1 mb-6 md:grid-cols-2 gap-4">
               <div className="flex flex-col gap-2 mb-4">
-                <label htmlFor={`institution_${index}`} className="font-semibold">
+                <label
+                  htmlFor={`institution_${index}`}
+                  className="font-semibold"
+                >
                   Institution
                 </label>
                 <input
@@ -58,7 +63,7 @@ export default function EducationForm({
                   id={`institution_${index}`}
                   name={`institution_${index}`}
                   placeholder="e.g University of Port Harcourt"
-                  className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
+                  className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
                   value={education.institution}
                   onChange={(e) =>
                     handleEducationChange(index, "institution", e.target.value)
@@ -77,45 +82,28 @@ export default function EducationForm({
                   id={`schoolLocation_${index}`}
                   name={`schoolLocation_${index}`}
                   placeholder="e.g Kano, Nigeria"
-                  className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
+                  className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
                   value={education.location}
                   onChange={(e) =>
                     handleEducationChange(index, "location", e.target.value)
                   }
                 />
               </div>
-              <div className="flex flex-col gap-2 mb-4">
-                <label htmlFor={`degree_${index}`} className="font-semibold">
-                  Degree
-                </label>
-                <input
-                  type="text"
-                  id={`degree_${index}`}
-                  name={`degree_${index}`}
-                  placeholder="e.g HND in Software Engineering"
-                  className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
-                  value={education.degree}
-                  onChange={(e) =>
-                    handleEducationChange(index, "degree", e.target.value)
-                  }
-                />
-              </div>
-
-              <div></div>
+              
 
               <div className="flex flex-col gap-2 mb-4">
                 <label
                   htmlFor={`school_start_date${index}`}
                   className="font-semibold"
                 >
-                  Start Date *
+                  Start Date <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="date"
                   id={`school_start_date${index}`}
                   name={`school_start_date${index}`}
                   placeholder="e.g GtechCorporation"
-                  className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none block w-full"
+                  className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none block w-full"
                   value={education.startDate}
                   onChange={(e) =>
                     handleEducationChange(index, "startDate", e.target.value)
@@ -127,20 +115,40 @@ export default function EducationForm({
                   htmlFor={`school_end_date${index}`}
                   className="font-semibold"
                 >
-                  End Date *
+                  End Date <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="date"
                   id={`school_end_date${index}`}
                   name={`school_end_date${index}`}
                   placeholder="e.g GtechCorporation"
-                  className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none block w-full "
+                  className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none block w-full "
                   value={education.endDate}
                   onChange={(e) =>
                     handleEducationChange(index, "endDate", e.target.value)
                   }
                 />
               </div>
+
+              <div className="flex flex-col gap-2 mb-4">
+                <label htmlFor={`degree_${index}`} className="font-semibold">
+                  Degree
+                </label>
+                <input
+                  type="text"
+                  id={`degree_${index}`}
+                  name={`degree_${index}`}
+                  placeholder="e.g HND in Software Engineering"
+                  className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
+                  value={education.degree}
+                  onChange={(e) =>
+                    handleEducationChange(index, "degree", e.target.value)
+                  }
+                />
+              </div>
+
+              <div></div>
+              
             </div>
           );
         })}
@@ -148,29 +156,30 @@ export default function EducationForm({
       <button
         type="button"
         onClick={addEducation}
-        className="py-2 px-6 cursor-pointer font-bold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
+        className="py-2 px-4 cursor-pointer bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
       >
-        Add
+        <FaPlus />
       </button>
+
 
       <div className="mt-8 flex items-center justify-between gap-3 w-full">
         <button
           type="button"
-          className="text-emerald-600 border-emerald-600 border-3  bg-white py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
+          className="text-white border-emerald-800 border-2  bg-emerald-800 py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
           onClick={() => {
             handlePrevStep();
           }}
         >
-          Back
+          <FaArrowLeft />
         </button>
         <button
           type="button"
-          className="text-white  bg-emerald-600 py-3 cursor-pointer px-12 rounded-full  transition pointer hover:bg-emerald-900"
+          className="text-white border-emerald-800 border-2 bg-emerald-800 py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
           onClick={() => {
             handleNextStep();
           }}
         >
-          Next
+          <FaArrowRight />
         </button>
       </div>
     </>

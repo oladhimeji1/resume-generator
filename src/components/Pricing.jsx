@@ -38,14 +38,14 @@ export default function PricingPage() {
           {/* Free Plan */}
           <div className="bg-white rounded-2xl shadow p-6 border border-gray-200">
             <h3 className="text-lg font-semibold text-gray-900">Free</h3>
-            <p className="mt-4 text-4xl font-bold text-gray-900">$0</p>
+            <p className="mt-4 text-4xl font-bold text-gray-900">&#8358;0</p>
             <p className="text-sm text-gray-500">Per user/month, billed annually</p>
             <ul className="mt-6 space-y-2 text-sm text-gray-600 text-left">
-              <li>✓ Free e-mail alerts</li>
-              <li>✓ 3-minute checks</li>
-              <li>✓ Automatic data enrichment</li>
-              <li>✓ 10 monitors</li>
-              <li>✓ Up to 3 seats</li>
+              <li>✓ Free download</li>
+              <li>✓ PDF format</li>
+              <li>✓ Color, fonts edit</li>
+              <li>✓ Unlimited downloads</li>
+              <li>✓ Free forever</li>
             </ul>
             <button className="mt-6 w-full py-2 px-4 bg-emerald-900 text-white rounded-md">Get started for free</button>
           </div>
@@ -56,7 +56,7 @@ export default function PricingPage() {
               <h3 className="text-lg font-semibold text-emerald-900">Pro</h3>
               <span className="bg-emerald-500 text-white text-xs px-2 py-1 rounded">Popular</span>
             </div>
-            <p className="mt-4 text-4xl font-bold text-emerald-900">$85</p>
+            <p className="mt-4 text-4xl font-bold text-emerald-900">&#8358;85</p>
             <p className="text-sm text-gray-500">Per user/month, billed annually</p>
             <ul className="mt-6 space-y-2 text-sm text-gray-600 text-left">
               <li>✓ Unlimited phone calls</li>

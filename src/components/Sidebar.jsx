@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-export default function Sidebar() {
+export default function Sidebar({handleStep, step}) {
+  
   return (
     <div className="sidebar fixed left-0 top-0 bottom-0  w-full hidden  bg-emerald-900 min-h-screen md:w-1/5 md:block">
       <div className="flex flex-col justify-between min-h-full">
@@ -9,16 +10,16 @@ export default function Sidebar() {
             <img src="/logo_1.png" alt="logo" width="200px" />
           </Link>
           <div className="mt-10">
-            <Link to="/" className="py-3 text-white font-semibold text-lg block hover:bg-emerald-500 hover:pl-6 pl-4 transition-all duration-500 border-b">Personal Information</Link>
+            <Link onClick={() => handleStep(1)} className={`py-3 ${step == 1 ? 'bg-white' : 'text-white'} font-semibold text-lg block hover:bg-emerald-800 hover:text-white hover:pl-6 pl-4 transition-all duration-500 border-b border-b-gray-500`}>Personal Information</Link>
           </div>
           <div className="">
-            <Link to="/" className="py-3 text-white font-semibold text-lg block hover:bg-emerald-500 hover:pl-6 pl-4 transition-all duration-500 border-b">Work Experience</Link>
+            <Link onClick={() => handleStep(2)} className={`py-3 ${step == 2 ? 'bg-white' : 'text-white'} font-semibold text-lg block hover:bg-emerald-800 hover:text-white hover:pl-6 pl-4 transition-all duration-500 border-b border-b-gray-500`}>Work Experience</Link>
           </div>
           <div className="">
-            <Link to="/" className="py-3 text-white font-semibold text-lg block hover:bg-emerald-500 hover:pl-6 pl-4 transition-all duration-500 border-b">Education</Link>
+            <Link onClick={() => handleStep(3)} className={`py-3 ${step == 3 ? 'bg-white' : 'text-white'} font-semibold text-lg block hover:bg-emerald-800 hover:text-white hover:pl-6 pl-4 transition-all duration-500 border-b border-b-gray-500`}>Education</Link>
           </div>
           <div className="">
-            <Link to="/" className="py-3 text-white font-semibold text-lg block hover:bg-emerald-500 hover:pl-6 pl-4 transition-all duration-500 border-b">Skills</Link>
+            <Link onClick={() => handleStep(4)} className={`py-3 ${step == 4 ? 'bg-white' : 'text-white'} font-semibold text-lg block hover:bg-emerald-800 hover:text-white hover:pl-6 pl-4 transition-all duration-500 border-b border-b-gray-500`}>Skills</Link>
           </div>
         </div>
 

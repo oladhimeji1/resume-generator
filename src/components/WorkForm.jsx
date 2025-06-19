@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaTimes } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaPlus, FaTimes } from "react-icons/fa";
 
 export default function WorkForm({
   resumeData,
@@ -60,7 +60,7 @@ export default function WorkForm({
       <div className="flex-1 relative">
         <div className="flex flex-col gap-5">
           <div>
-            <h1 className="text-2xl font-bold mb-4 ">
+            <h1 className="text-2xl font-semibold mb-4 ">
               Tell us about your most recent jobs
             </h1>
 
@@ -69,7 +69,7 @@ export default function WorkForm({
             </p>
           </div>
 
-          <p className="text-indigo-900 font-extrabold mb-8 text-sm">
+          <p className="text-red-500 font-semibold mb-8 text-sm">
             * Indicate a required field
           </p>
         </div>
@@ -92,15 +92,18 @@ export default function WorkForm({
                     />
                   )}
                   <div className="flex flex-col gap-2 mb-4">
-                    <label htmlFor={`jobTitle_${index}`} className="font-bold">
-                      Title *
+                    <label
+                      htmlFor={`jobTitle_${index}`}
+                      className="font-semibold"
+                    >
+                      Title<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       id={`jobTitle_${index}`}
                       name={`jobTitle_${index}`}
                       placeholder="e.g Sales Manager"
-                      className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
+                      className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
                       value={experience.jobTitle}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -112,15 +115,18 @@ export default function WorkForm({
                     />
                   </div>
                   <div className="flex flex-col gap-2 mb-4">
-                    <label htmlFor={`employer_${index}`} className="font-bold">
-                      Employer *
+                    <label
+                      htmlFor={`employer_${index}`}
+                      className="font-semibold"
+                    >
+                      Employer<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       id={`employer_${index}`}
                       name={`employer_${index}`}
                       placeholder="e.g KondiPress LLC"
-                      className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
+                      className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
                       value={experience.company}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -132,15 +138,18 @@ export default function WorkForm({
                     />
                   </div>
                   <div className="flex flex-col gap-2 mb-4">
-                    <label htmlFor={`location_${index}`} className="font-bold">
-                      Location *
+                    <label
+                      htmlFor={`location_${index}`}
+                      className="font-semibold"
+                    >
+                      Location<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       id={`location_${index}`}
                       name={`location_${index}`}
                       placeholder="e.g Kano, Nigeria"
-                      className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
+                      className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
                       value={experience.location}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -168,7 +177,7 @@ export default function WorkForm({
 
                       <label
                         htmlFor={`remote${index}`}
-                        className="text-xl text-indigo-900 font-bold"
+                        className="text-xl text-indigo-900 font-semibold"
                       >
                         Remote
                       </label>
@@ -176,15 +185,18 @@ export default function WorkForm({
                   </div>
                   <div></div>
                   <div className="flex flex-col gap-2 mb-4">
-                    <label htmlFor={`startdate_${index}`} className="font-bold">
-                      Start Date *
+                    <label
+                      htmlFor={`startdate_${index}`}
+                      className="font-semibold"
+                    >
+                      Start Date<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="date"
                       id={`startdate_${index}`}
                       name={`startdate_${index}`}
                       placeholder="e.g GtechCorporation"
-                      className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none block w-full"
+                      className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none block w-full"
                       value={experience.startDate}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -196,15 +208,18 @@ export default function WorkForm({
                     />
                   </div>
                   <div className="flex flex-col gap-2 mb-4">
-                    <label htmlFor={`enddate_${index}`} className="font-bold">
-                      End Date *
+                    <label
+                      htmlFor={`enddate_${index}`}
+                      className="font-semibold"
+                    >
+                      End Date<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="date"
                       id={`enddate_${index}`}
                       name={`enddate_${index}`}
                       placeholder="e.g GtechCorporation"
-                      className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none w-full block"
+                      className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none w-full block"
                       value={experience.endDate}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -219,9 +234,9 @@ export default function WorkForm({
                 <button
                   type="button"
                   onClick={() => setActiveWorkDutiesIndex(index)}
-                  className="py-2 inline-block mb-8 px-6 cursor-pointer font-bold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
+                  className="py-2 inline-block mb-8 px-4 cursor-pointer font-light bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
                 >
-                  Append Work Duties?
+                  <FaPlus />
                 </button>
               </>
             );
@@ -231,7 +246,7 @@ export default function WorkForm({
         <button
           type="button"
           onClick={addWorkExperience}
-          className="py-2 px-6 cursor-pointer font-bold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
+          className="py-2 px-6 cursor-pointer font-semibold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
         >
           Add{" "}
         </button>
@@ -239,21 +254,21 @@ export default function WorkForm({
         <div className="mt-8 flex items-center justify-between gap-3 w-full">
           <button
             type="button"
-            className="text-emerald-600 border-emerald-600 border-3  bg-white py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
+            className="text-white border-emerald-800 border-2 bg-emerald-800 py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
             onClick={() => {
               handlePrevStep();
             }}
           >
-            Back
+            <FaArrowLeft />
           </button>
           <button
             type="button"
-            className="text-white  bg-emerald-600 py-3 cursor-pointer px-12 rounded-full  transition pointer hover:bg-emerald-900"
+            className="text-white border-emerald-800 border-2 bg-emerald-800 py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
             onClick={() => {
               handleNextStep();
             }}
           >
-            Next
+            <FaArrowRight />
           </button>
         </div>
       </div>
@@ -281,7 +296,7 @@ function WorkDuties({
   return (
     <div className="h-full w-full z-500 bg-[#7B7B79] fixed inset-0 left-0 right-0 flex items-center justify-center">
       <div className="max-w-[700px] bg-white relative w-[90%]  min-h-[450px] p-4  rounded-3xl shadow-lg">
-        <h1 className="text-2xl font-bold mb-4 ">
+        <h1 className="text-2xl font-semibold mb-4 ">
           What are the Duties you performed as a Frontend Developer employers
         </h1>
         <p className="text-xl mb-6 text-zinc-700">
@@ -291,7 +306,7 @@ function WorkDuties({
           return (
             <>
               <div key={index} className="flex flex-col gap-2 mb-4">
-                <label htmlFor={`duties_${index}`} className="font-bold">
+                <label htmlFor={`duties_${index}`} className="font-semibold">
                   Task {index + 1}
                 </label>
                 <input
@@ -311,7 +326,7 @@ function WorkDuties({
         })}
         <button
           type="button"
-          className="text-white  bg-emerald-600 py-3 cursor-pointer px-12 rounded-full  transition pointer hover:bg-emerald-900"
+          className="text-white  bg-emerald-800 py-3 cursor-pointer px-12 rounded-full  transition pointer hover:bg-emerald-900"
           onClick={() => {
             handleAddWorkDuties();
           }}

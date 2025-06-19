@@ -1,3 +1,5 @@
+import { FaArrowRight } from "react-icons/fa";
+
 export default function BioDataForm({
   handleInputChange,
   resumeData,
@@ -30,7 +32,7 @@ export default function BioDataForm({
             id="name"
             name="name"
             placeholder="e.g John"
-            className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
+            className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
             onChange={(e) => {
               handleInputChange("name", e.target.value);
             }}
@@ -47,7 +49,7 @@ export default function BioDataForm({
             id="surname"
             name="surname"
             placeholder="e.g Doe"
-            className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
+            className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
             onChange={(e) => {
               handleInputChange("surname", e.target.value);
             }}
@@ -64,7 +66,7 @@ export default function BioDataForm({
             id="city"
             name="city"
             placeholder="e.g Kano"
-            className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
+            className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
             onChange={(e) => {
               handleInputChange("city", e.target.value);
             }}
@@ -80,7 +82,7 @@ export default function BioDataForm({
             id="country"
             name="country"
             placeholder="e.g Nigeria"
-            className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
+            className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
             onChange={(e) => {
               handleInputChange("country", e.target.value);
             }}
@@ -97,7 +99,7 @@ export default function BioDataForm({
             id="phone"
             name="phone"
             placeholder="e.g 1234567890"
-            className="bg-gray-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
+            className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
             onChange={(e) => {
               handleInputChange("phone", e.target.value);
             }}
@@ -113,8 +115,8 @@ export default function BioDataForm({
             type="email"
             id="email"
             name="email"
-            placeholder="e.g godstimeolademeji@email.com"
-            className="bg-gray-400 py-3 rounded-md px-4 focus:outline-none"
+            placeholder="e.g johndoe@example.com"
+            className="bg-[#e6e6e6] py-3 rounded-md px-4 focus:outline-none"
             onChange={(e) => {
               handleInputChange("email", e.target.value);
             }}
@@ -129,7 +131,7 @@ export default function BioDataForm({
         </label>
         <textarea
           rows="10"
-          className="bg-gray-400 py-3 rounded-md px-4 focus:outline-none"
+          className="bg-[#e6e6e6] py-3 rounded-md px-4 focus:outline-none"
           name="summary"
           id="summary"
           onChange={(e) => {
@@ -146,7 +148,7 @@ export default function BioDataForm({
           handleNextStep();
         }}
       >
-        Next
+        <FaArrowRight />
       </button>
     </>
   );
