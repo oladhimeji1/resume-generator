@@ -14,35 +14,35 @@ export default function Login() {
   };
   return (
     <div className="w-full h-screen p-4 bg-emerald-900">
-      <div className="max-w-[500px] mt-10 mx-auto bg-white rounded-lg shadow-sm">
+      <Link to="/">
+        <img src="/logo_1.png" width="200px" alt="logo" />
+      </Link>
+      <div className="max-w-[500px] mt-5 mx-auto bg-white rounded-lg shadow-sm">
         <form onSubmit={handleSubmit(onSubmit)} className="p-4">
           <div className="header flex items-center flex-col gap-4 justify-center mb-6">
-            <Link to="/">
-              <img src="/logo_1.png" width="200px" alt="logo" />
-            </Link>
             <h3 className="text-xl font-bold">Sign in to your account</h3>
           </div>
 
           <div className="form-group">
             <div className="form-item flex flex-col gap-2 mb-4">
               <label htmlFor="email" className="font-medium text-zinc-800">
-                EMAIL ADDRESS
+                Email Adress
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 {...register("email")}
-                className="border-zinc-600 text-xl border shadow-sm rounded-sm py-2 px-4 focus:outline-[#212D59]"
+                className="bg-[#e6e6e6] py-3 px-4 block w-full rounded-md focus:outline-none"
               />
             </div>
             <div className="form-item flex flex-col gap-2 mb-4">
               <label htmlFor="password" className="font-medium text-zinc-800">
-                PASSWORD
+                Password
               </label>
               <input
                 type="password"
-                className="border-zinc-600 text-xl border shadow-sm rounded-sm py-2 px-4 focus:outline-[#212D59]"
+                className="bg-[#e6e6e6] py-3 px-4 block w-full rounded-md focus:outline-none"
                 id="password"
                 name="password"
                 {...register("password")}
@@ -50,15 +50,13 @@ export default function Login() {
             </div>
 
             <div className="form-item mb-4">
-              <Link className="font-bold text-[#212D59] ">
-                Forgot password?
-              </Link>
+              <Link className="font-bold text-none ">Forgot password?</Link>
             </div>
 
-            <button className="mb-2 py-3 px-6 rounded-full block w-full text-center bg-[#1842da] text-white text-xl font-bold cursor-pointer">
+            <button className="mb-2 py-3 px-6 rounded-full block w-full text-center bg-emerald-700 text-white text-xl font-semibold cursor-pointer">
               Log in
             </button>
-            <p className="text-zinc-600 text-sm text-center mb-2">
+            {/* <p className="text-zinc-600 text-sm text-center mb-2">
               By clicking 'Log in' you also agree to our{" "}
               <Link className="underline text-blue-800 font-bold">
                 Terms of use
@@ -67,7 +65,7 @@ export default function Login() {
               <Link className="underline text-blue-800 font-bold">
                 Privacy Policy{" "}
               </Link>
-            </p>
+            </p> */}
             <p className="text-zinc-600 text-sm text-center mb-1">
               Don't have an account?{" "}
               <Link to="/signup" className="underline text-blue-800 font-bold">

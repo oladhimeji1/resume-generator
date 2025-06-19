@@ -9,7 +9,7 @@ export default function Contact() {
           <h2 className="text-2xl font-bold text-center md:text-5xl">
             Contact Us
           </h2>
-          <p className="text-lg md:text-xl  text-center text-zinc-700">
+          <p className="text-lg md:text-xl text-center text-zinc-700">
             Have concern about your account? Question about our products and
             services? Need technical support? You've come to the right place!
             We're here to help you seven days a week.

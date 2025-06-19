@@ -24,13 +24,14 @@ export default function Login() {
     console.log(data);
   };
   return (
-    <div className="w-full h-screen p-2 bg-emerald-900">
-      <div className="max-w-[500px] mt-5 mx-auto bg-white rounded-lg shadow-sm">
+    <div className="w-full h-screen px-4 py-2 bg-emerald-900">
+      <Link to="/">
+        <img src="/logo_1.png" width="200px" alt="logo" />
+      </Link>
+      <div className="max-w-[500px] mx-auto bg-white rounded-lg shadow-sm">
         <form onSubmit={handleSubmit(onSubmit)} className="p-4">
           <div className="header flex items-center flex-col gap-4 justify-center mb-6">
-            <Link to="/">
-              <img src="/logo_1.png" width="200px" alt="logo" />
-            </Link>
+            
             <h3 className="text-xl font-bold text-center">
               Create an account with us
             </h3>
@@ -39,7 +40,7 @@ export default function Login() {
           <div className="form-group">
             <div className="form-item flex flex-col gap-2 mb-2">
               <label htmlFor="email" className="font-medium text-zinc-800">
-                EMAIL ADDRESS
+                Email Address
               </label>
               <input
                 type="text"
@@ -49,16 +50,16 @@ export default function Login() {
                 style={{
                   outlineColor: `${errors.email?.message ? "red" : "#212D59"}`,
                 }}
-                className="border-zinc-600 text-xl border shadow-sm rounded-sm py-2 px-4 focus:outline-[#212D59]"
+                className="bg-[#e6e6e6] py-3 px-4 block w-full rounded-md focus:outline-none"
               />
             </div>
             <div className="form-item flex flex-col gap-2 mb-2">
               <label htmlFor="password" className="font-medium text-zinc-800">
-                PASSWORD
+                Password
               </label>
               <input
                 type="password"
-                className="border-zinc-600 text-xl border shadow-sm rounded-sm py-2 px-4 focus:outline-[#212D59]"
+                className="bg-[#e6e6e6] py-3 px-4 block w-full rounded-md focus:outline-none"
                 id="password"
                 style={{
                   outlineColor: `${
@@ -74,7 +75,7 @@ export default function Login() {
                 htmlFor="confirm_password"
                 className="font-medium text-zinc-800"
               >
-                CONFIRM PASSWORD
+                Confirm Password
               </label>
               <input
                 type="password"
@@ -83,14 +84,14 @@ export default function Login() {
                     errors.confirmPassword?.message ? "red" : "#212D59"
                   }`,
                 }}
-                className="border-zinc-600 text-xl border shadow-sm rounded-sm py-2 px-4 focus:outline-[#212D59]"
+                className="bg-[#e6e6e6] py-3 px-4 block w-full rounded-md focus:outline-none"
                 id="confirm_password"
                 name="confirm_password"
                 {...register("confirmPassword")}
               />
             </div>
 
-            <button className="mb-2 mt-5 py-3 px-6 rounded-sm block w-full text-center bg-emerald-900 text-white text-xl font-bold cursor-pointer">
+            <button className="mt-5 py-3 px-6 rounded-full block w-full text-center bg-emerald-700 text-white text-xl font-semibold cursor-pointer">
               Create account
             </button>
             <p className="text-zinc-600 text-sm text-center mb-2">
@@ -109,10 +110,12 @@ export default function Login() {
                 Login
               </Link>
             </p>
-            <div className="border-zinc-300 border"></div>
+            {/* <div className="border-zinc-300 border"></div>
+             */}
+             <hr />
 
-            <div className="shadow-sm rounded-sm flex items-center">
-              <button className="w-full cursor-pointer mt-4 flex gap-6 items-center justify-center p-3">
+            <div className="rounded-sm flex items-center">
+              <button className="w-full cursor-pointer mt-4 flex gap-2 items-center justify-center p-3">
                 <FaGoogle />
                 <span>Sign in with Google </span>
               </button>
