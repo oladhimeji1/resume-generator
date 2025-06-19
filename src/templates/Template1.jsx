@@ -3,14 +3,13 @@ import { Document, Page, View, Text, StyleSheet } from "@react-pdf/renderer";
 function Template1({ resumeData }) {
   const styles = StyleSheet.create({
     page: {
-      padding: 40,
-      display: "block",
+      padding: 30,
       backgroundColor: "white",
       textAlign: "justify",
       color: "#333",
       margin: 0,
       lineHeight: 1.3,
-      fontSize: 12,
+      fontSize: 11,
     },
 
     section: {
@@ -19,7 +18,7 @@ function Template1({ resumeData }) {
     },
     sectionTitle: {
       marginBottom: 1,
-      fontSize: 14,
+      fontSize: 12,
       fontWeight: "bold",
       color: "#193cb8",
       borderBottom: "3px dashed black",
@@ -39,7 +38,7 @@ function Template1({ resumeData }) {
               fontSize: 26,
               display: "block",
               fontWeight: "bold",
-              marginBottom: 10,
+              marginBottom: 12,
             }}
           >
             {resumeData.name} {resumeData.surname}
@@ -79,7 +78,7 @@ function Template1({ resumeData }) {
         {/* Summary Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>PROFESSIONAL SUMMARY</Text>
-          <Text style={{ marginTop: 10, marginBottom: 10, display: "block" }}>
+          <Text style={{ marginTop: 6, marginBottom: 8, display: "block" }}>
             {resumeData.summary}
           </Text>
         </View>
@@ -100,8 +99,8 @@ function Template1({ resumeData }) {
                 <View
                   key={index}
                   style={{
-                    marginTop: 10,
-                    marginBottom: 8,
+                    marginTop: 6,
+                    marginBottom: 6,
                     display: "flex",
                     justifyContent: "space-between",
                   }}
@@ -112,7 +111,7 @@ function Template1({ resumeData }) {
                         display: "flex",
                         flexDirection: "column",
                         gap: "10px",
-                        marginBottom: 8,
+                        marginBottom: 6,
                       }}
                     >
                       <Text>
@@ -160,7 +159,7 @@ function Template1({ resumeData }) {
                 <View
                   key={index}
                   style={{
-                    marginTop: 10,
+                    marginTop: 6,
                     marginBottom: 8,
                     display: "flex",
                     justifyContent: "space-between",
@@ -204,7 +203,7 @@ function Template1({ resumeData }) {
           <View
             style={{
               display: "block",
-              marginBottom: 5,
+              marginBottom: 3,
             }}
           >
             <Text style={styles.sectionTitle}>SKILLS</Text>
@@ -214,7 +213,7 @@ function Template1({ resumeData }) {
                 display: "flex",
                 flexDirection: "column",
                 gap: 8,
-                marginTop: 14,
+                marginTop: 6,
               }}
             >
               {resumeData.skills.map((skill, index) => (
