@@ -1,14 +1,12 @@
 const templates = [
   {
     id: 1,
-    image: "/templates-img/cv-bold.webp",
-
+    image: "/templates-img/Resume1.png",
     path: "/src/templates/Template1",
   },
   {
     id: 2,
     image: "/templates-img/Resume2.png",
-
     path: "/src/templates/Template2",
   },
   {

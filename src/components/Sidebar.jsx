@@ -25,9 +25,15 @@ export default function Sidebar({handleStep, step}) {
 
         <div className="flex flex-col gap-4 p-4">
           <div className="flex flex-col text-amber-500 font-bold">
-            <Link>Terms and Conditions</Link>
-            <Link>Privacy Policy</Link>
-            <Link>Contact us</Link>
+            <Link target="_blank" title="Terms and Conditions" to="/policy">
+              Terms and Conditions
+            </Link>
+            <Link target="_blank" title="Privacy Policy" to="/policy">
+              Privacy Policy
+            </Link>
+            <Link target="_blank" title="Contact us" to="/contact">
+              Contact us
+            </Link>
           </div>
           <div>
             <p className="text-white text-xs md:text-sm">

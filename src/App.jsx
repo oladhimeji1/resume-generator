@@ -11,6 +11,7 @@ import ResumeTemplates from "./pages/ResumeTemplates";
 import ResumeBuilder from "./components/ResumeBuilder";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Policy from "./pages/Policy";
 import Contact from "./pages/Contact";
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route element={<ResumeBuild />} path="/build-resume" />
           <Route element={<Login />} path="/login" />
           <Route element={<Signup />} path="/signup" />
+          <Route element={<Policy />} path="/policy" />
           <Route element={<Contact />} path="/contact" />
           <Route
             element={<ResumeTemplates />}
