@@ -26,7 +26,7 @@ const Testimonials = () => {
               viewport={{ once: false, amount: 0.5 }}
             >
               <div className="flex items-center justify-between gap-10 mb-8">
-                <h4 className="text-xl font-bold">Oladimeji Abdulrazaq</h4>
+                <h4 className="text-xl font-bold">Rita</h4>
                 <img
                   src="/reviewers/grid1.png"
                   className="w-18 rounded-full md:w-20"
