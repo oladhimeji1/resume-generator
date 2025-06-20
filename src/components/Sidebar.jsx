@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
+
 export default function Sidebar({ handleStep, step }) {
+
   return (
     <div className="sidebar fixed left-0 top-0 bottom-0  w-full hidden  bg-emerald-900 min-h-screen md:w-1/5 md:block">
       <div className="flex flex-col justify-between min-h-full">
@@ -9,6 +11,7 @@ export default function Sidebar({ handleStep, step }) {
             <img src="/logo_1.png" alt="logo" width="200px" />
           </Link>
           <div className="mt-10">
+
             <Link
               onClick={() => handleStep(1)}
               className={`py-3 ${

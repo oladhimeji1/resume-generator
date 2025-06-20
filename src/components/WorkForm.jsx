@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+
 import { FaArrowLeft, FaArrowRight, FaPlus, FaTimes } from "react-icons/fa";
 
 export default function WorkForm({
@@ -307,6 +308,7 @@ function WorkDuties({
   };
 
   return (
+
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
       <div className="relative w-[95%] max-w-xl bg-white rounded-2xl shadow-xl p-8">
         <button
