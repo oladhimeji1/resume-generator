@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaArrowLeft, FaArrowRight, FaPlus, FaTimes } from "react-icons/fa";
 
 export default function WorkForm({
@@ -8,6 +8,8 @@ export default function WorkForm({
   handleNextStep,
 }) {
   const [activeWorkDutiesIndex, setActiveWorkDutiesIndex] = useState(null);
+
+  const workRefs = useRef([]);
 
   const handleWorkExperienceChange = (index, field, value) => {
     setResumeData((prevResumeData) => {
@@ -55,6 +57,16 @@ export default function WorkForm({
   };
 
   */
+  useEffect(() => {
+    if (resumeData.workExperience.length > 0) {
+      // Scroll to the last work experience
+      const lastIndex = resumeData.workExperience.length - 1;
+      if (workRefs.current[lastIndex]) {
+        workRefs.current[lastIndex].scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [resumeData.workExperience.length]);
+
   return (
     <section className="mb-12 p-2 sm:p-0 flex flex-col md:flex-row gap-2">
       <div className="flex-1 relative">
@@ -79,6 +91,7 @@ export default function WorkForm({
             return (
               <>
                 <div
+                  ref={(el) => (workRefs.current[index] = el)}
                   key={index}
                   className="grid grid-cols-1  md:grid-cols-2 gap-4"
                 >
@@ -287,58 +300,58 @@ function WorkDuties({
     setResumeData((prev) => {
       const workExperience = [...prev.workExperience];
       const duties = [...(workExperience[workIndex].duties || [])];
-      duties.push(""); // Add a new empty duty (or { name: "" } if you want objects)
+      duties.push({ name: "" });
       workExperience[workIndex] = { ...workExperience[workIndex], duties };
       return { ...prev, workExperience };
     });
   };
 
   return (
-    <div className="h-full w-full z-500 bg-[#7B7B79] fixed inset-0 left-0 right-0 flex items-center justify-center">
-      <div className="max-w-[700px] bg-white relative w-[90%]  min-h-[450px] p-4  rounded-3xl shadow-lg">
-        <h1 className="text-2xl font-semibold mb-4 ">
-          What are the Duties you performed as a Frontend Developer employers
-        </h1>
-        <p className="text-xl mb-6 text-zinc-700">
-          We suggest you add up to three (3) responsiblities.
-        </p>
-        {experience.duties.map((duty, index) => {
-          return (
-            <>
-              <div key={index} className="flex flex-col gap-2 mb-4">
-                <label htmlFor={`duties_${index}`} className="font-semibold">
-                  Task {index + 1}
-                </label>
-                <input
-                  type="text"
-                  id={`duty${index}`}
-                  name={`duty${index}`}
-                  placeholder="e.g Good Communication skills"
-                  className="border border-slate-400 bg-white py-2 px-4 focus:outline-none"
-                  value={duty.name}
-                  onChange={(e) =>
-                    handleWorkDutiesChange(workIndex, index, e.target.value)
-                  }
-                />
-              </div>
-            </>
-          );
-        })}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+      <div className="relative w-[95%] max-w-xl bg-white rounded-2xl shadow-xl p-8">
         <button
           type="button"
-          className="text-white  bg-emerald-800 py-3 cursor-pointer px-12 rounded-full  transition pointer hover:bg-emerald-900"
-          onClick={() => {
-            handleAddWorkDuties();
-          }}
+          className="absolute top-4 right-4 text-gray-500 hover:text-red-600"
+          onClick={() => setActiveWorkDutiesIndex(null)}
+          aria-label="Close"
         >
-          Add Duties
+          <FaTimes className="text-2xl" />
         </button>
-        <FaTimes
-          className="text-xl z-1000 text-emerald-900 cursor-pointer absolute top-5 right-10  md:text-3xl"
-          onClick={() => {
-            setActiveWorkDutiesIndex(null);
-          }}
-        />
+        <h2 className="text-2xl font-bold mb-2 text-emerald-900">
+          Duties/Responsibilities
+        </h2>
+        <p className="mb-6 text-gray-700">
+          List up to three key responsibilities for this role.
+        </p>
+        <div className="space-y-4 mb-6">
+          {experience.duties.map((duty, index) => (
+            <div key={index} className="flex items-center gap-2">
+              <span className="font-semibold text-gray-600">{index + 1}.</span>
+              <input
+                type="text"
+                className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                placeholder="e.g. Managed a team of 5"
+                value={duty.name}
+                onChange={(e) =>
+                  handleWorkDutiesChange(workIndex, index, e.target.value)
+                }
+              />
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-between items-center">
+          <button
+            type="button"
+            className="bg-emerald-800 text-white px-6 py-2 rounded-full hover:bg-emerald-900 transition"
+            onClick={handleAddWorkDuties}
+            disabled={experience.duties.length >= 5}
+          >
+            Add Duty
+          </button>
+          <span className="text-sm text-gray-500">
+            {experience.duties.length}/5 duties
+          </span>
+        </div>
       </div>
     </div>
   );
