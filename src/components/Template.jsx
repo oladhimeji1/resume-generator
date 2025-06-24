@@ -3,10 +3,13 @@ export default function Template({
   id,
   handleTemplateSelect,
   template,
+  selectedTemplate,
 }) {
   return (
     <div
-      className={` shadow-lg cursor-pointer transition hover:-translate-y-5 relative`}
+      className={`${
+        selectedTemplate === template ? "border-emerald-700 border-3" : ""
+      }   shadow-lg cursor-pointer transition `}
       onClick={() => {
         handleTemplateSelect(template, id);
       }}

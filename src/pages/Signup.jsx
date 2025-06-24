@@ -1,4 +1,4 @@
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -9,7 +9,7 @@ export default function Login() {
     password: yup.string().min(8).max(16).required("Password is required"),
     confirmPassword: yup
       .string()
-      .required("Confirm Password is required")
+      .required()
       .oneOf([yup.ref("password"), null], "Password don't match"),
   });
 
@@ -19,9 +19,8 @@ export default function Login() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data) => {
-    console.log("submitted");
-    console.log(data);
+  const onSubmit = (data, e) => {
+    e.preventDefault();
   };
   return (
     <div className="w-full h-screen px-4 py-2 bg-emerald-900">
@@ -31,7 +30,6 @@ export default function Login() {
       <div className="max-w-[500px] mx-auto bg-white rounded-lg shadow-sm">
         <form onSubmit={handleSubmit(onSubmit)} className="p-4">
           <div className="header flex items-center flex-col gap-4 justify-center mb-6">
-            
             <h3 className="text-xl font-bold text-center">
               Create an account with us
             </h3>
@@ -50,7 +48,9 @@ export default function Login() {
                 style={{
                   outlineColor: `${errors.email?.message ? "red" : "#212D59"}`,
                 }}
-                className="bg-[#e6e6e6] py-3 px-4 block w-full rounded-md focus:outline-none"
+                className={`bg-[#e6e6e6] py-3 px-4 block w-full ${
+                  errors.email?.message ? "outline outline-red-500" : ""
+                } rounded-md`}
               />
             </div>
             <div className="form-item flex flex-col gap-2 mb-2">
@@ -59,13 +59,10 @@ export default function Login() {
               </label>
               <input
                 type="password"
-                className="bg-[#e6e6e6] py-3 px-4 block w-full rounded-md focus:outline-none"
+                className={`bg-[#e6e6e6] py-3 px-4 block w-full ${
+                  errors.password?.message ? "outline outline-red-500" : ""
+                } rounded-md`}
                 id="password"
-                style={{
-                  outlineColor: `${
-                    errors.password?.message ? "red" : "#212D59"
-                  }`,
-                }}
                 name="password"
                 {...register("password")}
               />
@@ -79,12 +76,11 @@ export default function Login() {
               </label>
               <input
                 type="password"
-                style={{
-                  outlineColor: `${
-                    errors.confirmPassword?.message ? "red" : "#212D59"
-                  }`,
-                }}
-                className="bg-[#e6e6e6] py-3 px-4 block w-full rounded-md focus:outline-none"
+                className={`bg-[#e6e6e6] py-3 px-4 block w-full ${
+                  errors.confirmPassword?.message
+                    ? "outline outline-red-500"
+                    : ""
+                } rounded-md`}
                 id="confirm_password"
                 name="confirm_password"
                 {...register("confirmPassword")}
@@ -95,14 +91,10 @@ export default function Login() {
               Create account
             </button>
             <p className="text-zinc-600 text-sm text-center mb-2">
-              By clicking creating an account, you also agree to our{" "}
-              <Link className="underline text-blue-800 font-bold">
-                Terms of use
+              By creating an account, you also agree to our{" "}
+              <Link to="/policy" className="underline text-blue-800 font-bold">
+                Terms of use and Policy
               </Link>{" "}
-              and{" "}
-              <Link className="underline text-blue-800 font-bold">
-                Privacy Policy{" "}
-              </Link>
             </p>
             <p className="text-zinc-600 text-sm text-center mb-1">
               Already have an account?{" "}
@@ -110,13 +102,12 @@ export default function Login() {
                 Login
               </Link>
             </p>
-            {/* <div className="border-zinc-300 border"></div>
-             */}
-             <hr />
+
+            <hr />
 
             <div className="rounded-sm flex items-center">
               <button className="w-full cursor-pointer mt-4 flex gap-2 items-center justify-center p-3">
-                <FaGoogle />
+                <FcGoogle />
                 <span>Sign in with Google </span>
               </button>
             </div>

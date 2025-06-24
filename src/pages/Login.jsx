@@ -1,6 +1,6 @@
-import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 export default function Login() {
   const { register, handleSubmit } = useForm();
@@ -76,7 +76,7 @@ export default function Login() {
 
             <div className="shadow-sm rounded-sm flex items-center">
               <button className="w-full cursor-pointer mt-4 flex gap-6 items-center justify-center p-3">
-                <FaGoogle />
+                <FcGoogle />
                 <span>Sign in with Google </span>
               </button>
             </div>
