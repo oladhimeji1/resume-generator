@@ -28,7 +28,7 @@ export default function ResumeBuilder() {
 
   const handleStep = (step) => {
     setStep(step || 1);
-  }
+  };
 
   const handleNextStep = () => {
     setStep(step + 1);
@@ -63,7 +63,6 @@ export default function ResumeBuilder() {
           },
         ],
       },
-      
     ],
     education: [
       {
@@ -73,66 +72,15 @@ export default function ResumeBuilder() {
         startDate: "",
         endDate: "",
       },
-      // {
-      //   institution: "",
-      //   location: "",
-      //   degree: "",
-      //   startDate: "",
-      //   endDate: "",
-      // },
     ],
     skills: [
       {
         name: "",
       },
-      // { name: "" },
-      // {
-      //   name: "",
-      // },
     ],
     referee: [{ name: "", phone: "", location: "" }],
   });
 
-  // const [resumeData, setResumeData] = useState({
-  //   name: "",
-  //   surname: "",
-  //   city: "",
-  //   country: "",
-  //   email: "",
-  //   phone: "",
-  //   summary: ``,
-
-  //   workExperience: [
-  //     {
-  //       jobTitle: "",
-  //       company: "",
-  //       startDate: "",
-  //       endDate: "",
-  //       location: "",
-  //       isRemote: false,
-  //       duties: [
-  //         {
-  //           name: "",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  //   education: [
-  //     {
-  //       institution: "",
-  //       location: "",
-  //       degree: "",
-  //       startDate: "",
-  //       endDate: "",
-  //     },
-  //   ],
-  //   skills: [
-  //     {
-  //       name: "",
-  //     },
-  //   ],
-  //   referee: [{ name: "", phone: "", location: "" }],
-  // });
   const handleInputChange = (field, value) => {
     setResumeData((prevResume) => ({ ...prevResume, [field]: value }));
   };
@@ -184,9 +132,48 @@ export default function ResumeBuilder() {
     loadTemplate();
   }, [templateId]);
 
-  if (loading) return <div> Loading Template </div>;
-  if (error) return <div> Error </div>;
-  if (!TemplateComponent) return <div> No template selected </div>;
+  if (loading)
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        Loading Template...
+      </div>
+    );
+  if (error)
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "red",
+        }}
+      >
+        {" "}
+        Error{" "}
+      </div>
+    );
+  if (!TemplateComponent)
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {" "}
+        No template selected{" "}
+      </div>
+    );
 
   return (
     <>
@@ -198,9 +185,8 @@ export default function ResumeBuilder() {
               to="/build-resume/resume-templates"
               className="text-blue-500 font-bold flex justify-center items-center gap-2 hover:text-pink-300"
             >
-            <FaArrowLeft className="text-blue-500 hover:text-pink-300" />
-            <span>Change Template</span>
-              
+              <FaArrowLeft className="text-blue-500 hover:text-pink-300" />
+              <span>Change Template</span>
             </Link>
           </div>
           <form className="mb-4">
