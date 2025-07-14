@@ -104,6 +104,7 @@ function Template2({ resumeData }) {
               <Text style={styles.company}>{experience.company}</Text>
               <Text style={styles.date}>
                 {experience.startDate} - {experience.endDate}
+                {experience.isRemote && <Text> (Remote) </Text>}
               </Text>
 
               {experience.duties.map((duty, index) => (

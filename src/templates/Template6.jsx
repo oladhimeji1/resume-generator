@@ -62,9 +62,7 @@ const Template6 = ({ resumeData }) => (
         </View>
 
         <View style={styles.section}>
-            <Text style={styles.text}>
-                {resumeData.summary}
-              </Text>
+          <Text style={styles.text}>{resumeData.summary}</Text>
         </View>
         {/* Skills Section */}
         <View style={styles.section}>
@@ -87,6 +85,7 @@ const Template6 = ({ resumeData }) => (
               </Text>
               <Text style={styles.text}>
                 {job.startDate} - {job.endDate}
+                {job.isRemote && <Text> (Remote) </Text>}
               </Text>
               {job.duties.map((duty, i) => (
                 <View key={i} style={styles.bullet}>
