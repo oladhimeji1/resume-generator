@@ -147,6 +147,7 @@ const Template5 = ({ resumeData }) => (
               <Text style={styles.experienceTitle}>{exp.jobTitle}</Text>
               <Text style={styles.experienceCompany}>
                 {exp.company} | {exp.startDate} - {exp.endDate}
+                {exp.isRemote && <Text> (Remote) </Text>}
               </Text>
               {exp.duties.map((duty, i) => (
                 <Text key={i} style={styles.experienceDescription}>

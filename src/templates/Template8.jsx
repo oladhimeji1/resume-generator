@@ -95,6 +95,7 @@ const Template8 = ({ resumeData }) => (
                 </Text>
                 <Text style={styles.text}>
                   {job.startDate} - {job.endDate}
+                  {job.isRemote && <Text> (Remote) </Text>}s
                 </Text>
                 {job.duties.map((duty, i) => (
                   <View key={i} style={styles.bullet}>

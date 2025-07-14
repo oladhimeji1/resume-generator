@@ -21,7 +21,7 @@ function Template1({ resumeData }) {
       fontSize: 12,
       fontWeight: "bold",
       color: "#193cb8",
-      borderBottom: "3px dashed black",
+      borderBottom: "2px dashed black",
       display: "block",
       padding: 4,
     },
@@ -119,11 +119,12 @@ function Template1({ resumeData }) {
                       </Text>
                       <Text style={{ color: "#193cb8" }}>
                         {work.startDate} - {work.endDate}
+                        {work.isRemote && <Text> (Remote) </Text>}
                       </Text>
-
-                      {work.isRemote && <Text> (Remote) </Text>}
                     </View>
-
+                    <View>
+                      <Text>{work.location} </Text>
+                    </View>
                     <View
                       style={{
                         display: "flex",
@@ -132,12 +133,9 @@ function Template1({ resumeData }) {
                       }}
                     >
                       {work.duties.map((duty, index) => (
-                        <Text key={index}> {duty.name} </Text>
+                        <Text key={index}>{duty.name}</Text>
                       ))}
                     </View>
-                  </View>
-                  <View>
-                    <Text>{work.location} </Text>
                   </View>
                 </View>
               );

@@ -17,7 +17,7 @@ export default function Login() {
       <Link to="/">
         <img src="/logo_1.png" width="200px" alt="logo" />
       </Link>
-      <div className="max-w-[500px] mt-5 mx-auto bg-white rounded-lg shadow-sm">
+      <div className="max-w-[500px] mt-15 mx-auto bg-white rounded-lg shadow-sm">
         <form onSubmit={handleSubmit(onSubmit)} className="p-4">
           <div className="header flex items-center flex-col gap-4 justify-center mb-6">
             <h3 className="text-xl font-bold">Sign in to your account</h3>

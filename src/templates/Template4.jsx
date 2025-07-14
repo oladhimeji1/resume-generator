@@ -113,7 +113,8 @@ const Template4 = ({ resumeData }) => (
               {exp.company}, {exp.location}
             </Text>
             <Text style={styles.date}>
-              {exp.startDate} – {exp.endDate}
+              {exp.startDate} - {exp.endDate}
+              {exp.isRemote && <Text> (Remote) </Text>}
             </Text>
 
             {exp.duties.map((duty, index) => {
