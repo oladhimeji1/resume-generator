@@ -82,6 +82,7 @@ export default function PricingPage() {
               <li>✓ Unlimited Resume Templates</li>
               <li>✓ Unlimited Customer support</li>
               <li>✓ Have complete access to all our site features</li>
+              <li>✓ Additional Resume Sections</li>
             </ul>
             <button className="mt-6 w-full py-2 px-4 bg-emerald-500 text-white rounded-md">
               Get started with Pro
