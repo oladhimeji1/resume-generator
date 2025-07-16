@@ -7,7 +7,6 @@ import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
 import Sidebar from "./Sidebar";
 import SkillForm from "./SkillForm";
-import ResumePreview from "./ResumePreview";
 
 import templates from "../data.js";
 
@@ -16,7 +15,7 @@ export default function ResumeBuilder() {
   const [TemplateComponent, setTemplateComponent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  // const [isPreviewed, setIsPreviewed] = useState(false);
+  const [isPreviewed, setIsPreviewed] = useState(true);
   // form element state
   const [step, setStep] = useState(
     JSON.parse(localStorage.getItem("step")) || 1
@@ -178,8 +177,12 @@ export default function ResumeBuilder() {
   return (
     <>
       <section className="min-h-screen p-2 sm:p-0 flex flex-col md:flex-row gap-2 bg-[#F4F5FB]">
-        <Sidebar handleStep={handleStep} step={step} />
-        <div className="flex-1 relative px-4 lg:ml-70  md:ml-50">
+        {/* Sidebar Left */}
+        <div className="md:w-1/5 w-full md:block">
+          <Sidebar handleStep={handleStep} step={step} />
+        </div>
+        {/* Form Middle */}
+        <div className="md:w-2/5 w-full relative px-4 lg:ml-0 md:ml-0">
           <div className="flex gap-4 items-center mb-8 p-4">
             <Link
               to="/build-resume/resume-templates"
@@ -188,6 +191,14 @@ export default function ResumeBuilder() {
               <FaArrowLeft className="text-blue-500 hover:text-pink-300" />
               <span>Change Template</span>
             </Link>
+            {/* Mobile: Show Preview Button */}
+            <button
+              type="button"
+              className="md:hidden ml-auto text-white bg-fuchsia-600 py-2 px-4 rounded-full transition pointer hover:bg-fuchsia-900"
+              onClick={() => setIsPreviewed(!isPreviewed)}
+            >
+              {isPreviewed ? "Hide Preview" : "Show Template Preview"}
+            </button>
           </div>
           <form className="mb-4">
             {step === 1 && (
@@ -198,7 +209,6 @@ export default function ResumeBuilder() {
                 step={step}
               />
             )}
-
             {step === 2 && (
               <WorkForm
                 resumeData={resumeData}
@@ -208,7 +218,6 @@ export default function ResumeBuilder() {
                 step={step}
               />
             )}
-
             {step === 3 && (
               <EducationForm
                 resumeData={resumeData}
@@ -218,7 +227,6 @@ export default function ResumeBuilder() {
                 step={step}
               />
             )}
-
             {step === 4 && (
               <SkillForm
                 resumeData={resumeData}
@@ -230,23 +238,91 @@ export default function ResumeBuilder() {
               />
             )}
           </form>
-          {/* <button
-            className="hidden sm:block text-white bg-fuchsia-600 py-2 px-4 rounded-full mr-8 transition pointer hover:bg-fuchsia-900 fixed bottom-6 right-6"
-            onClick={() => {
-              setIsPreviewed(!isPreviewed);
-            }}
-          >
-            Preview Template
-          </button> */}
         </div>
-
-        {/* {isPreviewed && (
-          <ResumePreview
-            TemplateComponent={TemplateComponent}
-            resumeData={resumeData}
-            setIsPreviewed={setIsPreviewed}
-          />
-        )} */}
+        {/* Template Preview Right (Desktop) or Overlay (Mobile) */}
+        {/* Desktop Preview: Full height and width with padding */}
+        <div
+          className={`md:w-2/5 w-full md:flex md:items-start md:justify-center md:relative ${
+            isPreviewed ? "block" : "hidden md:block"
+          }`}
+          style={{ minHeight: "100vh", display: isPreviewed ? "flex" : "none" }}
+        >
+          {TemplateComponent && (
+            <div
+              className="hidden md:flex items-start justify-center w-full h-full"
+              style={{ minHeight: "100vh", width: "100%" }}
+            >
+              <div
+                className="bg-white shadow-lg rounded-lg w-full h-full p-8 box-border"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  minHeight: "100vh",
+                  maxHeight: "100vh",
+                  overflowY: "auto",
+                  overflowX: "hidden",
+                  boxSizing: "border-box",
+                  padding: "32px",
+                  margin: "auto",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                  wordBreak: "break-word",
+                }}
+              >
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  <TemplateComponent resumeData={resumeData} />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+        {/* Mobile Overlay Preview: Full height and width with padding */}
+        {isPreviewed && (
+          <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-60 md:hidden">
+            <div
+              className="bg-white shadow-lg rounded-lg relative w-full h-full p-4 box-border"
+              style={{
+                width: "95vw",
+                height: "100vh",
+                minHeight: "100vh",
+                maxHeight: "100vh",
+                overflowY: "auto",
+                overflowX: "hidden",
+                boxSizing: "border-box",
+                padding: "16px",
+                display: "flex",
+                alignItems: "flex-start",
+                justifyContent: "center",
+                wordBreak: "break-word",
+              }}
+            >
+              <button
+                className="absolute top-2 right-2 text-gray-600 bg-gray-200 rounded-full px-3 py-1 text-sm font-bold hover:bg-gray-300"
+                onClick={() => setIsPreviewed(false)}
+              >
+                Close
+              </button>
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  wordBreak: "break-word",
+                }}
+              >
+                {TemplateComponent && (
+                  <TemplateComponent resumeData={resumeData} />
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </section>
     </>
   );

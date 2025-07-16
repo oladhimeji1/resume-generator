@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ResumeDownload from "./ResumeDownload";
 import { FaArrowLeft, FaDownload, FaPlus } from "react-icons/fa";
-import download from "../assets/images/svg/download.svg"
+import download from "../assets/images/svg/download.svg";
 
 function SkillForm({
   setResumeData,
@@ -87,9 +87,7 @@ function SkillForm({
               }}
             >
               {/* <FaDownload /> */}
-              <img src={download} alt="logo" width="20px" className="inline" /> 
-
-              
+              <img src={download} alt="logo" width="20px" className="inline" />
             </button>
           </div>
         </div>
