@@ -50,7 +50,10 @@ export default function EducationForm({
       <div>
         {resumeData.education.map((education, index) => {
           return (
-            <div key={index} className="grid grid-cols-1 mb-6 md:grid-cols-2 gap-4">
+            <div
+              key={index}
+              className="grid grid-cols-1 mb-6 md:grid-cols-2 gap-4"
+            >
               <div className="flex flex-col gap-2 mb-4">
                 <label
                   htmlFor={`institution_${index}`}
@@ -89,7 +92,6 @@ export default function EducationForm({
                   }
                 />
               </div>
-              
 
               <div className="flex flex-col gap-2 mb-4">
                 <label
@@ -148,7 +150,6 @@ export default function EducationForm({
               </div>
 
               <div></div>
-              
             </div>
           );
         })}
@@ -160,7 +161,6 @@ export default function EducationForm({
       >
         <FaPlus />
       </button>
-
 
       <div className="mt-8 flex items-center justify-between gap-3 w-full">
         <button

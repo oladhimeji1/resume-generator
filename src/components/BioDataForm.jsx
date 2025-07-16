@@ -25,7 +25,7 @@ export default function BioDataForm({
       <div className="grid grid-cols-1 mb-12  md:grid-cols-2 gap-4 ">
         <div className="flex flex-col gap-2 mb-4">
           <label htmlFor="name" className="font-semibold">
-          Firstname <span className="text-red-500">*</span>
+            Firstname <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
