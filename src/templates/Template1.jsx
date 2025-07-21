@@ -3,222 +3,161 @@ import { Document, Page, View, Text, StyleSheet } from "@react-pdf/renderer";
 function Template1({ resumeData }) {
   const styles = StyleSheet.create({
     page: {
-      padding: 30,
-      backgroundColor: "white",
+      padding: "20px",
       textAlign: "justify",
       color: "#333",
       margin: 0,
       lineHeight: 1.3,
-      fontSize: 11,
+      fontSize: "12px",
+      fontFamily: "Century Gothic",
     },
 
     section: {
-      marginBottom: 10,
+      marginBottom: "20px",
       display: "block",
     },
     sectionTitle: {
-      marginBottom: 1,
-      fontSize: 12,
+      marginBottom: 20,
+      fontSize: "12px",
       fontWeight: "bold",
-      color: "#193cb8",
-      borderBottom: "2px dashed black",
+      color: "#000",
+      borderBottom: "2px solid black",
       display: "block",
-      padding: 4,
+      padding: "4px 0",
+    },
+
+    heading: {
+      fontSize: "24px",
+      fontWeight: "600",
+      color: "#000",
+      marginBottom: "16px",
+      display: "block",
+    },
+
+    textBlock: {
+      display: "block",
+      marginBottom: "8px",
+    },
+
+    textCaption: {
+      marginRight: "8px",
+      color: "#000",
+    },
+
+    listItem: {
+      marginBottom: 5,
+      paddingLeft: 10,
+      position: "relative",
+      display: "block",
+    },
+    bullet: {
+      position: "absolute",
+      left: 0,
     },
   });
   return (
-    <Document className="">
-      <Page size="A4" style={styles.page}>
-        {/* Header Section */}
+    <Document>
+      <Page style={styles.page}>
         <View style={styles.section}>
-          <Text
-            style={{
-              textAlign: "left",
-              color: "#193cb8",
-              fontSize: 26,
-              display: "block",
-              fontWeight: "bold",
-              marginBottom: 12,
-            }}
-          >
-            {resumeData.name} {resumeData.surname}
-          </Text>
-
-          <Text
-            style={{
-              marginTop: "5px",
-              display: "block",
-            }}
-          >
-            <Text style={{ fontWeight: "bold", color: "#193cb8" }}>
-              Location:
-            </Text>{" "}
-            {resumeData.city}, {resumeData.country}
-          </Text>
-          <Text
-            style={{
-              marginTop: "5px",
-              display: "block",
-            }}
-          >
-            <Text style={{ fontWeight: "bold", color: "#193cb8" }}>Phone:</Text>{" "}
-            {resumeData.phone}
-          </Text>
-          <Text
-            style={{
-              marginTop: "5px",
-              display: "block",
-            }}
-          >
-            <Text style={{ fontWeight: "bold", color: "#193cb8" }}>Email:</Text>{" "}
-            {resumeData.email}
+          <Text style={styles.heading}>
+            {resumeData.name.toUpperCase()} {resumeData.surname.toUpperCase()}
           </Text>
         </View>
 
-        {/* Summary Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>PROFESSIONAL SUMMARY</Text>
-          <Text style={{ marginTop: 6, marginBottom: 8, display: "block" }}>
-            {resumeData.summary}
-          </Text>
-        </View>
-
-        {/* Employment Section */}
-
-        <View style={styles.section}>
-          <View
-            style={{
-              display: "block",
-              marginBottom: 5,
-            }}
-          >
-            <Text style={styles.sectionTitle}>EMPLOYMENT HISTORY</Text>
-
-            {resumeData.workExperience.map((work, index) => {
-              return (
-                <View
-                  key={index}
-                  style={{
-                    marginTop: 6,
-                    marginBottom: 6,
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View>
-                    <View
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "10px",
-                        marginBottom: 6,
-                      }}
-                    >
-                      <Text>
-                        {work.jobTitle} at <Text>{work.company}</Text>
-                      </Text>
-                      <Text style={{ color: "#193cb8" }}>
-                        {work.startDate} - {work.endDate}
-                        {work.isRemote && <Text> (Remote) </Text>}
-                      </Text>
-                    </View>
-                    <View>
-                      <Text>{work.location} </Text>
-                    </View>
-                    <View
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "2px",
-                      }}
-                    >
-                      {work.duties.map((duty, index) => (
-                        <Text key={index}>{duty.name}</Text>
-                      ))}
-                    </View>
-                  </View>
-                </View>
-              );
-            })}
-          </View>
-        </View>
-        {/* {Education Data} */}
-        <View style={styles.section}>
-          <View
-            style={{
-              display: "block",
-              marginBottom: 5,
-            }}
-          >
-            <Text style={styles.sectionTitle}>EDUCATION</Text>
-
-            {resumeData.education.map((education, index) => {
-              return (
-                <View
-                  key={index}
-                  style={{
-                    marginTop: 6,
-                    marginBottom: 8,
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <View>
-                    <View
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "10px",
-                        marginBottom: 8,
-                      }}
-                    >
-                      <Text>{education.institution} </Text>
-                      <Text style={{ color: "#193cb8" }}>
-                        {education.startDate} - {education.endDate}
-                      </Text>
-                    </View>
-
-                    <View
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "2px",
-                      }}
-                    >
-                      <Text>{education.degree}</Text>
-                    </View>
-                  </View>
-                  <View>
-                    <Text>{education.location} </Text>
-                  </View>
-                </View>
-              );
-            })}
+          <View>
+            <Text style={styles.textBlock}>
+              {resumeData.city}, {resumeData.country}
+            </Text>
+            <Text style={styles.textBlock}>{resumeData.phone}</Text>
+            <Text style={styles.textBlock}>{resumeData.email}</Text>
           </View>
         </View>
 
         <View style={styles.section}>
-          <View
-            style={{
-              display: "block",
-              marginBottom: 3,
-            }}
-          >
-            <Text style={styles.sectionTitle}>SKILLS</Text>
+          <Text style={styles.sectionTitle}>PROFESSIONAL SUMMARY:</Text>
+          <Text>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
+            expedita adipisci cupiditate, omnis saepe tempora quam praesentium
+            nesciunt possimus, ipsa corporis eligendi beatae voluptatibus eos.
+            Asperiores architecto dolorem similique doloremque animi veritatis
+            quasi pariatur illo?
+          </Text>
+        </View>
 
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 8,
-                marginTop: 6,
-              }}
-            >
-              {resumeData.skills.map((skill, index) => (
-                <Text key={index}>{skill.name}</Text>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>EMPLOYMENT HISTORY:</Text>
+          {resumeData.workExperience.map((exp, i) => (
+            <View key={i}>
+              <View>
+                <Text style={{ marginRight: "30px" }}>
+                  {exp.startDate} - {exp.endDate}
+                </Text>
+                <Text>
+                  {exp.jobTitle}, {exp.company} {exp.isRemote ? `(Remote)` : ""}
+                </Text>
+              </View>
+              <Text style={{ display: "block" }}>{exp.location}</Text>
+              {exp.duties.map((duty, i) => (
+                <View key={i} style={{ display: "block" }}>
+                  <Text style={styles.listItem}>
+                    <Text style={styles.bullet}>•</Text> {duty.name}
+                  </Text>
+                </View>
               ))}
             </View>
-          </View>
+          ))}
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>EDUCATION :</Text>
+          {resumeData.education.map((edu, i) => (
+            <View key={i}>
+              <View>
+                <Text style={{ marginRight: "30px" }}>
+                  {edu.startDate} - {edu.endDate}
+                </Text>
+                <Text>{edu.degree}</Text>
+              </View>
+              <Text style={{ display: "block" }}>
+                {edu.institution}, {edu.location}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        <View styles={styles.section}>
+          <Text style={styles.sectionTitle}>SKILLS :</Text>
+
+          {resumeData.skills.map((skill, i) => (
+            <View key={i} style={{ display: "block" }}>
+              <Text style={styles.listItem}>
+                <Text style={styles.bullet}>•</Text> {skill.name}
+              </Text>
+            </View>
+          ))}
+        </View>
+        <View styles={styles.section}>
+          <Text style={styles.sectionTitle}>REFERENCE :</Text>
+
+          {resumeData.references.map((reference, i) => (
+            <View key={i}>
+              <View style={{ display: "block" }}>
+                <Text style={{ fontWeight: "bold", color: "#000" }}>
+                  {reference.name}
+                </Text>
+              </View>
+              <View style={{ display: "block" }}>
+                <Text>{reference.occupation}</Text>
+              </View>
+              <View style={{ display: "block" }}>
+                <Text>{reference.location}</Text>
+              </View>
+              <View style={{ display: "block" }}>
+                <Text>{reference.phone}</Text>
+              </View>
+            </View>
+          ))}
         </View>
       </Page>
     </Document>

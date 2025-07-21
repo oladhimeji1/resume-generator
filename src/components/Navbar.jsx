@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import arrowup from "../assets/images/svg/chevron-up-outline.svg"
-import arrowdown from "../assets/images/svg/chevron-down-outline.svg"
+import arrowup from "../assets/images/svg/chevron-up-outline.svg";
+import arrowdown from "../assets/images/svg/chevron-down-outline.svg";
 
 export default function Navbar() {
   const [navBarOpen, setNavBarOpen] = useState(true);
@@ -34,29 +34,52 @@ export default function Navbar() {
         {/* Resources Dropdown */}
         <div className="relative" onClick={toggleResources}>
           <button className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition inline">
-            Resources {!ResourcesOpen ? (
+            Resources{" "}
+            {!ResourcesOpen ? (
               <img src={arrowdown} alt="logo" width="20px" className="inline" />
             ) : (
               <img src={arrowup} alt="logo" width="20px" className="inline" />
             )}
           </button>
-          <div className={`absolute ${!ResourcesOpen ? "hidden" : "grid"} top-full mt-3 left-0  bg-white shadow-xl rounded-xl p-4 z-50 w-[320px] grid-cols-1 gap-3 text-sm`}>
-            <Link to="/tools/ai-resume-generator" className="hover:text-emerald-900">
+          <div
+            className={`absolute ${
+              !ResourcesOpen ? "hidden" : "grid"
+            } top-full mt-3 left-0  bg-white shadow-xl rounded-xl p-4 z-50 w-[320px] grid-cols-1 gap-3 text-sm`}
+          >
+            <Link
+              to="/tools/ai-resume-generator"
+              className="hover:text-emerald-900"
+            >
               AI Resume Generator
             </Link>
-            <Link to="/tools/ai-resume-refactor" className="hover:text-emerald-900">
+            <Link
+              to="/tools/ai-resume-refactor"
+              className="hover:text-emerald-900"
+            >
               AI Resume Refactoring
             </Link>
-            <Link to="/tools/cover-letter-generator" className="hover:text-emerald-900">
+            <Link
+              to="/tools/cover-letter-generator"
+              className="hover:text-emerald-900"
+            >
               Cover Letter Generator
             </Link>
-            <Link to="/tools/resume-summary-writer" className="hover:text-emerald-900">
+            <Link
+              to="/tools/resume-summary-writer"
+              className="hover:text-emerald-900"
+            >
               Resume Summary Writer
             </Link>
-            <Link to="/tools/job-description-matcher" className="hover:text-emerald-900">
+            <Link
+              to="/tools/job-description-matcher"
+              className="hover:text-emerald-900"
+            >
               Job Description Matcher
             </Link>
-            <Link to="/tools/resume-pdf-optimizer" className="hover:text-emerald-900">
+            <Link
+              to="/tools/resume-pdf-optimizer"
+              className="hover:text-emerald-900"
+            >
               Resume PDF Optimizer
             </Link>
           </div>
@@ -86,12 +109,7 @@ export default function Navbar() {
         >
           Contact
         </Link>
-        <Link
-          to="/login"
-          className="hover:text-emerald-900 border-b-2 border-transparent hover:border-emerald-800 transition"
-        >
-          Login
-        </Link>
+
         <Link
           to="/signup"
           className="bg-emerald-900 text-white rounded-full px-4 py-2 flex items-center justify-center cursor-pointer hover:bg-green-800 transition duration-300"
@@ -134,22 +152,40 @@ export default function Navbar() {
         </button>
         {mobileResourcesOpen && (
           <div className="flex flex-col space-y-2 text-sm">
-            <Link to="/tools/ai-resume-generator" className="hover:text-emerald-900">
+            <Link
+              to="/tools/ai-resume-generator"
+              className="hover:text-emerald-900"
+            >
               AI Resume Generator
             </Link>
-            <Link to="/tools/ai-resume-refactor" className="hover:text-emerald-900">
+            <Link
+              to="/tools/ai-resume-refactor"
+              className="hover:text-emerald-900"
+            >
               AI Resume Refactoring
             </Link>
-            <Link to="/tools/cover-letter-generator" className="hover:text-emerald-900">
+            <Link
+              to="/tools/cover-letter-generator"
+              className="hover:text-emerald-900"
+            >
               Cover Letter Generator
             </Link>
-            <Link to="/tools/resume-summary-writer" className="hover:text-emerald-900">
+            <Link
+              to="/tools/resume-summary-writer"
+              className="hover:text-emerald-900"
+            >
               Resume Summary Writer
             </Link>
-            <Link to="/tools/job-description-matcher" className="hover:text-emerald-900">
+            <Link
+              to="/tools/job-description-matcher"
+              className="hover:text-emerald-900"
+            >
               Job Description Matcher
             </Link>
-            <Link to="/tools/resume-pdf-optimizer" className="hover:text-emerald-900">
+            <Link
+              to="/tools/resume-pdf-optimizer"
+              className="hover:text-emerald-900"
+            >
               Resume PDF Optimizer
             </Link>
           </div>
