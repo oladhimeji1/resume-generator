@@ -116,7 +116,7 @@ export default function WorkForm({
                       id={`jobTitle_${index}`}
                       name={`jobTitle_${index}`}
                       placeholder="e.g Sales Manager"
-                      className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
+                      className="bg-[#e6e6e6] border-2 border-dashed border-emerald-900 focus:border-emerald-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
                       value={experience.jobTitle}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -139,7 +139,7 @@ export default function WorkForm({
                       id={`employer_${index}`}
                       name={`employer_${index}`}
                       placeholder="e.g KondiPress LLC"
-                      className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
+                      className="bg-[#e6e6e6] border-2 border-dashed border-emerald-900 focus:border-emerald-400  bg-whie py-3 rounded-md px-4 focus:outline-none"
                       value={experience.company}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -162,7 +162,7 @@ export default function WorkForm({
                       id={`location_${index}`}
                       name={`location_${index}`}
                       placeholder="e.g Kano, Nigeria"
-                      className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
+                      className="bg-[#e6e6e6] border-2 border-dashed border-emerald-900 focus:border-emerald-400  bg-whie py-3 rounded-md px-4 focus:outline-none"
                       value={experience.location}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -209,7 +209,7 @@ export default function WorkForm({
                       id={`startdate_${index}`}
                       name={`startdate_${index}`}
                       placeholder="e.g GtechCorporation"
-                      className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none block w-full"
+                      className="border-2 border-dashed border-emerald-900 focus:border-emerald-400  bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none block w-full"
                       value={experience.startDate}
                       onChange={(e) =>
                         handleWorkExperienceChange(
@@ -232,7 +232,7 @@ export default function WorkForm({
                       id={`enddate_${index}`}
                       name={`enddate_${index}`}
                       placeholder="e.g GtechCorporation"
-                      className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none w-full block"
+                      className="bg-[#e6e6e6] border-2 border-dashed border-emerald-900 focus:border-emerald-400   bg-whie py-3 rounded-md px-4 focus:outline-none w-full block"
                       value={experience.endDate}
                       onChange={(e) =>
                         handleWorkExperienceChange(

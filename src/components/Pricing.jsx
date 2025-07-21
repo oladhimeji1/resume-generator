@@ -55,28 +55,26 @@ export default function PricingPage() {
               <li>✓ Limited access to our site features</li>
               <li>✓ Free forever</li>
             </ul>
-            <button className="mt-6 w-full py-2 px-4 bg-emerald-900 text-white rounded-md">
+            <button className="mt-6 w-full py-2 px-4 bg-emerald-900 text-white cursor-pointer rounded-md">
               Get started for free
             </button>
           </div>
 
           {/* Pro Plan */}
-          <div className="bg-white rounded-2xl shadow p-6 border-2 border-emerald-500">
+          <div className="text-white rounded-2xl bg-emerald-900 shadow p-6 border-2 border-emerald-500">
             <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-emerald-900">
-                Premium
-              </h3>
+              <h3 className="text-lg font-semibold text-white">Premium</h3>
               <span className="bg-emerald-500 text-white text-xs px-2 py-1 rounded">
                 Popular
               </span>
             </div>
-            <p className="mt-4 text-4xl font-bold text-emerald-900">
-              &#8358;1,500
+            <p className="mt-4 text-4xl font-bold text-emerald-500">
+              &#8358; {billing === "monthly" ? "1,500" : "13,500"}
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-white">
               Per user/month, billed annually
             </p>
-            <ul className="mt-6 space-y-2 text-sm text-gray-600 text-left">
+            <ul className="mt-6 space-y-2 text-sm text-white text-left">
               <li>✓ AI Powered Resume Generations</li>
               <li>✓ Unlimited Cover letters</li>
               <li>✓ Unlimited Resume Templates</li>
@@ -84,7 +82,7 @@ export default function PricingPage() {
               <li>✓ Have complete access to all our site features</li>
               <li>✓ Additional Resume Sections</li>
             </ul>
-            <button className="mt-6 w-full py-2 px-4 bg-emerald-500 text-white rounded-md">
+            <button className="mt-6 w-full py-2 px-4 bg-emerald-500 text-white cursor-pointer rounded-md">
               Get started with Pro
             </button>
           </div>
