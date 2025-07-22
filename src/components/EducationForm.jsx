@@ -66,7 +66,7 @@ export default function EducationForm({
                   id={`institution_${index}`}
                   name={`institution_${index}`}
                   placeholder="e.g University of Port Harcourt"
-                  className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
+                  className="bg-[#e6e6e6] bg-whie border-2 border-dashed border-emerald-900 focus:border-emerald-400  py-3 rounded-md px-4 focus:outline-none"
                   value={education.institution}
                   onChange={(e) =>
                     handleEducationChange(index, "institution", e.target.value)
@@ -85,7 +85,7 @@ export default function EducationForm({
                   id={`schoolLocation_${index}`}
                   name={`schoolLocation_${index}`}
                   placeholder="e.g Kano, Nigeria"
-                  className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
+                  className="bg-[#e6e6e6] bg-whie py-3 border-2 border-dashed border-emerald-900 focus:border-emerald-400  rounded-md px-4 focus:outline-none"
                   value={education.location}
                   onChange={(e) =>
                     handleEducationChange(index, "location", e.target.value)
@@ -105,7 +105,7 @@ export default function EducationForm({
                   id={`school_start_date${index}`}
                   name={`school_start_date${index}`}
                   placeholder="e.g GtechCorporation"
-                  className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none block w-full"
+                  className="bg-[#e6e6e6] bg-whie py-3 border-2 border-dashed border-emerald-900 focus:border-emerald-400  rounded-md px-4 focus:outline-none block w-full"
                   value={education.startDate}
                   onChange={(e) =>
                     handleEducationChange(index, "startDate", e.target.value)
@@ -124,7 +124,7 @@ export default function EducationForm({
                   id={`school_end_date${index}`}
                   name={`school_end_date${index}`}
                   placeholder="e.g GtechCorporation"
-                  className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none block w-full "
+                  className="bg-[#e6e6e6] bg-whie py-3 border-2 border-dashed border-emerald-900 focus:border-emerald-400  rounded-md px-4 focus:outline-none block w-full "
                   value={education.endDate}
                   onChange={(e) =>
                     handleEducationChange(index, "endDate", e.target.value)
@@ -141,7 +141,7 @@ export default function EducationForm({
                   id={`degree_${index}`}
                   name={`degree_${index}`}
                   placeholder="e.g HND in Software Engineering"
-                  className="bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none"
+                  className="bg-[#e6e6e6] bg-whie py-3 border-2 border-dashed border-emerald-900 focus:border-emerald-400  rounded-md px-4 focus:outline-none"
                   value={education.degree}
                   onChange={(e) =>
                     handleEducationChange(index, "degree", e.target.value)

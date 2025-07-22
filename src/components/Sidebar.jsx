@@ -51,6 +51,16 @@ export default function Sidebar({ handleStep, step }) {
               Skills
             </Link>
           </div>
+          <div className="">
+            <Link
+              onClick={() => handleStep(5)}
+              className={`py-3 ${
+                step == 5 ? "bg-white" : "text-white"
+              } font-semibold text-lg block hover:bg-emerald-800 hover:text-white hover:pl-6 pl-4 transition-all duration-500 border-b border-b-gray-500`}
+            >
+              Reference
+            </Link>
+          </div>
         </div>
 
         <div className="flex flex-col gap-4 p-4">

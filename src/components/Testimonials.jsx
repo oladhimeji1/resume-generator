@@ -1,6 +1,55 @@
 import Container from "./container";
 import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+const testimonials = [
+  {
+    name: "Rita",
+    img: "/reviewers/grid1.png",
+    text: "ResumeWizard enabled me to put together an updated resume very easily. The templates provided made it simple to choose the right wording.",
+  },
+  {
+    name: "Chris",
+    img: "/reviewers/grid2.png",
+    text: "Clear directions and high definitions. A good range for resume styles and templates, cost effective. Professional services including reviews and feedback for improvement.",
+  },
+  {
+    name: "Damian",
+    img: "/reviewers/grid12.png",
+    text: "More easy to create resume in the PRO version with AI which takes the work out of me by populating the required field.",
+  },
+];
+
 const Testimonials = () => {
+  const [active, setActive] = useState(0);
+  const scrollRef = useRef(null);
+
+  // Auto-scroll every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Scroll to active card
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({
+        left: scrollRef.current.offsetWidth * active,
+        behavior: "smooth",
+      });
+    }
+  }, [active]);
+
+  const handlePrev = () => {
+    setActive((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+  const handleNext = () => {
+    setActive((prev) => (prev + 1) % testimonials.length);
+  };
+
   return (
     <div className="bg-emerald-200 w-full py-6 min-h-90">
       <Container>
@@ -9,96 +58,66 @@ const Testimonials = () => {
             What People Are Saying About Our Resume Maker.
           </h2>
 
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-            <motion.div
-              className="bg-white p-4 rounded-lg shadow-lg hover:ring-2 ring-emerald-900"
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 20,
-                mass: 1,
-                duration: 0.8,
-                bounce: 0.5,
-                delay: 1,
-              }}
-              viewport={{ once: false, amount: 0.5 }}
+          <div className="relative">
+            <button
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-emerald-100 transition"
+              onClick={handlePrev}
+              aria-label="Previous"
+              style={{ left: 0 }}
             >
-              <div className="flex items-center justify-between gap-10 mb-8">
-                <h4 className="text-xl font-bold">Rita</h4>
-                <img
-                  src="/reviewers/grid1.png"
-                  className="w-18 rounded-full md:w-20"
-                  alt=""
-                />
-              </div>
-
-              <p className="text-xl text-zinc-700 leading-relaxed">
-                ResumeWizard enabled me to put together an updated resume very
-                easily. The templates provided made it simple to choose the
-                right wording.
-              </p>
-            </motion.div>
-            <motion.div
-              className="bg-white p-4 rounded-lg shadow-lg hover:ring-2 ring-emerald-900"
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 20,
-                mass: 1,
-                duration: 5,
-                delay: 1.5,
-                bounce: 1,
-              }}
-              viewport={{ once: false, amount: 0.5 }}
+              <FaChevronLeft size={24} />
+            </button>
+            <div
+              ref={scrollRef}
+              className="flex overflow-x-hidden py-6 no-scrollbar scroll-smooth snap-x snap-mandatory"
+              style={{ scrollBehavior: "smooth" }}
             >
-              <div className="flex items-center justify-between gap-10 mb-8">
-                <h4 className="text-xl">Chris</h4>
-                <img
-                  src="/reviewers/grid2.png"
-                  className="w-18 rounded-full md:w-20"
-                  alt=""
-                />
-              </div>
-
-              <p className="text-xl text-zinc-700 leading-relaxed">
-                Clear directions and high definitions. A good range for resume
-                styles and templates, cost effective. Professional services
-                including reviews and feedback for improvement.
-              </p>
-            </motion.div>
-            <motion.div
-              className="bg-white p-4 rounded-lg shadow-lg hover:ring-2 ring-emerald-900"
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 20,
-                mass: 1,
-                duration: 0.8,
-                bounce: 0.5,
-                delay: 2,
-              }}
-              viewport={{ once: false, amount: 0.5 }}
+              {testimonials.map((t, idx) => (
+                <motion.div
+                  key={idx}
+                  className={`bg-white min-w-full md:min-w-[400px] max-w-md mx-auto p-8 rounded-2xl shadow-lg flex-shrink-0 snap-center transition-all duration-300 ${
+                    idx === active ? "ring-4 ring-emerald-400" : "opacity-70"
+                  }`}
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: idx === active ? 1 : 0.95, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                >
+                  <div className="flex items-center justify-between gap-6 mb-6">
+                    <h4 className="text-xl font-bold text-emerald-700">
+                      {t.name}
+                    </h4>
+                    <img
+                      src={t.img}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-emerald-300"
+                      alt={t.name}
+                    />
+                  </div>
+                  <p className="text-lg text-zinc-700 leading-relaxed italic">
+                    "{t.text}"
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+            <button
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-emerald-100 transition"
+              onClick={handleNext}
+              aria-label="Next"
+              style={{ right: 0 }}
             >
-              <div className="flex items-center justify-between gap-10 mb-8">
-                <h4 className="text-xl">Damian</h4>
-                <img
-                  src="/reviewers/grid12.png"
-                  className="w-18 rounded-full md:w-20"
-                  alt=""
-                />
-              </div>
-
-              <p className="text-xl text-zinc-700 leading-relaxed">
-                More easy to create resume in the PRO version with AI which
-                takes the work out of me by populating the required field.
-              </p>
-            </motion.div>
+              <FaChevronRight size={24} />
+            </button>
+          </div>
+          <div className="flex justify-center mt-8 gap-2">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                className={`w-3 h-3 rounded-full ${
+                  idx === active ? "bg-emerald-700" : "bg-emerald-300"
+                }`}
+                onClick={() => setActive(idx)}
+                aria-label={`Go to testimonial ${idx + 1}`}
+              />
+            ))}
           </div>
         </div>
       </Container>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Template from "../components/Template";
-import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import { useState } from "react";
+
 import templates from "../data.js";
 import Container from "../components/container.jsx";
 import Navbar from "../components/Navbar.jsx";
@@ -15,11 +15,6 @@ export default function ResumeTemplates() {
     setTemplateId(id);
   };
 
-  useEffect(() => {
-    if (selectedTemplate) {
-      toast.success(`Template ${templateId} Selected`);
-    }
-  }, [selectedTemplate]);
   return (
     <Container>
       <section className="min-h-screen pt-2 relative">

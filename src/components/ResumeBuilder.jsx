@@ -9,6 +9,7 @@ import Sidebar from "./Sidebar";
 import SkillForm from "./SkillForm";
 
 import templates from "../data.js";
+import ReferenceForm from "./ReferenceForm.jsx";
 
 export default function ResumeBuilder() {
   const { templateId } = useParams();
@@ -57,9 +58,6 @@ export default function ResumeBuilder() {
           {
             name: "",
           },
-          {
-            name: "",
-          },
         ],
       },
     ],
@@ -77,7 +75,7 @@ export default function ResumeBuilder() {
         name: "",
       },
     ],
-    referee: [{ name: "", phone: "", location: "" }],
+    references: [{ name: "", phone: "", location: "", occupation: "" }],
   });
 
   const handleInputChange = (field, value) => {
@@ -178,7 +176,7 @@ export default function ResumeBuilder() {
     <>
       <section className="min-h-screen p-2 sm:p-0 flex flex-col md:flex-row gap-2 bg-[#F4F5FB]">
         {/* Sidebar Left */}
-        <div className="md:w-1/5 w-full md:block">
+        <div className="md:w-1/5 w-full lg:block">
           <Sidebar handleStep={handleStep} step={step} />
         </div>
         {/* Form Middle */}
@@ -186,18 +184,18 @@ export default function ResumeBuilder() {
           <div className="flex gap-4 items-center mb-8 p-4">
             <Link
               to="/build-resume/resume-templates"
-              className="text-blue-500 font-bold flex justify-center items-center gap-2 hover:text-pink-300"
+              className="text-blue-500 font-bold flex justify-center items-center gap-2"
             >
-              <FaArrowLeft className="text-blue-500 hover:text-pink-300" />
+              <FaArrowLeft className="text-blue-500" />
               <span>Change Template</span>
             </Link>
             {/* Mobile: Show Preview Button */}
             <button
               type="button"
-              className="md:hidden ml-auto text-white bg-fuchsia-600 py-2 px-4 rounded-full transition pointer hover:bg-fuchsia-900"
+              className="md:hidden ml-auto text-white bg-emerald-600 py-2 px-2 rounded-full transition pointer hover:bg-emerald-900"
               onClick={() => setIsPreviewed(!isPreviewed)}
             >
-              {isPreviewed ? "Hide Preview" : "Show Template Preview"}
+              {isPreviewed ? "Hide Preview" : "Show Preview"}
             </button>
           </div>
           <form className="mb-4">
@@ -233,14 +231,21 @@ export default function ResumeBuilder() {
                 setResumeData={setResumeData}
                 handleNextStep={handleNextStep}
                 handlePrevStep={handlePrevStep}
-                TemplateComponent={TemplateComponent}
                 step={step}
+              />
+            )}
+
+            {step === 5 && (
+              <ReferenceForm
+                resumeData={resumeData}
+                setResumeData={setResumeData}
+                handlePrevStep={handlePrevStep}
+                step={step}
+                TemplateComponent={TemplateComponent}
               />
             )}
           </form>
         </div>
-        {/* Template Preview Right (Desktop) or Overlay (Mobile) */}
-        {/* Desktop Preview: Full height and width with padding */}
         <div
           className={`md:w-2/5 w-full md:flex md:items-start md:justify-center md:relative ${
             isPreviewed ? "block" : "hidden md:block"
@@ -255,7 +260,7 @@ export default function ResumeBuilder() {
               <div
                 className="bg-white shadow-lg rounded-lg w-full h-full p-8 box-border"
                 style={{
-                  width: "100%",
+                  width: "40%",
                   height: "100%",
                   minHeight: "100vh",
                   maxHeight: "100vh",
@@ -263,6 +268,9 @@ export default function ResumeBuilder() {
                   overflowX: "hidden",
                   boxSizing: "border-box",
                   padding: "32px",
+                  position: "fixed",
+                  right: 0,
+
                   margin: "auto",
                   display: "flex",
                   alignItems: "flex-start",
