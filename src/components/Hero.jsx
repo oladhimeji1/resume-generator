@@ -29,14 +29,14 @@ export default function Hero() {
               </h1>
               <p className="text-center text-bold  lg:text-left text-lg text-zinc-600">
                 Build a professional resume that opens doors to new
-                opportunities. Graft a resumse with us that stands out from the
+                opportunities. Graft a resume with us that stands out from the
                 crowd, get noticed by employers with a resume that highlights
                 your strengths.
               </p>
 
               <Link
                 to="/build-resume"
-                className="bg-emerald-900 px-8 py-4 text-white text-xl rounded-full text-center transition hover:bg-[#5E4AC3]"
+                className="bg-emerald-900 px-6 py-3 text-white text-xl rounded-full text-center transition hover:bg-[#5E4AC3]"
               >
                 Build Your Resume 📃
               </Link>
@@ -78,7 +78,7 @@ export default function Hero() {
 
               <Link
                 to="/build-resume"
-                className="bg-emerald-900 px-8 py-4 text-white text-xl rounded-full text-center transition hover:bg-[#5E4AC3]"
+                className="bg-emerald-900 px-6 py-3 text-white text-xl rounded-full text-center transition hover:bg-[#5E4AC3]"
               >
                 Build Your Resume 📃
               </Link>

@@ -1,6 +1,7 @@
 import { FaArrowLeft } from "react-icons/fa";
 import download from "../assets/images/svg/download.svg";
 import { useState } from "react";
+import ResumeDownload from "./ResumeDownload";
 
 function ReferenceForm({
   setResumeData,

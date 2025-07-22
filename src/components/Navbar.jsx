@@ -98,7 +98,7 @@ export default function Navbar() {
         to="/"
         className="text-3xl font-[poppins] font-bold text-emerald-900"
       >
-        <img src="/logo_1.png" alt="logo" width="200px" />
+        <img src="/resume_logo_light.jpg" alt="logo" width="230px" />
       </Link>
 
       {/* Desktop Right Links */}

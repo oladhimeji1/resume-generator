@@ -15,28 +15,28 @@ const JobReviewer = () => {
               Trusted by recruiters and job-seekers around the world.
             </h2>
             <p className="text-xl font-medium text-zinc-600">
-              ResumeWizard customers got the job on average 48 days faster.*
+              Intelligent CV customers got the job on average 48 days faster.*
             </p>
 
             <p className="mt-8 font-sm text-zinc-600">
-              Based on survey of 258 ResumeWizard users
+              Based on survey of 258 Intelligent CV users
             </p>
           </div>
 
           {/* <div className="grid grid-cols-3 gap-4 md:grid-cols-4 mb-12"> */}
           <div className="flex justify-center items-center gap-4 flex-wrap mb-12">
-            <img src="/reviewers/grid1.png" alt="" />
-            <img src="/reviewers/grid2.png" alt="" />
-            <img src="/reviewers/grid3.png" alt="" />
-            <img src="/reviewers/grid4.png" alt="" />
-            <img src="/reviewers/grid5.png" alt="" />
-            <img src="/reviewers/grid6.png" alt="" />
-            <img src="/reviewers/grid7.png" alt="" />
-            <img src="/reviewers/grid8.png" alt="" />
-            <img src="/reviewers/grid9.png" alt="" />
-            <img src="/reviewers/grid10.png" alt="" />
-            <img src="/reviewers/grid11.png" alt="" />
-            <img src="/reviewers/grid12.png" alt="" />
+            <img src="/reviewers/grid1.png" alt="Reviewer 1." />
+            <img src="/reviewers/grid2.png" alt="Reviewer 2." />
+            <img src="/reviewers/grid3.png" alt="Reviewer 3." />
+            <img src="/reviewers/grid4.png" alt="Reviewer 4." />
+            <img src="/reviewers/grid5.png" alt="Reviewer 5." />
+            <img src="/reviewers/grid6.png" alt="Reviewer 6." />
+            <img src="/reviewers/grid7.png" alt="Reviewer 7." />
+            <img src="/reviewers/grid8.png" alt="Reviewer 8." />
+            <img src="/reviewers/grid9.png" alt="Reviewer 9." />
+            <img src="/reviewers/grid10.png" alt="Reviewer 10." />
+            <img src="/reviewers/grid11.png" alt="Reviewer 11." />
+            <img src="/reviewers/grid12.png" alt="Reviewer 12." />
           </div>
         </div>
 
@@ -48,7 +48,7 @@ const JobReviewer = () => {
               </h3>
 
               <p className="text-sm text-zinc-700">
-                *ResumeWizard is not affiliated to those companies
+                *Intelligent CV is not affiliated to those companies
               </p>
             </div>
 

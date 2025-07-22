@@ -23,9 +23,9 @@ function Policy() {
                 Privacy Policy
               </h2>
               <p className="text-gray-600 mb-2">
-                At ResumeWizard, your privacy is important to us. We collect
-                only the information necessary to process your resume and
-                provide you with the best building experience. Your data is
+                At Intelligent CV 247, your privacy is important to us. We
+                collect only the information necessary to process your resume
+                and provide you with the best building experience. Your data is
                 stored securely and never shared with third parties except as
                 required to fulfill your order or by law.
               </p>
@@ -45,31 +45,6 @@ function Policy() {
               <h2 className="text-2xl font-bold text-gray-800 mb-2">
                 Terms & Conditions
               </h2>
-              <p className="text-gray-600 mb-2">
-                By using ResumeWizard, you agree to our terms and conditions.
-                These terms govern your use of our website and services.
-              </p>
-              <ul className="list-disc pl-6 text-gray-600 space-y-1">
-                <li>
-                  All orders are subject to availability and confirmation.
-                </li>
-                <li>
-                  Prices and product information are subject to change without
-                  notice.
-                </li>
-                <li>
-                  We reserve the right to refuse service to anyone for any
-                  reason at any time.
-                </li>
-                <li>
-                  Returns and exchanges are accepted within 14 days of delivery,
-                  subject to our return policy.
-                </li>
-                <li>
-                  By placing an order, you confirm that all information provided
-                  is accurate and complete.
-                </li>
-              </ul>
             </section>
 
             {/* Terms of Use */}
@@ -78,14 +53,14 @@ function Policy() {
                 Terms of Use
               </h2>
               <p className="text-gray-600 mb-2">
-                Your use of ResumeWizard website and services is subject to the
-                following terms of use:
+                Your use of Intelligent CV 247 website and services is subject
+                to the following terms of use:
               </p>
               <ul className="list-disc pl-6 text-gray-600 space-y-1">
                 <li>You may not use our site for any unlawful purpose.</li>
                 <li>
-                  All content on this site is the property of ResumeWizard and
-                  may not be reproduced without permission.
+                  All content on this site is the property of Intelligent CV 247
+                  and may not be reproduced without permission.
                 </li>
                 <li>
                   You are responsible for maintaining the confidentiality of
@@ -101,10 +76,10 @@ function Policy() {
             <div className="text-center text-gray-500 text-sm mt-8">
               If you have any questions about our policies, please contact us at{" "}
               <a
-                href="mailto:support@resumewizard.com"
+                href="mailto:intelligentcv247@gmail.com"
                 className="text-emerald-600 hover:underline"
               >
-                support@resumewizard.com
+                intelligentcv247@gmail.com
               </a>
               .
             </div>
