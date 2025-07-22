@@ -125,10 +125,27 @@ export default function BioDataForm({
           />
         </div>
       </div>
+      <div className="flex flex-col gap-2 mb-4 relative">
+        <label htmlFor="summary" className="font-semibold">
+          SUMMARY
+        </label>
+        <textarea
+          rows="10"
+          className="bg-[#e6e6e6] border-2 border-dashed border-emerald-900 py-3 rounded-md px-4 focus:outline-none focus:border-emerald-400"
+          name="summary"
+          id="summary"
+          placeholder="Describe your Career Objectives"
+          onChange={(e) => {
+            handleInputChange("summary", e.target.value);
+          }}
+          value={resumeData.summary}
+          autoComplete="true"
+        ></textarea>
+      </div>
 
       <button
         type="button"
-        className="text-white  bg-emerald-600 py-3 cursor-pointer px-6 rounded-full  transition pointer hover:bg-emerald-900"
+        className="text-white bg-emerald-600 py-3 cursor-pointer px-6 rounded-full  transition pointer hover:bg-emerald-900"
         onClick={() => {
           handleNextStep();
         }}

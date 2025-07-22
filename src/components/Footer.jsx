@@ -9,12 +9,15 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo and Address */}
         <div>
-          <img
-            src="/logo_1.png"
-            alt="Skipmatrix Logo"
+          {/* <img
+            src="/resume_logo_green.jpg"
+            alt="Intelligent CV 247 Logo"
             className="mb-4"
             width={180}
-          />
+          /> */}
+          <h4 className="cursor-pointer uppercase text-2xl  font-bold text-emerald-600">
+            IntelligentCV 247
+          </h4>
           <p>Build. Scale. Standout</p>
           {/* <p>Suite 116 #1040</p>
           <p>Cornelius, NC 28031</p>
@@ -65,19 +68,19 @@ const Footer = () => {
           <h4 className="font-bold text-lg mb-4">Quick links</h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link to="">Pricing</Link>
+              <Link to="/">Pricing</Link>
             </li>
             <li>
-              <Link to="">Resources</Link>
+              <Link to="/resources">Resources</Link>
+            </li>
+            {/* <li>
+              <Link to="/about">About us</Link>
+            </li> */}
+            <li>
+              <Link to="/">FAQ</Link>
             </li>
             <li>
-              <Link to="">About us</Link>
-            </li>
-            <li>
-              <Link to="">FAQ</Link>
-            </li>
-            <li>
-              <Link to="">Contact us</Link>
+              <Link to="/contact">Contact us</Link>
             </li>
           </ul>
         </div>

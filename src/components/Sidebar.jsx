@@ -8,7 +8,7 @@ export default function Sidebar({ handleStep, step }) {
       <div className="flex flex-col justify-between min-h-full">
         <div className="mb-12">
           <Link to="/" className="font-bold p-4 text-white text-xl block">
-            <img src="/logo_1.png" alt="logo" width="200px" />
+            <img src="/resume_logo_green.jpg" alt="logo" width="230px" />
           </Link>
           <div className="mt-10">
 

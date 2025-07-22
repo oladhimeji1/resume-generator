@@ -1,13 +1,10 @@
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import * as yup from "yup";
+
 export default function Login() {
   const { register, handleSubmit } = useForm();
-  const schema = yup.object().shape({
-    email: yup.string().email().required(),
-    password: yup.string().min(8).max(16),
-  });
+
   const onSubmit = (data) => {
     console.log("submitted");
     console.log(data);
@@ -15,7 +12,7 @@ export default function Login() {
   return (
     <div className="w-full h-screen p-4 bg-emerald-900">
       <Link to="/">
-        <img src="/logo_1.png" width="200px" alt="logo" />
+        <img src="/resume_logo_green.jpg" width="230px" alt="logo" />
       </Link>
       <div className="max-w-[500px] mt-15 mx-auto bg-white rounded-lg shadow-sm">
         <form onSubmit={handleSubmit(onSubmit)} className="p-4">

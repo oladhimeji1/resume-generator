@@ -9,11 +9,10 @@ function Template1({ resumeData }) {
       margin: 0,
       lineHeight: 1.3,
       fontSize: "12px",
-      fontFamily: "Century Gothic",
     },
 
     section: {
-      marginBottom: "20px",
+      marginBottom: "10px",
       display: "block",
     },
     sectionTitle: {
@@ -76,13 +75,7 @@ function Template1({ resumeData }) {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>PROFESSIONAL SUMMARY:</Text>
-          <Text>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
-            expedita adipisci cupiditate, omnis saepe tempora quam praesentium
-            nesciunt possimus, ipsa corporis eligendi beatae voluptatibus eos.
-            Asperiores architecto dolorem similique doloremque animi veritatis
-            quasi pariatur illo?
-          </Text>
+          <Text>{resumeData.summary}</Text>
         </View>
 
         <View style={styles.section}>
@@ -90,10 +83,21 @@ function Template1({ resumeData }) {
           {resumeData.workExperience.map((exp, i) => (
             <View key={i}>
               <View>
-                <Text style={{ marginRight: "30px" }}>
+                <Text
+                  style={{
+                    marginRight: "30px",
+                    fontWeight: "700",
+                    color: "#000",
+                  }}
+                >
                   {exp.startDate} - {exp.endDate}
                 </Text>
-                <Text>
+                <Text
+                  style={{
+                    fontWeight: "700",
+                    color: "#000",
+                  }}
+                >
                   {exp.jobTitle}, {exp.company} {exp.isRemote ? `(Remote)` : ""}
                 </Text>
               </View>
@@ -114,7 +118,7 @@ function Template1({ resumeData }) {
           {resumeData.education.map((edu, i) => (
             <View key={i}>
               <View>
-                <Text style={{ marginRight: "30px" }}>
+                <Text style={{ marginRight: "30px", fontWeight: 700 }}>
                   {edu.startDate} - {edu.endDate}
                 </Text>
                 <Text>{edu.degree}</Text>

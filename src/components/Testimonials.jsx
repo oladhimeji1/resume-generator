@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Rita",
     img: "/reviewers/grid1.png",
-    text: "ResumeWizard enabled me to put together an updated resume very easily. The templates provided made it simple to choose the right wording.",
+    text: "Intelligent CV  enabled me to put together an updated resume very easily. The templates provided made it simple to choose the right wording.",
   },
   {
     name: "Chris",
@@ -43,13 +43,6 @@ const Testimonials = () => {
     }
   }, [active]);
 
-  const handlePrev = () => {
-    setActive((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-  const handleNext = () => {
-    setActive((prev) => (prev + 1) % testimonials.length);
-  };
-
   return (
     <div className="bg-emerald-200 w-full py-6 min-h-90">
       <Container>
@@ -59,14 +52,6 @@ const Testimonials = () => {
           </h2>
 
           <div className="relative">
-            <button
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-emerald-100 transition"
-              onClick={handlePrev}
-              aria-label="Previous"
-              style={{ left: 0 }}
-            >
-              <FaChevronLeft size={24} />
-            </button>
             <div
               ref={scrollRef}
               className="flex overflow-x-hidden py-6 no-scrollbar scroll-smooth snap-x snap-mandatory"
@@ -98,14 +83,6 @@ const Testimonials = () => {
                 </motion.div>
               ))}
             </div>
-            <button
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 hover:bg-emerald-100 transition"
-              onClick={handleNext}
-              aria-label="Next"
-              style={{ right: 0 }}
-            >
-              <FaChevronRight size={24} />
-            </button>
           </div>
           <div className="flex justify-center mt-8 gap-2">
             {testimonials.map((_, idx) => (
