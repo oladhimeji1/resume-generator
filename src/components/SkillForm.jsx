@@ -1,4 +1,4 @@
-import { FaArrowLeft, FaArrowRight, FaDownload, FaPlus } from "react-icons/fa";
+import { FaPlus, FaTimes } from "react-icons/fa";
 
 function SkillForm({
   setResumeData,
@@ -8,87 +8,83 @@ function SkillForm({
 }) {
   const handleSkillChange = (index, field, value) => {
     setResumeData((prevResumeData) => {
-      const skill = [...prevResumeData.skills];
-      skill[index][field] = value;
-      return { ...prevResumeData, skill };
+      const skills = [...prevResumeData.skills];
+      skills[index][field] = value;
+      return { ...prevResumeData, skills };
     });
   };
+
   const handleAddSkill = () => {
     setResumeData((prevResumeData) => ({
       ...prevResumeData,
-      skills: [
-        ...prevResumeData.skills,
-        {
-          name: "",
-        },
-      ],
+      skills: [...prevResumeData.skills, { name: "" }],
+    }));
+  };
+
+  const handleRemoveSkill = (index) => {
+    setResumeData((prevResumeData) => ({
+      ...prevResumeData,
+      skills: prevResumeData.skills.filter((_, i) => i !== index),
     }));
   };
   return (
-    <>
-      <div className="flex flex-col gap-5 mt-12 mb-12">
-        <div>
-          <h1 className="text-2xl font-semibold mb-4 ">
-            What are the core skills you prohibit to engage your potential
-            employers
-          </h1>
-          <p className="text-xl text-zinc-700">
-            We suggest you add up to five (5) core skills
-          </p>
-          <div className="flex flex-col gap-2 mb-4 mt-8">
-            {resumeData.skills.map((skill, index) => {
-              return (
-                <div key={index} className="flex flex-col gap-2 mb-4">
-                  <label htmlFor={`skill${index}`} className="font-semibold">
-                    Skill {index + 1}
-                  </label>
-                  <input
-                    type="text"
-                    id={`skill${index}`}
-                    name={`skill${index}`}
-                    placeholder="e.g Frontend: HTML, CSS, JavaScript"
-                    className="bg-[#e6e6e6] border-2 border-dashed border-emerald-900 focus:border-emerald-400   bg-whie py-3 rounded-md px-4 focus:outline-none"
-                    value={skill.name}
-                    onChange={(e) => {
-                      handleSkillChange(index, "name", e.target.value);
-                    }}
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <button
-            type="button"
-            onClick={handleAddSkill}
-            className="py-2 px-4 cursor-pointer font-semibold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
-          >
-            <FaPlus />
-          </button>
+    <form className="max-w-7xl mx-auto bg-white rounded-lg shadow p-8 relative">
+      <h2 className="text-2xl font-bold mb-1">SKILLS</h2>
+      <p className="text-gray-600 mb-6">
+        List your core skills. We suggest you add up to five (5) core skills.
+      </p>
 
-          <div className="mt-8 flex items-center justify-between gap-3 w-full">
+      <div className="flex flex-col gap-2 mb-4 mt-8">
+        {resumeData.skills.map((skill, index) => (
+          <div key={index} className="flex items-center gap-2 mb-4">
+            <input
+              type="text"
+              id={`skill${index}`}
+              name={`skill${index}`}
+              placeholder={`Skill ${index + 1}`}
+              className="w-full border border-gray-300 rounded px-4 py-2"
+              value={skill.name}
+              onChange={(e) => handleSkillChange(index, "name", e.target.value)}
+            />
             <button
               type="button"
-              className="text-white border-emerald-800 border-2 bg-emerald-800 py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
-              onClick={() => {
-                handlePrevStep();
-              }}
+              onClick={() => handleRemoveSkill(index)}
+              className="text-red-500 hover:text-red-700"
+              aria-label="Remove skill"
             >
-              <FaArrowLeft />
-            </button>
-
-            <button
-              type="button"
-              className="text-white border-emerald-800 border-2 bg-emerald-800 py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
-              onClick={() => {
-                handleNextStep();
-              }}
-            >
-              <FaArrowRight />
+              <FaTimes />
             </button>
           </div>
-        </div>
+        ))}
       </div>
-    </>
+      <button
+        aria-label="Add skill"
+        type="button"
+        onClick={handleAddSkill}
+        className="py-2 px-6 mb-8 cursor-pointer font-semibold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
+        disabled={resumeData.skills.length >= 5}
+      >
+        <FaPlus />
+      </button>
+
+      {/* Navigation Buttons */}
+      <div className="flex justify-between mt-8 md:static fixed left-0 bottom-0 w-full bg-white p-4 z-10 border-t md:border-none">
+        <button
+          type="button"
+          className="border border-gray-400 rounded px-6 py-2 font-semibold text-gray-700 hover:bg-gray-100 w-1/2 mr-2"
+          onClick={handlePrevStep}
+        >
+          BACK
+        </button>
+        <button
+          type="button"
+          className="bg-orange-500 text-white px-8 py-2 rounded font-bold shadow hover:bg-orange-600 w-1/2 ml-2"
+          onClick={handleNextStep}
+        >
+          SAVE & NEXT
+        </button>
+      </div>
+    </form>
   );
 }
 

@@ -1,4 +1,5 @@
-import { FaArrowLeft, FaArrowRight, FaPlus } from "react-icons/fa";
+
+import { FaTrash } from "react-icons/fa";
 
 export default function EducationForm({
   resumeData,
@@ -10,6 +11,13 @@ export default function EducationForm({
     setResumeData((prevResumeData) => {
       const education = [...prevResumeData.education];
       education[index][field] = value;
+
+      // Reset end date fields when "currently enrolled" is checked
+      if (field === "currentlyEnrolled" && value === true) {
+        education[index].endMonth = "Month";
+        education[index].endYear = "Year";
+      }
+
       return { ...prevResumeData, education };
     });
   };
@@ -20,168 +28,251 @@ export default function EducationForm({
       education: [
         ...prevResumeData.education,
         {
-          jobTitle: "",
-          company: "",
-          dates: "",
+          school: "",
+          degree: "",
+          fieldOfStudy: "",
           location: "",
+          state: "",
+          startMonth: "Month",
+          startYear: "Year",
+          endMonth: "Month",
+          endYear: "Year",
+          currentlyEnrolled: false,
         },
       ],
     }));
   };
+
+  const removeEducation = (index) => {
+    setResumeData((prevResumeData) => ({
+      ...prevResumeData,
+      education: prevResumeData.education.filter((_, i) => i !== index),
+    }));
+  };
+
+  const months = [
+    "Month",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const years = [
+    "Year",
+    ...Array.from({ length: 50 }, (_, i) => `${new Date().getFullYear() - i}`),
+  ];
+
   return (
-    <>
-      <div className="flex flex-col gap-5">
-        <div>
-          <h1 className="text-2xl font-semibold mb-4 ">
-            Tell us about your education
-          </h1>
+    <form className="max-w-7xl mx-auto bg-white rounded-lg shadow p-8 relative">
+      <h2 className="text-2xl font-bold mb-1">EDUCATION</h2>
+      <p className="text-gray-600 mb-6">
+        List your educational background, from the most recent to the oldest.
+      </p>
 
-          <p className="text-md text-zinc-700">
-            Enter your graduation experience so far, even if you are current
-            student or did not graduate
-          </p>
-        </div>
+      {resumeData.education.map((education, index) => (
+        <div key={index} className="mb-8 border-b pb-6 relative">
+          <button
+            type="button"
+            onClick={() => removeEducation(index)}
+            className="absolute right-0 top-0 text-red-500 hover:text-red-700"
+          >
+            <FaTrash />
+          </button>
 
-        <p className="text-red-500 font-medium mb-8 text-sm">
-          * Indicate a required field
-        </p>
-      </div>
-
-      <div>
-        {resumeData.education.map((education, index) => {
-          return (
-            <div
-              key={index}
-              className="grid grid-cols-1 mb-6 md:grid-cols-2 gap-4"
-            >
-              <div className="flex flex-col gap-2 mb-4">
-                <label
-                  htmlFor={`institution_${index}`}
-                  className="font-semibold"
-                >
-                  Institution
-                </label>
-                <input
-                  type="text"
-                  id={`institution_${index}`}
-                  name={`institution_${index}`}
-                  placeholder="e.g University of Port Harcourt"
-                  className="bg-[#e6e6e6] bg-whie border-2 border-dashed border-emerald-900 focus:border-emerald-400  py-3 rounded-md px-4 focus:outline-none"
-                  value={education.institution}
-                  onChange={(e) =>
-                    handleEducationChange(index, "institution", e.target.value)
-                  }
-                />
-              </div>
-              <div className="flex flex-col gap-2 mb-4">
-                <label
-                  htmlFor={`schoolLocation_${index}`}
-                  className="font-semibold"
-                >
-                  School Locaion
-                </label>
-                <input
-                  type="text"
-                  id={`schoolLocation_${index}`}
-                  name={`schoolLocation_${index}`}
-                  placeholder="e.g Kano, Nigeria"
-                  className="bg-[#e6e6e6] bg-whie py-3 border-2 border-dashed border-emerald-900 focus:border-emerald-400  rounded-md px-4 focus:outline-none"
-                  value={education.location}
-                  onChange={(e) =>
-                    handleEducationChange(index, "location", e.target.value)
-                  }
-                />
-              </div>
-
-              <div className="flex flex-col gap-2 mb-4">
-                <label
-                  htmlFor={`school_start_date${index}`}
-                  className="font-semibold"
-                >
-                  Start Date <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="date"
-                  id={`school_start_date${index}`}
-                  name={`school_start_date${index}`}
-                  placeholder="e.g GtechCorporation"
-                  className="bg-[#e6e6e6] bg-whie py-3 border-2 border-dashed border-emerald-900 focus:border-emerald-400  rounded-md px-4 focus:outline-none block w-full"
-                  value={education.startDate}
-                  onChange={(e) =>
-                    handleEducationChange(index, "startDate", e.target.value)
-                  }
-                />
-              </div>
-              <div className="flex flex-col gap-2 mb-4">
-                <label
-                  htmlFor={`school_end_date${index}`}
-                  className="font-semibold"
-                >
-                  End Date <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="date"
-                  id={`school_end_date${index}`}
-                  name={`school_end_date${index}`}
-                  placeholder="e.g GtechCorporation"
-                  className="bg-[#e6e6e6] bg-whie py-3 border-2 border-dashed border-emerald-900 focus:border-emerald-400  rounded-md px-4 focus:outline-none block w-full "
-                  value={education.endDate}
-                  onChange={(e) =>
-                    handleEducationChange(index, "endDate", e.target.value)
-                  }
-                />
-              </div>
-
-              <div className="flex flex-col gap-2 mb-4">
-                <label htmlFor={`degree_${index}`} className="font-semibold">
-                  Degree
-                </label>
-                <input
-                  type="text"
-                  id={`degree_${index}`}
-                  name={`degree_${index}`}
-                  placeholder="e.g HND in Software Engineering"
-                  className="bg-[#e6e6e6] bg-whie py-3 border-2 border-dashed border-emerald-900 focus:border-emerald-400  rounded-md px-4 focus:outline-none"
-                  value={education.degree}
-                  onChange={(e) =>
-                    handleEducationChange(index, "degree", e.target.value)
-                  }
-                />
-              </div>
-
-              <div></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            <div>
+              <label className="block font-semibold mb-1">
+                School/University
+              </label>
+              <input
+                type="text"
+                placeholder="e.g. Stanford University"
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                value={education.school}
+                onChange={(e) =>
+                  handleEducationChange(index, "school", e.target.value)
+                }
+              />
             </div>
-          );
-        })}
-      </div>
+            <div>
+              <label className="block font-semibold mb-1">Degree</label>
+              <input
+                type="text"
+                placeholder="e.g. Bachelor's"
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                value={education.degree}
+                onChange={(e) =>
+                  handleEducationChange(index, "degree", e.target.value)
+                }
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            <div>
+              <label className="block font-semibold mb-1">Field of Study</label>
+              <input
+                type="text"
+                placeholder="e.g. Computer Science"
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                value={education.fieldOfStudy}
+                onChange={(e) =>
+                  handleEducationChange(index, "fieldOfStudy", e.target.value)
+                }
+              />
+            </div>
+            <div>
+              <label className="block font-semibold mb-1">City</label>
+              <input
+                type="text"
+                placeholder="e.g. San Francisco"
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                value={education.location}
+                onChange={(e) =>
+                  handleEducationChange(index, "location", e.target.value)
+                }
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            <div>
+              <label className="block font-semibold mb-1">State</label>
+              <input
+                type="text"
+                placeholder="e.g. California"
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                value={education.state}
+                onChange={(e) =>
+                  handleEducationChange(index, "state", e.target.value)
+                }
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            <div className="flex gap-2 items-center">
+              <label className="block font-semibold mb-1 mr-2">
+                Start date
+              </label>
+              <select
+                className="border border-gray-300 rounded px-2 py-1"
+                value={education.startMonth}
+                onChange={(e) =>
+                  handleEducationChange(index, "startMonth", e.target.value)
+                }
+              >
+                {months.map((month) => (
+                  <option key={month} value={month}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+              <select
+                className="border border-gray-300 rounded px-2 py-1 ml-2"
+                value={education.startYear}
+                onChange={(e) =>
+                  handleEducationChange(index, "startYear", e.target.value)
+                }
+              >
+                {years.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex gap-2 items-center">
+              <label className="block font-semibold mb-1 mr-2">End date</label>
+              <select
+                className="border border-gray-300 rounded px-2 py-1"
+                value={education.endMonth}
+                onChange={(e) =>
+                  handleEducationChange(index, "endMonth", e.target.value)
+                }
+                disabled={education.currentlyEnrolled}
+              >
+                {months.map((month) => (
+                  <option key={month} value={month}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+              <select
+                className="border border-gray-300 rounded px-2 py-1 ml-2"
+                value={education.endYear}
+                onChange={(e) =>
+                  handleEducationChange(index, "endYear", e.target.value)
+                }
+                disabled={education.currentlyEnrolled}
+              >
+                {years.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="flex items-center mt-2">
+            <input
+              type="checkbox"
+              id={`currentlyEnrolled_${index}`}
+              checked={education.currentlyEnrolled}
+              onChange={(e) =>
+                handleEducationChange(
+                  index,
+                  "currentlyEnrolled",
+                  e.target.checked
+                )
+              }
+              className="mr-2"
+            />
+            <label
+              htmlFor={`currentlyEnrolled_${index}`}
+              className="text-gray-700"
+            >
+              I am currently enrolled
+            </label>
+          </div>
+        </div>
+      ))}
+
       <button
         type="button"
         onClick={addEducation}
-        className="py-2 px-4 cursor-pointer bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
+        className="py-2 px-6 mb-8 cursor-pointer font-semibold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
       >
-        <FaPlus />
+        Add Education
       </button>
 
-      <div className="mt-8 flex items-center justify-between gap-3 w-full">
+      {/* Navigation Buttons */}
+      <div className="flex justify-between mt-8 md:static fixed left-0 bottom-0 w-full bg-white p-4 z-10 border-t md:border-none">
         <button
           type="button"
-          className="text-white border-emerald-800 border-2  bg-emerald-800 py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
-          onClick={() => {
-            handlePrevStep();
-          }}
+          className="border border-gray-400 rounded px-6 py-2 font-semibold text-gray-700 hover:bg-gray-100 w-1/2 mr-2"
+          onClick={handlePrevStep}
         >
-          <FaArrowLeft />
+          BACK
         </button>
         <button
           type="button"
-          className="text-white border-emerald-800 border-2 bg-emerald-800 py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
-          onClick={() => {
-            handleNextStep();
-          }}
+          className="bg-orange-500 text-white px-8 py-2 rounded font-bold shadow hover:bg-orange-600 w-1/2 ml-2"
+          onClick={handleNextStep}
         >
-          <FaArrowRight />
+          SAVE & NEXT
         </button>
       </div>
-    </>
+    </form>
   );
 }

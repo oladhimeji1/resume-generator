@@ -1,22 +1,21 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
 
+// RESUME FORMS SECTION FIELD
 import BioDataForm from "./BioDataForm";
 import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
-import Sidebar from "./Sidebar";
 import SkillForm from "./SkillForm";
-
-import templates from "../data.js";
 import ReferenceForm from "./ReferenceForm.jsx";
 
+import templates from "../data.js";
+import SummaryForm from "./SummaryForm.jsx";
+import ResumeDownload from "./ResumeDownload.jsx";
 export default function ResumeBuilder() {
   const { templateId } = useParams();
   const [TemplateComponent, setTemplateComponent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [isPreviewed, setIsPreviewed] = useState(true);
   // form element state
   const [step, setStep] = useState(
     JSON.parse(localStorage.getItem("step")) || 1
@@ -25,10 +24,6 @@ export default function ResumeBuilder() {
   useEffect(() => {
     localStorage.setItem("step", JSON.stringify(step));
   }, [step]);
-
-  const handleStep = (step) => {
-    setStep(step || 1);
-  };
 
   const handleNextStep = () => {
     setStep(step + 1);
@@ -131,205 +126,108 @@ export default function ResumeBuilder() {
 
   if (loading)
     return (
-      <div
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div className="min-h-screen flex items-center justify-center text-emerald-600">
         Loading Template...
       </div>
     );
   if (error)
     return (
-      <div
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "red",
-        }}
-      >
-        {" "}
-        Error{" "}
+      <div className="min-h-screen flex items-center justify-center text-red-600">
+        Error
       </div>
     );
   if (!TemplateComponent)
     return (
-      <div
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {" "}
-        No template selected{" "}
+      <div className="min-h-screen flex items-center justify-center text-zinc-800">
+        No template selected
       </div>
     );
 
   return (
     <>
-      <section className="min-h-screen p-2 sm:p-0 flex flex-col md:flex-row gap-2 bg-[#F4F5FB]">
-        {/* Sidebar Left */}
-        <div className="md:w-1/5 w-full lg:block">
-          <Sidebar handleStep={handleStep} step={step} />
-        </div>
-        {/* Form Middle */}
-        <div className="md:w-2/5 w-full relative px-4 lg:ml-0 md:ml-0">
-          <div className="flex gap-4 items-center mb-8 p-4">
-            <Link
-              to="/build-resume/resume-templates"
-              className="text-blue-500 font-bold flex justify-center items-center gap-2"
-            >
-              <FaArrowLeft className="text-blue-500" />
-              <span>Change Template</span>
-            </Link>
-            {/* Mobile: Show Preview Button */}
-            <button
-              type="button"
-              className="md:hidden ml-auto text-white bg-emerald-600 py-2 px-2 rounded-full transition pointer hover:bg-emerald-900"
-              onClick={() => setIsPreviewed(!isPreviewed)}
-            >
-              {isPreviewed ? "Hide Preview" : "Show Preview"}
-            </button>
+      <section className="bg-white px-4 py-4">
+        <div className="flex items-center justify-between gap-6 max-w-7xl mx-auto">
+          <Link to="/">
+            <img src="/resume_logo_light.jpg" alt="" width="200px" />
+          </Link>
+          {/* Stepper */}
+          <div className="flex items-center gap-4">
+            {
+              {
+                1: "PERSONAL INFO",
+                2: "EXPERIENCE",
+                3: "EDUCATION",
+                4: "SKILLS",
+                5: "REFERENCES",
+                6: "SUMMARY",
+                7: "REVIEW & DOWNLOAD",
+              }[step]
+            }
           </div>
-          <form className="mb-4">
-            {step === 1 && (
-              <BioDataForm
-                handleInputChange={handleInputChange}
-                resumeData={resumeData}
-                handleNextStep={handleNextStep}
-                step={step}
-              />
-            )}
-            {step === 2 && (
-              <WorkForm
-                resumeData={resumeData}
-                setResumeData={setResumeData}
-                handleNextStep={handleNextStep}
-                handlePrevStep={handlePrevStep}
-                step={step}
-              />
-            )}
-            {step === 3 && (
-              <EducationForm
-                resumeData={resumeData}
-                setResumeData={setResumeData}
-                handleNextStep={handleNextStep}
-                handlePrevStep={handlePrevStep}
-                step={step}
-              />
-            )}
-            {step === 4 && (
-              <SkillForm
-                resumeData={resumeData}
-                setResumeData={setResumeData}
-                handleNextStep={handleNextStep}
-                handlePrevStep={handlePrevStep}
-                step={step}
-              />
-            )}
-
-            {step === 5 && (
-              <ReferenceForm
-                resumeData={resumeData}
-                setResumeData={setResumeData}
-                handlePrevStep={handlePrevStep}
-                step={step}
-                TemplateComponent={TemplateComponent}
-              />
-            )}
-          </form>
         </div>
-        <div
-          className={`md:w-2/5 w-full md:flex md:items-start md:justify-center md:relative ${
-            isPreviewed ? "block" : "hidden md:block"
-          }`}
-          style={{ minHeight: "100vh", display: isPreviewed ? "flex" : "none" }}
-        >
-          {TemplateComponent && (
-            <div
-              className="hidden md:flex items-start justify-center w-full h-full"
-              style={{ minHeight: "100vh", width: "100%" }}
-            >
-              <div
-                className="bg-white shadow-lg rounded-lg w-full h-full p-8 box-border"
-                style={{
-                  width: "40%",
-                  height: "100%",
-                  minHeight: "100vh",
-                  maxHeight: "100vh",
-                  overflowY: "auto",
-                  overflowX: "hidden",
-                  boxSizing: "border-box",
-                  padding: "32px",
-                  position: "fixed",
-                  right: 0,
+      </section>
 
-                  margin: "auto",
-                  display: "flex",
-                  alignItems: "flex-start",
-                  justifyContent: "center",
-                  wordBreak: "break-word",
-                }}
-              >
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    wordBreak: "break-word",
-                  }}
-                >
-                  <TemplateComponent resumeData={resumeData} />
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-        {/* Mobile Overlay Preview: Full height and width with padding */}
-        {isPreviewed && (
-          <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-60 md:hidden">
-            <div
-              className="bg-white shadow-lg rounded-lg relative w-full h-full p-4 box-border"
-              style={{
-                width: "95vw",
-                height: "100vh",
-                minHeight: "100vh",
-                maxHeight: "100vh",
-                overflowY: "auto",
-                overflowX: "hidden",
-                boxSizing: "border-box",
-                padding: "16px",
-                display: "flex",
-                alignItems: "flex-start",
-                justifyContent: "center",
-                wordBreak: "break-word",
-              }}
-            >
-              <button
-                className="absolute top-2 right-2 text-gray-600 bg-gray-200 rounded-full px-3 py-1 text-sm font-bold hover:bg-gray-300"
-                onClick={() => setIsPreviewed(false)}
-              >
-                Close
-              </button>
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  wordBreak: "break-word",
-                }}
-              >
-                {TemplateComponent && (
-                  <TemplateComponent resumeData={resumeData} />
-                )}
-              </div>
-            </div>
-          </div>
+      <section className="max-w-7xl mx-auto mt-8">
+        {step === 1 && (
+          <BioDataForm
+            resumeData={resumeData}
+            setResumeData={setResumeData}
+            handleNextStep={handleNextStep}
+            handleInputChange={handleInputChange}
+          />
+        )}
+        {step === 2 && (
+          <WorkForm
+            resumeData={resumeData}
+            setResumeData={setResumeData}
+            handleNextStep={handleNextStep}
+            handlePrevStep={handlePrevStep}
+            handleInputChange={handleInputChange}
+          />
+        )}
+        {step === 3 && (
+          <EducationForm
+            resumeData={resumeData}
+            setResumeData={setResumeData}
+            handleNextStep={handleNextStep}
+            handlePrevStep={handlePrevStep}
+          />
+        )}
+        {step === 4 && (
+          <SkillForm
+            resumeData={resumeData}
+            setResumeData={setResumeData}
+            handleNextStep={handleNextStep}
+            handlePrevStep={handlePrevStep}
+            handleInputChange={handleInputChange}
+          />
+        )}
+        {step === 5 && (
+          <ReferenceForm
+            resumeData={resumeData}
+            setResumeData={setResumeData}
+            handleNextStep={handleNextStep}
+            handlePrevStep={handlePrevStep}
+            handleInputChange={handleInputChange}
+          />
+        )}
+        {/* Add summary and review/download steps as needed */}
+        {step === 6 && (
+          <SummaryForm
+            resumeData={resumeData}
+            setResumeData={setResumeData}
+            handleNextStep={handleNextStep}
+            handlePrevStep={handlePrevStep}
+            handleInputChange={handleInputChange}
+          />
+        )}
+
+        {step === 7 && (
+          <ResumeDownload
+            resumeData={resumeData}
+            TemplateComponent={TemplateComponent}
+            handlePrevStep={handlePrevStep}
+          />
         )}
       </section>
     </>
