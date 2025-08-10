@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
 
-import { FaArrowLeft, FaArrowRight, FaPlus, FaTimes } from "react-icons/fa";
+import { useEffect, useRef } from "react";
+import {FaPlus, FaTrash } from "react-icons/fa";
+
 
 export default function WorkForm({
   resumeData,
@@ -8,14 +9,19 @@ export default function WorkForm({
   handlePrevStep,
   handleNextStep,
 }) {
-  const [activeWorkDutiesIndex, setActiveWorkDutiesIndex] = useState(null);
-
   const workRefs = useRef([]);
 
   const handleWorkExperienceChange = (index, field, value) => {
     setResumeData((prevResumeData) => {
       const workExperience = [...prevResumeData.workExperience];
       workExperience[index][field] = value;
+
+      // Reset end date fields when "presently work here" is checked
+      if (field === "presently" && value === true) {
+        workExperience[index].endMonth = "Month";
+        workExperience[index].endYear = "Year";
+      }
+
       return { ...prevResumeData, workExperience };
     });
   };
@@ -36,28 +42,19 @@ export default function WorkForm({
         {
           jobTitle: "",
           company: "",
-          dates: "",
           location: "",
-          isRemote: false,
-          startDate: "",
-          endDate: "",
-          duties: [{ name: "" }],
+          state: "",
+          startMonth: "Month",
+          startYear: "Year",
+          endMonth: "Month",
+          endYear: "Year",
+          presently: false,
+          duties: [],
         },
       ],
     }));
   };
 
-  /*
-  const removeWorkExperience = (index) => {
-    setResumeData((prevResumeData) => ({
-      ...prevResumeData,
-      workExperience: prevResumeData.workExperience.filter(
-        (_, i) => i !== index
-      ),
-    }));
-  };
-
-  */
   useEffect(() => {
     if (resumeData.workExperience.length > 0) {
       // Scroll to the last work experience
@@ -68,225 +65,269 @@ export default function WorkForm({
     }
   }, [resumeData.workExperience.length]);
 
-  return (
-    <section className="mb-12 p-2 sm:p-0 flex flex-col md:flex-row gap-2">
-      <div className="flex-1 relative">
-        <div className="flex flex-col gap-5">
-          <div>
-            <h1 className="text-2xl font-semibold mb-4 ">
-              Tell us about your most recent jobs
-            </h1>
+  const months = [
+    "Month",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const years = [
+    "Year",
+    ...Array.from({ length: 50 }, (_, i) => `${new Date().getFullYear() - i}`),
+  ];
 
-            <p className="text-xl text-zinc-700">
-              We will start there and work backwards
-            </p>
+  const removeWorkExperience = (index) => {
+    setResumeData((prevResumeData) => ({
+      ...prevResumeData,
+      workExperience: prevResumeData.workExperience.filter(
+        (_, i) => i !== index
+      ),
+    }));
+  };
+
+  return (
+    <form className="max-w-7xl mx-auto bg-white rounded-lg shadow p-8 relative">
+      <h2 className="text-2xl font-bold mb-1">EXPERIENCE</h2>
+      <p className="text-gray-600 mb-6">
+        List your work experience, from the most recent to the oldest. Feel free
+        to use our pre-written examples.
+      </p>
+      {resumeData.workExperience.map((experience, index) => (
+        <div key={index} className="mb-8 border-b pb-6 relative">
+          <button
+            type="button"
+            onClick={() => removeWorkExperience(index)}
+            className="absolute right-0 top-0 text-red-500 hover:text-red-700"
+          >
+            <FaTrash />
+          </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            <div>
+              <label className="block font-semibold mb-1">Employer</label>
+              <input
+                type="text"
+                placeholder="e.g. IBM"
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                value={experience.company}
+                onChange={(e) =>
+                  handleWorkExperienceChange(index, "company", e.target.value)
+                }
+              />
+            </div>
+            <div>
+              <label className="block font-semibold mb-1">Job title</label>
+              <input
+                type="text"
+                placeholder="e.g. Engineer"
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                value={experience.jobTitle}
+                onChange={(e) =>
+                  handleWorkExperienceChange(index, "jobTitle", e.target.value)
+                }
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            <div>
+              <label className="block font-semibold mb-1">City</label>
+              <input
+                type="text"
+                placeholder="e.g. San Francisco"
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                value={experience.location}
+                onChange={(e) =>
+                  handleWorkExperienceChange(index, "location", e.target.value)
+                }
+              />
+            </div>
+            <div>
+              <label className="block font-semibold mb-1">State</label>
+              <input
+                type="text"
+                placeholder="e.g. California"
+                className="w-full border border-gray-300 rounded px-4 py-2"
+                value={experience.state || ""}
+                onChange={(e) =>
+                  handleWorkExperienceChange(index, "state", e.target.value)
+                }
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            <div className="flex gap-2 items-center">
+              <label className="block font-semibold mb-1 mr-2">
+                Start date
+              </label>
+              <select
+                className="border border-gray-300 rounded px-2 py-1"
+                value={experience.startMonth || "Month"}
+                onChange={(e) =>
+                  handleWorkExperienceChange(
+                    index,
+                    "startMonth",
+                    e.target.value
+                  )
+                }
+              >
+                {months.map((month) => (
+                  <option key={month} value={month}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+              <select
+                className="border border-gray-300 rounded px-2 py-1 ml-2"
+                value={experience.startYear || "Year"}
+                onChange={(e) =>
+                  handleWorkExperienceChange(index, "startYear", e.target.value)
+                }
+              >
+                {years.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex gap-2 items-center">
+              <label className="block font-semibold mb-1 mr-2">End date</label>
+              <select
+                className="border border-gray-300 rounded px-2 py-1"
+                value={experience.endMonth || "Month"}
+                onChange={(e) =>
+                  handleWorkExperienceChange(index, "endMonth", e.target.value)
+                }
+                disabled={experience.presently}
+              >
+                {months.map((month) => (
+                  <option key={month} value={month}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+              <select
+                className="border border-gray-300 rounded px-2 py-1 ml-2"
+                value={experience.endYear || "Year"}
+                onChange={(e) =>
+                  handleWorkExperienceChange(index, "endYear", e.target.value)
+                }
+                disabled={experience.presently}
+              >
+                {years.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="flex items-center mt-2">
+            <input
+              type="checkbox"
+              id={`presently_${index}`}
+              checked={experience.presently || false}
+              onChange={(e) =>
+                handleWorkExperienceChange(index, "presently", e.target.checked)
+              }
+              className="mr-2"
+            />
+            <label htmlFor={`presently_${index}`} className="text-gray-700">
+              I presently work here
+            </label>
           </div>
 
-          <p className="text-red-500 font-semibold mb-8 text-sm">
-            * Indicate a required field
-          </p>
-        </div>
-
-        <div>
-          {resumeData.workExperience.map((experience, index) => {
-            return (
-              <>
-                <div
-                  ref={(el) => (workRefs.current[index] = el)}
-                  key={index}
-                  className="grid grid-cols-1  md:grid-cols-2 gap-4"
-                >
-                  {activeWorkDutiesIndex === index && (
-                    <WorkDuties
-                      handleWorkDutiesChange={handleWorkDutiesChange}
-                      experience={experience}
-                      setActiveWorkDutiesIndex={setActiveWorkDutiesIndex}
-                      setResumeData={setResumeData}
-                      workIndex={index}
-                    />
-                  )}
-                  <div className="flex flex-col gap-2 mb-4">
-                    <label
-                      htmlFor={`jobTitle_${index}`}
-                      className="font-semibold"
-                    >
-                      Title<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id={`jobTitle_${index}`}
-                      name={`jobTitle_${index}`}
-                      placeholder="e.g Sales Manager"
-                      className="bg-[#e6e6e6] border-2 border-dashed border-emerald-900 focus:border-emerald-400 bg-whie py-3 rounded-md px-4 focus:outline-none"
-                      value={experience.jobTitle}
-                      onChange={(e) =>
-                        handleWorkExperienceChange(
-                          index,
-                          `jobTitle`,
-                          e.target.value
-                        )
-                      }
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2 mb-4">
-                    <label
-                      htmlFor={`employer_${index}`}
-                      className="font-semibold"
-                    >
-                      Employer<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id={`employer_${index}`}
-                      name={`employer_${index}`}
-                      placeholder="e.g KondiPress LLC"
-                      className="bg-[#e6e6e6] border-2 border-dashed border-emerald-900 focus:border-emerald-400  bg-whie py-3 rounded-md px-4 focus:outline-none"
-                      value={experience.company}
-                      onChange={(e) =>
-                        handleWorkExperienceChange(
-                          index,
-                          `company`,
-                          e.target.value
-                        )
-                      }
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2 mb-4">
-                    <label
-                      htmlFor={`location_${index}`}
-                      className="font-semibold"
-                    >
-                      Location<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id={`location_${index}`}
-                      name={`location_${index}`}
-                      placeholder="e.g Kano, Nigeria"
-                      className="bg-[#e6e6e6] border-2 border-dashed border-emerald-900 focus:border-emerald-400  bg-whie py-3 rounded-md px-4 focus:outline-none"
-                      value={experience.location}
-                      onChange={(e) =>
-                        handleWorkExperienceChange(
-                          index,
-                          "location",
-                          e.target.value
-                        )
-                      }
-                    />
-
-                    <div className="flex gap-4 items-center ">
-                      <input
-                        type="checkbox"
-                        id={`remote${index}`}
-                        className="p-40 accent-indigo-900 inline-block"
-                        checked={experience.isRemote}
-                        onChange={() =>
-                          handleWorkExperienceChange(
-                            index,
-                            "isRemote",
-                            !experience.isRemote
-                          )
-                        }
-                      />
-
-                      <label
-                        htmlFor={`remote${index}`}
-                        className="text-xl text-indigo-900 font-semibold"
-                      >
-                        Remote
-                      </label>
-                    </div>
-                  </div>
-                  <div></div>
-                  <div className="flex flex-col gap-2 mb-4">
-                    <label
-                      htmlFor={`startdate_${index}`}
-                      className="font-semibold"
-                    >
-                      Start Date<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="date"
-                      id={`startdate_${index}`}
-                      name={`startdate_${index}`}
-                      placeholder="e.g GtechCorporation"
-                      className="border-2 border-dashed border-emerald-900 focus:border-emerald-400  bg-[#e6e6e6] bg-whie py-3 rounded-md px-4 focus:outline-none block w-full"
-                      value={experience.startDate}
-                      onChange={(e) =>
-                        handleWorkExperienceChange(
-                          index,
-                          "startDate",
-                          e.target.value
-                        )
-                      }
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2 mb-4">
-                    <label
-                      htmlFor={`enddate_${index}`}
-                      className="font-semibold"
-                    >
-                      End Date<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="date"
-                      id={`enddate_${index}`}
-                      name={`enddate_${index}`}
-                      placeholder="e.g GtechCorporation"
-                      className="bg-[#e6e6e6] border-2 border-dashed border-emerald-900 focus:border-emerald-400   bg-whie py-3 rounded-md px-4 focus:outline-none w-full block"
-                      value={experience.endDate}
-                      onChange={(e) =>
-                        handleWorkExperienceChange(
-                          index,
-                          "endDate",
-                          e.target.value
-                        )
-                      }
-                    />
-                  </div>
+          {/* Work Duties Section */}
+          <div className="mt-6">
+            <label className="block font-semibold mb-2">
+              Work Duties / Responsibilities
+            </label>
+            {experience.duties &&
+              experience.duties.map((duty, dutyIndex) => (
+                <div key={dutyIndex} className="flex items-center gap-2 mb-2">
+                  <input
+                    type="text"
+                    className="w-full border border-gray-300 rounded px-4 py-2"
+                    placeholder={`Duty/Responsibility #${dutyIndex + 1}`}
+                    value={duty.name || ""}
+                    onChange={(e) =>
+                      handleWorkDutiesChange(index, dutyIndex, e.target.value)
+                    }
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setResumeData((prev) => {
+                        const workExperience = [...prev.workExperience];
+                        const duties = [
+                          ...(workExperience[index].duties || []),
+                        ];
+                        duties.splice(dutyIndex, 1);
+                        workExperience[index] = {
+                          ...workExperience[index],
+                          duties,
+                        };
+                        return { ...prev, workExperience };
+                      });
+                    }}
+                    className="text-red-500 hover:text-red-700"
+                  >
+                    <FaTrash />
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setActiveWorkDutiesIndex(index)}
-                  className="py-2 inline-block mb-8 px-4 cursor-pointer font-light bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
-                >
-                  <FaPlus />
-                </button>
-              </>
-            );
-          })}
+              ))}
+            <button
+              type="button"
+              onClick={() => {
+                setResumeData((prev) => {
+                  const workExperience = [...prev.workExperience];
+                  const duties = [...(workExperience[index].duties || [])];
+                  duties.push({ name: "" });
+                  workExperience[index] = { ...workExperience[index], duties };
+                  return { ...prev, workExperience };
+                });
+              }}
+              className="text-emerald-600 hover:text-emerald-700 flex items-center gap-2"
+              disabled={experience.duties?.length >= 5}
+            >
+              <FaPlus /> Add Duty
+            </button>
+          </div>
         </div>
-
+      ))}
+      <button
+        type="button"
+        onClick={addWorkExperience}
+        className="py-2 px-6 mb-8 cursor-pointer font-semibold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
+      >
+        Add Work Experience
+      </button>
+      {/* Responsive fixed buttons for mobile */}
+      <div className="flex justify-between mt-8 md:static fixed left-0 bottom-0 w-full bg-white p-4 z-10 border-t md:border-none">
         <button
           type="button"
-          onClick={addWorkExperience}
-          className="py-2 px-6 cursor-pointer font-semibold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
+          className="border border-gray-400 rounded px-6 py-2 font-semibold text-gray-700 hover:bg-gray-100 w-1/2 mr-2"
+          onClick={handlePrevStep}
         >
-          Add{" "}
+          BACK
         </button>
-
-        <div className="mt-8 flex items-center justify-between gap-3 w-full">
-          <button
-            type="button"
-            className="text-white border-emerald-800 border-2 bg-emerald-800 py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
-            onClick={() => {
-              handlePrevStep();
-            }}
-          >
-            <FaArrowLeft />
-          </button>
-          <button
-            type="button"
-            className="text-white border-emerald-800 border-2 bg-emerald-800 py-3 px-9 md:px-12 cursor-pointer rounded-full  transition pointer"
-            onClick={() => {
-              handleNextStep();
-            }}
-          >
-            <FaArrowRight />
-          </button>
-        </div>
+        <button
+          type="button"
+          className="bg-orange-500 text-white px-8 py-2 rounded font-bold shadow hover:bg-orange-600 w-1/2 ml-2"
+          onClick={handleNextStep}
+        >
+          SAVE & NEXT
+        </button>
       </div>
-    </section>
+    </form>
   );
 }
 
@@ -317,7 +358,7 @@ function WorkDuties({
           onClick={() => setActiveWorkDutiesIndex(null)}
           aria-label="Close"
         >
-          <FaTimes className="text-2xl" />
+          <FaTrash className="text-2xl" />
         </button>
         <h2 className="text-2xl font-bold mb-2 text-emerald-900">
           Duties/Responsibilities
