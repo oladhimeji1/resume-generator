@@ -114,7 +114,7 @@ function ReferenceForm({
         ))}
         <button
           type="button"
-          className={`w-fit px-6 py-2 rounded bg-emerald-600 text-white font-semibold shadow hover:bg-emerald-700 transition ${
+          className={`w-fit px-6 py-2 rounded bg-emerald-600 text-white font-semibold shadow hover:bg-emerald-700 transition mb-20 ${
             resumeData.references.length >= 2
               ? "opacity-50 cursor-not-allowed"
               : ""

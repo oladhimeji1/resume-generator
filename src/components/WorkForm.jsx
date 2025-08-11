@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from "react";
-import {FaPlus, FaTrash } from "react-icons/fa";
+import { FaPlus, FaTrash } from "react-icons/fa";
 
 
 export default function WorkForm({
@@ -306,7 +306,7 @@ export default function WorkForm({
       <button
         type="button"
         onClick={addWorkExperience}
-        className="py-2 px-6 mb-8 cursor-pointer font-semibold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
+        className="py-2 px-6 mb-8 cursor-pointer font-semibold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full mb-20"
       >
         Add Work Experience
       </button>

@@ -1,138 +1,150 @@
-import React from "react";
-import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import React from 'react';
 
-// Define styles
-const styles = StyleSheet.create({
-  page: {
-    padding: 30,
-    fontFamily: "Helvetica",
-    fontSize: 11,
-    backgroundColor: "#FFFFFF",
-  },
-  container: { flexDirection: "row", minHeight: "100%" },
-  leftColumn: {
-    width: "40%",
-    backgroundColor: "#008080",
-    padding: 15,
-    color: "#FFFFFF",
-    borderRight: "2px solid #FF6F61",
-  },
-  rightColumn: { width: "60%", padding: 20 },
-  header: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 10,
-    fontFamily: "Helvetica-Bold",
-    color: "#FFFFFF",
-  },
-  subHeader: {
-    fontSize: 14,
-    fontWeight: "bold",
-    marginBottom: 8,
-    color: "#333333",
-    borderBottom: "1px solid #D3D3D3",
-  },
-  text: { fontSize: 10, marginBottom: 5, lineHeight: 1.5, color: "#333333" },
-  textLight: { fontSize: 10, marginBottom: 5, lineHeight: 1.5, color: "#eee" },
-  section: { marginBottom: 15 },
-  bullet: { flexDirection: "row", marginBottom: 5 },
-  bulletPoint: { width: 10, textAlign: "center", color: "#FFFFFF" },
-  skillMatrix: { flexDirection: "row", flexWrap: "wrap", gap: 5 },
-  skillItem: {
-    backgroundColor: "#FF6F61",
-    padding: 5,
-    borderRadius: 3,
-    fontSize: 9,
-  },
-  divider: { borderBottom: "1px dashed #FF6F61", marginVertical: 10 },
-});
+const Template7 = () => {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 font-['Inter']">
+      <div className="w-full max-w-5xl bg-white shadow-xl overflow-hidden rounded-lg grid grid-cols-1 md:grid-cols-3">
 
-// Document component
-const Template7 = ({ resumeData }) => (
-  <Document>
-    <Page size="A4" style={styles.page}>
-      <View style={styles.container}>
         {/* Left Column (Sidebar) */}
-        <View style={styles.leftColumn}>
-          <Text style={styles.header}>
-            {resumeData.name} {resumeData.surname}
-          </Text>
-          <View style={styles.section}>
-            <Text style={{ ...styles.subHeader, color: "#FFFFFF" }}>
-              Contact
-            </Text>
-            <Text style={styles.textLight}>{resumeData.email}</Text>
-            <Text style={styles.textLight}>{resumeData.phone}</Text>
-            <Text style={styles.textLight}>
-              {resumeData.city} {resumeData.country}
-            </Text>
-          </View>
-          <View style={styles.section}>
-            <Text style={{ ...styles.subHeader, color: "#FFFFFF" }}>
-              Skills
-            </Text>
-            <View style={styles.skillMatrix}>
-              {resumeData.skills.map((skill, index) => (
-                <Text key={index} style={styles.skillItem}>
-                  {skill.name}
-                </Text>
-              ))}
-            </View>
-          </View>
-        </View>
-        {/* Right Column */}
-        <View style={styles.rightColumn}>
-          <View style={styles.section}>
-            <Text style={styles.subHeader}>Professional Summary</Text>
+        <div className="md:col-span-1 bg-[#2b7264] text-white p-8">
+          <div className="flex flex-col items-center mb-6">
+            <img
+              src="image_5c7463.jpg"
+              alt="Rachel Jones"
+              className="w-48 h-48 rounded-full object-cover mb-4"
+            />
+          </div>
 
-            <Text style={styles.text}>{resumeData.summary}</Text>
-            <View style={styles.divider} />
-          </View>
+          {/* Contact Section */}
+          <div className="mb-6">
+            <div className="border-b border-gray-400 pb-2 mb-4"></div>
+            <div className="text-sm space-y-2">
+              <p className="flex items-center">
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path></svg>
+                New Orleans, LA 70115
+              </p>
+              <p className="flex items-center">
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                555-555-5555
+              </p>
+              <p className="flex items-center">
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                example@example.com
+              </p>
+            </div>
+          </div>
 
-          <View style={styles.section}>
-            <Text style={styles.subHeader}>Professional Experience</Text>
-            {resumeData.workExperience.map((job, index) => (
-              <View key={index} style={styles.section}>
-                <Text style={styles.text}>
-                  {job.jobTitle} - {job.company}
-                </Text>
-                <Text style={styles.text}>
-                  {job.startDate} - {job.endDate}
-                  {job.isRemote && <Text> (Remote) </Text>}
-                </Text>
-                {job.duties.map((duty, i) => (
-                  <View key={i} style={styles.bullet}>
-                    <Text style={{ ...styles.bulletPoint, color: "#333333" }}>
-                      •
-                    </Text>
-                    <Text style={styles.text}>{duty.name}</Text>
-                  </View>
-                ))}
-                {index < resumeData.workExperience.length - 1 && (
-                  <View style={styles.divider} />
-                )}
-              </View>
-            ))}
-          </View>
-          <View style={styles.section}>
-            <Text style={styles.subHeader}>Education</Text>
-            {resumeData.education.map((edu, index) => (
-              <View key={index} style={styles.section}>
-                <Text style={styles.text}>{edu.degree}</Text>
-                <Text style={styles.text}>{edu.institution}</Text>
-                <Text style={styles.text}>
-                  {edu.startDate} - {edu.endDate}
-                </Text>
-                {index < resumeData.education.length - 1 && (
-                  <View style={styles.divider} />
-                )}
-              </View>
-            ))}
-          </View>
-        </View>
-      </View>
-    </Page>
-  </Document>
-);
+          {/* Education Section */}
+          <div className="mb-6">
+            <h2 className="text-xl font-bold uppercase tracking-wide">Education</h2>
+            <div className="border-b border-gray-400 pb-2 mb-4"></div>
+            <div className="text-sm">
+              <p className="font-bold">BBA | Business Administration</p>
+              <p>The University of New Orleans, </p>
+              <p>New Orleans, LA</p>
+            </div>
+          </div>
+
+          {/* Certifications Section */}
+          <div className="mb-6">
+            <h2 className="text-xl font-bold uppercase tracking-wide">Certifications</h2>
+            <div className="border-b border-gray-400 pb-2 mb-4"></div>
+            <div className="text-sm">
+              <p className="font-bold">Certified Administrative Professional (CAP), by the International Association of Administrative Professionals (IAAP)</p>
+            </div>
+          </div>
+
+          {/* Skills Section */}
+          <div>
+            <h2 className="text-xl font-bold uppercase tracking-wide">Skills</h2>
+            <div className="border-b border-gray-400 pb-2 mb-4"></div>
+            <ul className="list-disc list-inside text-sm space-y-2 ml-4">
+              <li>Management software</li>
+              <li>Budgetary planning</li>
+              <li>Problem-solving</li>
+              <li>Banking operations</li>
+              <li>Data entry</li>
+              <li>Adaptability</li>
+              <li>Event coordination</li>
+              <li>Management</li>
+              <li>Expense reporting</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Right Column (Main Content) */}
+        <div className="md:col-span-2 p-10 space-y-8">
+          <div className="flex flex-col mb-4">
+            <h1 className="text-4xl font-bold text-[#2b7264] tracking-wide">Rachel Jones</h1>
+          </div>
+
+          {/* Professional Summary Section */}
+          <div>
+            <h2 className="text-xl font-bold uppercase tracking-wide text-gray-800">Professional Summary</h2>
+            <div className="border-b-2 border-gray-300 w-full mt-1 mb-4"></div>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              Professional and well-rounded office manager with excellent clerical and
+              team support skills. Smooth when handling administrative tasks by
+              coordinating mail, records and travel arrangements. Highly dependable,
+              ethical and reliable leader.
+            </p>
+          </div>
+
+          {/* Experience Section */}
+          <div>
+            <h2 className="text-xl font-bold uppercase tracking-wide text-gray-800">Experience</h2>
+            <div className="border-b-2 border-gray-300 w-full mt-1 mb-4"></div>
+            <div className="space-y-6">
+              <div>
+                <h3 className="font-semibold text-gray-800">Office Manager <span className="font-normal text-gray-500">KIPP | New Orleans, LA</span></h3>
+                <p className="italic text-xs text-gray-500">November 2019 - Current</p>
+                <ul className="list-disc list-inside text-sm text-gray-700 mt-1 ml-4 space-y-1">
+                  <li>Handle scheduling and managed timely and effective allocation of resources and executives calendars.</li>
+                  <li>Oversee day-to-day office operations, including receiving and organizing correspondence, and answering and forwarding calls.</li>
+                  <li>Created training program for new office employees, decreasing training time 13%.</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800">Office Coordinator <span className="font-normal text-gray-500">Deloitte | New Orleans, LA</span></h3>
+                <p className="italic text-xs text-gray-500">May 2016 - November 2019</p>
+                <ul className="list-disc list-inside text-sm text-gray-700 mt-1 ml-4 space-y-1">
+                  <li>Supported internal team members with technical knowledge, operational support and exemplary customer service.</li>
+                  <li>Balanced and updated computer accounting records and physical petty cash, including receipt documentation and expense tracking.</li>
+                  <li>Supervised reception office with three employees, consistently cultivating productive and positive atmosphere.</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800">Receptionist <span className="font-normal text-gray-500">Lineage Logistics | New Orleans, LA</span></h3>
+                <p className="italic text-xs text-gray-500">July 2010 - May 2016</p>
+                <ul className="list-disc list-inside text-sm text-gray-700 mt-1 ml-4 space-y-1">
+                  <li>Answered and directed incoming calls using multi-line telephone system.</li>
+                  <li>Oversaw office inventory by restocking supplies and submitting purchase orders.</li>
+                  <li>Screened and verified over 50 visitors a day for identification credentials and purpose of visit to maintain security of personnel and office environment.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Languages Section */}
+          <div>
+            <h2 className="text-xl font-bold uppercase tracking-wide text-gray-800">Languages</h2>
+            <div className="border-b-2 border-gray-300 w-full mt-1 mb-4"></div>
+            <div className="grid grid-cols-2 text-sm text-gray-700">
+              <div>
+                <p>English</p>
+                <p>French</p>
+              </div>
+              <div>
+                <p>First Language</p>
+                <p>82</p>
+                <p>Upper Intermediate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Template7;
