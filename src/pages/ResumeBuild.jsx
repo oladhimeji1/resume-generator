@@ -7,7 +7,7 @@ export default function ResumeBuild() {
     <section className="max-w-7xl p-6 mx-auto flex flex-col justify-between min-h-screen bg-white">
       <div>
         <Link to="/" className="font-bold text-cyan-950 text-xl">
-          Resume Wizard
+          Intelligent CV 247
         </Link>
       </div>
 
@@ -88,7 +88,8 @@ export default function ResumeBuild() {
         </div>
         <div className="">
           <p className="text-zinc-600  text-xs">
-            &copy; {new Date().getFullYear()} Resume Wizard. All Right Reserved.
+            &copy; {new Date().getFullYear()} Intelligent CV 247. All Right
+            Reserved.
           </p>
         </div>
       </div>

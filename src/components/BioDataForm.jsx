@@ -106,7 +106,6 @@ export default function BioDataForm({
             <option value="Kenya">Kenya</option>
             <option value="USA">USA</option>
             <option value="UK">UK</option>
-            {/* Add more countries as needed */}
           </select>
         </div>
         <div>
@@ -120,7 +119,7 @@ export default function BioDataForm({
           />
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 pb-20">
         <div>
           <label className="block font-semibold mb-1">Email address</label>
           <input

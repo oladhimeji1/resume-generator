@@ -1,171 +1,130 @@
-import { Document, Page, View, Text, StyleSheet } from "@react-pdf/renderer";
+import React from "react";
 
-function Template1({ resumeData }) {
-  const styles = StyleSheet.create({
-    page: {
-      padding: "20px",
-      textAlign: "justify",
-      color: "#333",
-      margin: 0,
-      lineHeight: 1.3,
-      fontSize: "12px",
-    },
-
-    section: {
-      marginBottom: "10px",
-      display: "block",
-    },
-    sectionTitle: {
-      marginBottom: 20,
-      fontSize: "12px",
-      fontWeight: "bold",
-      color: "#000",
-      borderBottom: "2px solid black",
-      display: "block",
-      padding: "4px 0",
-    },
-
-    heading: {
-      fontSize: "24px",
-      fontWeight: "600",
-      color: "#000",
-      marginBottom: "16px",
-      display: "block",
-    },
-
-    textBlock: {
-      display: "block",
-      marginBottom: "8px",
-    },
-
-    textCaption: {
-      marginRight: "8px",
-      color: "#000",
-    },
-
-    listItem: {
-      marginBottom: 5,
-      paddingLeft: 10,
-      position: "relative",
-      display: "block",
-    },
-    bullet: {
-      position: "absolute",
-      left: 0,
-    },
-  });
+const Template1 = ({ resumeData }) => {
   return (
-    <Document>
-      <Page style={styles.page}>
-        <View style={styles.section}>
-          <Text style={styles.heading}>
-            {resumeData.name.toUpperCase()} {resumeData.surname.toUpperCase()}
-          </Text>
-        </View>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+      <div className="w-full max-w-2xl bg-white rounded-lg shadow-2xl overflow-hidden p-8 font-['Inter']">
+        {/* Header Section */}
+        <div className="mb-6">
+          <h1 className="text-4xl font-bold text-blue-800">
+            {resumeData.name}
+          </h1>
+          <p className="text-sm text-gray-700 mt-2">
+            44 Shirley Ave, West Chicago, IL 60185, 563-458-6942
+          </p>
+          <p className="text-sm text-blue-800 italic">jmiller@gmail.com</p>
+        </div>
 
-        <View style={styles.section}>
-          <View>
-            <Text style={styles.textBlock}>
-              {resumeData.city}, {resumeData.country}
-            </Text>
-            <Text style={styles.textBlock}>{resumeData.phone}</Text>
-            <Text style={styles.textBlock}>{resumeData.email}</Text>
-          </View>
-        </View>
+        {/* Professional Summary Section */}
+        <div className="mb-8">
+          <h2 className="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1">
+            Professional Summary
+          </h2>
+          <p className="text-sm text-gray-700 mt-2 leading-relaxed">
+            A highly resourceful, flexible, innovative, and enthusiastic project
+            manager. Possessing considerable experience of managing projects
+            from beginning to end, defining the project plan, timeline, scope
+            and executing the analysis before providing detailed
+            recommendations. Having an impressive track record of delivering
+            major operational improvement and of orchestrating people, schedules
+            and resources for optimum productivity, efficiency and quality. Keen
+            to find a challenging position within an ambitious company where I
+            will be able to continue to increase my project management skills.
+          </p>
+        </div>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>PROFESSIONAL SUMMARY:</Text>
-          <Text>{resumeData.summary}</Text>
-        </View>
+        {/* Employment History Section */}
+        <div className="mb-8">
+          <h2 className="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1">
+            Employment History
+          </h2>
+          <div className="mt-4">
+            <div className="flex justify-between items-start">
+              <div>
+                <h3 className="font-semibold">
+                  IT Technician, International Mobilites
+                </h3>
+                <p className="text-xs text-gray-500 italic">
+                  Oct. 2015 - Apt. 2016
+                </p>
+              </div>
+              <p className="text-sm text-gray-600">Birmingham</p>
+            </div>
+            <ul className="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1 ml-4">
+              <li>Operate and maintain information systems</li>
+              <li>Facilitating system utilization</li>
+            </ul>
+          </div>
+          <div className="mt-4">
+            <div className="flex justify-between items-start">
+              <div>
+                <h3 className="font-semibold">
+                  IT Project Manager, Telecommunicado Ltd
+                </h3>
+                <p className="text-xs text-gray-500 italic">
+                  May 2017 - Current
+                </p>
+              </div>
+              <p className="text-sm text-gray-600">Birmingham</p>
+            </div>
+            <ul className="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1 ml-4">
+              <li>Lead a team of technical staff</li>
+              <li>Planning, procurement and execution of projects</li>
+            </ul>
+          </div>
+        </div>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>EMPLOYMENT HISTORY:</Text>
-          {resumeData.workExperience.map((exp, i) => (
-            <View key={i}>
-              <View>
-                <Text
-                  style={{
-                    marginRight: "30px",
-                    fontWeight: "700",
-                    color: "#000",
-                  }}
-                >
-                  {exp.startDate} - {exp.endDate}
-                </Text>
-                <Text
-                  style={{
-                    fontWeight: "700",
-                    color: "#000",
-                  }}
-                >
-                  {exp.jobTitle}, {exp.company} {exp.isRemote ? `(Remote)` : ""}
-                </Text>
-              </View>
-              <Text style={{ display: "block" }}>{exp.location}</Text>
-              {exp.duties.map((duty, i) => (
-                <View key={i} style={{ display: "block" }}>
-                  <Text style={styles.listItem}>
-                    <Text style={styles.bullet}>•</Text> {duty.name}
-                  </Text>
-                </View>
-              ))}
-            </View>
-          ))}
-        </View>
+        {/* Education Section */}
+        <div className="mb-8">
+          <h2 className="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1">
+            Education
+          </h2>
+          <div className="mt-4">
+            <div className="flex justify-between items-start">
+              <div>
+                <h3 className="font-semibold">
+                  Bournville School Secondary School
+                </h3>
+                <p className="text-xs text-gray-500 italic">
+                  Sep. 1999 - May 2011
+                </p>
+              </div>
+              <p className="text-sm text-gray-600">Bournville</p>
+            </div>
+            <p className="text-sm text-gray-700 mt-2">
+              10 GCSE's including Maths (A), Business Studies (B), ICT (C)
+            </p>
+          </div>
+        </div>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>EDUCATION :</Text>
-          {resumeData.education.map((edu, i) => (
-            <View key={i}>
-              <View>
-                <Text style={{ marginRight: "30px", fontWeight: 700 }}>
-                  {edu.startDate} - {edu.endDate}
-                </Text>
-                <Text>{edu.degree}</Text>
-              </View>
-              <Text style={{ display: "block" }}>
-                {edu.institution}, {edu.location}
-              </Text>
-            </View>
-          ))}
-        </View>
-
-        <View styles={styles.section}>
-          <Text style={styles.sectionTitle}>SKILLS :</Text>
-
-          {resumeData.skills.map((skill, i) => (
-            <View key={i} style={{ display: "block" }}>
-              <Text style={styles.listItem}>
-                <Text style={styles.bullet}>•</Text> {skill.name}
-              </Text>
-            </View>
-          ))}
-        </View>
-        <View styles={styles.section}>
-          <Text style={styles.sectionTitle}>REFERENCE :</Text>
-
-          {resumeData.references.map((reference, i) => (
-            <View key={i}>
-              <View style={{ display: "block" }}>
-                <Text style={{ fontWeight: "bold", color: "#000" }}>
-                  {reference.name}
-                </Text>
-              </View>
-              <View style={{ display: "block" }}>
-                <Text>{reference.occupation}</Text>
-              </View>
-              <View style={{ display: "block" }}>
-                <Text>{reference.location}</Text>
-              </View>
-              <View style={{ display: "block" }}>
-                <Text>{reference.phone}</Text>
-              </View>
-            </View>
-          ))}
-        </View>
-      </Page>
-    </Document>
+        {/* Honors Section */}
+        <div>
+          <h2 className="text-lg font-bold uppercase tracking-wide border-b-2 border-gray-300 pb-1">
+            Honors
+          </h2>
+          <div className="mt-4">
+            <div className="flex justify-between items-start">
+              <div>
+                <h3 className="font-semibold">
+                  Washwood Heath Technology College
+                </h3>
+                <p className="text-xs text-gray-500 italic">
+                  Jun. 2015 - Jun. 2017
+                </p>
+              </div>
+              <p className="text-sm text-gray-600">Washwood</p>
+            </div>
+            <p className="text-sm text-gray-700 mt-2">
+              ICT (B), Maths (C), Biology (B)
+            </p>
+            <p className="text-sm text-gray-700">
+              Excellent notes in everything.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
+};
 
 export default Template1;

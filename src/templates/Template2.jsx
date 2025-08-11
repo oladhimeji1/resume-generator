@@ -1,293 +1,166 @@
-import { Document, Page, View, Text, StyleSheet } from "@react-pdf/renderer";
-
-function Template2({ resumeData, isWeb }) {
-  // PDF styles
-  const styles = StyleSheet.create({
-    page: {
-      padding: 30,
-      fontFamily: "Helvetica",
-      fontSize: 12,
-      color: "#333",
-      flexDirection: "column",
-    },
-    header: {
-      backgroundColor: "#f8f8f8",
-      padding: 20,
-      marginBottom: 10,
-      borderBottom: "2px solid #007bff",
-      textAlign: "center",
-    },
-    name: {
-      fontSize: 24,
-      fontWeight: "bold",
-      color: "#007bff",
-      marginBottom: 5,
-    },
-    section: {
-      marginBottom: 10,
-    },
-    sectionTitle: {
-      fontSize: 12,
-      fontWeight: "bold",
-      marginBottom: 10,
-      borderBottom: "1px solid #007bff",
-    },
-    text: {
-      marginBottom: 5,
-      lineHeight: 1.15,
-    },
-    listItem: {
-      marginBottom: 5,
-      paddingLeft: 10,
-      position: "relative",
-    },
-    bullet: {
-      position: "absolute",
-      left: 0,
-      fontSize: 12,
-    },
-    jobTitle: {
-      fontWeight: "bold",
-      fontSize: 13,
-    },
-    company: {
-      fontStyle: "italic",
-      color: "#555",
-    },
-    date: {
-      color: "#777",
-      fontSize: 11,
-      marginBottom: 5,
-    },
-    skillsContainer: {
-      flexDirection: "row",
-      flexWrap: "wrap",
-    },
-    skill: {
-      backgroundColor: "#e9f5ff",
-      padding: "5px 10px",
-      borderRadius: 5,
-      marginRight: 10,
-      marginBottom: 10,
-    },
-  });
-
-  // Web styles
-  const webStyles = {
-    wrapper: {
-      background: "#fff",
-      color: "#333",
-      fontFamily: "'Inter', Arial, sans-serif",
-      padding: 32,
-      borderRadius: 12,
-      boxShadow: "0 4px 24px 0 rgba(0,0,0,0.08)",
-      maxWidth: 800,
-      margin: "0 auto",
-      minHeight: 900,
-      width: "100%",
-      boxSizing: "border-box",
-    },
-    header: {
-      background: "#f8f8f8",
-      padding: 20,
-      marginBottom: 10,
-      borderBottom: "2px solid #007bff",
-      textAlign: "center",
-      borderRadius: 8,
-    },
-    name: {
-      fontSize: 28,
-      fontWeight: 800,
-      color: "#007bff",
-      marginBottom: 5,
-      letterSpacing: 1,
-    },
-    section: {
-      marginBottom: 24,
-    },
-    sectionTitle: {
-      fontSize: 14,
-      fontWeight: 700,
-      marginBottom: 10,
-      borderBottom: "1px solid #007bff",
-      paddingBottom: 4,
-      letterSpacing: 1,
-    },
-    text: {
-      marginBottom: 5,
-      lineHeight: 1.5,
-      fontSize: 12,
-    },
-    listItem: {
-      marginBottom: 5,
-      paddingLeft: 18,
-      position: "relative",
-      fontSize: 12,
-    },
-    bullet: {
-      position: "absolute",
-      left: 0,
-      fontSize: 12,
-      color: "#007bff",
-    },
-    jobTitle: {
-      fontWeight: 700,
-      fontSize: 12,
-    },
-    company: {
-      fontStyle: "italic",
-      color: "#555",
-      fontSize: 15,
-    },
-    date: {
-      color: "#777",
-      fontSize: 14,
-      marginBottom: 5,
-    },
-    skillsContainer: {
-      display: "flex",
-      flexWrap: "wrap",
-      gap: 8,
-    },
-    skill: {
-      background: "#e9f5ff",
-      padding: "6px 14px",
-      borderRadius: 8,
-      marginRight: 10,
-      marginBottom: 10,
-      fontWeight: 600,
-      fontSize: 14,
-      color: "#007bff",
-    },
-  };
-
-  // Render for web preview
-  if (typeof window !== "undefined" || isWeb) {
-    return (
-      <div style={webStyles.wrapper}>
-        <div style={webStyles.header}>
-          <div style={webStyles.name}>
-            {resumeData.name} {resumeData.surname}
+const Template2 = () => {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+      <div className="w-full max-w-2xl bg-white rounded-lg shadow-2xl overflow-hidden p-8 font-['Inter']">
+        {/* Header Section */}
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-4xl font-bold text-[#0594C3]">JAMES MILLER</h1>
+          <div className="text-right">
+            <p className="text-sm text-gray-700">
+              44 Shirley Ave, West Chicago, IL 60185
+            </p>
+            <p className="text-sm text-[#0594C3] italic">jmiller@gmail.com</p>
+            <p className="text-sm text-gray-700">563-458-6942</p>
           </div>
         </div>
-        <div style={webStyles.section}>
-          <div style={webStyles.sectionTitle}>Contact</div>
-          <div style={webStyles.text}>Email: {resumeData.email}</div>
-          <div style={webStyles.text}>Phone: {resumeData.phone}</div>
-          <div style={webStyles.text}>
-            Location: {resumeData.city} {resumeData.country}
+
+        {/* Professional Summary Section */}
+        <div className="mb-8">
+          <div className="bg-[#0594C3] text-white py-2 px-4 rounded-t-md">
+            <h2 className="text-lg font-bold uppercase tracking-wide">
+              Professional Summary
+            </h2>
+          </div>
+          <div className="p-4 bg-gray-50 border-b-2 border-l-2 border-r-2 rounded-b-md border-gray-300">
+            <p className="text-sm text-gray-700 leading-relaxed">
+              A highly resourceful, flexible, innovative, and enthusiastic
+              project manager. Possessing considerable experience of managing
+              projects from beginning to end, defining the project plan,
+              timeline, scope and executing the analysis before providing
+              detailed recommendations. Having an impressive track record of
+              delivering major operational improvement and of orchestrating
+              people, schedules and resources for optimum productivity,
+              efficiency and quality. Keen to find a challenging position within
+              an ambitious company where I will be able to continue to increase
+              my project management skills.
+            </p>
           </div>
         </div>
-        <div style={webStyles.section}>
-          <div style={webStyles.sectionTitle}>Summary</div>
-          <div style={webStyles.text}>{resumeData.summary}</div>
-        </div>
-        <div style={webStyles.section}>
-          <div style={webStyles.sectionTitle}>Work Experience</div>
-          {resumeData.workExperience.map((experience, index) => (
-            <div key={index} style={webStyles.section}>
-              <div style={webStyles.jobTitle}>{experience.jobTitle}</div>
-              <div style={webStyles.company}>{experience.company}</div>
-              <div style={webStyles.date}>
-                {experience.startDate} - {experience.endDate}
-                {experience.isRemote && <span> (Remote) </span>}
+
+        {/* Employment History Section */}
+        <div className="mb-8">
+          <div className="bg-[#0594C3] text-white py-2 px-4 rounded-t-md">
+            <h2 className="text-lg font-bold uppercase tracking-wide">
+              Employment History
+            </h2>
+          </div>
+          <div className="p-4 bg-gray-50 border-b-2 border-l-2 border-r-2 rounded-b-md border-gray-300 relative">
+            <div className="absolute top-0 left-4 w-px bg-gray-300 h-full"></div>{" "}
+            {/* Vertical line */}
+            {/* Employment 1 */}
+            <div className="relative mb-6">
+              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
+              <div className="ml-8">
+                <p className="text-xs text-gray-500 italic">
+                  May 2017 - Current
+                </p>
+                <h3 className="font-semibold text-gray-800">
+                  IT Project Manager at Telecommunicado Ltd, Birmingham
+                </h3>
+                <ul className="list-disc list-inside text-sm text-gray-700 mt-1 space-y-1 ml-4">
+                  <li>Lead a team of technical staff</li>
+                  <li>Planning, procurement and execution of projects</li>
+                </ul>
               </div>
-              {experience.duties.map((duty, i) => (
-                <div key={i} style={webStyles.listItem}>
-                  <span style={webStyles.bullet}>•</span> {duty.name}
-                </div>
-              ))}
             </div>
-          ))}
-        </div>
-        {resumeData.education.map((education, index) => (
-          <div key={index} style={webStyles.section}>
-            <div style={webStyles.sectionTitle}>Education</div>
-            <div style={webStyles.jobTitle}>{education.degree}</div>
-            <div style={webStyles.company}>{education.institution}</div>
-            <div style={webStyles.date}>
-              {education.startDate} - {education.endDate}
+            {/* Employment 2 */}
+            <div className="relative mb-0">
+              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
+              <div className="ml-8">
+                <p className="text-xs text-gray-500 italic">
+                  October 2015 - April 2016
+                </p>
+                <h3 className="font-semibold text-gray-800">
+                  IT Technician at International Mobilites, Birmingham
+                </h3>
+                <ul className="list-disc list-inside text-sm text-gray-700 mt-1 space-y-1 ml-4">
+                  <li>Operate and maintain information systems</li>
+                  <li>Facilitating system utilization</li>
+                </ul>
+              </div>
             </div>
           </div>
-        ))}
-        <div style={webStyles.section}>
-          <div style={webStyles.sectionTitle}>Skills</div>
-          <div style={webStyles.skillsContainer}>
-            {resumeData.skills.map((skill, index) => (
-              <span key={index} style={webStyles.skill}>
-                {skill.name}
-              </span>
-            ))}
+        </div>
+
+        {/* Education Section */}
+        <div className="mb-8">
+          <div className="bg-[#0594C3] text-white py-2 px-4 rounded-t-md">
+            <h2 className="text-lg font-bold uppercase tracking-wide">
+              Education
+            </h2>
+          </div>
+          <div className="p-4 bg-gray-50 border-b-2 border-l-2 border-r-2 rounded-b-md border-gray-300 relative">
+            <div className="absolute top-0 left-4 w-px bg-gray-300 h-full"></div>
+
+            {/* Education 1 */}
+            <div className="relative mb-4">
+              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
+              <div className="ml-8">
+                <p className="text-xs text-gray-500 italic">
+                  September 2014 - May 2016
+                </p>
+                <h3 className="font-semibold text-gray-800">
+                  BSc Computer Science (2:1), University of Birmingham
+                </h3>
+              </div>
+            </div>
+
+            {/* Education 2 */}
+            <div className="relative mb-4">
+              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
+              <div className="ml-8">
+                <p className="text-xs text-gray-500 italic">
+                  September 2011 - May 2014
+                </p>
+                <h3 className="font-semibold text-gray-800">
+                  A-Levels: ICT (B), Maths (C), Biology (B), Washwood Heath
+                  Technology College
+                </h3>
+              </div>
+            </div>
+
+            {/* Education 3 */}
+            <div className="relative">
+              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
+              <div className="ml-8">
+                <p className="text-xs text-gray-500 italic">
+                  September 1999 - May 2011
+                </p>
+                <h3 className="font-semibold text-gray-800">
+                  10 GCSE's including Maths (A), Business Studies (B), ICT (C),
+                  Bournville School Secondary School
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Honors Section */}
+        <div>
+          <div className="bg-[#0594C3] text-white py-2 px-4 rounded-t-md">
+            <h2 className="text-lg font-bold uppercase tracking-wide">
+              Honors
+            </h2>
+          </div>
+          <div className="p-4 bg-gray-50 border-b-2 border-l-2 border-r-2 rounded-b-md border-gray-300 relative">
+            <div className="absolute top-0 left-4 w-px bg-gray-300 h-full"></div>
+
+            <div className="relative">
+              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
+              <div className="ml-8">
+                <p className="text-xs text-gray-500 italic">
+                  June 2015 - June 2017
+                </p>
+                <h3 className="font-semibold text-gray-800">
+                  Board Member Mensa, Birmingham
+                </h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    );
-  }
-
-  // Render for PDF
-  return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.header}>
-          <Text style={styles.name}>
-            {resumeData.name} {resumeData.surname}
-          </Text>
-        </View>
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Contact</Text>
-          <Text style={styles.text}>Email: {resumeData.email}</Text>
-          <Text style={styles.text}>Phone: {resumeData.phone}</Text>
-          <Text style={styles.text}>
-            Location: {resumeData.city} {resumeData.country}
-          </Text>
-        </View>
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Summary</Text>
-          <Text style={styles.text}>{resumeData.summary}</Text>
-        </View>
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Work Experience</Text>
-          {resumeData.workExperience.map((experience, index) => (
-            <View key={index} style={styles.section}>
-              <Text style={styles.jobTitle}>{experience.jobTitle}</Text>
-              <Text style={styles.company}>{experience.company}</Text>
-              <Text style={styles.date}>
-                {experience.startDate} - {experience.endDate}
-                {experience.isRemote && <Text> (Remote) </Text>}
-              </Text>
-              {experience.duties.map((duty, i) => (
-                <Text key={i} style={styles.listItem}>
-                  <Text style={styles.bullet}>•</Text> {duty.name}
-                </Text>
-              ))}
-            </View>
-          ))}
-        </View>
-        {resumeData.education.map((education, index) => {
-          return (
-            <View key={index} style={styles.section}>
-              <Text style={styles.sectionTitle}>Education</Text>
-              <Text style={styles.jobTitle}>{education.degree}</Text>
-              <Text style={styles.company}>{education.institution}</Text>
-              <Text style={styles.date}>
-                {education.startDate} - {education.endDate}
-              </Text>
-            </View>
-          );
-        })}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Skills</Text>
-          <View style={styles.skillsContainer}>
-            {resumeData.skills.map((skill, index) => (
-              <Text key={index} style={styles.skill}>
-                {skill.name}
-              </Text>
-            ))}
-          </View>
-        </View>
-      </Page>
-    </Document>
+    </div>
   );
-}
+};
 
 export default Template2;

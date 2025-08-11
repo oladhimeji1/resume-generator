@@ -1,4 +1,3 @@
-
 import { FaTrash } from "react-icons/fa";
 
 export default function EducationForm({
@@ -251,7 +250,7 @@ export default function EducationForm({
       <button
         type="button"
         onClick={addEducation}
-        className="py-2 px-6 mb-8 cursor-pointer font-semibold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full"
+        className="py-2 px-6 mb-8 cursor-pointer font-semibold bg-emerald-800 text-white hover:bg-emerald-900 rounded-full mb-20"
       >
         Add Education
       </button>

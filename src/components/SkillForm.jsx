@@ -1,4 +1,4 @@
-import { FaPlus, FaTimes } from "react-icons/fa";
+import { FaPlus, FaTrash } from "react-icons/fa";
 
 function SkillForm({
   setResumeData,
@@ -52,7 +52,7 @@ function SkillForm({
               className="text-red-500 hover:text-red-700"
               aria-label="Remove skill"
             >
-              <FaTimes />
+              <FaTrash />
             </button>
           </div>
         ))}
