@@ -6,6 +6,7 @@ export default function ResumeDownload({
   resumeData,
   TemplateComponent,
   handlePrevStep,
+  handleResetStep,
 }) {
   const resumeRef = useRef();
 
@@ -43,7 +44,8 @@ export default function ResumeDownload({
         if (remainingHeight > 0) pdf.addPage();
       }
     }
-    pdf.save("resume.pdf");
+    pdf.save(`${resumeData.name}'s resume.pdf`);
+    if (handleResetStep) handleResetStep();
   };
 
   return (

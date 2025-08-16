@@ -244,6 +244,7 @@ export default function ResumeBuilder() {
             resumeData={resumeData}
             TemplateComponent={TemplateComponent}
             handlePrevStep={handlePrevStep}
+            handleResetStep={() => setStep(1)}
           />
         )}
       </section>
