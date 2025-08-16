@@ -34,74 +34,60 @@ export default function ResumeBuilder() {
   };
 
   const [resumeData, setResumeData] = useState({
-    name: "Godstime",
-    surname: "Pious",
-    city: "Port Harcourt",
-    country: "Nigeria",
-    email: "piousgodstime3@gmail.com",
-    phone: "09130328299",
-    summary: "Result Oriented Software Engineer with 5+ years of experience ",
+    name: "",
+    surname: "",
+    city: "",
+    country: "",
+    email: "",
+    phone: "",
+    summary: " ",
     workExperience: [
       {
-        jobTitle: "Software Engineer",
-        company: "Google ",
-        startDate: "",
-        endDate: "",
-        location: "San Jose",
-        isRemote: false,
+        jobTitle: "",
+        company: "",
+        location: "",
         duties: [
           {
-            name: "Responsible for Developing Single Page Apps for Clients and Business",
-          },
-          {
-            name: "Work with Backend Developer closely and Devops",
+            name: "",
           },
         ],
-        state: "California",
-        startMonth: "November",
+        state: "",
+        startMonth: "",
         presently: false,
-        endMonth: "March",
-        endYear: "2018",
+        endMonth: "",
+        endYear: "",
       },
     ],
     education: [
       {
-        institution: "",
-        location: "San Francisco",
-        degree: "Master's",
-        startDate: "",
-        endDate: "",
-        school: "Standford University",
-        fieldOfStudy: "Computer Science",
+        location: "",
+        degree: "",
+
+        school: "",
+        fieldOfStudy: "",
         state: "California",
-        startMonth: "August",
-        startYear: "2018",
+        startMonth: "",
+        startYear: "",
         currentlyEnrolled: false,
-        endMonth: "September",
-        endYear: "2020",
+        endMonth: "",
+        endYear: "",
       },
     ],
     skills: [
       {
-        name: "Proficient in React and Backend Development",
-      },
-      {
-        name: "Good Communication Skill",
-      },
-      {
-        name: "Ability to work minimal experience",
+        name: "",
       },
     ],
     references: [
       {
-        name: "Pious Odoyi",
-        phone: "08030415899",
-        location: "46 Patterson Street, Trans Amadi, Port Harcourt",
-        occupation: "Store Clerk",
+        name: "",
+        phone: "",
+        location: "",
+        occupation: "",
       },
     ],
-    address: "46 Patterson Street, Emma Estate",
-    zip: "50012",
+    address: "",
+    zip: "",
   });
 
   const handleInputChange = (field, value) => {

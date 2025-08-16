@@ -68,10 +68,26 @@ export default function ResumeDownload({
           </button>
         </div>
         {/* Resume Preview */}
-        <div className="w-full flex flex-col items-center justify-center px-4 md:px-8 py-8 bg-white">
+        <div className="w-full flex flex-col items-center justify-center px-0 py-0 bg-white">
+          {/* Mobile scroll/overlay note */}
+          <div className="block md:hidden w-full text-center text-xs text-gray-500 mb-2">
+            Scroll to preview your resume. PDF will be downloaded in A4 size.
+          </div>
           <div
-            className="w-full max-w-6xl bg-white border border-gray-100 rounded-xl shadow-md p-6 md:p-10 overflow-auto"
-            style={{ minHeight: 400 }}
+            className="bg-white border border-gray-100 rounded-xl shadow-md overflow-auto"
+            style={{
+              minHeight: 400,
+              width: "210mm",
+              height: "297mm",
+              margin: "0 auto",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+              borderRadius: 16,
+              border: "1px solid #e5e7eb",
+              background: "#fff",
+              padding: 0,
+              maxWidth: "100vw",
+              maxHeight: "80vh",
+            }}
           >
             {TemplateComponent ? (
               <TemplateComponent
