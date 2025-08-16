@@ -32,45 +32,76 @@ export default function ResumeBuilder() {
   const handlePrevStep = () => {
     setStep(step - 1);
   };
-  const [resumeData, setResumeData] = useState({
-    name: "",
-    surname: "",
-    city: "",
-    country: "",
-    email: "",
-    phone: "",
-    summary: ``,
 
+  const [resumeData, setResumeData] = useState({
+    name: "Godstime",
+    surname: "Pious",
+    city: "Port Harcourt",
+    country: "Nigeria",
+    email: "piousgodstime3@gmail.com",
+    phone: "09130328299",
+    summary: "Result Oriented Software Engineer with 5+ years of experience ",
     workExperience: [
       {
-        jobTitle: "",
-        company: "",
+        jobTitle: "Software Engineer",
+        company: "Google ",
         startDate: "",
         endDate: "",
-        location: "",
+        location: "San Jose",
         isRemote: false,
         duties: [
           {
-            name: "",
+            name: "Responsible for Developing Single Page Apps for Clients and Business",
+          },
+          {
+            name: "Work with Backend Developer closely and Devops",
           },
         ],
+        state: "California",
+        startMonth: "November",
+        presently: false,
+        endMonth: "March",
+        endYear: "2018",
       },
     ],
     education: [
       {
         institution: "",
-        location: "",
-        degree: "",
+        location: "San Francisco",
+        degree: "Master's",
         startDate: "",
         endDate: "",
+        school: "Standford University",
+        fieldOfStudy: "Computer Science",
+        state: "California",
+        startMonth: "August",
+        startYear: "2018",
+        currentlyEnrolled: false,
+        endMonth: "September",
+        endYear: "2020",
       },
     ],
     skills: [
       {
-        name: "",
+        name: "Proficient in React and Backend Development",
+      },
+      {
+        name: "Good Communication Skill",
+      },
+      {
+        name: "Ability to work minimal experience",
       },
     ],
-    references: [{ name: "", phone: "", location: "", occupation: "" }],
+    references: [
+      {
+        name: "Pious Odoyi",
+        phone: "08030415899",
+        location: "46 Patterson Street, Trans Amadi, Port Harcourt",
+        occupation: "Store Clerk",
+      },
+    ],
+    address: "46 Patterson Street, Emma Estate",
+    zip: "50012",
   });
 
   const handleInputChange = (field, value) => {

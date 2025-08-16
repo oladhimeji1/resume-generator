@@ -1,222 +1,404 @@
 import React from "react";
 
-const Template6 = () => {
+const Template6 = ({ ref, resumeData }) => {
+  // Inline styles to match the original layout
+  const mainBg = "#F3F4F6";
+  const cardBg = "#fff";
+  const sidebarBg = "#1F2937";
+  const borderColor = "#D1D5DB";
+  const sidebarBorder = "#374151";
+  const mainText = "#1F2937";
+  const subText = "#6B7280";
+  const accent = "#0594C3";
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 font-['Inter']">
-      <div className="w-full max-w-5xl bg-white shadow-2xl overflow-hidden rounded-lg">
-        <div className="grid grid-cols-1 md:grid-cols-3">
+    <div
+      ref={ref}
+      style={{
+        minHeight: "100vh",
+        background: mainBg,
+        padding: 16,
+        fontFamily: "Inter, sans-serif",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 1100,
+          background: cardBg,
+          borderRadius: 16,
+          boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "2fr 1fr",
+            minHeight: 600,
+          }}
+        >
           {/* Left Column (Main Content) */}
-          <div className="md:col-span-2 p-10 space-y-8">
+          <div
+            style={{
+              padding: 40,
+              display: "flex",
+              flexDirection: "column",
+              gap: 40,
+            }}
+          >
             {/* Header Section */}
-            <div className="flex flex-col mb-4">
-              <h1 className="text-4xl font-bold text-gray-800 tracking-wide">
-                ALLEN SMITH
+            <div style={{ marginBottom: 16 }}>
+              <h1
+                style={{
+                  fontSize: 36,
+                  fontWeight: 700,
+                  color: mainText,
+                  letterSpacing: 1,
+                }}
+              >
+                {resumeData?.name || ""} {resumeData?.surname || ""}
               </h1>
             </div>
 
             {/* Professional Summary Section */}
-            <div>
-              <h2 className="text-xl font-bold uppercase tracking-wide text-gray-800">
-                Professional Summary
-              </h2>
-              <div className="border-b-2 border-gray-300 w-full mt-1 mb-4"></div>
-              <p className="text-sm text-gray-700 leading-relaxed">
-                Highly organized paralegal executes case flow management through
-                advanced technical skills. Successful at sorting and
-                categorizing high volumes of legal documents and data.
-                Prioritizes tasks and remains productive while balancing
-                multiple projects and deadlines. Effective communicator talented
-                in managing complex schedules, goal setting and office
-                administration.
-              </p>
-            </div>
-
-            {/* Summary of Qualifications Section */}
-            <div>
-              <h2 className="text-xl font-bold uppercase tracking-wide text-gray-800">
-                Summary of Qualifications
-              </h2>
-              <div className="border-b-2 border-gray-300 w-full mt-1 mb-4"></div>
-              <ul className="list-disc list-inside text-sm text-gray-700 space-y-2 ml-4">
-                <li>
-                  Well-versed in drafting briefs, legal memorandums, motions and
-                  correspondence.
-                </li>
-                <li>
-                  Collaborative team player comfortable working independently
-                  and accepting a high degree of unsupervised responsibility.
-                </li>
-                <li>
-                  Skilled writer, organizer and project manager with a solid
-                  background in legal research and witness statements.
-                </li>
-              </ul>
-            </div>
+            {resumeData?.summary && (
+              <div>
+                <h2
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    color: mainText,
+                  }}
+                >
+                  Professional Summary
+                </h2>
+                <div
+                  style={{
+                    borderBottom: `2px solid ${borderColor}`,
+                    width: "100%",
+                    marginTop: 4,
+                    marginBottom: 16,
+                  }}
+                ></div>
+                <p
+                  style={{
+                    fontSize: 15,
+                    color: mainText,
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {resumeData.summary}
+                </p>
+              </div>
+            )}
 
             {/* Work History Section */}
-            <div>
-              <h2 className="text-xl font-bold uppercase tracking-wide text-gray-800">
-                Work History
-              </h2>
-              <div className="border-b-2 border-gray-300 w-full mt-1 mb-4"></div>
-              <div className="space-y-4">
+            {Array.isArray(resumeData?.workExperience) &&
+              resumeData.workExperience.length > 0 && (
                 <div>
-                  <h3 className="font-semibold text-gray-800">
-                    Paralegal{" "}
-                    <span className="font-normal text-gray-500">
-                      11/2021 - Current
-                    </span>
-                  </h3>
-                  <p className="italic text-sm text-gray-700">
-                    Imani/Magic Christopher & Toale - Seattle, WA
-                  </p>
-                  <ul className="list-disc list-inside text-sm text-gray-700 mt-1 ml-4 space-y-1">
-                    <li>
-                      Participate in weekly client interviews, observe the
-                      questioning process and document information for 10
-                      ongoing cases.
-                    </li>
-                    <li>
-                      Use WestLaw and LexisNexis to examine secondary sources,
-                      statutory and case law and federal and state regulations.
-                    </li>
-                    <li>
-                      Manage data, produce well-researched and articulate legal
-                      briefs for pleadings and summaries for 12 attorneys and
-                      organize exhibits for trial by preparing materials and
-                      supporting documentation.
-                    </li>
-                  </ul>
+                  <h2
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      color: mainText,
+                    }}
+                  >
+                    Work History
+                  </h2>
+                  <div
+                    style={{
+                      borderBottom: `2px solid ${borderColor}`,
+                      width: "100%",
+                      marginTop: 4,
+                      marginBottom: 16,
+                    }}
+                  ></div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 24,
+                    }}
+                  >
+                    {resumeData.workExperience.map((job, idx) => (
+                      <div key={idx}>
+                        <h3
+                          style={{
+                            fontWeight: 600,
+                            color: mainText,
+                            margin: 0,
+                          }}
+                        >
+                          {job.jobTitle}{" "}
+                          <span
+                            style={{
+                              fontWeight: 400,
+                              color: subText,
+                              marginLeft: 8,
+                            }}
+                          >
+                            {job.startMonth} {job.startYear} -{" "}
+                            {job.presently
+                              ? "Current"
+                              : `${job.endMonth} ${job.endYear}`}
+                          </span>
+                        </h3>
+                        <p
+                          style={{
+                            fontStyle: "italic",
+                            fontSize: 15,
+                            color: mainText,
+                          }}
+                        >
+                          {job.company}{" "}
+                          {job.location ? `- ${job.location}` : ""}
+                        </p>
+                        {Array.isArray(job.duties) && job.duties.length > 0 && (
+                          <ul
+                            style={{
+                              listStyle: "disc",
+                              paddingLeft: 20,
+                              fontSize: 14,
+                              color: mainText,
+                              margin: "8px 0",
+                            }}
+                          >
+                            {job.duties.map((duty, i) => (
+                              <li key={i}>{duty.name}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800">
-                    Legal Assistant{" "}
-                    <span className="font-normal text-gray-500">
-                      09/2018 - 10/2021
-                    </span>
-                  </h3>
-                  <p className="italic text-sm text-gray-700">
-                    CGI Group Inc. - Seattle, WA
-                  </p>
-                  <ul className="list-disc list-inside text-sm text-gray-700 mt-1 ml-4 space-y-1">
-                    <li>
-                      Provided administrative support and conducted research to
-                      assist 12 attorneys in complex cases and legal process
-                      preparation.
-                    </li>
-                    <li>
-                      Used computer databases, created reports and tax and legal
-                      filings to locate persons and compile information for
-                      investigations.
-                    </li>
-                    <li>
-                      Drafted motions and other legal documents and liaised with
-                      eight company departments to facilitate responsive
-                      documents and document retention.
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800">
-                    Legal Secretary{" "}
-                    <span className="font-normal text-gray-500">
-                      06/2016 - 08/2018
-                    </span>
-                  </h3>
-                  <p className="italic text-sm text-gray-700">
-                    Tyson & Mendes - Seattle, WA
-                  </p>
-                  <ul className="list-disc list-inside text-sm text-gray-700 mt-1 ml-4 space-y-1">
-                    <li>
-                      Photocopied all correspondence, documents and other
-                      printed materials and filed copies and documents and
-                      briefs in legal files to prevent loss.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+              )}
           </div>
 
           {/* Right Column (Sidebar) */}
-          <div className="md:col-span-1 bg-gray-800 text-white p-10 space-y-8">
-            <div className="flex items-center justify-center">
-              <img
-                src="image_5c6d3c.png"
-                alt="Allen Smith"
-                className="w-48 h-48 rounded-full border-4 border-gray-600 object-cover"
-              />
-            </div>
-
+          <div
+            style={{
+              background: sidebarBg,
+              color: "#fff",
+              padding: 40,
+              display: "flex",
+              flexDirection: "column",
+              gap: 40,
+            }}
+          >
             {/* Contact Section */}
             <div>
-              <h2 className="text-xl font-bold uppercase tracking-wide">
+              <h2
+                style={{
+                  fontSize: 20,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                }}
+              >
                 Contact
               </h2>
-              <div className="border-b-2 border-gray-600 w-full mt-1 mb-4"></div>
-              <div className="text-sm space-y-2">
-                <p>Address: Seattle, WA 98144</p>
-                <p>Phone: 555-555-5555</p>
-                <p>Email: example@example.com</p>
+              <div
+                style={{
+                  borderBottom: `2px solid ${sidebarBorder}`,
+                  width: "100%",
+                  marginTop: 4,
+                  marginBottom: 16,
+                }}
+              ></div>
+              <div
+                style={{
+                  fontSize: 15,
+                  color: "#fff",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                }}
+              >
+                {resumeData?.address && (
+                  <p>
+                    Address: {resumeData.address}{" "}
+                    {resumeData?.city ? `, ${resumeData.city}` : ""}{" "}
+                    {resumeData?.country ? `, ${resumeData.country}` : ""}
+                  </p>
+                )}
+                {resumeData?.phone && <p>Phone: {resumeData.phone}</p>}
+                {resumeData?.email && <p>Email: {resumeData.email}</p>}
               </div>
             </div>
 
             {/* Skills Section */}
-            <div>
-              <h2 className="text-xl font-bold uppercase tracking-wide">
-                Skills
-              </h2>
-              <div className="border-b-2 border-gray-600 w-full mt-1 mb-4"></div>
-              <ul className="list-disc list-inside text-sm space-y-2 ml-4">
-                <li>Expertise in legal proceedings</li>
-                <li>Project management</li>
-                <li>Strong research skills</li>
-                <li>Court filings</li>
-                <li>MS Office</li>
-                <li>Amiclable</li>
-                <li>Attention to detail</li>
-                <li>Conflict mediation</li>
-              </ul>
-            </div>
+            {Array.isArray(resumeData?.skills) &&
+              resumeData.skills.length > 0 && (
+                <div>
+                  <h2
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Skills
+                  </h2>
+                  <div
+                    style={{
+                      borderBottom: `2px solid ${sidebarBorder}`,
+                      width: "100%",
+                      marginTop: 4,
+                      marginBottom: 16,
+                    }}
+                  ></div>
+                  <ul
+                    style={{
+                      listStyle: "disc",
+                      paddingLeft: 20,
+                      fontSize: 15,
+                      color: "#fff",
+                      margin: 0,
+                    }}
+                  >
+                    {resumeData.skills.map((skill, idx) => (
+                      <li key={idx}>{skill.name}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
             {/* Education Section */}
-            <div>
-              <h2 className="text-xl font-bold uppercase tracking-wide">
-                Education
-              </h2>
-              <div className="border-b-2 border-gray-600 w-full mt-1 mb-4"></div>
-              <div className="text-sm space-y-2">
+            {Array.isArray(resumeData?.education) &&
+              resumeData.education.length > 0 && (
                 <div>
-                  <h3 className="font-semibold">
-                    Certificate, Paralegal Studies
-                  </h3>
-                  <p className="text-xs">06/2017</p>
-                  <p className="font-normal">
-                    University of Washington - Seattle, WA
-                  </p>
+                  <h2
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Education
+                  </h2>
+                  <div
+                    style={{
+                      borderBottom: `2px solid ${sidebarBorder}`,
+                      width: "100%",
+                      marginTop: 4,
+                      marginBottom: 16,
+                    }}
+                  ></div>
+                  <div
+                    style={{
+                      fontSize: 15,
+                      color: "#fff",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 12,
+                    }}
+                  >
+                    {resumeData.education.map((edu, idx) => (
+                      <div key={idx}>
+                        <h3
+                          style={{
+                            fontWeight: 600,
+                            color: "#fff",
+                            margin: 0,
+                          }}
+                        >
+                          {edu.degree}{" "}
+                          {edu.fieldOfStudy ? `in ${edu.fieldOfStudy}` : ""}
+                        </h3>
+                        <p
+                          style={{
+                            fontSize: 13,
+                            color: "#fff",
+                            margin: 0,
+                          }}
+                        >
+                          {edu.school} {edu.location ? `- ${edu.location}` : ""}
+                        </p>
+                        <p
+                          style={{
+                            fontSize: 13,
+                            color: "#fff",
+                            margin: 0,
+                          }}
+                        >
+                          {edu.startMonth} {edu.startYear}{" "}
+                          {edu.currentlyEnrolled
+                            ? "- Current"
+                            : edu.endMonth && edu.endYear
+                            ? `- ${edu.endMonth} ${edu.endYear}`
+                            : ""}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold">
-                    Bachelor of Arts, Law, Society & Justice
-                  </h3>
-                  <p className="text-xs">06/2016</p>
-                  <p className="font-normal">
-                    University of Washington - Seattle, WA
-                  </p>
-                </div>
-              </div>
-            </div>
+              )}
 
-            {/* Certifications Section */}
-            <div>
-              <h2 className="text-xl font-bold uppercase tracking-wide">
-                Certifications
-              </h2>
-              <div className="border-b-2 border-gray-600 w-full mt-1 mb-4"></div>
-              <div className="text-sm">
-                <p>Paralegal Certified</p>
-              </div>
-            </div>
+            {/* References Section */}
+            {Array.isArray(resumeData?.references) &&
+              resumeData.references.length > 0 && (
+                <div>
+                  <h2
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    References
+                  </h2>
+                  <div
+                    style={{
+                      borderBottom: `2px solid ${sidebarBorder}`,
+                      width: "100%",
+                      marginTop: 4,
+                      marginBottom: 16,
+                    }}
+                  ></div>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: 0,
+                      margin: 0,
+                      fontSize: 15,
+                      color: "#fff",
+                    }}
+                  >
+                    {resumeData.references.map((ref, idx) => (
+                      <li key={idx} style={{ marginBottom: 12 }}>
+                        <span
+                          style={{
+                            fontWeight: 600,
+                            color: "#fff",
+                          }}
+                        >
+                          {ref.name}
+                        </span>
+                        {ref.occupation && (
+                          <span style={{ color: subText }}>
+                            {" "}
+                            — {ref.occupation}
+                          </span>
+                        )}
+                        <br />
+                        <span style={{ color: accent }}>{ref.phone}</span>
+                        {ref.location && (
+                          <span style={{ color: subText }}>
+                            {" "}
+                            , {ref.location}
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
           </div>
         </div>
       </div>

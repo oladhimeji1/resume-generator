@@ -1,170 +1,343 @@
 import React from "react";
 
-const Template8 = () => {
+const Template8 = ({ ref, resumeData }) => {
+  // Inline styles to match the original layout
+  const mainBg = "#F3F4F6";
+  const cardBg = "#fff";
+  const mainText = "#222";
+  const accent = "#2563EB";
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 font-['Inter']">
-      <div className="w-full max-w-4xl bg-white shadow-xl overflow-hidden rounded-lg p-10">
+    <div
+      ref={ref}
+      style={{
+        minHeight: "100vh",
+        background: mainBg,
+        padding: 16,
+        fontFamily: "Inter, sans-serif",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 900,
+          background: cardBg,
+          borderRadius: 16,
+          boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+          overflow: "hidden",
+          padding: 40,
+        }}
+      >
         {/* Header Section */}
-        <div className="flex flex-col items-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 tracking-wide">
-            EILEEN DAVIS
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginBottom: 32,
+          }}
+        >
+          <h1
+            style={{
+              fontSize: 36,
+              fontWeight: 700,
+              color: mainText,
+              letterSpacing: 1,
+            }}
+          >
+            {resumeData?.name || ""} {resumeData?.surname || ""}
           </h1>
-          <div className="flex flex-wrap items-center justify-center mt-2 text-sm text-gray-600 space-x-4">
-            <p>example@example.com</p>
-            <p>|</p>
-            <p>555-555-5555</p>
-            <p>|</p>
-            <p>Grand Forks, ND 58201</p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: 8,
+              fontSize: 15,
+              color: "#333",
+              gap: 16,
+            }}
+          >
+            {resumeData?.email && <span>{resumeData.email}</span>}
+            {resumeData?.phone && <span>|</span>}
+            {resumeData?.phone && <span>{resumeData.phone}</span>}
+            {resumeData?.address && <span>|</span>}
+            {resumeData?.address && (
+              <span>
+                {resumeData.address}{" "}
+                {resumeData?.city ? `, ${resumeData.city}` : ""}{" "}
+                {resumeData?.country ? `, ${resumeData.country}` : ""}
+              </span>
+            )}
           </div>
         </div>
 
         {/* Professional Summary Section */}
-        <div className="mb-8">
-          <h2 className="text-xl font-bold uppercase tracking-wide text-blue-600">
-            Professional Summary
-          </h2>
-          <p className="text-sm text-gray-700 mt-4 leading-relaxed">
-            Responsible secretary possessing first-rate scheduling, telephone,
-            and documentation abilities. A service-oriented individual with
-            expertise in preparing and modifying documents, coordinating
-            meetings and trips and preparing responses on behalf of the company.
-            Committed to establishing stellar rapport with clients of diverse
-            backgrounds.
-          </p>
-        </div>
+        {resumeData?.summary && (
+          <div style={{ marginBottom: 32 }}>
+            <h2
+              style={{
+                fontSize: 20,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                color: accent,
+              }}
+            >
+              Professional Summary
+            </h2>
+            <p
+              style={{
+                fontSize: 15,
+                color: mainText,
+                marginTop: 16,
+                lineHeight: 1.7,
+              }}
+            >
+              {resumeData.summary}
+            </p>
+          </div>
+        )}
 
         {/* Work History Section */}
-        <div className="mb-8">
-          <h2 className="text-xl font-bold uppercase tracking-wide text-blue-600">
-            Work History
-          </h2>
-          <div className="mt-4 text-sm text-gray-700 space-y-6">
-            <div className="grid grid-cols-4 gap-4">
-              <div className="col-span-1 text-gray-500">
-                <p>12/2018 - Current</p>
-                <p className="font-semibold text-gray-800">CeleraPro</p>
-                <p>Grand Forks, ND</p>
-              </div>
-              <div className="col-span-3">
-                <p className="font-semibold text-gray-800">Secretary</p>
-                <ul className="list-disc list-inside mt-1 ml-4 space-y-1">
-                  <li>
-                    Maintain office safety by screening visitors, updating logs
-                    and issuing temporary passes.
-                  </li>
-                  <li>
-                    Complete supply orders and maintaining appropriate levels of
-                    office supplies.
-                  </li>
-                  <li>
-                    Create over 30 agendas, meeting notes and other documents to
-                    enhance the collaborative process each quarter.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="grid grid-cols-4 gap-4">
-              <div className="col-span-1 text-gray-500">
-                <p>11/2014 - 12/2018</p>
-                <p className="font-semibold text-gray-800">McDonald Hopkins</p>
-                <p>Thompson, ND</p>
-              </div>
-              <div className="col-span-3">
-                <p className="font-semibold text-gray-800">
-                  Corporate Secretary's Assistant
-                </p>
-                <ul className="list-disc list-inside mt-1 ml-4 space-y-1">
-                  <li>
-                    Aided board of directors during executive decision-making
-                    processes by generating staff reports to support corrective
-                    actions and improvements.
-                  </li>
-                  <li>
-                    Managed clerical staff of 123 employees and reorganized
-                    training procedures to increase productivity.
-                  </li>
-                  <li>
-                    Worked professionally to handle all client, vendor and
-                    public guest requirements.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="grid grid-cols-4 gap-4">
-              <div className="col-span-1 text-gray-500">
-                <p>09/2012 - 11/2014</p>
-                <p className="font-semibold text-gray-800">MZ Engineering</p>
-                <p>Emerado, ND</p>
-              </div>
-              <div className="col-span-3">
-                <p className="font-semibold text-gray-800">Secretary Intern</p>
-                <ul className="list-disc list-inside mt-1 ml-4 space-y-1">
-                  <li>
-                    Requisitioned office supplies, assisting in payroll,
-                    performed recordkeeping and tracked time cards for all
-                    departmental office employees.
-                  </li>
-                  <li>
-                    Received incoming packages and mail, dispersed parcels and
-                    shipped outgoing items for a team of 48 employees.
-                  </li>
-                  <li>
-                    Updated system to organize office documentation, maximizing
-                    efficiency and increasing productivity.
-                  </li>
-                </ul>
+        {Array.isArray(resumeData?.workExperience) &&
+          resumeData.workExperience.length > 0 && (
+            <div style={{ marginBottom: 32 }}>
+              <h2
+                style={{
+                  fontSize: 20,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  color: accent,
+                }}
+              >
+                Work History
+              </h2>
+              <div
+                style={{
+                  marginTop: 16,
+                  fontSize: 15,
+                  color: mainText,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 24,
+                }}
+              >
+                {resumeData.workExperience.map((job, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 2fr",
+                      gap: 24,
+                    }}
+                  >
+                    <div style={{ color: "#333" }}>
+                      <p>
+                        {job.startMonth} {job.startYear} -{" "}
+                        {job.presently
+                          ? "Current"
+                          : `${job.endMonth} ${job.endYear}`}
+                      </p>
+                      <p
+                        style={{
+                          fontWeight: 600,
+                          color: mainText,
+                        }}
+                      >
+                        {job.company}
+                      </p>
+                      <p>{job.location}</p>
+                    </div>
+                    <div>
+                      <p
+                        style={{
+                          fontWeight: 600,
+                          color: mainText,
+                        }}
+                      >
+                        {job.jobTitle}
+                      </p>
+                      {Array.isArray(job.duties) && job.duties.length > 0 && (
+                        <ul
+                          style={{
+                            listStyle: "disc",
+                            paddingLeft: 20,
+                            fontSize: 14,
+                            color: mainText,
+                            margin: "8px 0",
+                          }}
+                        >
+                          {job.duties.map((duty, i) => (
+                            <li key={i}>{duty.name}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-        </div>
+          )}
 
         {/* Skills Section */}
-        <div className="mb-8">
-          <h2 className="text-xl font-bold uppercase tracking-wide text-blue-600">
-            Skills
-          </h2>
-          <div className="grid grid-cols-2 mt-4 text-sm text-gray-700">
-            <ul className="list-disc list-inside space-y-1">
-              <li>Filing experience</li>
-              <li>Developing presentations</li>
-              <li>Microsoft Office expertise</li>
-              <li>Database management</li>
-            </ul>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Govenda proficiency</li>
-              <li>Writing and organizational skills</li>
-              <li>Time-management</li>
-              <li>Teamwork</li>
-            </ul>
+        {Array.isArray(resumeData?.skills) && resumeData.skills.length > 0 && (
+          <div style={{ marginBottom: 32 }}>
+            <h2
+              style={{
+                fontSize: 20,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                color: accent,
+              }}
+            >
+              Skills
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                marginTop: 16,
+                fontSize: 15,
+                color: mainText,
+                gap: 8,
+              }}
+            >
+              <ul
+                style={{
+                  listStyle: "disc",
+                  paddingLeft: 20,
+                  margin: 0,
+                }}
+              >
+                {resumeData.skills
+                  .slice(0, Math.ceil(resumeData.skills.length / 2))
+                  .map((skill, idx) => (
+                    <li key={idx}>{skill.name}</li>
+                  ))}
+              </ul>
+              <ul
+                style={{
+                  listStyle: "disc",
+                  paddingLeft: 20,
+                  margin: 0,
+                }}
+              >
+                {resumeData.skills
+                  .slice(Math.ceil(resumeData.skills.length / 2))
+                  .map((skill, idx) => (
+                    <li key={idx}>{skill.name}</li>
+                  ))}
+              </ul>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Education Section */}
-        <div className="mb-8">
-          <h2 className="text-xl font-bold uppercase tracking-wide text-blue-600">
-            Education
-          </h2>
-          <div className="mt-4 text-sm text-gray-700">
-            <h3 className="font-semibold text-gray-800">
-              Bachelor of Science{" "}
-              <span className="font-normal">
-                in Administrative Assistance And Secretarial Science
-              </span>
-            </h3>
-            <p>University of North Dakota</p>
-          </div>
-        </div>
+        {Array.isArray(resumeData?.education) &&
+          resumeData.education.length > 0 && (
+            <div style={{ marginBottom: 32 }}>
+              <h2
+                style={{
+                  fontSize: 20,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  color: accent,
+                }}
+              >
+                Education
+              </h2>
+              <div style={{ marginTop: 16, fontSize: 15, color: mainText }}>
+                {resumeData.education.map((edu, idx) => (
+                  <div key={idx}>
+                    <h3
+                      style={{
+                        fontWeight: 600,
+                        color: mainText,
+                        margin: 0,
+                      }}
+                    >
+                      {edu.degree}{" "}
+                      {edu.fieldOfStudy ? `in ${edu.fieldOfStudy}` : ""}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: 13,
+                        color: mainText,
+                        margin: 0,
+                      }}
+                    >
+                      {edu.school} {edu.location ? `- ${edu.location}` : ""}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: 13,
+                        color: mainText,
+                        margin: 0,
+                      }}
+                    >
+                      {edu.startMonth} {edu.startYear}{" "}
+                      {edu.currentlyEnrolled
+                        ? "- Current"
+                        : edu.endMonth && edu.endYear
+                        ? `- ${edu.endMonth} ${edu.endYear}`
+                        : ""}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
-        {/* Certifications Section */}
-        <div>
-          <h2 className="text-xl font-bold uppercase tracking-wide text-blue-600">
-            Certifications
-          </h2>
-          <div className="mt-4 text-sm text-gray-700 space-y-1">
-            <p>Microsoft Word Certified, Microsoft Corporation - 2014</p>
-            <p>Google Project Management, Google Career Certificates - 2013</p>
-          </div>
-        </div>
+        {/* References Section */}
+        {Array.isArray(resumeData?.references) &&
+          resumeData.references.length > 0 && (
+            <div style={{ marginBottom: 32 }}>
+              <h2
+                style={{
+                  fontSize: 20,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  color: accent,
+                }}
+              >
+                References
+              </h2>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  fontSize: 15,
+                  color: mainText,
+                }}
+              >
+                {resumeData.references.map((ref, idx) => (
+                  <li key={idx} style={{ marginBottom: 12 }}>
+                    <span
+                      style={{
+                        fontWeight: 600,
+                        color: mainText,
+                      }}
+                    >
+                      {ref.name}
+                    </span>
+                    {ref.occupation && (
+                      <span style={{ color: accent }}> — {ref.occupation}</span>
+                    )}
+                    <br />
+                    <span style={{ color: accent }}>{ref.phone}</span>
+                    {ref.location && (
+                      <span style={{ color: accent }}>, {ref.location}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
       </div>
     </div>
   );
