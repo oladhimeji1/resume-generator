@@ -1,206 +1,436 @@
-const Template9 = () => {
+const Template9 = ({ ref, resumeData }) => {
+  // Color palette
+  const mainBg = "#F3F4F6";
+  const cardBg = "#fff";
+  const headerBg = "#2563EB";
+  const headerText = "#fff";
+  const accent = "#2563EB";
+  const mainText = "#222";
+  const subText = "#2563EB";
+  const borderColor = "#333";
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 font-['Inter']">
-      <div className="w-full max-w-4xl bg-white shadow-xl overflow-hidden rounded-lg">
+    <div
+      ref={ref}
+      style={{
+        minHeight: "100vh",
+        background: mainBg,
+        padding: 16,
+        fontFamily: "Inter, sans-serif",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 900,
+          background: cardBg,
+          borderRadius: 16,
+          boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+          overflow: "hidden",
+        }}
+      >
         {/* Header Section */}
-        <div className="bg-blue-600 text-white p-6 md:p-8 flex items-center">
-          <div className="w-16 h-16 bg-white rounded-md flex items-center justify-center mr-6">
-            <span className="text-3xl font-bold text-blue-600">TP</span>
+        <div
+          style={{
+            background: headerBg,
+            color: headerText,
+            padding: 32,
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              width: 64,
+              height: 64,
+              background: headerText,
+              borderRadius: 8,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginRight: 24,
+            }}
+          >
+            <span
+              style={{
+                fontSize: 32,
+                fontWeight: 700,
+                color: accent,
+              }}
+            >
+              {resumeData?.name?.[0] || ""}
+              {resumeData?.surname?.[0] || ""}
+            </span>
           </div>
           <div>
-            <h1 className="text-4xl font-bold tracking-wide">TAMMY PHILLIPS</h1>
-            <div className="flex flex-wrap items-center mt-2 text-sm space-x-4">
-              <p>Newark, NJ 07102</p>
-              <p className="hidden md:inline">|</p>
-              <p>example@example.com</p>
-              <p className="hidden md:inline">|</p>
-              <p>(555) 555-5555</p>
+            <h1
+              style={{
+                fontSize: 36,
+                fontWeight: 700,
+                color: headerText,
+                letterSpacing: 1,
+              }}
+            >
+              {resumeData?.name || ""} {resumeData?.surname || ""}
+            </h1>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                marginTop: 8,
+                fontSize: 15,
+                color: headerText,
+                gap: 16,
+              }}
+            >
+              {resumeData?.address && (
+                <span>
+                  {resumeData.address}{" "}
+                  {resumeData?.city ? `, ${resumeData.city}` : ""}{" "}
+                  {resumeData?.country ? `, ${resumeData.country}` : ""}
+                </span>
+              )}
+              {resumeData?.email && <span>|</span>}
+              {resumeData?.email && <span>{resumeData.email}</span>}
+              {resumeData?.phone && <span>|</span>}
+              {resumeData?.phone && <span>{resumeData.phone}</span>}
             </div>
           </div>
         </div>
 
         {/* Main Content Section */}
-        <div className="p-6 md:p-8 space-y-8">
+        <div style={{ padding: 32 }}>
           {/* Professional Summary Section */}
-          <div>
-            <h2 className="text-xl font-bold uppercase tracking-wide text-blue-800">
-              Professional Summary
-            </h2>
-            <div className="border-b-2 border-gray-300 w-full mt-1 mb-4"></div>
-            <p className="text-sm text-gray-700 leading-relaxed">
-              Dedicated and results-driven brand ambassador manager with over 10
-              years of experience in creating memorable brand experiences and
-              driving brand awareness. Proven track record of exceeding
-              performance targets, building strong client relationships and
-              delivering exceptional customer service. Adept at developing and
-              implementing strategic marketing campaigns to maximize brand
-              visibility and engagement.
-            </p>
-          </div>
+          {resumeData?.summary && (
+            <div style={{ marginBottom: 32 }}>
+              <h2
+                style={{
+                  fontSize: 20,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  color: subText,
+                }}
+              >
+                Professional Summary
+              </h2>
+              <div
+                style={{
+                  borderBottom: `2px solid ${borderColor}`,
+                  width: "100%",
+                  marginTop: 4,
+                  marginBottom: 16,
+                }}
+              ></div>
+              <p
+                style={{
+                  fontSize: 15,
+                  color: mainText,
+                  lineHeight: 1.7,
+                }}
+              >
+                {resumeData.summary}
+              </p>
+            </div>
+          )}
 
           {/* Work History Section */}
-          <div>
-            <h2 className="text-xl font-bold uppercase tracking-wide text-blue-800">
-              Work History
-            </h2>
-            <div className="border-b-2 border-gray-300 w-full mt-1 mb-4"></div>
-            <div className="relative space-y-6">
-              {/* Job 1 */}
-              <div className="border-l-2 border-gray-300 pl-4 relative pb-4">
-                <span className="absolute -left-2 top-0 w-4 h-4 bg-white border-2 border-blue-600 rounded-full"></span>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="font-bold text-gray-800">
-                      Brand Ambassador Manager /{" "}
-                      <span className="font-normal text-gray-700">
-                        Aspirant LLC - New York, NY
-                      </span>
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-500 font-semibold">
-                    01/2021 - Current
-                  </p>
+          {Array.isArray(resumeData?.workExperience) &&
+            resumeData.workExperience.length > 0 && (
+              <div style={{ marginBottom: 32 }}>
+                <h2
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    color: subText,
+                  }}
+                >
+                  Work History
+                </h2>
+                <div
+                  style={{
+                    borderBottom: `2px solid ${borderColor}`,
+                    width: "100%",
+                    marginTop: 4,
+                    marginBottom: 16,
+                  }}
+                ></div>
+                <div
+                  style={{
+                    position: "relative",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 32,
+                  }}
+                >
+                  {resumeData.workExperience.map((job, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        borderLeft: `2px solid ${borderColor}`,
+                        paddingLeft: 16,
+                        position: "relative",
+                        paddingBottom: 16,
+                      }}
+                    >
+                      <span
+                        style={{
+                          position: "absolute",
+                          left: -10,
+                          top: 0,
+                          width: 16,
+                          height: 16,
+                          background: cardBg,
+                          border: `2px solid ${accent}`,
+                          borderRadius: "50%",
+                        }}
+                      ></span>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "start",
+                        }}
+                      >
+                        <div>
+                          <h3
+                            style={{
+                              fontWeight: 700,
+                              color: mainText,
+                            }}
+                          >
+                            {job.jobTitle}{" "}
+                            <span
+                              style={{
+                                fontWeight: 400,
+                                color: mainText,
+                              }}
+                            >
+                              / {job.company}{" "}
+                              {job.location ? `- ${job.location}` : ""}
+                            </span>
+                          </h3>
+                        </div>
+                        <p
+                          style={{
+                            fontSize: 13,
+                            color: borderColor,
+                            fontWeight: 600,
+                          }}
+                        >
+                          {job.startMonth} {job.startYear} -{" "}
+                          {job.presently
+                            ? "Current"
+                            : `${job.endMonth} ${job.endYear}`}
+                        </p>
+                      </div>
+                      {Array.isArray(job.duties) && job.duties.length > 0 && (
+                        <ul
+                          style={{
+                            listStyle: "disc",
+                            paddingLeft: 20,
+                            fontSize: 14,
+                            color: mainText,
+                            margin: "8px 0",
+                          }}
+                        >
+                          {job.duties.map((duty, i) => (
+                            <li key={i}>{duty.name}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
                 </div>
-                <ul className="list-disc list-inside text-sm text-gray-700 mt-2 ml-4 space-y-1">
-                  <li>
-                    Develop and execute marketing campaigns for various clients,
-                    resulting in a 20% increase in brand visibility and about
-                    15% boost in sales each quarter.
-                  </li>
-                  <li>
-                    Conduct market research and analysis to identify trends and
-                    opportunities, leading to the creation of targeted
-                    promotional events that generate an approximate 25% increase
-                    in customer engagement.
-                  </li>
-                  <li>
-                    Collaborate with clients to set objectives, create key
-                    performance indicators (KPIs) and provide regular reports on
-                    campaign effectiveness.
-                  </li>
-                </ul>
               </div>
-
-              {/* Job 2 */}
-              <div className="border-l-2 border-gray-300 pl-4 relative pb-4">
-                <span className="absolute -left-2 top-0 w-4 h-4 bg-white border-2 border-blue-600 rounded-full"></span>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="font-bold text-gray-800">
-                      Senior Brand Ambassador /{" "}
-                      <span className="font-normal text-gray-700">
-                        Dagne Dover - New York, NY
-                      </span>
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-500 font-semibold">
-                    06/2018 - 12/2020
-                  </p>
-                </div>
-                <ul className="list-disc list-inside text-sm text-gray-700 mt-2 ml-4 space-y-1">
-                  <li>
-                    Spearheaded the execution of on-site and off-site
-                    promotional events, increasing brand reach by 30% and
-                    captivating valuable customer feedback.
-                  </li>
-                  <li>
-                    Acted as a brand spokesperson at trade shows and events,
-                    engaging with at least 100 customers daily, resulting in a
-                    15% conversion rate.
-                  </li>
-                  <li>
-                    Met or exceeded individual KPIs, earning recognition as a
-                    top-performing senior brand ambassador consistently.
-                  </li>
-                </ul>
-              </div>
-
-              {/* Job 3 */}
-              <div className="border-l-2 border-gray-300 pl-4 relative">
-                <span className="absolute -left-2 top-0 w-4 h-4 bg-white border-2 border-blue-600 rounded-full"></span>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="font-bold text-gray-800">
-                      Brand Ambassador /{" "}
-                      <span className="font-normal text-gray-700">
-                        Goodwill Industries of Greater New York - New York, NY
-                      </span>
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-500 font-semibold">
-                    03/2013 - 06/2018
-                  </p>
-                </div>
-                <ul className="list-disc list-inside text-sm text-gray-700 mt-2 ml-4 space-y-1">
-                  <li>
-                    Conducted product demonstrations at various retail
-                    locations, achieving an average sales increase of 25% during
-                    promotional events.
-                  </li>
-                  <li>
-                    Built and maintained positive relationships with key retail
-                    partners, ensuring prime shelf placement and product
-                    visibility.
-                  </li>
-                  <li>
-                    Gathered customer feedback and market insights, which led to
-                    product improvement recommendations and a 10% increase in
-                    customer satisfaction.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+            )}
 
           {/* Skills Section */}
-          <div>
-            <h2 className="text-xl font-bold uppercase tracking-wide text-blue-800">
-              Skills
-            </h2>
-            <div className="border-b-2 border-gray-300 w-full mt-1 mb-4"></div>
-            <div className="grid grid-cols-2 mt-4 text-sm text-gray-700">
-              <ul className="list-disc list-inside space-y-1">
-                <li>Brand promotion</li>
-                <li>Event planning</li>
-                <li>Customer engagement</li>
-                <li>Marketing strategy</li>
-              </ul>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Team management</li>
-                <li>Data analysis</li>
-                <li>Relationship-building</li>
-                <li>Public speaking</li>
-              </ul>
-            </div>
-          </div>
+          {Array.isArray(resumeData?.skills) &&
+            resumeData.skills.length > 0 && (
+              <div style={{ marginBottom: 32 }}>
+                <h2
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    color: subText,
+                  }}
+                >
+                  Skills
+                </h2>
+                <div
+                  style={{
+                    borderBottom: `2px solid ${borderColor}`,
+                    width: "100%",
+                    marginTop: 4,
+                    marginBottom: 16,
+                  }}
+                ></div>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    marginTop: 16,
+                    fontSize: 15,
+                    color: mainText,
+                    gap: 8,
+                  }}
+                >
+                  <ul style={{ listStyle: "disc", paddingLeft: 20, margin: 0 }}>
+                    {resumeData.skills
+                      .slice(0, Math.ceil(resumeData.skills.length / 2))
+                      .map((skill, idx) => (
+                        <li key={idx}>{skill.name}</li>
+                      ))}
+                  </ul>
+                  <ul style={{ listStyle: "disc", paddingLeft: 20, margin: 0 }}>
+                    {resumeData.skills
+                      .slice(Math.ceil(resumeData.skills.length / 2))
+                      .map((skill, idx) => (
+                        <li key={idx}>{skill.name}</li>
+                      ))}
+                  </ul>
+                </div>
+              </div>
+            )}
 
           {/* Education Section */}
-          <div>
-            <h2 className="text-xl font-bold uppercase tracking-wide text-blue-800">
-              Education
-            </h2>
-            <div className="border-b-2 border-gray-300 w-full mt-1 mb-4"></div>
-            <div className="mt-4 text-sm text-gray-700 space-y-2">
-              <div>
-                <p className="font-semibold text-gray-800">
-                  Master of Professional Studies:{" "}
-                  <span className="font-normal">
-                    Branding And Integrated Communication
-                  </span>
-                </p>
-                <p className="italic">CUNY City College - New York, NY</p>
+          {Array.isArray(resumeData?.education) &&
+            resumeData.education.length > 0 && (
+              <div style={{ marginBottom: 32 }}>
+                <h2
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    color: subText,
+                  }}
+                >
+                  Education
+                </h2>
+                <div
+                  style={{
+                    borderBottom: `2px solid ${borderColor}`,
+                    width: "100%",
+                    marginTop: 4,
+                    marginBottom: 16,
+                  }}
+                ></div>
+                <div
+                  style={{
+                    marginTop: 16,
+                    fontSize: 15,
+                    color: mainText,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 12,
+                  }}
+                >
+                  {resumeData.education.map((edu, idx) => (
+                    <div key={idx}>
+                      <p style={{ fontWeight: 700 }}>
+                        {edu.degree}{" "}
+                        {edu.fieldOfStudy ? `: ${edu.fieldOfStudy}` : ""}
+                      </p>
+                      <p
+                        style={{
+                          fontStyle: "italic",
+                          color: accent,
+                        }}
+                      >
+                        {edu.school} {edu.location ? `- ${edu.location}` : ""}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: 13,
+                          color: borderColor,
+                          margin: 0,
+                        }}
+                      >
+                        {edu.startMonth} {edu.startYear}{" "}
+                        {edu.currentlyEnrolled
+                          ? "- Current"
+                          : edu.endMonth && edu.endYear
+                          ? `- ${edu.endMonth} ${edu.endYear}`
+                          : ""}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div>
-                <p className="font-semibold text-gray-800">
-                  BBA:{" "}
-                  <span className="font-normal">Business Administration</span>
-                </p>
-                <p className="italic">
-                  Metropolitan College of New York - New York, NY
-                </p>
+            )}
+
+          {/* References Section */}
+          {Array.isArray(resumeData?.references) &&
+            resumeData.references.length > 0 && (
+              <div style={{ marginBottom: 32 }}>
+                <h2
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    color: subText,
+                  }}
+                >
+                  References
+                </h2>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    padding: 0,
+                    margin: 0,
+                    fontSize: 15,
+                    color: mainText,
+                  }}
+                >
+                  {resumeData.references.map((ref, idx) => (
+                    <li key={idx} style={{ marginBottom: 12 }}>
+                      <span
+                        style={{
+                          fontWeight: 600,
+                          color: mainText,
+                        }}
+                      >
+                        {ref.name}
+                      </span>
+                      {ref.occupation && (
+                        <span
+                          style={{
+                            color: accent,
+                          }}
+                        >
+                          {" "}
+                          — {ref.occupation}
+                        </span>
+                      )}
+                      <br />
+                      <span
+                        style={{
+                          color: accent,
+                        }}
+                      >
+                        {ref.phone}
+                      </span>
+                      {ref.location && (
+                        <span
+                          style={{
+                            color: accent,
+                          }}
+                        >
+                          {", "}
+                          {ref.location}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-          </div>
+            )}
         </div>
       </div>
     </div>

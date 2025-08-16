@@ -1,193 +1,395 @@
 import React from "react";
 
-const Template5 = () => {
+const Template5 = ({ ref, resumeData }) => {
+  // Inline styles to match the original layout
+  const mainBg = "#F3F4F6";
+  const cardBg = "#fff";
+  const borderColor = "#D1D5DB";
+  const mainText = "#1F2937";
+  const subText = "#6B7280";
+  const accent = "#0594C3";
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 font-['Inter']">
-      <div className="w-full max-w-4xl bg-white rounded-lg shadow-xl overflow-hidden p-10">
+    <div
+      ref={ref}
+      style={{
+        minHeight: "100vh",
+        background: mainBg,
+        padding: 16,
+        fontFamily: "Inter, sans-serif",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 900,
+          background: cardBg,
+          borderRadius: 16,
+          boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+          overflow: "hidden",
+          padding: 40,
+        }}
+      >
         {/* Header Section */}
-        <div className="flex flex-col items-center mb-8">
-          <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center mb-4">
-            <span className="text-3xl font-bold text-gray-800">JB</span>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginBottom: 32,
+          }}
+        >
+          <div
+            style={{
+              width: 80,
+              height: 80,
+              background: borderColor,
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: 16,
+            }}
+          >
+            <span
+              style={{
+                fontSize: 32,
+                fontWeight: 700,
+                color: mainText,
+              }}
+            >
+              {resumeData?.name?.[0] || ""}
+              {resumeData?.surname?.[0] || ""}
+            </span>
           </div>
-          <h1 className="text-4xl font-bold text-gray-800 tracking-wide">
-            JERRY BROWN
+          <h1
+            style={{
+              fontSize: 36,
+              fontWeight: 700,
+              color: mainText,
+              letterSpacing: 1,
+            }}
+          >
+            {resumeData?.name || ""} {resumeData?.surname || ""}
           </h1>
-          <div className="flex flex-wrap items-center justify-center mt-2 text-sm text-gray-600 space-x-4">
-            <p>example@example.com</p>
-            <p>|</p>
-            <p>555-555-5555</p>
-            <p>|</p>
-            <p>Mundelein, IL 60060</p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: 8,
+              fontSize: 15,
+              color: subText,
+              gap: 16,
+            }}
+          >
+            {resumeData?.email && <span>{resumeData.email}</span>}
+            {resumeData?.phone && <span>|</span>}
+            {resumeData?.phone && <span>{resumeData.phone}</span>}
+            {resumeData?.address && <span>|</span>}
+            {resumeData?.address && (
+              <span>
+                {resumeData.address}{" "}
+                {resumeData?.city ? `, ${resumeData.city}` : ""}
+                {resumeData?.country ? `, ${resumeData.country}` : ""}
+              </span>
+            )}
           </div>
         </div>
 
         {/* Main Content Two-Column Layout */}
-        <div className="grid grid-cols-3 gap-8">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "2fr 1fr",
+            gap: 32,
+          }}
+        >
           {/* Left Column (Main Content) */}
-          <div className="col-span-2 space-y-6">
+          <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
             {/* Professional Statement Section */}
-            <div>
-              <h2 className="text-xl font-bold border-b-2 border-gray-300 pb-1 text-gray-800">
-                Professional Statement
-              </h2>
-              <p className="text-sm text-gray-700 mt-4 leading-relaxed">
-                A certified nursing assistant offering three years of experience
-                in healthcare environments and more than seven as a family
-                caregiver. Possesses superior time-management skills,
-                compassionate bedside manner, and astute observational ability.
-                Knowledgeable about mobility assistance and patient hygiene
-                needs. Skilled at operating within long-term care environments
-                or outpatient centers.
-              </p>
-            </div>
-
-            {/* Professional Skills Section */}
-            <div>
-              <h2 className="text-xl font-bold border-b-2 border-gray-300 pb-1 text-gray-800">
-                Professional Skills
-              </h2>
-              <div className="mt-4 text-sm text-gray-700 space-y-4">
-                <div>
-                  <h3 className="font-semibold text-gray-800">CNA</h3>
-                  <ul className="list-disc list-inside mt-1 ml-4 space-y-1">
-                    <li>
-                      Support diagnostic and treatment procedures, including
-                      setting up and operating specialized medical equipment.
-                    </li>
-                    <li>
-                      Render hands-on nursing care under direct RN supervision,
-                      adhering to medical center policies and procedures.
-                    </li>
-                    <li>
-                      Transcribe over 15 activities and record information in
-                      the EMR system each day.
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800">Personal Care</h3>
-                  <ul className="list-disc list-inside mt-1 ml-4 space-y-1">
-                    <li>
-                      Prepare food and helped three family members eat to
-                      support healthy nutrition.
-                    </li>
-                    <li>
-                      Changed bed linens, made beds and laundered soiled linens
-                      to keep patients' beds clean.
-                    </li>
-                    <li>
-                      Checked mail, shopped for groceries, and handled bill
-                      payments.
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800">Communication</h3>
-                  <ul className="list-disc list-inside mt-1 ml-4 space-y-1">
-                    <li>
-                      Consulted with 10+ nurses to develop patient care plans
-                      and evaluate treatment options.
-                    </li>
-                    <li>
-                      Engaged with patient family and friends to provide
-                      courteous, efficient visit experience.
-                    </li>
-                    <li>
-                      Promoted continuity of care by accurately and altogether
-                      communicating to other caregivers the status of patients
-                      for which care is provided.
-                    </li>
-                  </ul>
-                </div>
+            {resumeData?.summary && (
+              <div>
+                <h2
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 700,
+                    borderBottom: `2px solid ${borderColor}`,
+                    paddingBottom: 4,
+                    color: mainText,
+                  }}
+                >
+                  Professional Statement
+                </h2>
+                <p
+                  style={{
+                    fontSize: 15,
+                    color: mainText,
+                    marginTop: 16,
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {resumeData.summary}
+                </p>
               </div>
-            </div>
+            )}
 
             {/* Work History Section */}
-            <div>
-              <h2 className="text-xl font-bold border-b-2 border-gray-300 pb-1 text-gray-800">
-                Work History
-              </h2>
-              <div className="mt-4 text-sm text-gray-700 space-y-4">
+            {Array.isArray(resumeData?.workExperience) &&
+              resumeData.workExperience.length > 0 && (
                 <div>
-                  <h3 className="font-semibold text-gray-800">
-                    MADO Healthcare | Mundelein, IL
-                  </h3>
-                  <p className="font-semibold text-gray-700">
-                    Certified Nursing Assistant
-                  </p>
-                  <p className="text-xs text-gray-500">07/2019 - Current</p>
+                  <h2
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      borderBottom: `2px solid ${borderColor}`,
+                      paddingBottom: 4,
+                      color: mainText,
+                    }}
+                  >
+                    Work History
+                  </h2>
+                  <div
+                    style={{
+                      marginTop: 16,
+                      fontSize: 15,
+                      color: mainText,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 24,
+                    }}
+                  >
+                    {resumeData.workExperience.map((job, idx) => (
+                      <div key={idx}>
+                        <h3
+                          style={{
+                            fontWeight: 600,
+                            color: mainText,
+                            margin: 0,
+                          }}
+                        >
+                          {job.company}{" "}
+                          {job.location ? `| ${job.location}` : ""}
+                        </h3>
+                        <p
+                          style={{
+                            fontWeight: 600,
+                            color: mainText,
+                            margin: 0,
+                          }}
+                        >
+                          {job.jobTitle}
+                        </p>
+                        <p
+                          style={{
+                            fontSize: 13,
+                            color: subText,
+                            margin: 0,
+                          }}
+                        >
+                          {job.startMonth} {job.startYear} -{" "}
+                          {job.presently
+                            ? "Current"
+                            : `${job.endMonth} ${job.endYear}`}
+                        </p>
+                        {Array.isArray(job.duties) && job.duties.length > 0 && (
+                          <ul
+                            style={{
+                              listStyle: "disc",
+                              paddingLeft: 20,
+                              fontSize: 14,
+                              color: mainText,
+                              margin: "8px 0",
+                            }}
+                          >
+                            {job.duties.map((duty, i) => (
+                              <li key={i}>{duty.name}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800">
-                    MADO Healthcare | Mundelein, IL
-                  </h3>
-                  <p className="font-semibold text-gray-700">
-                    Nursing Assistant Intern
-                  </p>
-                  <p className="text-xs text-gray-500">07/2018 - 07/2019</p>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800">
-                    Edward Family | Mundelein, IL
-                  </h3>
-                  <p className="font-semibold text-gray-700">
-                    Family Caregiver
-                  </p>
-                  <p className="text-xs text-gray-500">06/2012 - 07/2018</p>
-                </div>
-              </div>
-            </div>
+              )}
 
             {/* Education Section */}
-            <div>
-              <h2 className="text-xl font-bold border-b-2 border-gray-300 pb-1 text-gray-800">
-                Education
-              </h2>
-              <div className="mt-4 text-sm text-gray-700">
-                <h3 className="font-semibold text-gray-800">
-                  University of St Mary of The Lake | Mundelein, IL
-                </h3>
-                <p className="font-semibold text-gray-700">
-                  Associate of Science in Nursing
-                </p>
-                <p className="text-xs text-gray-500">06/2019</p>
-              </div>
-            </div>
-
-            {/* Certifications Section */}
-            <div>
-              <h2 className="text-xl font-bold border-b-2 border-gray-300 pb-1 text-gray-800">
-                Certifications
-              </h2>
-              <ul className="list-disc list-inside mt-4 text-sm text-gray-700 space-y-1">
-                <li>Certified Nursing Assistant - 2020</li>
-                <li>Valid CNA License #123456</li>
-              </ul>
-            </div>
+            {Array.isArray(resumeData?.education) &&
+              resumeData.education.length > 0 && (
+                <div>
+                  <h2
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      borderBottom: `2px solid ${borderColor}`,
+                      paddingBottom: 4,
+                      color: mainText,
+                    }}
+                  >
+                    Education
+                  </h2>
+                  <div
+                    style={{
+                      marginTop: 16,
+                      fontSize: 15,
+                      color: mainText,
+                    }}
+                  >
+                    {resumeData.education.map((edu, idx) => (
+                      <div key={idx}>
+                        <h3
+                          style={{
+                            fontWeight: 600,
+                            color: mainText,
+                            margin: 0,
+                          }}
+                        >
+                          {edu.school} {edu.location ? `| ${edu.location}` : ""}
+                        </h3>
+                        <p
+                          style={{
+                            fontWeight: 600,
+                            color: mainText,
+                            margin: 0,
+                          }}
+                        >
+                          {edu.degree}{" "}
+                          {edu.fieldOfStudy ? `in ${edu.fieldOfStudy}` : ""}
+                        </p>
+                        <p
+                          style={{
+                            fontSize: 13,
+                            color: subText,
+                            margin: 0,
+                          }}
+                        >
+                          {edu.startMonth} {edu.startYear}{" "}
+                          {edu.currentlyEnrolled
+                            ? "- Current"
+                            : edu.endMonth && edu.endYear
+                            ? `- ${edu.endMonth} ${edu.endYear}`
+                            : ""}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
           </div>
 
           {/* Right Column (Sidebar) */}
-          <div className="col-span-1 space-y-6">
+          <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
             {/* Skills Section */}
-            <div>
-              <h2 className="text-xl font-bold border-b-2 border-gray-300 pb-1 text-gray-800">
-                Skills
-              </h2>
-              <div className="grid grid-cols-2 mt-4 text-sm text-gray-700">
-                <ul className="list-disc list-inside space-y-1">
-                  <li>General housekeeping ability</li>
-                  <li>Documentation procedures expert</li>
-                  <li>Family care expertise</li>
-                  <li>Quick problem solver</li>
-                </ul>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>Preparing meals</li>
-                  <li>Helping with medication</li>
-                  <li>Monitoring vitals</li>
-                  <li>Microsoft Office</li>
-                </ul>
-              </div>
-            </div>
+            {Array.isArray(resumeData?.skills) &&
+              resumeData.skills.length > 0 && (
+                <div>
+                  <h2
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      borderBottom: `2px solid ${borderColor}`,
+                      paddingBottom: 4,
+                      color: mainText,
+                    }}
+                  >
+                    Skills
+                  </h2>
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      marginTop: 16,
+                      fontSize: 15,
+                      color: mainText,
+                      gap: 8,
+                    }}
+                  >
+                    <ul
+                      style={{
+                        listStyle: "disc",
+                        paddingLeft: 20,
+                        margin: 0,
+                      }}
+                    >
+                      {resumeData.skills
+                        .slice(0, Math.ceil(resumeData.skills.length / 2))
+                        .map((skill, idx) => (
+                          <li key={idx}>{skill.name}</li>
+                        ))}
+                    </ul>
+                    <ul
+                      style={{
+                        listStyle: "disc",
+                        paddingLeft: 20,
+                        margin: 0,
+                      }}
+                    >
+                      {resumeData.skills
+                        .slice(Math.ceil(resumeData.skills.length / 2))
+                        .map((skill, idx) => (
+                          <li key={idx}>{skill.name}</li>
+                        ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+            {/* References Section */}
+            {Array.isArray(resumeData?.references) &&
+              resumeData.references.length > 0 && (
+                <div>
+                  <h2
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      borderBottom: `2px solid ${borderColor}`,
+                      paddingBottom: 4,
+                      color: mainText,
+                    }}
+                  >
+                    References
+                  </h2>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: 0,
+                      margin: 0,
+                      marginTop: 16,
+                    }}
+                  >
+                    {resumeData.references.map((ref, idx) => (
+                      <li key={idx} style={{ marginBottom: 12 }}>
+                        <span
+                          style={{
+                            fontWeight: 600,
+                            color: mainText,
+                          }}
+                        >
+                          {ref.name}
+                        </span>
+                        {ref.occupation && (
+                          <span style={{ color: subText }}>
+                            {" "}
+                            — {ref.occupation}
+                          </span>
+                        )}
+                        <br />
+                        <span style={{ color: accent }}>{ref.phone}</span>
+                        {ref.location && (
+                          <span style={{ color: subText }}>
+                            {" "}
+                            , {ref.location}
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
           </div>
         </div>
       </div>

@@ -1,161 +1,462 @@
-const Template2 = () => {
+const Template2 = ({ ref, resumeData }) => {
+  const mainColor = "#0594C3";
+  const textColor = "#222";
+  const lightBg = "#F9FAFB";
+  const borderColor = "#D1D5DB";
+  const sectionBg = "#F3F4F6";
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-      <div className="w-full max-w-2xl bg-white rounded-lg shadow-2xl overflow-hidden p-8 font-['Inter']">
+    <div
+      ref={ref}
+      style={{
+        minHeight: "100vh",
+        background: lightBg,
+        padding: 16,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 800,
+          background: "#fff",
+          borderRadius: 16,
+          boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+          overflow: "hidden",
+          padding: 32,
+          fontFamily: "Inter, sans-serif",
+        }}
+      >
         {/* Header Section */}
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-4xl font-bold text-[#0594C3]">JAMES MILLER</h1>
-          <div className="text-right">
-            <p className="text-sm text-gray-700">
-              44 Shirley Ave, West Chicago, IL 60185
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: 32,
+          }}
+        >
+          <h1
+            style={{
+              fontSize: 40,
+              fontWeight: 700,
+              color: mainColor,
+              margin: 0,
+            }}
+          >
+            {resumeData?.name || ""} {resumeData?.surname || ""}
+          </h1>
+          <div style={{ textAlign: "right" }}>
+            <p style={{ fontSize: 15, color: textColor, margin: 0 }}>
+              {resumeData?.address || ""} {resumeData?.city || ""}{" "}
+              {resumeData?.country || ""}
             </p>
-            <p className="text-sm text-[#0594C3] italic">jmiller@gmail.com</p>
-            <p className="text-sm text-gray-700">563-458-6942</p>
+            <p
+              style={{
+                fontSize: 15,
+                color: mainColor,
+                fontStyle: "italic",
+                margin: 0,
+              }}
+            >
+              {resumeData?.email || ""}
+            </p>
+            <p style={{ fontSize: 15, color: textColor, margin: 0 }}>
+              {resumeData?.phone || ""}
+            </p>
           </div>
         </div>
 
         {/* Professional Summary Section */}
-        <div className="mb-8">
-          <div className="bg-[#0594C3] text-white py-2 px-4 rounded-t-md">
-            <h2 className="text-lg font-bold uppercase tracking-wide">
+        <div style={{ marginBottom: 32 }}>
+          <div
+            style={{
+              background: mainColor,
+              color: "#fff",
+              padding: "8px 16px",
+              borderTopLeftRadius: 8,
+              borderTopRightRadius: 8,
+            }}
+          >
+            <h2
+              style={{
+                fontSize: 20,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: 1,
+              }}
+            >
               Professional Summary
             </h2>
           </div>
-          <div className="p-4 bg-gray-50 border-b-2 border-l-2 border-r-2 rounded-b-md border-gray-300">
-            <p className="text-sm text-gray-700 leading-relaxed">
-              A highly resourceful, flexible, innovative, and enthusiastic
-              project manager. Possessing considerable experience of managing
-              projects from beginning to end, defining the project plan,
-              timeline, scope and executing the analysis before providing
-              detailed recommendations. Having an impressive track record of
-              delivering major operational improvement and of orchestrating
-              people, schedules and resources for optimum productivity,
-              efficiency and quality. Keen to find a challenging position within
-              an ambitious company where I will be able to continue to increase
-              my project management skills.
+          <div
+            style={{
+              padding: 16,
+              background: sectionBg,
+              borderBottom: `2px solid ${borderColor}`,
+              borderLeft: `2px solid ${borderColor}`,
+              borderRight: `2px solid ${borderColor}`,
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+            }}
+          >
+            <p
+              style={{
+                fontSize: 15,
+                color: textColor,
+                lineHeight: 1.7,
+                margin: 0,
+              }}
+            >
+              {resumeData?.summary || ""}
             </p>
           </div>
         </div>
 
         {/* Employment History Section */}
-        <div className="mb-8">
-          <div className="bg-[#0594C3] text-white py-2 px-4 rounded-t-md">
-            <h2 className="text-lg font-bold uppercase tracking-wide">
+        <div style={{ marginBottom: 32 }}>
+          <div
+            style={{
+              background: mainColor,
+              color: "#fff",
+              padding: "8px 16px",
+              borderTopLeftRadius: 8,
+              borderTopRightRadius: 8,
+            }}
+          >
+            <h2
+              style={{
+                fontSize: 20,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: 1,
+              }}
+            >
               Employment History
             </h2>
           </div>
-          <div className="p-4 bg-gray-50 border-b-2 border-l-2 border-r-2 rounded-b-md border-gray-300 relative">
-            <div className="absolute top-0 left-4 w-px bg-gray-300 h-full"></div>{" "}
-            {/* Vertical line */}
-            {/* Employment 1 */}
-            <div className="relative mb-6">
-              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
-              <div className="ml-8">
-                <p className="text-xs text-gray-500 italic">
-                  May 2017 - Current
-                </p>
-                <h3 className="font-semibold text-gray-800">
-                  IT Project Manager at Telecommunicado Ltd, Birmingham
-                </h3>
-                <ul className="list-disc list-inside text-sm text-gray-700 mt-1 space-y-1 ml-4">
-                  <li>Lead a team of technical staff</li>
-                  <li>Planning, procurement and execution of projects</li>
-                </ul>
-              </div>
-            </div>
-            {/* Employment 2 */}
-            <div className="relative mb-0">
-              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
-              <div className="ml-8">
-                <p className="text-xs text-gray-500 italic">
-                  October 2015 - April 2016
-                </p>
-                <h3 className="font-semibold text-gray-800">
-                  IT Technician at International Mobilites, Birmingham
-                </h3>
-                <ul className="list-disc list-inside text-sm text-gray-700 mt-1 space-y-1 ml-4">
-                  <li>Operate and maintain information systems</li>
-                  <li>Facilitating system utilization</li>
-                </ul>
-              </div>
-            </div>
+          <div
+            style={{
+              padding: 16,
+              background: sectionBg,
+              borderBottom: `2px solid ${borderColor}`,
+              borderLeft: `2px solid ${borderColor}`,
+              borderRight: `2px solid ${borderColor}`,
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+              position: "relative",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 16,
+                width: 1,
+                background: borderColor,
+                height: "100%",
+              }}
+            ></div>
+            {Array.isArray(resumeData?.workExperience) &&
+            resumeData.workExperience.length > 0 ? (
+              resumeData.workExperience.map((job, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    position: "relative",
+                    marginBottom:
+                      idx !== resumeData.workExperience.length - 1 ? 24 : 0,
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: 6,
+                      top: 4,
+                      height: 8,
+                      width: 8,
+                      background: mainColor,
+                      borderRadius: "50%",
+                    }}
+                  ></div>
+                  <div style={{ marginLeft: 32 }}>
+                    <p
+                      style={{
+                        fontSize: 13,
+                        color: "#6B7280",
+                        fontStyle: "italic",
+                        margin: 0,
+                      }}
+                    >
+                      {job.startMonth} {job.startYear} -{" "}
+                      {job.presently
+                        ? "Present"
+                        : `${job.endMonth} ${job.endYear}`}
+                    </p>
+                    <h3
+                      style={{
+                        fontWeight: 600,
+                        color: textColor,
+                        margin: "4px 0",
+                      }}
+                    >
+                      {job.jobTitle} at {job.company}
+                    </h3>
+                    {Array.isArray(job.duties) && job.duties.length > 0 && (
+                      <ul
+                        style={{
+                          listStyle: "disc",
+                          paddingLeft: 20,
+                          fontSize: 14,
+                          color: textColor,
+                          margin: "4px 0",
+                        }}
+                      >
+                        {job.duties.map((duty, i) => (
+                          <li key={i}>{duty.name}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p style={{ fontSize: 14, color: textColor }}>
+                No work experience added.
+              </p>
+            )}
           </div>
         </div>
 
         {/* Education Section */}
-        <div className="mb-8">
-          <div className="bg-[#0594C3] text-white py-2 px-4 rounded-t-md">
-            <h2 className="text-lg font-bold uppercase tracking-wide">
+        <div style={{ marginBottom: 32 }}>
+          <div
+            style={{
+              background: mainColor,
+              color: "#fff",
+              padding: "8px 16px",
+              borderTopLeftRadius: 8,
+              borderTopRightRadius: 8,
+            }}
+          >
+            <h2
+              style={{
+                fontSize: 20,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: 1,
+              }}
+            >
               Education
             </h2>
           </div>
-          <div className="p-4 bg-gray-50 border-b-2 border-l-2 border-r-2 rounded-b-md border-gray-300 relative">
-            <div className="absolute top-0 left-4 w-px bg-gray-300 h-full"></div>
-
-            {/* Education 1 */}
-            <div className="relative mb-4">
-              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
-              <div className="ml-8">
-                <p className="text-xs text-gray-500 italic">
-                  September 2014 - May 2016
-                </p>
-                <h3 className="font-semibold text-gray-800">
-                  BSc Computer Science (2:1), University of Birmingham
-                </h3>
-              </div>
-            </div>
-
-            {/* Education 2 */}
-            <div className="relative mb-4">
-              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
-              <div className="ml-8">
-                <p className="text-xs text-gray-500 italic">
-                  September 2011 - May 2014
-                </p>
-                <h3 className="font-semibold text-gray-800">
-                  A-Levels: ICT (B), Maths (C), Biology (B), Washwood Heath
-                  Technology College
-                </h3>
-              </div>
-            </div>
-
-            {/* Education 3 */}
-            <div className="relative">
-              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
-              <div className="ml-8">
-                <p className="text-xs text-gray-500 italic">
-                  September 1999 - May 2011
-                </p>
-                <h3 className="font-semibold text-gray-800">
-                  10 GCSE's including Maths (A), Business Studies (B), ICT (C),
-                  Bournville School Secondary School
-                </h3>
-              </div>
-            </div>
+          <div
+            style={{
+              padding: 16,
+              background: sectionBg,
+              borderBottom: `2px solid ${borderColor}`,
+              borderLeft: `2px solid ${borderColor}`,
+              borderRight: `2px solid ${borderColor}`,
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+              position: "relative",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 16,
+                width: 1,
+                background: borderColor,
+                height: "100%",
+              }}
+            ></div>
+            {Array.isArray(resumeData?.education) &&
+            resumeData.education.length > 0 ? (
+              resumeData.education.map((edu, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    position: "relative",
+                    marginBottom:
+                      idx !== resumeData.education.length - 1 ? 16 : 0,
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: 6,
+                      top: 4,
+                      height: 8,
+                      width: 8,
+                      background: mainColor,
+                      borderRadius: "50%",
+                    }}
+                  ></div>
+                  <div style={{ marginLeft: 32 }}>
+                    <p
+                      style={{
+                        fontSize: 13,
+                        color: "#6B7280",
+                        fontStyle: "italic",
+                        margin: 0,
+                      }}
+                    >
+                      {edu.startMonth} {edu.startYear} -{" "}
+                      {edu.currentlyEnrolled
+                        ? "Present"
+                        : `${edu.endMonth} ${edu.endYear}`}
+                    </p>
+                    <h3
+                      style={{
+                        fontWeight: 600,
+                        color: textColor,
+                        margin: "4px 0",
+                      }}
+                    >
+                      {edu.degree}{" "}
+                      {edu.fieldOfStudy ? `(${edu.fieldOfStudy})` : ""},{" "}
+                      {edu.school}
+                    </h3>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p style={{ fontSize: 14, color: textColor }}>
+                No education added.
+              </p>
+            )}
           </div>
         </div>
 
-        {/* Honors Section */}
-        <div>
-          <div className="bg-[#0594C3] text-white py-2 px-4 rounded-t-md">
-            <h2 className="text-lg font-bold uppercase tracking-wide">
-              Honors
+        {/* Skills Section */}
+        <div style={{ marginBottom: 32 }}>
+          <div
+            style={{
+              background: mainColor,
+              color: "#fff",
+              padding: "8px 16px",
+              borderTopLeftRadius: 8,
+              borderTopRightRadius: 8,
+            }}
+          >
+            <h2
+              style={{
+                fontSize: 20,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: 1,
+              }}
+            >
+              Skills
             </h2>
           </div>
-          <div className="p-4 bg-gray-50 border-b-2 border-l-2 border-r-2 rounded-b-md border-gray-300 relative">
-            <div className="absolute top-0 left-4 w-px bg-gray-300 h-full"></div>
+          <div
+            style={{
+              padding: 16,
+              background: sectionBg,
+              borderBottom: `2px solid ${borderColor}`,
+              borderLeft: `2px solid ${borderColor}`,
+              borderRight: `2px solid ${borderColor}`,
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+            }}
+          >
+            {Array.isArray(resumeData?.skills) &&
+            resumeData.skills.length > 0 ? (
+              <ul
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 12,
+                  padding: 0,
+                  margin: 0,
+                  listStyle: "none",
+                }}
+              >
+                {resumeData.skills.map((skill, idx) => (
+                  <li
+                    key={idx}
+                    style={{
+                      background: mainColor,
+                      color: "#fff",
+                      borderRadius: 6,
+                      padding: "6px 16px",
+                      fontSize: 14,
+                      fontWeight: 500,
+                    }}
+                  >
+                    {skill.name}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p style={{ fontSize: 14, color: textColor }}>No skills added.</p>
+            )}
+          </div>
+        </div>
 
-            <div className="relative">
-              <div className="absolute left-1.5 top-1 h-2 w-2 bg-[#0594C3] rounded-full"></div>
-              <div className="ml-8">
-                <p className="text-xs text-gray-500 italic">
-                  June 2015 - June 2017
-                </p>
-                <h3 className="font-semibold text-gray-800">
-                  Board Member Mensa, Birmingham
-                </h3>
-              </div>
-            </div>
+        {/* References Section */}
+        <div>
+          <div
+            style={{
+              background: mainColor,
+              color: "#fff",
+              padding: "8px 16px",
+              borderTopLeftRadius: 8,
+              borderTopRightRadius: 8,
+            }}
+          >
+            <h2
+              style={{
+                fontSize: 20,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: 1,
+              }}
+            >
+              References
+            </h2>
+          </div>
+          <div
+            style={{
+              padding: 16,
+              background: sectionBg,
+              borderBottom: `2px solid ${borderColor}`,
+              borderLeft: `2px solid ${borderColor}`,
+              borderRight: `2px solid ${borderColor}`,
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+            }}
+          >
+            {Array.isArray(resumeData?.references) &&
+            resumeData.references.length > 0 ? (
+              <ul style={{ padding: 0, margin: 0, listStyle: "none" }}>
+                {resumeData.references.map((ref, idx) => (
+                  <li key={idx} style={{ marginBottom: 12 }}>
+                    <span style={{ fontWeight: 600, color: textColor }}>
+                      {ref.name}
+                    </span>
+                    <span style={{ color: textColor }}>
+                      {" "}
+                      — {ref.occupation || ""}
+                    </span>
+                    <br />
+                    <span style={{ color: mainColor }}>{ref.phone}</span>
+                    {ref.location && (
+                      <span style={{ color: textColor }}>, {ref.location}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p style={{ fontSize: 14, color: textColor }}>
+                No references added.
+              </p>
+            )}
           </div>
         </div>
       </div>
