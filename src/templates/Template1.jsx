@@ -3,20 +3,38 @@ import React from "react";
 const Template1 = ({ resumeData, ref }) => {
   return (
     <div
-      ref={ref}
-      className="flex items-center justify-center min-h-screen  p-4"
+      style={{
+        minHeight: "100vh",
+        width: "100vw",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        overflow: "auto",
+        background: "#f3f4f6",
+      }}
     >
-      <div className="w-full max-w-6xl rounded-lg shadow-2xl overflow-hidden p-8 font-['Inter']">
+      <div
+        ref={ref}
+        style={{
+          width: "210mm",
+          minHeight: "297mm",
+          margin: "auto",
+          background: "#fff",
+          boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+          borderRadius: "12px",
+          padding: "32px",
+        }}
+      >
         {/* Header Section */}
         <div className="mb-6">
           <h1 className="text-4xl font-bold" style={{ color: "#1e3a8a" }}>
             {resumeData.name} {resumeData.surname}
           </h1>
           <p className="text-sm mt-2" style={{ color: "#374151" }}>
-            {resumeData.city} {resumeData.country}
+            {resumeData.location}, {resumeData.city} ,{resumeData.country}
           </p>
           <p className="text-sm italic" style={{ color: "#1e3a8a" }}>
-            {resumeData.email}
+            {resumeData.email} - {resumeData.phone}
           </p>
         </div>
 
@@ -100,7 +118,7 @@ const Template1 = ({ resumeData, ref }) => {
                   </p>
                 </div>
                 <p className="text-sm" style={{ color: "#4b5563" }}>
-                  {edu.location} {edu.state}
+                  {edu.location}
                 </p>
               </div>
             </div>
