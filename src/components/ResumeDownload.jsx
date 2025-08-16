@@ -47,31 +47,31 @@ export default function ResumeDownload({
   };
 
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-center bg-[#f4f6fa] py-4 px-1 md:py-8 md:px-2">
+    <section className="w-full min-h-screen flex flex-col items-center justify-center bg-[#f4f6fa] py-8 px-2">
       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-lg p-0 flex flex-col gap-0 border border-gray-200">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between px-4 py-6 md:px-8 md:py-8 border-b border-gray-100 bg-gradient-to-r from-white to-[#eaf3f7] rounded-t-2xl">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between px-8 py-8 border-b border-gray-100 bg-gradient-to-r from-white to-[#eaf3f7] rounded-t-2xl">
           <div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2 tracking-tight font-serif">
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-2 tracking-tight font-serif">
               Review & Download
             </h2>
-            <p className="text-gray-500 text-sm md:text-base mb-2 font-medium">
+            <p className="text-gray-500 text-base mb-2 font-medium">
               Preview your resume below. Download as PDF or go back to edit any
               section.
             </p>
           </div>
           <button
             onClick={handleDownloadPDF}
-            className="bg-emerald-600 text-white px-5 py-2 md:px-7 md:py-3 rounded-lg font-semibold shadow hover:bg-emerald-700 transition text-base md:text-lg flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            className="bg-emerald-600 text-white px-7 py-3 rounded-lg font-semibold shadow hover:bg-emerald-700 transition text-lg flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
           >
             Download PDF
           </button>
         </div>
         {/* Resume Preview */}
-        <div className="w-full flex flex-col items-center justify-center px-2 md:px-8 py-4 md:py-8 bg-white">
+        <div className="w-full flex flex-col items-center justify-center px-4 md:px-8 py-8 bg-white">
           <div
-            className="w-full max-w-full md:max-w-6xl bg-white border border-gray-100 rounded-xl shadow-md p-2 md:p-10 overflow-auto"
-            style={{ minHeight: 300 }}
+            className="w-full max-w-6xl bg-white border border-gray-100 rounded-xl shadow-md p-6 md:p-10 overflow-auto"
+            style={{ minHeight: 400 }}
           >
             {TemplateComponent ? (
               <TemplateComponent
@@ -87,10 +87,10 @@ export default function ResumeDownload({
           </div>
         </div>
         {/* Footer Actions */}
-        <div className="flex flex-col md:flex-row gap-2 md:gap-4 px-4 md:px-8 py-4 md:py-6 border-t border-gray-100 bg-gradient-to-r from-white to-[#eaf3f7] rounded-b-2xl">
+        <div className="flex flex-col md:flex-row gap-4 px-8 py-6 border-t border-gray-100 bg-gradient-to-r from-white to-[#eaf3f7] rounded-b-2xl">
           <button
             type="button"
-            className="border border-gray-400 rounded-lg px-4 py-2 md:px-6 md:py-2 font-semibold text-gray-700 hover:bg-gray-100 w-full md:w-1/2 transition focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            className="border border-gray-400 rounded-lg px-6 py-2 font-semibold text-gray-700 hover:bg-gray-100 w-full md:w-1/2 transition focus:outline-none focus:ring-2 focus:ring-emerald-400"
             onClick={handlePrevStep}
           >
             Go Back & Edit
